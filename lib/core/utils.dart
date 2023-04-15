@@ -4,11 +4,13 @@ class AppConstants {
   double appbarIconSize = 30;
 }
 
-TextStyle txtStyle({Color? color, double? size, FontWeight? weight}) =>
+TextStyle txtStyle(
+        {Color? color, double? size, FontWeight? weight, double? height}) =>
     TextStyle(
         color: color ?? Colors.black,
         fontSize: size ?? 14,
-        fontWeight: weight ?? FontWeight.normal);
+        fontWeight: weight ?? FontWeight.normal,
+        height: height ?? 1);
 
 class Sizes {
   double scrWidth(BuildContext context) => MediaQuery.of(context).size.width;
