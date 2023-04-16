@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:hrms_clone/hrms_clone/domain/components/project_list.dart';
-import 'package:hrms_clone/hrms_clone/domain/components/status_change_banner.dart';
+import 'package:hrms_clone/hrms_clone/admin_dashboard/components/project_list.dart';
+import 'package:hrms_clone/hrms_clone/admin_dashboard/components/status_change_banner.dart';
 
-import '../../../core/utils.dart';
-import '../../../home_page.dart';
-import 'detail_banner.dart';
+import '../../core/utils.dart';
+import '../../home_page.dart';
+import 'components/detail_banner.dart';
 
 class AdminDashboard extends StatelessWidget {
   const AdminDashboard({super.key});

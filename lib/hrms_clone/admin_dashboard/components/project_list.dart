@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:hrms_clone/hrms_clone/domain/components/project_detail_banner.dart';
+import 'package:hrms_clone/hrms_clone/admin_dashboard/components/project_detail_widget.dart';
 
 import '../../../core/utils.dart';
-import '../../data/detail_banner.dart';
+import '../data/detail_banner.dart';
 
 List<ProjectDetail> projectList = [
   ProjectDetail(
@@ -95,7 +95,7 @@ class ProjectList extends StatelessWidget {
             style: txtStyle(size: 17, weight: FontWeight.bold),
           ));
   Widget separator(BuildContext context) => Container(
-        width: Sizes().scrWidth(context),
+        width: Sizes().ratioWithScrWidth(context, 0.58 + 0.25 + 0.20),
         height: 4,
         color: Color.fromARGB(255, 218, 216, 216),
       );

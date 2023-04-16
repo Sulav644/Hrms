@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:hrms_clone/hrms_clone/data/detail_banner.dart';
+import 'package:hrms_clone/hrms_clone/admin_dashboard/data/detail_banner.dart';
 
 import '../../../core/utils.dart';
 

@@ -4,19 +4,19 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
-import 'package:hrms_clone/hrms_clone/data/detail_banner.dart';
-import 'package:hrms_clone/hrms_clone/domain/components/admin_dashboard.dart';
-import 'package:hrms_clone/hrms_clone/domain/components/detail_banner.dart';
-import 'package:hrms_clone/hrms_clone/domain/components/popup_menu.dart';
-import 'package:hrms_clone/hrms_clone/domain/bloc/show_menu_cubit.dart';
-import 'package:hrms_clone/hrms_clone/domain/components/project_list.dart';
-import 'package:hrms_clone/hrms_clone/domain/components/status_change_banner.dart';
-import 'package:hrms_clone/hrms_clone/domain/components/team_members.dart';
+import 'package:hrms_clone/hrms_clone/admin_dashboard/data/detail_banner.dart';
+import 'package:hrms_clone/hrms_clone/admin_dashboard/admin_dashboard.dart';
+import 'package:hrms_clone/hrms_clone/admin_dashboard/components/detail_banner.dart';
+import 'package:hrms_clone/core/components/popup_menu/popup_menu.dart';
+import 'package:hrms_clone/core/components/popup_menu/domain/show_menu_cubit.dart';
+import 'package:hrms_clone/hrms_clone/admin_dashboard/components/project_list.dart';
+import 'package:hrms_clone/hrms_clone/admin_dashboard/components/status_change_banner.dart';
+import 'package:hrms_clone/hrms_clone/project_detail_&_member/components/team_members.dart';
 
 import 'core/app_widgets.dart';
 import 'core/utils.dart';
-import 'hrms_clone/data/member_list.dart';
-import 'hrms_clone/domain/components/project_detail_page.dart';
+import 'hrms_clone/project_detail_&_member/data/member_list.dart';
+import 'hrms_clone/project_detail_&_member/project_detail_page.dart';
 
 List<DetailBanner> bannerList = [
   DetailBanner(icon: Icons.task, count: 112, title: 'Projects'),
@@ -105,7 +105,7 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.symmetric(
                     horizontal: Sizes().ratioWithScrWidth(context, 0.04)),
                 child: Column(
-                  children: [ProjectDetailPage()],
+                  children: [AdminDashboard()],
                 ),
               ),
             ),
