@@ -9,7 +9,8 @@ import '../../home_page.dart';
 import 'components/detail_banner.dart';
 
 class AdminDashboard extends StatelessWidget {
-  const AdminDashboard({super.key});
+  final bool showMenuStatus;
+  const AdminDashboard({super.key, required this.showMenuStatus});
 
   @override
   Widget build(BuildContext context) {

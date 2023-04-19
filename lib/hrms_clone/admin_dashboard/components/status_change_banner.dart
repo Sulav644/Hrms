@@ -51,20 +51,20 @@ class StatusChangeBannerWidget extends StatelessWidget {
         e.isPriceCount
             ? '\$${formatter.format(e.currentCount)}'
             : '${e.currentCount}',
-        style: txtStyle(size: 25, weight: FontWeight.bold),
+        style: txtStyle(size: 25, weight: FontWeight.w500),
       );
   Widget labelBar(BuildContext context) => Stack(
         children: [
           Container(
             width: Sizes().scrWidth(context),
-            height: 8,
+            height: Sizes().ratioWithScrHeight(context, 0.0085),
             decoration: BoxDecoration(
-                color: Color.fromARGB(255, 145, 143, 143),
+                color: Color.fromARGB(255, 223, 220, 220),
                 borderRadius: BorderRadius.circular(10)),
           ),
           Container(
             width: Sizes().ratioWithScrWidth(context, 0.6),
-            height: 8,
+            height: Sizes().ratioWithScrHeight(context, 0.0085),
             decoration: BoxDecoration(
                 color: Color.fromARGB(255, 255, 153, 69),
                 borderRadius: BorderRadius.only(

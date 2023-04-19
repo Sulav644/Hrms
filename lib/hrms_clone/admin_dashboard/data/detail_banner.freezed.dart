@@ -705,6 +705,7 @@ abstract class _StatusChangeBanner extends StatusChangeBanner {
 /// @nodoc
 mixin _$ProjectDetail {
   String? get title => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   int? get openTask => throw _privateConstructorUsedError;
   int? get completedTask => throw _privateConstructorUsedError;
   double? get levelBar => throw _privateConstructorUsedError;
@@ -721,7 +722,11 @@ abstract class $ProjectDetailCopyWith<$Res> {
       _$ProjectDetailCopyWithImpl<$Res, ProjectDetail>;
   @useResult
   $Res call(
-      {String? title, int? openTask, int? completedTask, double? levelBar});
+      {String? title,
+      int? id,
+      int? openTask,
+      int? completedTask,
+      double? levelBar});
 }
 
 /// @nodoc
@@ -738,6 +743,7 @@ class _$ProjectDetailCopyWithImpl<$Res, $Val extends ProjectDetail>
   @override
   $Res call({
     Object? title = freezed,
+    Object? id = freezed,
     Object? openTask = freezed,
     Object? completedTask = freezed,
     Object? levelBar = freezed,
@@ -747,6 +753,10 @@ class _$ProjectDetailCopyWithImpl<$Res, $Val extends ProjectDetail>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       openTask: freezed == openTask
           ? _value.openTask
           : openTask // ignore: cast_nullable_to_non_nullable
@@ -772,7 +782,11 @@ abstract class _$$_ProjectDetailCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? title, int? openTask, int? completedTask, double? levelBar});
+      {String? title,
+      int? id,
+      int? openTask,
+      int? completedTask,
+      double? levelBar});
 }
 
 /// @nodoc
@@ -787,6 +801,7 @@ class __$$_ProjectDetailCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = freezed,
+    Object? id = freezed,
     Object? openTask = freezed,
     Object? completedTask = freezed,
     Object? levelBar = freezed,
@@ -796,6 +811,10 @@ class __$$_ProjectDetailCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       openTask: freezed == openTask
           ? _value.openTask
           : openTask // ignore: cast_nullable_to_non_nullable
@@ -816,11 +835,13 @@ class __$$_ProjectDetailCopyWithImpl<$Res>
 
 class _$_ProjectDetail extends _ProjectDetail {
   const _$_ProjectDetail(
-      {this.title, this.openTask, this.completedTask, this.levelBar})
+      {this.title, this.id, this.openTask, this.completedTask, this.levelBar})
       : super._();
 
   @override
   final String? title;
+  @override
+  final int? id;
   @override
   final int? openTask;
   @override
@@ -830,7 +851,7 @@ class _$_ProjectDetail extends _ProjectDetail {
 
   @override
   String toString() {
-    return 'ProjectDetail(title: $title, openTask: $openTask, completedTask: $completedTask, levelBar: $levelBar)';
+    return 'ProjectDetail(title: $title, id: $id, openTask: $openTask, completedTask: $completedTask, levelBar: $levelBar)';
   }
 
   @override
@@ -839,6 +860,7 @@ class _$_ProjectDetail extends _ProjectDetail {
         (other.runtimeType == runtimeType &&
             other is _$_ProjectDetail &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.openTask, openTask) ||
                 other.openTask == openTask) &&
             (identical(other.completedTask, completedTask) ||
@@ -849,7 +871,7 @@ class _$_ProjectDetail extends _ProjectDetail {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, title, openTask, completedTask, levelBar);
+      Object.hash(runtimeType, title, id, openTask, completedTask, levelBar);
 
   @JsonKey(ignore: true)
   @override
@@ -861,6 +883,7 @@ class _$_ProjectDetail extends _ProjectDetail {
 abstract class _ProjectDetail extends ProjectDetail {
   const factory _ProjectDetail(
       {final String? title,
+      final int? id,
       final int? openTask,
       final int? completedTask,
       final double? levelBar}) = _$_ProjectDetail;
@@ -868,6 +891,8 @@ abstract class _ProjectDetail extends ProjectDetail {
 
   @override
   String? get title;
+  @override
+  int? get id;
   @override
   int? get openTask;
   @override
@@ -877,5 +902,140 @@ abstract class _ProjectDetail extends ProjectDetail {
   @override
   @JsonKey(ignore: true)
   _$$_ProjectDetailCopyWith<_$_ProjectDetail> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$ProjectDetails {
+  String get title => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ProjectDetailsCopyWith<ProjectDetails> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ProjectDetailsCopyWith<$Res> {
+  factory $ProjectDetailsCopyWith(
+          ProjectDetails value, $Res Function(ProjectDetails) then) =
+      _$ProjectDetailsCopyWithImpl<$Res, ProjectDetails>;
+  @useResult
+  $Res call({String title, int id});
+}
+
+/// @nodoc
+class _$ProjectDetailsCopyWithImpl<$Res, $Val extends ProjectDetails>
+    implements $ProjectDetailsCopyWith<$Res> {
+  _$ProjectDetailsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+    Object? id = null,
+  }) {
+    return _then(_value.copyWith(
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_ProjectDetailsCopyWith<$Res>
+    implements $ProjectDetailsCopyWith<$Res> {
+  factory _$$_ProjectDetailsCopyWith(
+          _$_ProjectDetails value, $Res Function(_$_ProjectDetails) then) =
+      __$$_ProjectDetailsCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String title, int id});
+}
+
+/// @nodoc
+class __$$_ProjectDetailsCopyWithImpl<$Res>
+    extends _$ProjectDetailsCopyWithImpl<$Res, _$_ProjectDetails>
+    implements _$$_ProjectDetailsCopyWith<$Res> {
+  __$$_ProjectDetailsCopyWithImpl(
+      _$_ProjectDetails _value, $Res Function(_$_ProjectDetails) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+    Object? id = null,
+  }) {
+    return _then(_$_ProjectDetails(
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ProjectDetails extends _ProjectDetails {
+  const _$_ProjectDetails({required this.title, required this.id}) : super._();
+
+  @override
+  final String title;
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'ProjectDetails(title: $title, id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ProjectDetails &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, title, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ProjectDetailsCopyWith<_$_ProjectDetails> get copyWith =>
+      __$$_ProjectDetailsCopyWithImpl<_$_ProjectDetails>(this, _$identity);
+}
+
+abstract class _ProjectDetails extends ProjectDetails {
+  const factory _ProjectDetails(
+      {required final String title, required final int id}) = _$_ProjectDetails;
+  const _ProjectDetails._() : super._();
+
+  @override
+  String get title;
+  @override
+  int get id;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ProjectDetailsCopyWith<_$_ProjectDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }

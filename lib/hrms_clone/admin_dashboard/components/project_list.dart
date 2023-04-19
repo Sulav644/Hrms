@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:hrms_clone/hrms_clone/admin_dashboard/components/project_detail_widget.dart';
+import 'package:hrms_clone/hrms_clone/view_more_projects/view_more_projects.dart';
 
 import '../../../core/utils.dart';
+import '../core/components.dart';
 import '../data/detail_banner.dart';
 
 List<ProjectDetail> projectList = [
@@ -11,7 +13,7 @@ List<ProjectDetail> projectList = [
       title: 'Office Management',
       openTask: 1,
       completedTask: 9,
-      levelBar: 0.14),
+      levelBar: 0.12),
   ProjectDetail(
       title: 'Project Management',
       openTask: 2,
@@ -23,12 +25,12 @@ List<ProjectDetail> projectList = [
       title: 'Hospital Administration',
       openTask: 12,
       completedTask: 4,
-      levelBar: 0.16),
+      levelBar: 0.14),
   ProjectDetail(
       title: 'Digital Marketplace',
       openTask: 7,
       completedTask: 14,
-      levelBar: 0.18),
+      levelBar: 0.16),
 ];
 
 class ProjectList extends StatelessWidget {
@@ -37,48 +39,72 @@ class ProjectList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+        elevation: 4,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Padding(
-        padding: EdgeInsets.symmetric(
-            vertical: Sizes().ratioWithScrHeight(context, 0.03)),
-        child: Text(
-          'Recent Projects',
-          style: txtStyle(size: 20, weight: FontWeight.bold),
-        ),
-      ),
-      SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            separator(context),
-            Row(children: [
-              headerItem(
-                  context: context,
-                  width: 0.58,
-                  alignment: Alignment.centerLeft,
-                  title: 'Project Name'),
-              headerItem(
-                  context: context,
-                  width: 0.25,
-                  alignment: Alignment.center,
-                  title: 'Progress'),
-              headerItem(
-                  context: context,
-                  width: 0.20,
-                  alignment: Alignment.center,
-                  title: 'Action'),
-            ]),
-            separator(context),
-            ...projectList
-                .map(
-                  (e) => ProjectDetailWidget(e: e),
-                )
-                .toList()
-          ],
-        ),
-      )
-    ]));
+          Padding(
+            padding: EdgeInsets.symmetric(
+                vertical: Sizes().ratioWithScrHeight(context, 0.03)),
+            child: Padding(
+              padding: EdgeInsets.only(
+                  left: Sizes().ratioWithScrWidth(context, 0.04)),
+              child: Text(
+                'Recent Projects',
+                style: txtStyle(size: 20, weight: FontWeight.w500),
+              ),
+            ),
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Components().separator(context),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: Sizes().ratioWithScrWidth(context, 0.04)),
+                  child: Row(children: [
+                    headerItem(
+                        context: context,
+                        width: 0.5,
+                        alignment: Alignment.centerLeft,
+                        title: 'Project Name'),
+                    headerItem(
+                        context: context,
+                        width: 0.25,
+                        alignment: Alignment.center,
+                        title: 'Progress'),
+                    headerItem(
+                        context: context,
+                        width: 0.15,
+                        alignment: Alignment.center,
+                        title: 'Action'),
+                  ]),
+                ),
+                Components().separator(context),
+                ...projectList
+                    .map(
+                      (e) => ProjectDetailWidget(
+                        e: e,
+                      ),
+                    )
+                    .toList()
+              ],
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    vertical: Sizes().ratioWithScrHeight(context, 0.02)),
+                child: GestureDetector(
+                    onTap: () =>
+                        Navigation().navigateTo(context, ViewMoreProjects()),
+                    child: Text('View all projects')),
+              ),
+            ],
+          )
+        ]));
   }
 
   Widget headerItem(
@@ -92,11 +118,6 @@ class ProjectList extends StatelessWidget {
           alignment: alignment,
           child: Text(
             title,
-            style: txtStyle(size: 17, weight: FontWeight.bold),
+            style: txtStyle(size: 15, weight: FontWeight.w500),
           ));
-  Widget separator(BuildContext context) => Container(
-        width: Sizes().ratioWithScrWidth(context, 0.58 + 0.25 + 0.20),
-        height: 4,
-        color: Color.fromARGB(255, 218, 216, 216),
-      );
 }

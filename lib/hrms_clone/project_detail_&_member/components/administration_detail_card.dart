@@ -25,7 +25,19 @@ class AdministrationDetailCard extends StatelessWidget {
           fieldNameAndTaskCounts(),
           Spacing().verticalSpace(context, 0.03),
           Text(
-            lorem(words: 120, paragraphs: 2),
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+            'Aenean accumsan aliquam laoreet. Vestibulum et vulputate tellus. '
+            'Suspendisse potenti. In hac habitasse platea dictumst. Vestibulum '
+            'egestas eu est vitae elementum. Vivamus id sollicitudin eros, ut '
+            'consequat lorem. Ut feugiat molestie tortor, eget interdum dui consequat sit amet.'
+            'Suspendisse quis pretium nisl, ac consectetur velit.'
+            'Nam sagittis pharetra nisl nec tempor. Nulla porta tellus eu tristique '
+            'elementum. Morbi congue varius quam, sit amet imperdiet est ullamcorper '
+            'quis. Nam congue consequat sapien, in volutpat ex consectetur sed. Lorem '
+            'ipsum dolor sit amet, consectetur adipiscing elit. Proin fermentum mollis '
+            'diam, nec congue lacus lacinia vitae. Vivamus in aliquam mauris. Orci '
+            'varius natoque penatibus et magnis dis parturient montes,'
+            'nascetur ridiculus mus. Integer eu elit.',
             style: txtStyle(size: 13, height: 1.8),
           ),
         ]);

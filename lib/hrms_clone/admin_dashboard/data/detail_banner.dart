@@ -39,8 +39,18 @@ class ProjectDetail with _$ProjectDetail {
   const ProjectDetail._();
   const factory ProjectDetail({
     String? title,
+    int? id,
     int? openTask,
     int? completedTask,
     double? levelBar,
   }) = _ProjectDetail;
+}
+
+@freezed
+class ProjectDetails with _$ProjectDetails {
+  const ProjectDetails._();
+  const factory ProjectDetails({
+    required String title,
+    required int id,
+  }) = _ProjectDetails;
 }
