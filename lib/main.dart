@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hrms_clone/home_page.dart';
 import 'package:hrms_clone/core/components/popup_menu/domain/show_menu_cubit.dart';
+import 'package:hrms_clone/hrms_clone/holidays/domain/add_holiday_cubit.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/select_indicator_cubit.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/select_timeline_cubit.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/show_priority_cubit.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => TextBoxInplaceOfTextCubit()),
           BlocProvider(create: (context) => SelectedTimelinesCubit()),
           BlocProvider(create: (context) => MembersSortListCubit()),
+          BlocProvider(create: (context) => AddHolidayCubit()),
         ],
         child: MaterialApp(
           title: 'Flutter Demo',

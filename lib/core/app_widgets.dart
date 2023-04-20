@@ -3,6 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hrms_clone/core/utils.dart';
 import 'package:hrms_clone/core/components/popup_menu/domain/show_menu_cubit.dart';
+import 'package:hrms_clone/hrms_clone/employee_dashboard/employee_dashboard.dart';
+import 'package:hrms_clone/hrms_clone/employees_list/employees_list.dart';
+import 'package:hrms_clone/hrms_clone/holidays/holidays.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/select_timeline_cubit.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/show_priority_cubit.dart';
 
@@ -57,13 +60,13 @@ class AppWidgets {
         icon,
         size: AppConstants().appbarIconSize,
       ));
-  Widget appScaffold({
-    required BuildContext context,
-    required bool showMenuStatus,
-    required List<Widget> children,
-    required ScrollController controller,
-    required VoidCallback onClick,
-  }) =>
+  Widget appScaffold(
+          {required BuildContext context,
+          required bool showMenuStatus,
+          required List<Widget> children,
+          required ScrollController controller,
+          required VoidCallback onClick,
+          bool? allowPadding}) =>
       GestureDetector(
         onTap: () => onClick(),
         child: Scaffold(
@@ -75,7 +78,8 @@ class AppWidgets {
                 controller: controller,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: Sizes().ratioWithScrWidth(context, 0.03)),
+                      horizontal: Sizes().ratioWithScrWidth(
+                          context, allowPadding == null ? 0.03 : 0.0)),
                   child: Column(
                     children: children,
                   ),
@@ -89,112 +93,135 @@ class AppWidgets {
             radius: Radius.circular(10),
             child: AppWidgets().appDrawer(context, [
               itemHeader(context, 'Main'),
-              itemContent(
+              expandedList(
                   context: context,
-                  leadIcon: Icons.alarm,
+                  icon: Icons.alarm,
                   title: 'Dashboard',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: true),
+                  children: [
+                    Text('Admin Dashboard'),
+                    GestureDetector(
+                        onTap: () => Navigation()
+                            .navigateTo(context, EmployeeDashboard()),
+                        child: Text('Employee Dashboard'))
+                  ]),
               itemHeader(context, 'Employees'),
-              itemContent(
+              expandedList(
                   context: context,
-                  leadIcon: Icons.person_2_outlined,
+                  icon: Icons.person_2_outlined,
                   title: 'Employees',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: true),
+                  children: [
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, EmployeesList()),
+                        child: Text('All Employees')),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, Holidays()),
+                        child: Text('Holidays')),
+                    Text('Employee Leave'),
+                    Text('Departments'),
+                    Text('Designations'),
+                    Text('Timesheet'),
+                    Text('Overtime')
+                  ]),
               itemContent(
                   context: context,
                   leadIcon: Icons.person_add_outlined,
                   title: 'Clients',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: false),
+                  height: 0.045),
               itemContent(
                   context: context,
                   leadIcon: Icons.rocket_outlined,
                   title: 'Projects',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: true),
+                  height: 0.065),
               itemContent(
                   context: context,
                   leadIcon: Icons.add_box,
                   title: 'Leads',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: false),
+                  height: 0.065),
               itemHeader(context, 'HR'),
-              itemContent(
+              expandedList(
                   context: context,
-                  leadIcon: Icons.card_giftcard,
+                  icon: Icons.card_giftcard,
                   title: 'Accounts',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: true),
-              itemContent(
+                  children: [
+                    Text('Invoices'),
+                    Text('Payments'),
+                    Text('Expenses'),
+                    Text('Provident Fund'),
+                    Text('Taxes')
+                  ]),
+              expandedList(
                   context: context,
-                  leadIcon: Icons.monetization_on,
+                  icon: Icons.monetization_on,
                   title: 'Payroll',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: true),
-              itemContent(
+                  children: [
+                    Text('Employee Salary'),
+                    Text('Payslip'),
+                    Text('Payroll Items')
+                  ]),
+              expandedList(
                   context: context,
-                  leadIcon: Icons.circle_notifications_outlined,
+                  icon: Icons.circle_notifications_outlined,
                   title: 'Goals',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: true),
-              itemContent(
+                  children: [
+                    Text('Goal List'),
+                    Text('Goal Type'),
+                  ]),
+              expandedList(
                   context: context,
-                  leadIcon: Icons.note_add_outlined,
+                  icon: Icons.note_add_outlined,
                   title: 'Training',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: true),
+                  children: [
+                    Text('Training List'),
+                    Text('Trainers'),
+                    Text('Training Type')
+                  ]),
               itemContent(
                   context: context,
                   leadIcon: Icons.mic,
                   title: 'Promotion',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: false),
+                  height: 0.045),
               itemContent(
                   context: context,
                   leadIcon: Icons.exit_to_app_outlined,
                   title: 'Resignation',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: false),
+                  height: 0.065),
               itemContent(
                   context: context,
                   leadIcon: Icons.close_rounded,
                   title: 'Termination',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: false),
+                  height: 0.065),
               itemHeader(context, 'Administration'),
               itemContent(
                   context: context,
                   leadIcon: Icons.home,
                   title: 'Assets',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: false),
+                  height: 0.065),
               itemContent(
                   context: context,
                   leadIcon: Icons.person_add_outlined,
                   title: 'Users',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: false),
+                  height: 0.065),
               itemHeader(context, 'Pages'),
-              itemContent(
+              expandedList(
                   context: context,
-                  leadIcon: Icons.person_3_outlined,
+                  icon: Icons.person_3_outlined,
                   title: 'Profile',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: true),
+                  children: [
+                    Text('Employee Profile'),
+                    Text('Client Profile'),
+                  ]),
               itemContent(
                   context: context,
                   leadIcon: Icons.settings_outlined,
                   title: 'Settings',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: false),
+                  height: 0.045),
               itemContent(
                   context: context,
                   leadIcon: Icons.power_settings_new,
                   title: 'Logout',
-                  trailIcon: Icons.arrow_forward_ios,
-                  showTrailIcon: false),
+                  height: 0.065),
             ]),
           ),
         ),
@@ -204,18 +231,17 @@ class AppWidgets {
       alignment: Alignment.bottomLeft,
       child: Text(title));
 
-  Widget itemContent(
-          {required BuildContext context,
-          required IconData leadIcon,
-          required String title,
-          required IconData trailIcon,
-          required bool showTrailIcon}) =>
+  Widget itemContent({
+    required BuildContext context,
+    required IconData leadIcon,
+    required String title,
+    required double height,
+  }) =>
       Container(
-        height: Sizes().ratioWithScrHeight(context, 0.05),
+        height: Sizes().ratioWithScrHeight(context, height),
         alignment: Alignment.bottomCenter,
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Row(
+        child: Container(
+          child: Row(
             children: [
               Icon(
                 leadIcon,
@@ -225,21 +251,43 @@ class AppWidgets {
               Text(title),
             ],
           ),
-          if (showTrailIcon)
-            Row(
+        ),
+      );
+  Widget expandedList(
+          {required BuildContext context,
+          required IconData icon,
+          required String title,
+          required List<Widget> children}) =>
+      ListTileTheme(
+        dense: true,
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            unselectedWidgetColor: Colors.white,
+          ),
+          child: ExpansionTile(
+            tilePadding: EdgeInsets.zero,
+            iconColor: Colors.white,
+            collapsedIconColor: Colors.white,
+            title: Row(
               children: [
-                if (title == 'Employees')
-                  CircleAvatar(
-                    radius: 6,
-                  ),
-                Spacing().horizontalSpace(context, 0.03),
-                Icon(
-                  trailIcon,
-                  size: 18,
-                  color: Colors.white,
+                Icon(icon),
+                Spacing().horizontalSpace(context, 0.025),
+                Text(
+                  title,
+                  style: txtStyle(color: Colors.white),
                 ),
               ],
-            )
-        ]),
+            ),
+            children: children
+                .map((e) => Column(children: [
+                      Row(children: [
+                        Spacing().horizontalSpace(context, 0.1),
+                        e
+                      ]),
+                      Spacing().verticalSpace(context, 0.02),
+                    ]))
+                .toList(),
+          ),
+        ),
       );
 }
