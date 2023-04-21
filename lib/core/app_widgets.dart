@@ -3,12 +3,21 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hrms_clone/core/utils.dart';
 import 'package:hrms_clone/core/components/popup_menu/domain/show_menu_cubit.dart';
+import 'package:hrms_clone/hrms_clone/assets/assets.dart';
 import 'package:hrms_clone/hrms_clone/employee_dashboard/employee_dashboard.dart';
 import 'package:hrms_clone/hrms_clone/employees_list/employees_list.dart';
 import 'package:hrms_clone/hrms_clone/holidays/holidays.dart';
+import 'package:hrms_clone/hrms_clone/leads/leads.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/select_timeline_cubit.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/show_priority_cubit.dart';
+import 'package:hrms_clone/hrms_clone/promotion/promotion.dart';
+import 'package:hrms_clone/hrms_clone/resignation/resignation.dart';
+import 'package:hrms_clone/hrms_clone/termination/termination.dart';
+import 'package:hrms_clone/hrms_clone/training/training_list/training_list.dart';
+import 'package:hrms_clone/hrms_clone/training/training_list/training_type.dart';
+import 'package:hrms_clone/hrms_clone/users/users.dart';
 
+import '../hrms_clone/training/training_list/trainings.dart';
 import 'components/popup_menu/popup_menu.dart';
 
 class AppWidgets {
@@ -134,11 +143,14 @@ class AppWidgets {
                   leadIcon: Icons.rocket_outlined,
                   title: 'Projects',
                   height: 0.065),
-              itemContent(
-                  context: context,
-                  leadIcon: Icons.add_box,
-                  title: 'Leads',
-                  height: 0.065),
+              GestureDetector(
+                onTap: () => Navigation().navigateTo(context, Leads()),
+                child: itemContent(
+                    context: context,
+                    leadIcon: Icons.add_box,
+                    title: 'Leads',
+                    height: 0.065),
+              ),
               itemHeader(context, 'HR'),
               expandedList(
                   context: context,
@@ -173,36 +185,60 @@ class AppWidgets {
                   icon: Icons.note_add_outlined,
                   title: 'Training',
                   children: [
-                    Text('Training List'),
-                    Text('Trainers'),
-                    Text('Training Type')
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, TrainingList()),
+                        child: Text('Training List')),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, Trainings()),
+                        child: Text('Trainers')),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, TrainingType()),
+                        child: Text('Training Type'))
                   ]),
-              itemContent(
-                  context: context,
-                  leadIcon: Icons.mic,
-                  title: 'Promotion',
-                  height: 0.045),
-              itemContent(
-                  context: context,
-                  leadIcon: Icons.exit_to_app_outlined,
-                  title: 'Resignation',
-                  height: 0.065),
-              itemContent(
-                  context: context,
-                  leadIcon: Icons.close_rounded,
-                  title: 'Termination',
-                  height: 0.065),
+              GestureDetector(
+                onTap: () => Navigation().navigateTo(context, Promotion()),
+                child: itemContent(
+                    context: context,
+                    leadIcon: Icons.mic,
+                    title: 'Promotion',
+                    height: 0.045),
+              ),
+              GestureDetector(
+                onTap: () => Navigation().navigateTo(context, Resignation()),
+                child: itemContent(
+                    context: context,
+                    leadIcon: Icons.exit_to_app_outlined,
+                    title: 'Resignation',
+                    height: 0.065),
+              ),
+              GestureDetector(
+                onTap: () => Navigation().navigateTo(context, Termination()),
+                child: itemContent(
+                    context: context,
+                    leadIcon: Icons.close_rounded,
+                    title: 'Termination',
+                    height: 0.065),
+              ),
               itemHeader(context, 'Administration'),
-              itemContent(
-                  context: context,
-                  leadIcon: Icons.home,
-                  title: 'Assets',
-                  height: 0.065),
-              itemContent(
-                  context: context,
-                  leadIcon: Icons.person_add_outlined,
-                  title: 'Users',
-                  height: 0.065),
+              GestureDetector(
+                onTap: () => Navigation().navigateTo(context, Assets()),
+                child: itemContent(
+                    context: context,
+                    leadIcon: Icons.home,
+                    title: 'Assets',
+                    height: 0.065),
+              ),
+              GestureDetector(
+                onTap: () => Navigation().navigateTo(context, Users()),
+                child: itemContent(
+                    context: context,
+                    leadIcon: Icons.person_add_outlined,
+                    title: 'Users',
+                    height: 0.065),
+              ),
               itemHeader(context, 'Pages'),
               expandedList(
                   context: context,
