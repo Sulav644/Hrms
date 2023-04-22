@@ -13,6 +13,8 @@ class HorizListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: Sizes().ratioWithScrWidth(context, width), child: child);
+        width: Sizes().ratioWithScrWidth(context, width),
+        alignment: Alignment.centerLeft,
+        child: child);
   }
 }

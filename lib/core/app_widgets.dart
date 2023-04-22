@@ -3,13 +3,21 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hrms_clone/core/utils.dart';
 import 'package:hrms_clone/core/components/popup_menu/domain/show_menu_cubit.dart';
+import 'package:hrms_clone/hrms_clone/accounts/invoice.dart';
+import 'package:hrms_clone/hrms_clone/accounts/payment.dart';
 import 'package:hrms_clone/hrms_clone/assets/assets.dart';
 import 'package:hrms_clone/hrms_clone/employee_dashboard/employee_dashboard.dart';
+import 'package:hrms_clone/hrms_clone/employees_list/components/department.dart';
+import 'package:hrms_clone/hrms_clone/employees_list/designation.dart';
+import 'package:hrms_clone/hrms_clone/employees_list/employee_leave.dart';
 import 'package:hrms_clone/hrms_clone/employees_list/employees_list.dart';
+import 'package:hrms_clone/hrms_clone/employees_list/overtime.dart';
+import 'package:hrms_clone/hrms_clone/employees_list/timesheet.dart';
 import 'package:hrms_clone/hrms_clone/goals/goal_list.dart';
 import 'package:hrms_clone/hrms_clone/goals/goal_type.dart';
 import 'package:hrms_clone/hrms_clone/holidays/holidays.dart';
 import 'package:hrms_clone/hrms_clone/leads/leads.dart';
+import 'package:hrms_clone/hrms_clone/payroll/employees_salary.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/select_timeline_cubit.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/show_priority_cubit.dart';
 import 'package:hrms_clone/hrms_clone/promotion/promotion.dart';
@@ -129,11 +137,26 @@ class AppWidgets {
                         onTap: () =>
                             Navigation().navigateTo(context, Holidays()),
                         child: Text('Holidays')),
-                    Text('Employee Leave'),
-                    Text('Departments'),
-                    Text('Designations'),
-                    Text('Timesheet'),
-                    Text('Overtime')
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, EmployeeLeave()),
+                        child: Text('Employee Leave')),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, Department()),
+                        child: Text('Departments')),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, Designation()),
+                        child: Text('Designations')),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, TimeSheet()),
+                        child: Text('Timesheet')),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, OverTime()),
+                        child: Text('Overtime'))
                   ]),
               itemContent(
                   context: context,
@@ -159,8 +182,14 @@ class AppWidgets {
                   icon: Icons.card_giftcard,
                   title: 'Accounts',
                   children: [
-                    Text('Invoices'),
-                    Text('Payments'),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, Invoice()),
+                        child: Text('Invoices')),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, Payment()),
+                        child: Text('Payments')),
                     Text('Expenses'),
                     Text('Provident Fund'),
                     Text('Taxes')
@@ -170,7 +199,10 @@ class AppWidgets {
                   icon: Icons.monetization_on,
                   title: 'Payroll',
                   children: [
-                    Text('Employee Salary'),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, EmployeesSalary()),
+                        child: Text('Employee Salary')),
                     Text('Payslip'),
                     Text('Payroll Items')
                   ]),
