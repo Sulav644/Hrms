@@ -6,6 +6,8 @@ import 'package:hrms_clone/core/components/popup_menu/domain/show_menu_cubit.dar
 import 'package:hrms_clone/hrms_clone/assets/assets.dart';
 import 'package:hrms_clone/hrms_clone/employee_dashboard/employee_dashboard.dart';
 import 'package:hrms_clone/hrms_clone/employees_list/employees_list.dart';
+import 'package:hrms_clone/hrms_clone/goals/goal_list.dart';
+import 'package:hrms_clone/hrms_clone/goals/goal_type.dart';
 import 'package:hrms_clone/hrms_clone/holidays/holidays.dart';
 import 'package:hrms_clone/hrms_clone/leads/leads.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/select_timeline_cubit.dart';
@@ -177,8 +179,14 @@ class AppWidgets {
                   icon: Icons.circle_notifications_outlined,
                   title: 'Goals',
                   children: [
-                    Text('Goal List'),
-                    Text('Goal Type'),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, GoalList()),
+                        child: Text('Goal List')),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, GoalType()),
+                        child: Text('Goal Type')),
                   ]),
               expandedList(
                   context: context,

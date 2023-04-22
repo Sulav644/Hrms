@@ -3,64 +3,48 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:intl/intl.dart';
 
-import '../../../core/app_widgets.dart';
-import '../../../core/utils.dart';
-import '../../holidays/components/horiz_list_tile.dart';
-import '../../view_more_projects/components/entries_limit_widget.dart';
-import '../data/training_detail.dart';
+import '../../core/app_widgets.dart';
+import '../../core/utils.dart';
+import '../holidays/components/horiz_list_tile.dart';
+import '../view_more_projects/components/entries_limit_widget.dart';
+import 'data/goal_detail.dart';
 
-final path = 'assets/images/member_list';
-List<TrainingDetail> trainingList = [
-  TrainingDetail(
-      type: 'Git Training',
-      image: '${path}/download.jpg',
-      name: 'John Doe',
-      cost: 400,
-      isActive: true),
-  TrainingDetail(
-      type: 'Swift Training',
-      image: '${path}/downloadTwo.jpg',
-      name: 'Richard Miles',
-      cost: 800,
-      isActive: false),
-  TrainingDetail(
-      type: 'Node Training',
-      image: '${path}/downloadThree.jpg',
-      name: 'John Doe',
-      cost: 400,
-      isActive: true),
-  TrainingDetail(
-      type: 'Angular Training',
-      image: '${path}/downloadFour.jpg',
-      name: 'Mike Litorus',
-      cost: 400,
-      isActive: true),
-  TrainingDetail(
-      type: 'Git Training',
-      image: '${path}/downloadFive.jpg',
-      name: 'Wilmer Deluna',
-      cost: 400,
-      isActive: true),
+List<GoalTrackDetail> goalTrackList = [
+  GoalTrackDetail(
+      type: 'Another\nOne',
+      subject: 'Coding',
+      target: 'infinity',
+      endDate: '2020-\n10-10',
+      description: 'This is the thing I always want to do',
+      isActive: true,
+      progress: 80),
+  GoalTrackDetail(
+      type: 'Another\nOne',
+      subject: 'This is a test',
+      target: 'infinity',
+      endDate: '2020-\n10-10',
+      description: 'This is a test',
+      isActive: true,
+      progress: 50),
+  GoalTrackDetail(
+      type: 'Invoice\nOne',
+      subject: 'This is\nanother\ntext',
+      target: 'kingdom come',
+      endDate: '2020-\n10-10',
+      description: 'This is the thing I always want to do',
+      isActive: false,
+      progress: 0),
 ];
 
-class TrainingList extends StatefulWidget {
-  TrainingList({super.key});
-
-  @override
-  State<TrainingList> createState() => _TrainingListState();
-}
-
-class _TrainingListState extends State<TrainingList> {
+class GoalList extends StatelessWidget {
+  GoalList({super.key});
   bool showMenuStatus = false;
-
   ScrollController scrollController = ScrollController();
-  String? trainingValue;
-  String? trainerValue;
-  String? employeesValue;
+  String? goalType;
+  String? statusValue;
 
   @override
   Widget build(BuildContext context) {
-    final path = 'assets/images/member_list';
     final headerStyle = txtStyle(weight: FontWeight.w600, height: 1.4);
     final listStyle = txtStyle(weight: FontWeight.w400, height: 1.4);
     return AppWidgets().appScaffold(
@@ -73,7 +57,7 @@ class _TrainingListState extends State<TrainingList> {
             Spacing().verticalSpace(context, 0.02),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Text(
-                'Training',
+                'Goal Tracking',
                 style: txtStyle(size: 18, weight: FontWeight.w600),
               ),
               GestureDetector(
@@ -89,7 +73,7 @@ class _TrainingListState extends State<TrainingList> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Add New Training',
+                                      'Add Goal Tracking',
                                       style: txtStyle(
                                           size: 22, weight: FontWeight.w600),
                                     ),
@@ -102,198 +86,84 @@ class _TrainingListState extends State<TrainingList> {
                                       Row(
                                         children: [
                                           Text(
-                                            'Training Type',
+                                            'Goal Type',
                                             style: txtStyle(
                                                 weight: FontWeight.w400),
                                           ),
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      Row(
-                                        children: [
-                                          Container(
-                                            width: Sizes().ratioWithScrWidth(
-                                                context, 0.455),
-                                            height: Sizes().ratioWithScrHeight(
-                                                context, 0.075),
-                                            padding: EdgeInsets.all(8),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.black),
-                                                borderRadius:
-                                                    BorderRadius.circular(2)),
-                                            child: DropdownButtonHideUnderline(
-                                              child: DropdownButton(
-                                                isExpanded: true,
-                                                value: trainingValue ??
-                                                    'Node Training',
-                                                items: [
-                                                  'Node Training',
-                                                  'Swift Training',
-                                                ]
-                                                    .map(
-                                                      (e) => DropdownMenuItem(
-                                                        child: Text(
-                                                          e,
-                                                          style: txtStyle(
-                                                              color: e ==
-                                                                      trainingValue
-                                                                  ? Colors.red
-                                                                  : Colors
-                                                                      .black),
-                                                        ),
-                                                        value: e,
-                                                      ),
-                                                    )
-                                                    .toList(),
-                                                onChanged: (value) {
-                                                  setState(() {
-                                                    this.trainingValue = value;
-                                                  });
-                                                },
-                                              ),
-                                            ),
+                                      Container(
+                                        height: Sizes()
+                                            .ratioWithScrHeight(context, 0.075),
+                                        padding: EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                            border:
+                                                Border.all(color: Colors.black),
+                                            borderRadius:
+                                                BorderRadius.circular(2)),
+                                        child: DropdownButtonHideUnderline(
+                                          child: DropdownButton(
+                                            isExpanded: true,
+                                            value:
+                                                goalType ?? 'Select Goal Type',
+                                            items: [
+                                              'Select Goal Type',
+                                              'Invoice Goal',
+                                              'Another One'
+                                            ]
+                                                .map(
+                                                  (e) => DropdownMenuItem(
+                                                    child: Text(
+                                                      e,
+                                                      style: txtStyle(
+                                                          color: e == goalType
+                                                              ? Colors.red
+                                                              : Colors.black),
+                                                    ),
+                                                    value: e,
+                                                  ),
+                                                )
+                                                .toList(),
+                                            onChanged: (value) {
+                                              setState(() {
+                                                this.goalType = value;
+                                              });
+                                            },
                                           ),
-                                        ],
+                                        ),
                                       ),
-                                      Spacing().verticalSpace(context, 0.02),
+                                      Spacing().verticalSpace(context, 0.04),
                                       Row(
                                         children: [
                                           Text(
-                                            'Trainer',
+                                            'Subject',
                                             style: txtStyle(
                                                 weight: FontWeight.w400),
                                           ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      Row(
-                                        children: [
-                                          Container(
-                                            width: Sizes().ratioWithScrWidth(
-                                                context, 0.455),
-                                            height: Sizes().ratioWithScrHeight(
-                                                context, 0.075),
-                                            padding: EdgeInsets.all(8),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.black),
-                                                borderRadius:
-                                                    BorderRadius.circular(2)),
-                                            child: DropdownButtonHideUnderline(
-                                              child: DropdownButton(
-                                                isExpanded: true,
-                                                value: trainerValue ??
-                                                    'Mike Litorus',
-                                                items: [
-                                                  'Mike Litorus',
-                                                  'John Doe',
-                                                ]
-                                                    .map(
-                                                      (e) => DropdownMenuItem(
-                                                        child: Text(
-                                                          e,
-                                                          style: txtStyle(
-                                                              color: e ==
-                                                                      trainerValue
-                                                                  ? Colors.red
-                                                                  : Colors
-                                                                      .black),
-                                                        ),
-                                                        value: e,
-                                                      ),
-                                                    )
-                                                    .toList(),
-                                                onChanged: (value) {
-                                                  setState(() {
-                                                    this.trainerValue = value;
-                                                  });
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Employees',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      Row(
-                                        children: [
-                                          Container(
-                                            width: Sizes().ratioWithScrWidth(
-                                                context, 0.455),
-                                            height: Sizes().ratioWithScrHeight(
-                                                context, 0.075),
-                                            padding: EdgeInsets.all(8),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.black),
-                                                borderRadius:
-                                                    BorderRadius.circular(2)),
-                                            child: DropdownButtonHideUnderline(
-                                              child: DropdownButton(
-                                                isExpanded: true,
-                                                value: employeesValue ??
-                                                    'Bernardo Galaviz',
-                                                items: [
-                                                  'Bernardo Galaviz',
-                                                  'Jeffrey Warden',
-                                                ]
-                                                    .map(
-                                                      (e) => DropdownMenuItem(
-                                                        child: Text(
-                                                          e,
-                                                          style: txtStyle(
-                                                              color: e ==
-                                                                      employeesValue
-                                                                  ? Colors.red
-                                                                  : Colors
-                                                                      .black),
-                                                        ),
-                                                        value: e,
-                                                      ),
-                                                    )
-                                                    .toList(),
-                                                onChanged: (value) {
-                                                  setState(() {
-                                                    this.employeesValue = value;
-                                                  });
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Training Cost',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                          Text(
-                                            ' *',
-                                            style: txtStyle(color: Colors.red),
-                                          )
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
                                       TextField(
-                                        decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            suffixIcon:
-                                                Icon(Icons.calendar_month)),
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.04),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Target Achievement',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
                                       ),
-                                      Spacing().verticalSpace(context, 0.02),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.04),
                                       Row(
                                         children: [
                                           Text(
@@ -388,9 +258,58 @@ class _TrainingListState extends State<TrainingList> {
                                             border: OutlineInputBorder(),
                                           )),
                                       Spacing().verticalSpace(context, 0.04),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Status',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      Container(
+                                        height: Sizes()
+                                            .ratioWithScrHeight(context, 0.075),
+                                        padding: EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                            border:
+                                                Border.all(color: Colors.black),
+                                            borderRadius:
+                                                BorderRadius.circular(2)),
+                                        child: DropdownButtonHideUnderline(
+                                          child: DropdownButton(
+                                            isExpanded: true,
+                                            value: goalType ?? 'Active',
+                                            items: [
+                                              'Active',
+                                              'Inactive',
+                                            ]
+                                                .map(
+                                                  (e) => DropdownMenuItem(
+                                                    child: Text(
+                                                      e,
+                                                      style: txtStyle(
+                                                          color: e == goalType
+                                                              ? Colors.red
+                                                              : Colors.black),
+                                                    ),
+                                                    value: e,
+                                                  ),
+                                                )
+                                                .toList(),
+                                            onChanged: (value) {
+                                              setState(() {
+                                                this.goalType = value;
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                      Spacing().verticalSpace(context, 0.04),
                                       SizedBox(
                                         width: Sizes()
-                                            .ratioWithScrWidth(context, 0.3),
+                                            .ratioWithScrWidth(context, 0.38),
                                         height: Sizes()
                                             .ratioWithScrHeight(context, 0.06),
                                         child: ElevatedButton(
@@ -410,7 +329,13 @@ class _TrainingListState extends State<TrainingList> {
 
                                               setState(() {});
                                             },
-                                            child: Text('Submit')),
+                                            child: Text(
+                                              'Submit',
+                                              style: txtStyle(
+                                                  color: Colors.white,
+                                                  size: 18,
+                                                  weight: FontWeight.w500),
+                                            )),
                                       )
                                     ]),
                               ),
@@ -461,11 +386,8 @@ class _TrainingListState extends State<TrainingList> {
                                   Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
-                                width: 0.23,
-                                child: Text(
-                                  'Training Type',
-                                  style: headerStyle,
-                                )),
+                                width: 0.12,
+                                child: Text('Goal Type', style: headerStyle)),
                             HorizListTile(
                               width: 0.11,
                               child: iconWrap(
@@ -476,41 +398,8 @@ class _TrainingListState extends State<TrainingList> {
                                   Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
-                                width: 0.34,
-                                child: Text(
-                                  'Trainer',
-                                  style: headerStyle,
-                                )),
-                            HorizListTile(
-                              width: 0.11,
-                              child: iconWrap(
-                                  context,
-                                  () {},
-                                  [Icons.arrow_upward, Icons.arrow_downward],
-                                  Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
-                            ),
-                            HorizListTile(
-                                width: 0.26,
-                                child: Text(
-                                  'Employee',
-                                  style: headerStyle,
-                                )),
-                            HorizListTile(
-                              width: 0.11,
-                              child: iconWrap(
-                                  context,
-                                  () {},
-                                  [Icons.arrow_upward, Icons.arrow_downward],
-                                  Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
-                            ),
-                            HorizListTile(
-                                width: 0.18,
-                                child: Text(
-                                  'Time Duration',
-                                  style: headerStyle,
-                                )),
+                                width: 0.16,
+                                child: Text('Subject', style: headerStyle)),
                             HorizListTile(
                               width: 0.11,
                               child: iconWrap(
@@ -522,10 +411,8 @@ class _TrainingListState extends State<TrainingList> {
                             ),
                             HorizListTile(
                                 width: 0.24,
-                                child: Text(
-                                  'Description',
-                                  style: headerStyle,
-                                )),
+                                child: Text('Target \nAchievement',
+                                    style: headerStyle)),
                             HorizListTile(
                               width: 0.11,
                               child: iconWrap(
@@ -537,10 +424,19 @@ class _TrainingListState extends State<TrainingList> {
                             ),
                             HorizListTile(
                                 width: 0.12,
-                                child: Text(
-                                  'Cost',
-                                  style: headerStyle,
-                                )),
+                                child: Text('Start Date', style: headerStyle)),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.12,
+                                child: Text('End Date', style: headerStyle)),
                             HorizListTile(
                               width: 0.11,
                               child: iconWrap(
@@ -552,10 +448,31 @@ class _TrainingListState extends State<TrainingList> {
                             ),
                             HorizListTile(
                                 width: 0.26,
-                                child: Text(
-                                  'Status',
-                                  style: headerStyle,
-                                )),
+                                child: Text('Description', style: headerStyle)),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.26,
+                                child: Text('Status', style: headerStyle)),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.2,
+                                child: Text('Progress', style: headerStyle)),
                             HorizListTile(
                               width: 0.11,
                               child: iconWrap(
@@ -567,10 +484,7 @@ class _TrainingListState extends State<TrainingList> {
                             ),
                             HorizListTile(
                                 width: 0.18,
-                                child: Text(
-                                  'Actions',
-                                  style: headerStyle,
-                                )),
+                                child: Text('Actions', style: headerStyle)),
                             HorizListTile(
                               width: 0.11,
                               child: iconWrap(
@@ -585,13 +499,13 @@ class _TrainingListState extends State<TrainingList> {
                       ),
                     ),
                   ),
-                  ...trainingList
+                  ...goalTrackList
                       .map(
                         (e) => Column(
                           children: [
                             Container(
-                              height: Sizes().ratioWithScrHeight(context, 0.09),
-                              color: trainingList.indexOf(e).isEven
+                              height: Sizes().ratioWithScrHeight(context, 0.14),
+                              color: goalTrackList.indexOf(e).isEven
                                   ? Colors.transparent
                                   : Colors.white,
                               alignment: Alignment.center,
@@ -603,78 +517,35 @@ class _TrainingListState extends State<TrainingList> {
                                   HorizListTile(
                                       width: 0.17,
                                       child: Text(
-                                        '${trainingList.indexOf(e) + 1}',
+                                        '${goalTrackList.indexOf(e) + 1}',
                                         style: listStyle,
                                       )),
                                   HorizListTile(
-                                      width: 0.34,
+                                      width: 0.23,
                                       child:
                                           Text('${e.type}', style: listStyle)),
                                   HorizListTile(
-                                      width: 0.45,
-                                      child: Row(children: [
-                                        CircleAvatar(
-                                          backgroundImage:
-                                              AssetImage('${e.image}'),
-                                          radius: 18,
-                                        ),
-                                        Spacing()
-                                            .horizontalSpace(context, 0.03),
-                                        Text('${e.name}', style: listStyle)
-                                      ])),
-                                  HorizListTile(
-                                      width: 0.37,
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            ...[
-                                              '${path}/downloadTwo.jpg',
-                                              '${path}/downloadThree.jpg',
-                                            ]
-                                                .map((e) => Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              3.0),
-                                                      child: CircleAvatar(
-                                                        backgroundImage:
-                                                            AssetImage(
-                                                          e,
-                                                        ),
-                                                        radius: 16,
-                                                      ),
-                                                    ))
-                                                .toList(),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(3.0),
-                                              child: CircleAvatar(
-                                                backgroundColor: Colors.pink,
-                                                child: Text(
-                                                  '+15',
-                                                  style: txtStyle(
-                                                      color: Colors.white,
-                                                      size: 12,
-                                                      weight: FontWeight.w500),
-                                                ),
-                                                radius: 16,
-                                              ),
-                                            ),
-                                          ])),
-                                  HorizListTile(
-                                      width: 0.296,
-                                      child: Text('7 May 2019 - 10 May 2019',
+                                      width: 0.27,
+                                      child: Text('${e.subject}',
                                           style: listStyle)),
                                   HorizListTile(
-                                      width: 0.345,
-                                      child: Text('Lorem ipsum dollar',
+                                      width: 0.35,
+                                      child: Text('Code till time\n${e.target}',
                                           style: listStyle)),
                                   HorizListTile(
                                       width: 0.23,
-                                      child: Text('\$${e.cost}',
+                                      child: Text('2020-\n09-25',
                                           style: listStyle)),
                                   HorizListTile(
-                                      width: 0.3,
+                                      width: 0.235,
+                                      child: Text('${e.endDate}',
+                                          style: listStyle)),
+                                  HorizListTile(
+                                      width: 0.365,
+                                      child: Text('${e.description}',
+                                          style: listStyle)),
+                                  HorizListTile(
+                                      width: 0.38,
                                       child: Stack(
                                         children: [
                                           dropDownBox(
@@ -765,6 +636,36 @@ class _TrainingListState extends State<TrainingList> {
                                         ],
                                       )),
                                   HorizListTile(
+                                      width: 0.3,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Completed \n${e.progress}%',
+                                            style: listStyle,
+                                          ),
+                                          Spacing()
+                                              .verticalSpace(context, 0.01),
+                                          Stack(
+                                            children: [
+                                              labelBar(
+                                                  context: context,
+                                                  width: 0.23,
+                                                  color: Colors.black,
+                                                  borderRad: [10, 10, 10, 10]),
+                                              labelBar(
+                                                  context: context,
+                                                  width: 0.2,
+                                                  color: Colors.orange,
+                                                  borderRad: [10, 10, 10, 10]),
+                                            ],
+                                          )
+                                        ],
+                                      )),
+                                  HorizListTile(
                                       width: 0.26,
                                       child: Container(
                                         width: Sizes()
@@ -824,10 +725,10 @@ class _TrainingListState extends State<TrainingList> {
                               ),
                             ),
                             Container(
-                              width: Sizes().ratioWithScrWidth(context, 2.8),
+                              width: Sizes().ratioWithScrWidth(context, 2.84),
                               height:
-                                  Sizes().ratioWithScrHeight(context, 0.004),
-                              color: Color.fromARGB(255, 209, 206, 206),
+                                  Sizes().ratioWithScrHeight(context, 0.002),
+                              color: Color.fromARGB(255, 199, 195, 195),
                             )
                           ],
                         ),
@@ -838,7 +739,7 @@ class _TrainingListState extends State<TrainingList> {
                     children: [
                       Spacing().horizontalSpace(context, 0.4),
                       Text(
-                        'Showing 1 to ${trainingList.length} of ${trainingList.length} entries',
+                        'Showing 1 to ${goalTrackList.length} of ${goalTrackList.length} entries',
                         style: listStyle,
                       ),
                     ],
@@ -939,7 +840,6 @@ class _TrainingListState extends State<TrainingList> {
               ),
             ),
           ));
-
   Widget dropDownBox(
           {required BuildContext context,
           required VoidCallback onClick,
@@ -978,7 +878,6 @@ class _TrainingListState extends State<TrainingList> {
             border: Border.all(color: Colors.white, width: 2),
             borderRadius: BorderRadius.circular(100)),
       ));
-
   Widget addButton(
           {required BuildContext context,
           required String title,
@@ -1002,5 +901,21 @@ class _TrainingListState extends State<TrainingList> {
             ),
           ]),
         ),
+      );
+  Widget labelBar(
+          {required BuildContext context,
+          required double width,
+          required Color color,
+          required List<double> borderRad}) =>
+      Container(
+        width: Sizes().ratioWithScrWidth(context, width),
+        height: Sizes().ratioWithScrHeight(context, 0.006),
+        decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(borderRad[0]),
+                bottomLeft: Radius.circular(borderRad[1]),
+                topRight: Radius.circular(borderRad[2]),
+                bottomRight: Radius.circular(borderRad[3]))),
       );
 }

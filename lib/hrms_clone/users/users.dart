@@ -6,6 +6,27 @@ import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
 import '../holidays/components/horiz_list_tile.dart';
 import '../view_more_projects/components/entries_limit_widget.dart';
+import 'data/user_detail.dart';
+
+final path = 'assets/images/member_list';
+List<UserDetail> usersList = [
+  UserDetail(
+      image: '${path}/download.jpg',
+      name: 'BarryCudo',
+      nickName: 'Barry',
+      email: 'barrycuda@example.com',
+      phone: '9876543210',
+      address: 'Los \nAngeles,\nCalifornia',
+      date: '2020-09-21\n19:04:47'),
+  UserDetail(
+      image: '${path}/downloadTwo.jpg',
+      name: 'YahuzaAbdul-Hakim',
+      nickName: 'Vendetta',
+      email: 'musheabdulhakim@protonmail.ch',
+      phone: '233209229025',
+      address: 'San \nFrancisco\nBay Area',
+      date: '2020-09-21\n19:05:43'),
+];
 
 class Users extends StatefulWidget {
   Users({super.key});
@@ -189,6 +210,31 @@ class _UsersState extends State<Users> {
                                         border: OutlineInputBorder(),
                                       )),
                                       Spacing().verticalSpace(context, 0.04),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Picture',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          ElevatedButton(
+                                              style: ButtonStyle(
+                                                backgroundColor:
+                                                    MaterialStateProperty.all(
+                                                        Colors.orange),
+                                              ),
+                                              onPressed: () {},
+                                              child: Text('Choose File')),
+                                          Spacing()
+                                              .horizontalSpace(context, 0.01),
+                                          Text('No file chosen')
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.04),
                                       SizedBox(
                                         width: Sizes()
                                             .ratioWithScrWidth(context, 0.3),
@@ -334,209 +380,280 @@ class _UsersState extends State<Users> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(children: [
-                    HorizListTile(
-                        width: 0.34,
-                        child: Text(
-                          'Full Name',
-                          style: txtStyle(
-                              size: 16, weight: FontWeight.w600, height: 1.4),
-                        )),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
+                  Container(
+                    height: Sizes().ratioWithScrHeight(context, 0.097),
+                    alignment: Alignment.topCenter,
+                    color: Color.fromARGB(255, 209, 206, 206),
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          top: Sizes().ratioWithScrHeight(context, 0.002)),
+                      child: Container(
+                        height: Sizes().ratioWithScrHeight(context, 0.09),
+                        color: Colors.white,
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: Sizes().ratioWithScrWidth(context, 0.04)),
+                          child: Row(children: [
+                            HorizListTile(
+                                width: 0.46,
+                                child: Text(
+                                  'Full Name',
+                                  style: txtStyle(
+                                      size: 16,
+                                      weight: FontWeight.w600,
+                                      height: 1.4),
+                                )),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.57,
+                                child: Text(
+                                  'Email',
+                                  style: txtStyle(
+                                      size: 16,
+                                      weight: FontWeight.w600,
+                                      height: 1.4),
+                                )),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.24,
+                                child: Text('Phone',
+                                    style: txtStyle(
+                                        size: 16,
+                                        weight: FontWeight.w600,
+                                        height: 1.4))),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.18,
+                                child: Text('Address',
+                                    style: txtStyle(
+                                        size: 16,
+                                        weight: FontWeight.w600,
+                                        height: 1.4))),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.2,
+                                child: Text('Created Date',
+                                    style: txtStyle(
+                                        size: 16,
+                                        weight: FontWeight.w600,
+                                        height: 1.4))),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.19,
+                                child: Text('Actions',
+                                    style: txtStyle(
+                                        size: 16,
+                                        weight: FontWeight.w600,
+                                        height: 1.4))),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            )
+                          ]),
+                        ),
+                      ),
                     ),
-                    HorizListTile(
-                        width: 0.4,
-                        child: Text(
-                          'Email',
-                          style: txtStyle(
-                              size: 16, weight: FontWeight.w600, height: 1.4),
-                        )),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(
-                        width: 0.24,
-                        child: Text('Phone',
-                            style: txtStyle(
-                                size: 16,
-                                weight: FontWeight.w600,
-                                height: 1.4))),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(
-                        width: 0.18,
-                        child: Text('Address',
-                            style: txtStyle(
-                                size: 16,
-                                weight: FontWeight.w600,
-                                height: 1.4))),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(
-                        width: 0.2,
-                        child: Text('Created Date',
-                            style: txtStyle(
-                                size: 16,
-                                weight: FontWeight.w600,
-                                height: 1.4))),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(
-                        width: 0.16,
-                        child: Text('Actions',
-                            style: txtStyle(
-                                size: 16,
-                                weight: FontWeight.w600,
-                                height: 1.4))),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    )
-                  ]),
-                  Row(children: [
-                    HorizListTile(
-                        width: 0.45,
-                        child: Row(children: [
-                          CircleAvatar(
-                            backgroundImage: AssetImage(
-                                'assets/images/member_list/download.jpg'),
-                            radius: 18,
-                          ),
-                          Spacing().horizontalSpace(context, 0.03),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'BarryCudo',
-                                style: txtStyle(
-                                    size: 16,
-                                    weight: FontWeight.w400,
-                                    height: 1.4),
-                              ),
-                              Spacing().verticalSpace(context, 0.005),
-                              Text(
-                                'Barry',
-                                style: txtStyle(
-                                    size: 12,
-                                    weight: FontWeight.w300,
-                                    height: 1.4),
-                              )
-                            ],
-                          )
-                        ])),
-                    HorizListTile(
-                        width: 0.5,
-                        child: Text(
-                          'barrycuda@example.com',
-                          style: txtStyle(
-                              size: 15, weight: FontWeight.w400, height: 1.4),
-                        )),
-                    HorizListTile(
-                        width: 0.36,
-                        child: Text(
-                          '9876543210',
-                          style: txtStyle(
-                              size: 15, weight: FontWeight.w400, height: 1.4),
-                        )),
-                    HorizListTile(
-                        width: 0.29,
-                        child: Text(
-                          'Los Angeles, California',
-                          style: txtStyle(
-                              size: 16, weight: FontWeight.w400, height: 1.4),
-                        )),
-                    HorizListTile(
-                        width: 0.31,
-                        child: Text(
-                          '2020-09-21 19:05:47',
-                          style: txtStyle(
-                              size: 16, weight: FontWeight.w400, height: 1.4),
-                        )),
-                    HorizListTile(
-                        width: 0.26,
-                        child: Container(
-                          width: Sizes().ratioWithScrWidth(context, 0.28),
-                          alignment: Alignment.centerRight,
-                          child: PopupMenuButton(
-                            padding: EdgeInsets.zero,
-                            offset: Offset(
-                                1, Sizes().ratioWithScrHeight(context, 0.06)),
-                            itemBuilder: (context) {
-                              return [
-                                ...[
-                                  'Edit',
-                                  'Delete',
-                                ].map((e) => PopupMenuItem(
-                                      child: Row(
-                                        children: [
-                                          e == 'Edit'
-                                              ? Icon(Icons.edit_outlined)
-                                              : Icon(Icons.delete_outline),
-                                          Spacing()
-                                              .horizontalSpace(context, 0.02),
-                                          Text(
-                                            e,
-                                            style: txtStyle(
-                                                size: 13,
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
+                  ),
+                  ...usersList
+                      .map(
+                        (e) => Column(
+                          children: [
+                            Spacing().verticalSpace(context, 0.01),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      Sizes().ratioWithScrWidth(context, 0.04)),
+                              child: Row(children: [
+                                HorizListTile(
+                                    width: 0.58,
+                                    child: Row(children: [
+                                      CircleAvatar(
+                                        backgroundImage:
+                                            AssetImage('${e.image}'),
+                                        radius: 18,
                                       ),
-                                      padding: EdgeInsets.only(
-                                          top: Sizes()
-                                              .ratioWithScrWidth(context, 0.02),
-                                          left: Sizes()
-                                              .ratioWithScrWidth(context, 0.05),
-                                          bottom: Sizes()
-                                              .ratioWithScrWidth(context, 0.02),
-                                          right: Sizes()
-                                              .ratioWithScrWidth(context, 0.1)),
-                                      height: 0,
-                                    ))
-                              ];
-                            },
-                          ),
-                        )),
-                  ])
+                                      Spacing().horizontalSpace(context, 0.03),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '${e.name}',
+                                            style: txtStyle(
+                                                size: 16,
+                                                weight: FontWeight.w400,
+                                                height: 1.4),
+                                          ),
+                                          Spacing()
+                                              .verticalSpace(context, 0.005),
+                                          Text(
+                                            '${e.nickName}',
+                                            style: txtStyle(
+                                                size: 12,
+                                                weight: FontWeight.w300,
+                                                height: 1.4),
+                                          )
+                                        ],
+                                      )
+                                    ])),
+                                HorizListTile(
+                                    width: 0.68,
+                                    child: Text(
+                                      '${e.email}',
+                                      style: txtStyle(
+                                          size: 15,
+                                          weight: FontWeight.w400,
+                                          height: 1.4),
+                                    )),
+                                HorizListTile(
+                                    width: 0.36,
+                                    child: Text(
+                                      '${e.phone}',
+                                      style: txtStyle(
+                                          size: 15,
+                                          weight: FontWeight.w400,
+                                          height: 1.4),
+                                    )),
+                                HorizListTile(
+                                    width: 0.29,
+                                    child: Text(
+                                      '${e.address}',
+                                      style: txtStyle(
+                                          size: 16,
+                                          weight: FontWeight.w400,
+                                          height: 1.4),
+                                    )),
+                                HorizListTile(
+                                    width: 0.31,
+                                    child: Text(
+                                      '${e.date}',
+                                      style: txtStyle(
+                                          size: 16,
+                                          weight: FontWeight.w400,
+                                          height: 1.4),
+                                    )),
+                                HorizListTile(
+                                    width: 0.26,
+                                    child: Container(
+                                      width: Sizes()
+                                          .ratioWithScrWidth(context, 0.28),
+                                      alignment: Alignment.centerRight,
+                                      child: PopupMenuButton(
+                                        padding: EdgeInsets.zero,
+                                        offset: Offset(
+                                            1,
+                                            Sizes().ratioWithScrHeight(
+                                                context, 0.06)),
+                                        itemBuilder: (context) {
+                                          return [
+                                            ...[
+                                              'Edit',
+                                              'Delete',
+                                            ].map((e) => PopupMenuItem(
+                                                  child: Row(
+                                                    children: [
+                                                      e == 'Edit'
+                                                          ? Icon(Icons
+                                                              .edit_outlined)
+                                                          : Icon(Icons
+                                                              .delete_outline),
+                                                      Spacing().horizontalSpace(
+                                                          context, 0.02),
+                                                      Text(
+                                                        e,
+                                                        style: txtStyle(
+                                                            size: 13,
+                                                            weight: FontWeight
+                                                                .w400),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  padding: EdgeInsets.only(
+                                                      top: Sizes()
+                                                          .ratioWithScrWidth(
+                                                              context, 0.02),
+                                                      left: Sizes()
+                                                          .ratioWithScrWidth(
+                                                              context, 0.05),
+                                                      bottom: Sizes()
+                                                          .ratioWithScrWidth(
+                                                              context, 0.02),
+                                                      right: Sizes()
+                                                          .ratioWithScrWidth(
+                                                              context, 0.1)),
+                                                  height: 0,
+                                                ))
+                                          ];
+                                        },
+                                      ),
+                                    )),
+                              ]),
+                            ),
+                            Spacing().verticalSpace(context, 0.01),
+                            Container(
+                              width: Sizes().ratioWithScrWidth(
+                                  context,
+                                  0.58 +
+                                      0.03 +
+                                      0.68 +
+                                      0.36 +
+                                      0.29 +
+                                      0.31 +
+                                      0.26),
+                              height:
+                                  Sizes().ratioWithScrHeight(context, 0.001),
+                              color: Color.fromARGB(255, 155, 152, 152),
+                            ),
+                            Spacing().verticalSpace(context, 0.02),
+                          ],
+                        ),
+                      )
+                      .toList()
                 ],
               ),
             )

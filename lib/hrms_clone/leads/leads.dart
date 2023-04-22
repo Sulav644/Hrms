@@ -6,6 +6,75 @@ import 'package:hrms_clone/hrms_clone/holidays/components/horiz_list_tile.dart';
 import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
 import '../view_more_projects/components/entries_limit_widget.dart';
+import 'data/leads_detail.dart';
+
+final path = 'assets/images/member_list';
+
+List<LeadsDetail> leadsList = [
+  LeadsDetail(
+      image: '${path}/download.jpg',
+      name: 'Wilmer Deluna',
+      email: 'wilmerdeluna@example.com',
+      project: 'Hospital Administration',
+      status: 'Working',
+      createdDate: '10 hours ago'),
+  LeadsDetail(
+      image: '${path}/downloadTwo.jpg',
+      name: 'Lesley Grauer',
+      email: 'lesleygrauer@example.com',
+      project: 'Video Calling App',
+      status: 'Working',
+      createdDate: '5 Mar 2019'),
+  LeadsDetail(
+      image: '${path}/downloadThree.jpg',
+      name: 'Jeffery Lalor',
+      email: 'jefferylalor@example.com',
+      project: 'Office Management',
+      status: 'Working',
+      createdDate: '27 Feb 2019'),
+  LeadsDetail(
+      image: '${path}/download.jpg',
+      name: 'Wilmer Warren',
+      email: 'wilmerdeluna@example.com',
+      project: 'Hospital Administration',
+      status: 'Working',
+      createdDate: '10 hours ago'),
+  LeadsDetail(
+      image: '${path}/downloadTwo.jpg',
+      name: 'Lesley Smith',
+      email: 'lesleygrauer@example.com',
+      project: 'Video Calling App',
+      status: 'Working',
+      createdDate: '5 Mar 2019'),
+  LeadsDetail(
+      image: '${path}/downloadThree.jpg',
+      name: 'Jeffery Warren',
+      email: 'jefferylalor@example.com',
+      project: 'Office Management',
+      status: 'Working',
+      createdDate: '27 Feb 2019'),
+  LeadsDetail(
+      image: '${path}/download.jpg',
+      name: 'Wilmer Watson',
+      email: 'wilmerdeluna@example.com',
+      project: 'Hospital Administration',
+      status: 'Working',
+      createdDate: '10 hours ago'),
+  LeadsDetail(
+      image: '${path}/downloadTwo.jpg',
+      name: 'Lesley Watson',
+      email: 'lesleygrauer@example.com',
+      project: 'Video Calling App',
+      status: 'Working',
+      createdDate: '5 Mar 2019'),
+  LeadsDetail(
+      image: '${path}/downloadThree.jpg',
+      name: 'Jeffery Smith',
+      email: 'jefferylalor@example.com',
+      project: 'Office Management',
+      status: 'Working',
+      createdDate: '27 Feb 2019'),
+];
 
 class Leads extends StatelessWidget {
   Leads({super.key});
@@ -15,13 +84,23 @@ class Leads extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final path = 'assets/images/member_list';
+    final headerStyle = txtStyle(weight: FontWeight.w600, height: 1.4);
+    final listStyle = txtStyle(weight: FontWeight.w400, height: 1.4);
     return AppWidgets().appScaffold(
         context: context,
         showMenuStatus: showMenuStatus,
         controller: scrollController,
         onClick: () {},
         children: [
+          Spacing().verticalSpace(context, 0.02),
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Row(children: [
+              Text(
+                'Leads',
+                style: txtStyle(size: 20, weight: FontWeight.w600),
+              )
+            ]),
+            Spacing().verticalSpace(context, 0.035),
             EntriesLimitWidget(),
             Spacing().verticalSpace(context, 0.03),
             SingleChildScrollView(
@@ -29,198 +108,295 @@ class Leads extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(children: [
-                    HorizListTile(width: 0.06, child: Text('#')),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
+                  Container(
+                    height: Sizes().ratioWithScrHeight(context, 0.097),
+                    alignment: Alignment.topCenter,
+                    color: Color.fromARGB(255, 209, 206, 206),
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          top: Sizes().ratioWithScrHeight(context, 0.002)),
+                      child: Container(
+                        height: Sizes().ratioWithScrHeight(context, 0.09),
+                        color: Colors.white,
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: Sizes().ratioWithScrWidth(context, 0.04)),
+                          child: Row(children: [
+                            HorizListTile(
+                                width: 0.06,
+                                child: Text(
+                                  '#',
+                                  style: headerStyle,
+                                )),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.34,
+                                child: Text('Lead Name', style: headerStyle)),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.46,
+                                child: Text('Email', style: headerStyle)),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.18,
+                                child: Text('Phone', style: headerStyle)),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.36,
+                                child: Text('Project', style: headerStyle)),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.36,
+                                child:
+                                    Text('Assigned Staff', style: headerStyle)),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.18,
+                                child: Text('Status', style: headerStyle)),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.18,
+                                child: Text('Created', style: headerStyle)),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.18,
+                                child: Text('Actions', style: headerStyle)),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            )
+                          ]),
+                        ),
+                      ),
                     ),
-                    HorizListTile(width: 0.34, child: Text('Lead Name')),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(width: 0.46, child: Text('Email')),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(width: 0.18, child: Text('Phone')),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(width: 0.36, child: Text('Project')),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(width: 0.36, child: Text('Assigned Staff')),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(width: 0.18, child: Text('Status')),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(width: 0.18, child: Text('Created')),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(width: 0.18, child: Text('Actions')),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    )
-                  ]),
-                  Row(children: [
-                    HorizListTile(width: 0.17, child: Text('1')),
-                    HorizListTile(
-                        width: 0.45,
-                        child: Row(children: [
-                          CircleAvatar(
-                            backgroundImage: AssetImage(
-                                'assets/images/member_list/download.jpg'),
-                            radius: 18,
-                          ),
-                          Spacing().horizontalSpace(context, 0.03),
-                          Text('Wilmer Deluna')
-                        ])),
-                    HorizListTile(
-                        width: 0.57, child: Text('wilmerdeluna@example.com')),
-                    HorizListTile(width: 0.29, child: Text('9876543210')),
-                    HorizListTile(
-                        width: 0.47, child: Text('Hospital Administration')),
-                    HorizListTile(
-                        width: 0.47,
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ...[
-                                '${path}/downloadTwo.jpg',
-                                '${path}/downloadThree.jpg',
-                              ]
-                                  .map((e) => Padding(
-                                        padding: const EdgeInsets.all(3.0),
-                                        child: CircleAvatar(
-                                          backgroundImage: AssetImage(
-                                            e,
-                                          ),
-                                          radius: 16,
+                  ),
+                  ...leadsList
+                      .map(
+                        (e) => Column(
+                          children: [
+                            Container(
+                              height: Sizes().ratioWithScrHeight(context, 0.09),
+                              color: leadsList.indexOf(e).isEven
+                                  ? Colors.transparent
+                                  : Colors.white,
+                              alignment: Alignment.center,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: Sizes()
+                                        .ratioWithScrWidth(context, 0.044)),
+                                child: Row(children: [
+                                  HorizListTile(
+                                      width: 0.17,
+                                      child: Text('${leadsList.indexOf(e) + 1}',
+                                          style: listStyle)),
+                                  HorizListTile(
+                                      width: 0.45,
+                                      child: Row(children: [
+                                        CircleAvatar(
+                                          backgroundImage:
+                                              AssetImage('${e.image}'),
+                                          radius: 18,
                                         ),
-                                      ))
-                                  .toList(),
-                              Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.pink,
-                                  child: Text(
-                                    '+15',
-                                    style: txtStyle(
-                                        color: Colors.white,
-                                        size: 12,
-                                        weight: FontWeight.w500),
-                                  ),
-                                  radius: 16,
-                                ),
-                              ),
-                            ])),
-                    HorizListTile(width: 0.29, child: Text('Working')),
-                    HorizListTile(width: 0.29, child: Text('10 hours ago')),
-                    HorizListTile(
-                        width: 0.26,
-                        child: Container(
-                          width: Sizes().ratioWithScrWidth(context, 0.28),
-                          alignment: Alignment.centerRight,
-                          child: PopupMenuButton(
-                            padding: EdgeInsets.zero,
-                            offset: Offset(
-                                1, Sizes().ratioWithScrHeight(context, 0.06)),
-                            itemBuilder: (context) {
-                              return [
-                                ...[
-                                  'Edit',
-                                  'Delete',
-                                ].map((e) => PopupMenuItem(
+                                        Spacing()
+                                            .horizontalSpace(context, 0.03),
+                                        Text('${e.name}', style: listStyle)
+                                      ])),
+                                  HorizListTile(
+                                      width: 0.57,
+                                      child:
+                                          Text('${e.email}', style: listStyle)),
+                                  HorizListTile(
+                                      width: 0.29,
+                                      child:
+                                          Text('9876543210', style: listStyle)),
+                                  HorizListTile(
+                                      width: 0.47,
+                                      child: Text('${e.project}',
+                                          style: listStyle)),
+                                  HorizListTile(
+                                      width: 0.47,
                                       child: Row(
-                                        children: [
-                                          e == 'Edit'
-                                              ? Icon(Icons.edit_outlined)
-                                              : Icon(Icons.delete_outline),
-                                          Spacing()
-                                              .horizontalSpace(context, 0.02),
-                                          Text(
-                                            e,
-                                            style: txtStyle(
-                                                size: 13,
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      padding: EdgeInsets.only(
-                                          top: Sizes()
-                                              .ratioWithScrWidth(context, 0.02),
-                                          left: Sizes()
-                                              .ratioWithScrWidth(context, 0.05),
-                                          bottom: Sizes()
-                                              .ratioWithScrWidth(context, 0.02),
-                                          right: Sizes()
-                                              .ratioWithScrWidth(context, 0.1)),
-                                      height: 0,
-                                    ))
-                              ];
-                            },
-                          ),
-                        )),
-                  ])
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            ...[
+                                              '${path}/downloadTwo.jpg',
+                                              '${path}/downloadThree.jpg',
+                                            ]
+                                                .map((e) => Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              3.0),
+                                                      child: CircleAvatar(
+                                                        backgroundImage:
+                                                            AssetImage(
+                                                          e,
+                                                        ),
+                                                        radius: 16,
+                                                      ),
+                                                    ))
+                                                .toList(),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(3.0),
+                                              child: CircleAvatar(
+                                                backgroundColor: Colors.pink,
+                                                child: Text(
+                                                  '+15',
+                                                  style: txtStyle(
+                                                      color: Colors.white,
+                                                      size: 12,
+                                                      weight: FontWeight.w500),
+                                                ),
+                                                radius: 16,
+                                              ),
+                                            ),
+                                          ])),
+                                  HorizListTile(
+                                      width: 0.29,
+                                      child: Text('Working', style: listStyle)),
+                                  HorizListTile(
+                                      width: 0.29,
+                                      child: Text('${e.createdDate}',
+                                          style: listStyle)),
+                                  HorizListTile(
+                                      width: 0.26,
+                                      child: Container(
+                                        width: Sizes()
+                                            .ratioWithScrWidth(context, 0.28),
+                                        alignment: Alignment.centerRight,
+                                        child: PopupMenuButton(
+                                          padding: EdgeInsets.zero,
+                                          offset: Offset(
+                                              1,
+                                              Sizes().ratioWithScrHeight(
+                                                  context, 0.06)),
+                                          itemBuilder: (context) {
+                                            return [
+                                              ...[
+                                                'Edit',
+                                                'Delete',
+                                              ].map((e) => PopupMenuItem(
+                                                    child: Row(
+                                                      children: [
+                                                        e == 'Edit'
+                                                            ? Icon(Icons
+                                                                .edit_outlined)
+                                                            : Icon(Icons
+                                                                .delete_outline),
+                                                        Spacing()
+                                                            .horizontalSpace(
+                                                                context, 0.02),
+                                                        Text(
+                                                          e,
+                                                          style: txtStyle(
+                                                              size: 13,
+                                                              weight: FontWeight
+                                                                  .w400),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    padding: EdgeInsets.only(
+                                                        top: Sizes()
+                                                            .ratioWithScrWidth(
+                                                                context, 0.02),
+                                                        left: Sizes()
+                                                            .ratioWithScrWidth(
+                                                                context, 0.05),
+                                                        bottom: Sizes()
+                                                            .ratioWithScrWidth(
+                                                                context, 0.02),
+                                                        right: Sizes()
+                                                            .ratioWithScrWidth(
+                                                                context, 0.1)),
+                                                    height: 0,
+                                                  ))
+                                            ];
+                                          },
+                                        ),
+                                      )),
+                                ]),
+                              ),
+                            ),
+                            Container(
+                              width: Sizes().ratioWithScrWidth(context, 3.26),
+                              height:
+                                  Sizes().ratioWithScrHeight(context, 0.002),
+                              color: Color.fromARGB(255, 199, 195, 195),
+                            )
+                          ],
+                        ),
+                      )
+                      .toList()
                 ],
               ),
             )

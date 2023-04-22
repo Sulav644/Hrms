@@ -6,6 +6,37 @@ import '../../../core/app_widgets.dart';
 import '../../../core/utils.dart';
 import '../../holidays/components/horiz_list_tile.dart';
 import '../../view_more_projects/components/entries_limit_widget.dart';
+import '../data/training_detail.dart';
+
+final path = 'assets/images/member_list';
+
+List<TrainingDetail> trainingList = [
+  TrainingDetail(
+      image: '${path}/download.jpg',
+      name: 'John Doe',
+      email: 'johndoe@example.com',
+      isActive: false),
+  TrainingDetail(
+      image: '${path}/downloadTwo.jpg',
+      name: 'Mike Litorus',
+      email: 'mikelitorus@example.com',
+      isActive: true),
+  TrainingDetail(
+      image: '${path}/downloadThree.jpg',
+      name: 'Wilmer Deluna',
+      email: 'wilmerdeluna@example.com',
+      isActive: false),
+  TrainingDetail(
+      image: '${path}/downloadFour.jpg',
+      name: 'John Smith',
+      email: 'johnsmith@example.com',
+      isActive: false),
+  TrainingDetail(
+      image: '${path}/downloadFive.jpg',
+      name: 'Richard Miles',
+      email: 'richardmiles@example.com',
+      isActive: false),
+];
 
 class Trainings extends StatelessWidget {
   Trainings({super.key});
@@ -15,6 +46,8 @@ class Trainings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final headerStyle = txtStyle(weight: FontWeight.w600, height: 1.4);
+    final listStyle = txtStyle(weight: FontWeight.w400, height: 1.4);
     return AppWidgets().appScaffold(
         context: context,
         showMenuStatus: showMenuStatus,
@@ -258,215 +291,401 @@ class Trainings extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(children: [
-                    HorizListTile(width: 0.06, child: Text('#')),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(width: 0.34, child: Text('Name')),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(width: 0.18, child: Text('Contact Number')),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(width: 0.24, child: Text('Email')),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(width: 0.12, child: Text('Description')),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(width: 0.26, child: Text('Status')),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    ),
-                    HorizListTile(width: 0.18, child: Text('Actions')),
-                    HorizListTile(
-                      width: 0.11,
-                      child: iconWrap(
-                          context,
-                          () {},
-                          [Icons.arrow_upward, Icons.arrow_downward],
-                          Alignment.bottomCenter,
-                          Color.fromARGB(255, 139, 138, 138)),
-                    )
-                  ]),
-                  Row(children: [
-                    HorizListTile(width: 0.17, child: Text('1')),
-                    HorizListTile(
-                        width: 0.45,
-                        child: Row(children: [
-                          CircleAvatar(
-                            backgroundImage: AssetImage(
-                                'assets/images/member_list/download.jpg'),
-                            radius: 18,
-                          ),
-                          Spacing().horizontalSpace(context, 0.03),
-                          Text('Wilmer Deluna')
-                        ])),
-                    HorizListTile(width: 0.296, child: Text('9876543210')),
-                    HorizListTile(
-                        width: 0.345, child: Text('johndoe@example.com')),
-                    HorizListTile(
-                        width: 0.23, child: Text('Lorem ipsum dollar')),
-                    HorizListTile(
-                        width: 0.3,
-                        child: Stack(
-                          children: [
-                            dropDownBox(
-                                context: context,
-                                onClick: () {},
-                                color: Colors.green,
-                                child: Text('Active')),
-                            PopupMenuButton(
-                              child: Container(
-                                width: Sizes().ratioWithScrWidth(context, 0.3),
-                                height:
-                                    Sizes().ratioWithScrHeight(context, 0.04),
-                                color: Colors.transparent,
-                              ),
-                              padding: EdgeInsets.zero,
-                              offset: Offset(
-                                  Sizes().ratioWithScrWidth(context, 0.01),
-                                  Sizes().ratioWithScrHeight(context, 0.052)),
-                              itemBuilder: (context) {
-                                return [
-                                  PopupMenuItem(
-                                    child: Row(
-                                      children: [
-                                        circleInd(context, Colors.green),
-                                        Spacing()
-                                            .horizontalSpace(context, 0.02),
-                                        Text(
-                                          'Active',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                    padding: EdgeInsets.only(
-                                      top: Sizes()
-                                          .ratioWithScrWidth(context, 0.02),
-                                      left: Sizes()
-                                          .ratioWithScrWidth(context, 0.03),
-                                      bottom: Sizes()
-                                          .ratioWithScrWidth(context, 0.02),
-                                    ),
-                                    height: 0,
-                                  ),
-                                  PopupMenuItem(
-                                    child: Row(
-                                      children: [
-                                        circleInd(context, Colors.red),
-                                        Spacing()
-                                            .horizontalSpace(context, 0.02),
-                                        Text(
-                                          'Inactive',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                    padding: EdgeInsets.only(
-                                      top: Sizes()
-                                          .ratioWithScrWidth(context, 0.02),
-                                      left: Sizes()
-                                          .ratioWithScrWidth(context, 0.03),
-                                      bottom: Sizes()
-                                          .ratioWithScrWidth(context, 0.02),
-                                    ),
-                                    height: 0,
-                                  ),
-                                ];
-                              },
+                  Container(
+                    height: Sizes().ratioWithScrHeight(context, 0.097),
+                    alignment: Alignment.topCenter,
+                    color: Color.fromARGB(255, 209, 206, 206),
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          top: Sizes().ratioWithScrHeight(context, 0.002)),
+                      child: Container(
+                        height: Sizes().ratioWithScrHeight(context, 0.09),
+                        color: Colors.white,
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: Sizes().ratioWithScrWidth(context, 0.04)),
+                          child: Row(children: [
+                            HorizListTile(
+                                width: 0.06,
+                                child: Text(
+                                  '#',
+                                  style: headerStyle,
+                                )),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
                             ),
-                          ],
-                        )),
-                    HorizListTile(
-                        width: 0.26,
-                        child: Container(
-                          width: Sizes().ratioWithScrWidth(context, 0.28),
-                          alignment: Alignment.centerRight,
-                          child: PopupMenuButton(
-                            padding: EdgeInsets.zero,
-                            offset: Offset(
-                                1, Sizes().ratioWithScrHeight(context, 0.06)),
-                            itemBuilder: (context) {
-                              return [
-                                ...[
-                                  'Edit',
-                                  'Delete',
-                                ].map((e) => PopupMenuItem(
-                                      child: Row(
+                            HorizListTile(
+                                width: 0.34,
+                                child: Text(
+                                  'Name',
+                                  style: headerStyle,
+                                )),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.18,
+                                child: Text(
+                                  'Contact Number',
+                                  style: headerStyle,
+                                )),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.44,
+                                child: Text(
+                                  'Email',
+                                  style: headerStyle,
+                                )),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.22,
+                                child: Text(
+                                  'Description',
+                                  style: headerStyle,
+                                )),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.26,
+                                child: Text(
+                                  'Status',
+                                  style: headerStyle,
+                                )),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            ),
+                            HorizListTile(
+                                width: 0.16,
+                                child: Text(
+                                  'Actions',
+                                  style: headerStyle,
+                                )),
+                            HorizListTile(
+                              width: 0.11,
+                              child: iconWrap(
+                                  context,
+                                  () {},
+                                  [Icons.arrow_upward, Icons.arrow_downward],
+                                  Alignment.bottomCenter,
+                                  Color.fromARGB(255, 139, 138, 138)),
+                            )
+                          ]),
+                        ),
+                      ),
+                    ),
+                  ),
+                  ...trainingList
+                      .map(
+                        (e) => Column(
+                          children: [
+                            Container(
+                              height: Sizes().ratioWithScrHeight(context, 0.09),
+                              color: trainingList.indexOf(e).isEven
+                                  ? Colors.transparent
+                                  : Colors.white,
+                              alignment: Alignment.center,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: Sizes()
+                                        .ratioWithScrWidth(context, 0.04)),
+                                child: Row(children: [
+                                  HorizListTile(
+                                      width: 0.17,
+                                      child: Text(
+                                        '${trainingList.indexOf(e) + 1}',
+                                        style: listStyle,
+                                      )),
+                                  HorizListTile(
+                                      width: 0.45,
+                                      child: Row(children: [
+                                        CircleAvatar(
+                                          backgroundImage:
+                                              AssetImage('${e.image}'),
+                                          radius: 18,
+                                        ),
+                                        Spacing()
+                                            .horizontalSpace(context, 0.03),
+                                        Text('${e.name}', style: listStyle)
+                                      ])),
+                                  HorizListTile(
+                                      width: 0.296,
+                                      child:
+                                          Text('9876543210', style: listStyle)),
+                                  HorizListTile(
+                                      width: 0.55,
+                                      child:
+                                          Text('${e.email}', style: listStyle)),
+                                  HorizListTile(
+                                      width: 0.32,
+                                      child: Text('Lorem ipsum dollar',
+                                          style: listStyle)),
+                                  HorizListTile(
+                                      width: 0.3,
+                                      child: Stack(
                                         children: [
-                                          e == 'Edit'
-                                              ? Icon(Icons.edit_outlined)
-                                              : Icon(Icons.delete_outline),
-                                          Spacing()
-                                              .horizontalSpace(context, 0.02),
-                                          Text(
-                                            e,
-                                            style: txtStyle(
-                                                size: 13,
-                                                weight: FontWeight.w400),
+                                          dropDownBox(
+                                              context: context,
+                                              onClick: () {},
+                                              color: e.isActive!
+                                                  ? Colors.green
+                                                  : Colors.red,
+                                              child: Text(e.isActive!
+                                                  ? 'Active'
+                                                  : 'Inactive')),
+                                          PopupMenuButton(
+                                            child: Container(
+                                              width: Sizes().ratioWithScrWidth(
+                                                  context, 0.3),
+                                              height: Sizes()
+                                                  .ratioWithScrHeight(
+                                                      context, 0.04),
+                                              color: Colors.transparent,
+                                            ),
+                                            padding: EdgeInsets.zero,
+                                            offset: Offset(
+                                                Sizes().ratioWithScrWidth(
+                                                    context, 0.01),
+                                                Sizes().ratioWithScrHeight(
+                                                    context, 0.052)),
+                                            itemBuilder: (context) {
+                                              return [
+                                                PopupMenuItem(
+                                                  child: Row(
+                                                    children: [
+                                                      circleInd(context,
+                                                          Colors.green),
+                                                      Spacing().horizontalSpace(
+                                                          context, 0.02),
+                                                      Text(
+                                                        'Active',
+                                                        style: txtStyle(
+                                                            weight: FontWeight
+                                                                .w400),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  padding: EdgeInsets.only(
+                                                    top: Sizes()
+                                                        .ratioWithScrWidth(
+                                                            context, 0.02),
+                                                    left: Sizes()
+                                                        .ratioWithScrWidth(
+                                                            context, 0.03),
+                                                    bottom: Sizes()
+                                                        .ratioWithScrWidth(
+                                                            context, 0.02),
+                                                  ),
+                                                  height: 0,
+                                                ),
+                                                PopupMenuItem(
+                                                  child: Row(
+                                                    children: [
+                                                      circleInd(
+                                                          context, Colors.red),
+                                                      Spacing().horizontalSpace(
+                                                          context, 0.02),
+                                                      Text(
+                                                        'Inactive',
+                                                        style: txtStyle(
+                                                            weight: FontWeight
+                                                                .w400),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  padding: EdgeInsets.only(
+                                                    top: Sizes()
+                                                        .ratioWithScrWidth(
+                                                            context, 0.02),
+                                                    left: Sizes()
+                                                        .ratioWithScrWidth(
+                                                            context, 0.03),
+                                                    bottom: Sizes()
+                                                        .ratioWithScrWidth(
+                                                            context, 0.02),
+                                                  ),
+                                                  height: 0,
+                                                ),
+                                              ];
+                                            },
                                           ),
                                         ],
-                                      ),
-                                      padding: EdgeInsets.only(
-                                          top: Sizes()
-                                              .ratioWithScrWidth(context, 0.02),
-                                          left: Sizes()
-                                              .ratioWithScrWidth(context, 0.05),
-                                          bottom: Sizes()
-                                              .ratioWithScrWidth(context, 0.02),
-                                          right: Sizes()
-                                              .ratioWithScrWidth(context, 0.1)),
-                                      height: 0,
-                                    ))
-                              ];
-                            },
-                          ),
-                        )),
-                  ])
+                                      )),
+                                  HorizListTile(
+                                      width: 0.32,
+                                      child: Container(
+                                        width: Sizes()
+                                            .ratioWithScrWidth(context, 0.28),
+                                        alignment: Alignment.centerRight,
+                                        child: PopupMenuButton(
+                                          padding: EdgeInsets.zero,
+                                          offset: Offset(
+                                              1,
+                                              Sizes().ratioWithScrHeight(
+                                                  context, 0.06)),
+                                          itemBuilder: (context) {
+                                            return [
+                                              ...[
+                                                'Edit',
+                                                'Delete',
+                                              ].map((e) => PopupMenuItem(
+                                                    child: Row(
+                                                      children: [
+                                                        e == 'Edit'
+                                                            ? Icon(Icons
+                                                                .edit_outlined)
+                                                            : Icon(Icons
+                                                                .delete_outline),
+                                                        Spacing()
+                                                            .horizontalSpace(
+                                                                context, 0.02),
+                                                        Text(
+                                                          e,
+                                                          style: txtStyle(
+                                                              size: 13,
+                                                              weight: FontWeight
+                                                                  .w400),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    padding: EdgeInsets.only(
+                                                        top: Sizes()
+                                                            .ratioWithScrWidth(
+                                                                context, 0.02),
+                                                        left: Sizes()
+                                                            .ratioWithScrWidth(
+                                                                context, 0.05),
+                                                        bottom: Sizes()
+                                                            .ratioWithScrWidth(
+                                                                context, 0.02),
+                                                        right: Sizes()
+                                                            .ratioWithScrWidth(
+                                                                context, 0.1)),
+                                                    height: 0,
+                                                  ))
+                                            ];
+                                          },
+                                        ),
+                                      )),
+                                ]),
+                              ),
+                            ),
+                            Container(
+                              width: Sizes().ratioWithScrWidth(context, 2.45),
+                              height:
+                                  Sizes().ratioWithScrHeight(context, 0.004),
+                              color: Color.fromARGB(255, 209, 206, 206),
+                            )
+                          ],
+                        ),
+                      )
+                      .toList(),
+                  Spacing().verticalSpace(context, 0.03),
+                  Row(
+                    children: [
+                      Spacing().horizontalSpace(context, 0.4),
+                      Text(
+                        'Showing 1 to ${trainingList.length} of ${trainingList.length} entries',
+                        style: listStyle,
+                      ),
+                    ],
+                  ),
+                  Spacing().verticalSpace(context, 0.01),
+                  Row(
+                    children: [
+                      Spacing().horizontalSpace(context, 0.6),
+                      Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                  color: Color.fromARGB(255, 187, 184, 184)),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(6),
+                                  bottomLeft: Radius.circular(6))),
+                          child: Padding(
+                            padding: EdgeInsets.all(
+                                Sizes().ratioWithScrWidth(context, 0.02)),
+                            child: Text(
+                              'Previous',
+                              style: txtStyle(weight: FontWeight.w300),
+                            ),
+                          )),
+                      Container(
+                          decoration: BoxDecoration(
+                              color: Colors.orange,
+                              border: Border(
+                                top: BorderSide(
+                                    color: Color.fromARGB(255, 187, 184, 184)),
+                                bottom: BorderSide(
+                                    color: Color.fromARGB(255, 187, 184, 184)),
+                              )),
+                          child: Padding(
+                            padding: EdgeInsets.all(
+                                Sizes().ratioWithScrWidth(context, 0.02)),
+                            child: Text(
+                              '1',
+                              style: txtStyle(color: Colors.white),
+                            ),
+                          )),
+                      Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                color: Color.fromARGB(255, 187, 184, 184),
+                              ),
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(6),
+                                  bottomRight: Radius.circular(6))),
+                          child: Padding(
+                            padding: EdgeInsets.all(
+                                Sizes().ratioWithScrWidth(context, 0.02)),
+                            child: Text(
+                              'Next',
+                              style: txtStyle(weight: FontWeight.w300),
+                            ),
+                          )),
+                    ],
+                  )
                 ],
               ),
             )

@@ -172,52 +172,45 @@ class _AssetsState extends State<Assets> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      Row(
-                                        children: [
-                                          Container(
-                                            width: Sizes().ratioWithScrWidth(
-                                                context, 0.64),
-                                            height: Sizes().ratioWithScrHeight(
-                                                context, 0.075),
-                                            padding: EdgeInsets.all(8),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.black),
-                                                borderRadius:
-                                                    BorderRadius.circular(2)),
-                                            child: DropdownButtonHideUnderline(
-                                              child: DropdownButton(
-                                                isExpanded: true,
-                                                value: status,
-                                                items: [
-                                                  'Pending',
-                                                  'Approved',
-                                                  'Deployed',
-                                                  'Damaged'
-                                                ]
-                                                    .map(
-                                                      (e) => DropdownMenuItem(
-                                                        child: Text(
-                                                          e,
-                                                          style: txtStyle(
-                                                              color: e == status
-                                                                  ? Colors.red
-                                                                  : Colors
-                                                                      .black),
-                                                        ),
-                                                        value: e,
-                                                      ),
-                                                    )
-                                                    .toList(),
-                                                onChanged: (value) {
-                                                  setState(() {
-                                                    this.status = value;
-                                                  });
-                                                },
-                                              ),
-                                            ),
+                                      Container(
+                                        height: Sizes()
+                                            .ratioWithScrHeight(context, 0.075),
+                                        padding: EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                            border:
+                                                Border.all(color: Colors.black),
+                                            borderRadius:
+                                                BorderRadius.circular(2)),
+                                        child: DropdownButtonHideUnderline(
+                                          child: DropdownButton(
+                                            isExpanded: true,
+                                            value: status ?? 'Pending',
+                                            items: [
+                                              'Pending',
+                                              'Approved',
+                                              'Deployed',
+                                              'Damaged'
+                                            ]
+                                                .map(
+                                                  (e) => DropdownMenuItem(
+                                                    child: Text(
+                                                      e,
+                                                      style: txtStyle(
+                                                          color: e == status
+                                                              ? Colors.red
+                                                              : Colors.black),
+                                                    ),
+                                                    value: e,
+                                                  ),
+                                                )
+                                                .toList(),
+                                            onChanged: (value) {
+                                              setState(() {
+                                                this.status = value;
+                                              });
+                                            },
                                           ),
-                                        ],
+                                        ),
                                       ),
                                       Spacing().verticalSpace(context, 0.02),
                                       Row(
@@ -329,50 +322,43 @@ class _AssetsState extends State<Assets> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      Row(
-                                        children: [
-                                          Container(
-                                            width: Sizes().ratioWithScrWidth(
-                                                context, 0.64),
-                                            height: Sizes().ratioWithScrHeight(
-                                                context, 0.075),
-                                            padding: EdgeInsets.all(8),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.black),
-                                                borderRadius:
-                                                    BorderRadius.circular(2)),
-                                            child: DropdownButtonHideUnderline(
-                                              child: DropdownButton(
-                                                isExpanded: true,
-                                                value: user,
-                                                items: [
-                                                  'John Doe',
-                                                  'Richard Miles',
-                                                ]
-                                                    .map(
-                                                      (e) => DropdownMenuItem(
-                                                        child: Text(
-                                                          e,
-                                                          style: txtStyle(
-                                                              color: e == user
-                                                                  ? Colors.red
-                                                                  : Colors
-                                                                      .black),
-                                                        ),
-                                                        value: e,
-                                                      ),
-                                                    )
-                                                    .toList(),
-                                                onChanged: (value) {
-                                                  setState(() {
-                                                    this.user = value;
-                                                  });
-                                                },
-                                              ),
-                                            ),
+                                      Container(
+                                        height: Sizes()
+                                            .ratioWithScrHeight(context, 0.075),
+                                        padding: EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                            border:
+                                                Border.all(color: Colors.black),
+                                            borderRadius:
+                                                BorderRadius.circular(2)),
+                                        child: DropdownButtonHideUnderline(
+                                          child: DropdownButton(
+                                            isExpanded: true,
+                                            value: user ?? 'John Doe',
+                                            items: [
+                                              'John Doe',
+                                              'Richard Miles',
+                                            ]
+                                                .map(
+                                                  (e) => DropdownMenuItem(
+                                                    child: Text(
+                                                      e,
+                                                      style: txtStyle(
+                                                          color: e == user
+                                                              ? Colors.red
+                                                              : Colors.black),
+                                                    ),
+                                                    value: e,
+                                                  ),
+                                                )
+                                                .toList(),
+                                            onChanged: (value) {
+                                              setState(() {
+                                                this.user = value;
+                                              });
+                                            },
                                           ),
-                                        ],
+                                        ),
                                       ),
                                       Spacing().verticalSpace(context, 0.02),
                                       Row(

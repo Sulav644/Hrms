@@ -2,27 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-import '../../../core/app_widgets.dart';
-import '../../../core/utils.dart';
-import '../../holidays/components/horiz_list_tile.dart';
-import '../../view_more_projects/components/entries_limit_widget.dart';
-import '../data/training_detail.dart';
+import '../../core/app_widgets.dart';
+import '../../core/utils.dart';
+import '../holidays/components/horiz_list_tile.dart';
+import '../view_more_projects/components/entries_limit_widget.dart';
+import 'data/goal_detail.dart';
 
-final path = 'assets/images/member_list';
-
-List<TrainingDetail> trainingList = [
-  TrainingDetail(type: 'Node', isActive: false),
-  TrainingDetail(type: 'Git', isActive: true),
-  TrainingDetail(type: 'Swift', isActive: false),
-  TrainingDetail(type: 'Html', isActive: false),
-  TrainingDetail(type: 'Laravel', isActive: false),
+List<GoalDetail> goalList = [
+  GoalDetail(
+      type: 'Invoice\nGoal',
+      description: 'This is invoice \ngoal and\nit is first goal'),
+  GoalDetail(
+      type: 'Another\nGoal',
+      description: 'This is another \ngoal and\nit is second goal'),
 ];
 
-class TrainingType extends StatelessWidget {
-  TrainingType({super.key});
+class GoalType extends StatelessWidget {
+  GoalType({super.key});
   bool showMenuStatus = false;
   ScrollController scrollController = ScrollController();
-  String? statusValue;
+  String? goalType;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,7 @@ class TrainingType extends StatelessWidget {
             Spacing().verticalSpace(context, 0.02),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Text(
-                'Training Type',
+                'Goal Type',
                 style: txtStyle(size: 18, weight: FontWeight.w600),
               ),
               GestureDetector(
@@ -53,7 +52,7 @@ class TrainingType extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'Add New',
+                                    'Add New Goal Type',
                                     style: txtStyle(
                                         size: 22, weight: FontWeight.w600),
                                   ),
@@ -66,21 +65,52 @@ class TrainingType extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          'Type',
+                                          'Goal Type',
                                           style:
                                               txtStyle(weight: FontWeight.w400),
                                         ),
-                                        Text(
-                                          ' *',
-                                          style: txtStyle(color: Colors.red),
-                                        )
                                       ],
                                     ),
                                     Spacing().verticalSpace(context, 0.015),
-                                    TextField(
-                                        decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
-                                    )),
+                                    Container(
+                                      height: Sizes()
+                                          .ratioWithScrHeight(context, 0.075),
+                                      padding: EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                          border:
+                                              Border.all(color: Colors.black),
+                                          borderRadius:
+                                              BorderRadius.circular(2)),
+                                      child: DropdownButtonHideUnderline(
+                                        child: DropdownButton(
+                                          isExpanded: true,
+                                          value: goalType ?? 'Select Goal Type',
+                                          items: [
+                                            'Select Goal Type',
+                                            'Invoice Goal',
+                                            'Another One'
+                                          ]
+                                              .map(
+                                                (e) => DropdownMenuItem(
+                                                  child: Text(
+                                                    e,
+                                                    style: txtStyle(
+                                                        color: e == goalType
+                                                            ? Colors.red
+                                                            : Colors.black),
+                                                  ),
+                                                  value: e,
+                                                ),
+                                              )
+                                              .toList(),
+                                          onChanged: (value) {
+                                            setState(() {
+                                              this.goalType = value;
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                    ),
                                     Spacing().verticalSpace(context, 0.04),
                                     Row(
                                       children: [
@@ -112,55 +142,48 @@ class TrainingType extends StatelessWidget {
                                       ],
                                     ),
                                     Spacing().verticalSpace(context, 0.015),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: Sizes().ratioWithScrWidth(
-                                              context, 0.455),
-                                          height: Sizes().ratioWithScrHeight(
-                                              context, 0.075),
-                                          padding: EdgeInsets.all(8),
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: Colors.black),
-                                              borderRadius:
-                                                  BorderRadius.circular(2)),
-                                          child: DropdownButtonHideUnderline(
-                                            child: DropdownButton(
-                                              isExpanded: true,
-                                              value: statusValue ?? 'Active',
-                                              items: [
-                                                'Active',
-                                                'Inactive',
-                                              ]
-                                                  .map(
-                                                    (e) => DropdownMenuItem(
-                                                      child: Text(
-                                                        e,
-                                                        style: txtStyle(
-                                                            color: e ==
-                                                                    statusValue
-                                                                ? Colors.red
-                                                                : Colors.black),
-                                                      ),
-                                                      value: e,
-                                                    ),
-                                                  )
-                                                  .toList(),
-                                              onChanged: (value) {
-                                                setState(() {
-                                                  this.statusValue = value;
-                                                });
-                                              },
-                                            ),
-                                          ),
+                                    Container(
+                                      height: Sizes()
+                                          .ratioWithScrHeight(context, 0.075),
+                                      padding: EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                          border:
+                                              Border.all(color: Colors.black),
+                                          borderRadius:
+                                              BorderRadius.circular(2)),
+                                      child: DropdownButtonHideUnderline(
+                                        child: DropdownButton(
+                                          isExpanded: true,
+                                          value: goalType ?? 'Active',
+                                          items: [
+                                            'Active',
+                                            'Inactive',
+                                          ]
+                                              .map(
+                                                (e) => DropdownMenuItem(
+                                                  child: Text(
+                                                    e,
+                                                    style: txtStyle(
+                                                        color: e == goalType
+                                                            ? Colors.red
+                                                            : Colors.black),
+                                                  ),
+                                                  value: e,
+                                                ),
+                                              )
+                                              .toList(),
+                                          onChanged: (value) {
+                                            setState(() {
+                                              this.goalType = value;
+                                            });
+                                          },
                                         ),
-                                      ],
+                                      ),
                                     ),
                                     Spacing().verticalSpace(context, 0.04),
                                     SizedBox(
                                       width: Sizes()
-                                          .ratioWithScrWidth(context, 0.3),
+                                          .ratioWithScrWidth(context, 0.38),
                                       height: Sizes()
                                           .ratioWithScrHeight(context, 0.06),
                                       child: ElevatedButton(
@@ -178,7 +201,13 @@ class TrainingType extends StatelessWidget {
 
                                             setState(() {});
                                           },
-                                          child: Text('Submit')),
+                                          child: Text(
+                                            'Submit',
+                                            style: txtStyle(
+                                                color: Colors.white,
+                                                size: 18,
+                                                weight: FontWeight.w500),
+                                          )),
                                     )
                                   ]),
                             );
@@ -228,11 +257,8 @@ class TrainingType extends StatelessWidget {
                                   Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
-                                width: 0.14,
-                                child: Text(
-                                  'Type',
-                                  style: headerStyle,
-                                )),
+                                width: 0.12,
+                                child: Text('Type', style: headerStyle)),
                             HorizListTile(
                               width: 0.11,
                               child: iconWrap(
@@ -243,11 +269,8 @@ class TrainingType extends StatelessWidget {
                                   Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
-                                width: 0.24,
-                                child: Text(
-                                  'Description',
-                                  style: headerStyle,
-                                )),
+                                width: 0.22,
+                                child: Text('Description', style: headerStyle)),
                             HorizListTile(
                               width: 0.11,
                               child: iconWrap(
@@ -259,10 +282,7 @@ class TrainingType extends StatelessWidget {
                             ),
                             HorizListTile(
                                 width: 0.26,
-                                child: Text(
-                                  'Status',
-                                  style: headerStyle,
-                                )),
+                                child: Text('Status', style: headerStyle)),
                             HorizListTile(
                               width: 0.11,
                               child: iconWrap(
@@ -273,11 +293,8 @@ class TrainingType extends StatelessWidget {
                                   Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
-                                width: 0.17,
-                                child: Text(
-                                  'Actions',
-                                  style: headerStyle,
-                                )),
+                                width: 0.18,
+                                child: Text('Actions', style: headerStyle)),
                             HorizListTile(
                               width: 0.11,
                               child: iconWrap(
@@ -292,48 +309,39 @@ class TrainingType extends StatelessWidget {
                       ),
                     ),
                   ),
-                  ...trainingList
+                  ...goalList
                       .map(
                         (e) => Column(
                           children: [
                             Container(
-                              height: Sizes().ratioWithScrHeight(context, 0.09),
-                              color: trainingList.indexOf(e).isEven
+                              height: Sizes().ratioWithScrHeight(context, 0.12),
+                              color: goalList.indexOf(e).isEven
                                   ? Colors.transparent
                                   : Colors.white,
                               alignment: Alignment.center,
                               child: Padding(
                                 padding: EdgeInsets.only(
                                     left: Sizes()
-                                        .ratioWithScrWidth(context, 0.04)),
+                                        .ratioWithScrWidth(context, 0.046)),
                                 child: Row(children: [
                                   HorizListTile(
-                                      width: 0.18,
-                                      child: Text(
-                                        '${trainingList.indexOf(e) + 1}',
-                                        style: listStyle,
-                                      )),
+                                      width: 0.17,
+                                      child:
+                                          Text('${goalList!.indexOf(e) + 1}')),
                                   HorizListTile(
-                                      width: 0.245,
-                                      child: Text('${e.type}\nTraining',
-                                          style: listStyle)),
+                                      width: 0.23, child: Text('${e.type}')),
                                   HorizListTile(
-                                      width: 0.35,
-                                      child: Text('Lorem ipsum\ndollar',
-                                          style: listStyle)),
+                                      width: 0.33,
+                                      child: Text('${e.description}')),
                                   HorizListTile(
-                                      width: 0.3,
+                                      width: 0.38,
                                       child: Stack(
                                         children: [
                                           dropDownBox(
                                               context: context,
                                               onClick: () {},
-                                              color: e.isActive!
-                                                  ? Colors.green
-                                                  : Colors.red,
-                                              child: Text(e.isActive!
-                                                  ? 'Active'
-                                                  : 'Inactive')),
+                                              color: Colors.green,
+                                              child: Text('Active')),
                                           PopupMenuButton(
                                             child: Container(
                                               width: Sizes().ratioWithScrWidth(
@@ -413,7 +421,7 @@ class TrainingType extends StatelessWidget {
                                         ],
                                       )),
                                   HorizListTile(
-                                      width: 0.32,
+                                      width: 0.26,
                                       child: Container(
                                         width: Sizes()
                                             .ratioWithScrWidth(context, 0.28),
@@ -472,10 +480,10 @@ class TrainingType extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              width: Sizes().ratioWithScrWidth(context, 1.45),
+                              width: Sizes().ratioWithScrWidth(context, 1.4),
                               height:
-                                  Sizes().ratioWithScrHeight(context, 0.004),
-                              color: Color.fromARGB(255, 209, 206, 206),
+                                  Sizes().ratioWithScrHeight(context, 0.002),
+                              color: Color.fromARGB(255, 199, 195, 195),
                             )
                           ],
                         ),
@@ -486,7 +494,7 @@ class TrainingType extends StatelessWidget {
                     children: [
                       Spacing().horizontalSpace(context, 0.4),
                       Text(
-                        'Showing 1 to ${trainingList.length} of ${trainingList.length} entries',
+                        'Showing 1 to ${goalList.length} of ${goalList.length} entries',
                         style: listStyle,
                       ),
                     ],
@@ -648,5 +656,21 @@ class TrainingType extends StatelessWidget {
             ),
           ]),
         ),
+      );
+  Widget labelBar(
+          {required BuildContext context,
+          required double width,
+          required Color color,
+          required List<double> borderRad}) =>
+      Container(
+        width: Sizes().ratioWithScrWidth(context, width),
+        height: Sizes().ratioWithScrHeight(context, 0.006),
+        decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(borderRad[0]),
+                bottomLeft: Radius.circular(borderRad[1]),
+                topRight: Radius.circular(borderRad[2]),
+                bottomRight: Radius.circular(borderRad[3]))),
       );
 }
