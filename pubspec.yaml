@@ -29,6 +29,8 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   freezed: ^2.3.2
   build_runner: ^2.3.3
+  simple_animations: ^4.2.0
+  supercharged: ^2.1.1
 
 flutter:
 

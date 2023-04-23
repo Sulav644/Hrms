@@ -3,8 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hrms_clone/core/utils.dart';
 import 'package:hrms_clone/core/components/popup_menu/domain/show_menu_cubit.dart';
+import 'package:hrms_clone/hrms_clone/accounts/expenses.dart';
 import 'package:hrms_clone/hrms_clone/accounts/invoice.dart';
 import 'package:hrms_clone/hrms_clone/accounts/payment.dart';
+import 'package:hrms_clone/hrms_clone/accounts/provident_fund.dart';
+import 'package:hrms_clone/hrms_clone/accounts/tax.dart';
+import 'package:hrms_clone/hrms_clone/admin_dashboard/admin_dashboard.dart';
 import 'package:hrms_clone/hrms_clone/assets/assets.dart';
 import 'package:hrms_clone/hrms_clone/employee_dashboard/employee_dashboard.dart';
 import 'package:hrms_clone/hrms_clone/employees_list/components/department.dart';
@@ -22,11 +26,18 @@ import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/select_time
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/show_priority_cubit.dart';
 import 'package:hrms_clone/hrms_clone/promotion/promotion.dart';
 import 'package:hrms_clone/hrms_clone/resignation/resignation.dart';
+import 'package:hrms_clone/hrms_clone/settings/change_password.dart';
+import 'package:hrms_clone/hrms_clone/settings/company_setting.dart';
+import 'package:hrms_clone/hrms_clone/settings/invoice_setting.dart';
+import 'package:hrms_clone/hrms_clone/settings/roles_&_permission.dart';
+import 'package:hrms_clone/hrms_clone/settings/salary_setting.dart';
 import 'package:hrms_clone/hrms_clone/termination/termination.dart';
 import 'package:hrms_clone/hrms_clone/training/training_list/training_list.dart';
 import 'package:hrms_clone/hrms_clone/training/training_list/training_type.dart';
 import 'package:hrms_clone/hrms_clone/users/users.dart';
 
+import '../home_page.dart';
+import '../hrms_clone/settings/theme_setting.dart';
 import '../hrms_clone/training/training_list/trainings.dart';
 import 'components/popup_menu/popup_menu.dart';
 
@@ -190,9 +201,17 @@ class AppWidgets {
                         onTap: () =>
                             Navigation().navigateTo(context, Payment()),
                         child: Text('Payments')),
-                    Text('Expenses'),
-                    Text('Provident Fund'),
-                    Text('Taxes')
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, Expenses()),
+                        child: Text('Expenses')),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, ProvidentFund()),
+                        child: Text('Provident Fund')),
+                    GestureDetector(
+                        onTap: () => Navigation().navigateTo(context, Tax()),
+                        child: Text('Taxes'))
                   ]),
               expandedList(
                   context: context,
@@ -288,11 +307,14 @@ class AppWidgets {
                     Text('Employee Profile'),
                     Text('Client Profile'),
                   ]),
-              itemContent(
-                  context: context,
-                  leadIcon: Icons.settings_outlined,
-                  title: 'Settings',
-                  height: 0.045),
+              GestureDetector(
+                onTap: () => Navigation().navigateTo(context, CompanySetting()),
+                child: itemContent(
+                    context: context,
+                    leadIcon: Icons.settings_outlined,
+                    title: 'Settings',
+                    height: 0.045),
+              ),
               itemContent(
                   context: context,
                   leadIcon: Icons.power_settings_new,
@@ -302,6 +324,106 @@ class AppWidgets {
           ),
         ),
       );
+  Widget settingScaffold(
+          {required BuildContext context,
+          required bool showMenuStatus,
+          required List<Widget> children,
+          required ScrollController controller,
+          required VoidCallback onClick,
+          bool? allowPadding}) =>
+      GestureDetector(
+        onTap: () => onClick(),
+        child: Scaffold(
+          appBar: AppWidgets().appBar(context),
+          backgroundColor: Color.fromARGB(255, 240, 238, 238),
+          body: Stack(
+            children: [
+              SingleChildScrollView(
+                controller: controller,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: Sizes().ratioWithScrWidth(
+                          context, allowPadding == null ? 0.03 : 0.0)),
+                  child: Column(
+                    children: children,
+                  ),
+                ),
+              ),
+              PopupMenu(showMenuStatus: showMenuStatus),
+            ],
+          ),
+          drawer: Scrollbar(
+            thickness: 8,
+            radius: Radius.circular(10),
+            child: AppWidgets().appDrawer(context, [
+              GestureDetector(
+                onTap: () => Navigation().navigateTo(context, HomePage()),
+                child: itemContent(
+                    context: context,
+                    leadIcon: Icons.person_add_outlined,
+                    title: 'Back to Home',
+                    height: 0.045),
+              ),
+              itemHeader(context, 'Settings'),
+              GestureDetector(
+                onTap: () => Navigation().navigateTo(context, CompanySetting()),
+                child: itemContent(
+                    context: context,
+                    leadIcon: Icons.rocket_outlined,
+                    title: 'Company Settings',
+                    height: 0.065),
+              ),
+              GestureDetector(
+                onTap: () => Navigation().navigateTo(context, ThemeSetting()),
+                child: itemContent(
+                    context: context,
+                    leadIcon: Icons.rocket_outlined,
+                    title: 'Theme Settings',
+                    height: 0.065),
+              ),
+              GestureDetector(
+                onTap: () =>
+                    Navigation().navigateTo(context, RolesAndPermission()),
+                child: itemContent(
+                    context: context,
+                    leadIcon: Icons.rocket_outlined,
+                    title: 'Roles & Permissions',
+                    height: 0.065),
+              ),
+              GestureDetector(
+                onTap: () => Navigation().navigateTo(context, InvoiceSetting()),
+                child: itemContent(
+                    context: context,
+                    leadIcon: Icons.rocket_outlined,
+                    title: 'Invoice Settings',
+                    height: 0.065),
+              ),
+              GestureDetector(
+                onTap: () => Navigation().navigateTo(
+                    context,
+                    SalarySetting(
+                      switchPadLeft: Sizes().ratioWithScrWidth(context, 0.11),
+                      textPadLeft: Sizes().ratioWithScrWidth(context, 0.04),
+                    )),
+                child: itemContent(
+                    context: context,
+                    leadIcon: Icons.rocket_outlined,
+                    title: 'Salary Settings',
+                    height: 0.065),
+              ),
+              GestureDetector(
+                onTap: () => Navigation().navigateTo(context, ChangePassword()),
+                child: itemContent(
+                    context: context,
+                    leadIcon: Icons.rocket_outlined,
+                    title: 'Change Password',
+                    height: 0.065),
+              ),
+            ]),
+          ),
+        ),
+      );
+
   Widget itemHeader(BuildContext context, String title) => Container(
       height: Sizes().ratioWithScrHeight(context, 0.05),
       alignment: Alignment.bottomLeft,
