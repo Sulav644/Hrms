@@ -63,109 +63,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                       Row(
                                         children: [
                                           Text(
-                                            'Asset Name',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Asset Id',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          enabled: false,
-                                          controller: TextEditingController(
-                                              text: '#AST-736415'),
-                                          decoration: InputDecoration(
-                                            fillColor: Color.fromARGB(
-                                                255, 155, 153, 153),
-                                            filled: true,
-                                            border: OutlineInputBorder(),
-                                          )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Purchase Date',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          enabled: false,
-                                          controller: TextEditingController(
-                                              text: '21/04/2323'),
-                                          decoration: InputDecoration(
-                                            fillColor: Color.fromARGB(
-                                                255, 155, 153, 153),
-                                            filled: true,
-                                            border: OutlineInputBorder(),
-                                          )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Purchase From',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Manufacturer',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Model',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Status',
+                                            'Select Staff',
                                             style: txtStyle(
                                                 weight: FontWeight.w400),
                                           ),
@@ -184,12 +82,10 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         child: DropdownButtonHideUnderline(
                                           child: DropdownButton(
                                             isExpanded: true,
-                                            value: status ?? 'Pending',
+                                            value: status ?? 'John Doe',
                                             items: [
-                                              'Pending',
-                                              'Approved',
-                                              'Deployed',
-                                              'Damaged'
+                                              'John Doe',
+                                              'Richard Miles',
                                             ]
                                                 .map(
                                                   (e) => DropdownMenuItem(
@@ -216,7 +112,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                       Row(
                                         children: [
                                           Text(
-                                            'Supplier',
+                                            'Net Salary',
                                             style: txtStyle(
                                                 weight: FontWeight.w400),
                                           ),
@@ -228,110 +124,248 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         border: OutlineInputBorder(),
                                       )),
                                       Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Condition',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Warrenty',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        hintText: 'In Months',
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Value/Price',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        hintText: '1800',
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Resignation Date',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                          Text(
-                                            ' *',
-                                            style: txtStyle(color: Colors.red),
-                                          )
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      GestureDetector(
-                                        onTap: () async {
-                                          DateTime? newDate =
-                                              await showDatePicker(
-                                                  context: context,
-                                                  initialDate: DateTime.now(),
-                                                  firstDate: DateTime.now(),
-                                                  lastDate: DateTime(2024));
-                                          if (newDate != null) {
-                                            print(DateFormat('yyyy-MM-dd')
-                                                .format(newDate!));
-                                            setState(() {});
-                                          }
-                                        },
-                                        child: TextField(
-                                          enabled: false,
-                                          decoration: InputDecoration(
-                                              border: OutlineInputBorder(),
-                                              suffixIcon:
-                                                  Icon(Icons.calendar_month)),
+                                      Row(children: [
+                                        Text(
+                                          'Earnings',
+                                          style: txtStyle(color: Colors.orange),
                                         ),
-                                      ),
-                                      Spacing().verticalSpace(context, 0.02),
+                                      ]),
                                       Row(
                                         children: [
                                           Text(
-                                            'Description',
+                                            'Basic',
                                             style: txtStyle(
                                                 weight: FontWeight.w400),
                                           ),
-                                          Text(
-                                            ' *',
-                                            style: txtStyle(color: Colors.red),
-                                          )
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
                                       TextField(
-                                          maxLines: 3,
                                           decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                          )),
-                                      Spacing().verticalSpace(context, 0.04),
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'DA(40%)',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'HRA(15%)',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Conveyance',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Allowance',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Medical Allowance',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Others',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      Row(children: [
+                                        CircleAvatar(
+                                          backgroundColor: Colors.orange,
+                                          child: Icon(Icons.add),
+                                        ),
+                                        Text(
+                                          'Add',
+                                          style: txtStyle(color: Colors.orange),
+                                        ),
+                                      ]),
+                                      Row(children: [
+                                        Text(
+                                          'Deductions',
+                                          style: txtStyle(color: Colors.orange),
+                                        ),
+                                      ]),
+                                      TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'TDS',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'ESI',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'PF',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Leave',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Prof. Tax',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Labour Welfare',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Others',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(children: [
+                                        CircleAvatar(
+                                          backgroundColor: Colors.orange,
+                                          child: Icon(Icons.add),
+                                        ),
+                                        Text(
+                                          'Add',
+                                          style: txtStyle(color: Colors.orange),
+                                        ),
+                                      ]),
                                       SizedBox(
                                         width: Sizes()
                                             .ratioWithScrWidth(context, 0.3),

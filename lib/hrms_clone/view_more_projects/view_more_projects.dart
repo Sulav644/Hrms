@@ -151,7 +151,7 @@ class _ViewMoreProjectsState extends State<ViewMoreProjects> {
                   )),
             ),
             Spacing().verticalSpace(context, 0.02),
-            MemberDetailHorizList(),
+            MemberDetailVertList()
           ])
         ]);
   }

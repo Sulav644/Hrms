@@ -8,10 +8,18 @@ import '../../core/utils.dart';
 import '../holidays/components/horiz_list_tile.dart';
 import '../view_more_projects/components/entries_limit_widget.dart';
 
-class OverTime extends StatelessWidget {
+class OverTime extends StatefulWidget {
   OverTime({super.key});
+
+  @override
+  State<OverTime> createState() => _OverTimeState();
+}
+
+class _OverTimeState extends State<OverTime> {
   bool showMenuStatus = false;
+
   ScrollController scrollController = ScrollController();
+  String? employeeValue;
 
   @override
   Widget build(BuildContext context) {
@@ -55,49 +63,7 @@ class OverTime extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          'Promotion For',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          ' *',
-                                          style: txtStyle(color: Colors.red),
-                                        )
-                                      ],
-                                    ),
-                                    Spacing().verticalSpace(context, 0.015),
-                                    TextField(
-                                        decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
-                                    )),
-                                    Spacing().verticalSpace(context, 0.02),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Promotion From',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          ' *',
-                                          style: txtStyle(color: Colors.red),
-                                        )
-                                      ],
-                                    ),
-                                    Spacing().verticalSpace(context, 0.015),
-                                    TextField(
-                                        controller: TextEditingController(
-                                            text: 'Web Developer'),
-                                        decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            fillColor: Color.fromARGB(
-                                                255, 184, 180, 180),
-                                            filled: true)),
-                                    Spacing().verticalSpace(context, 0.02),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Promotion To',
+                                          'Select Employee',
                                           style:
                                               txtStyle(weight: FontWeight.w400),
                                         ),
@@ -119,11 +85,13 @@ class OverTime extends StatelessWidget {
                                       child: DropdownButtonHideUnderline(
                                         child: DropdownButton(
                                           isExpanded: true,
-                                          value: 'Web Developer',
+                                          value: employeeValue ??
+                                              'Select Employee Name',
                                           items: [
-                                            'Web Developer',
-                                            'Web Designer',
-                                            'SEO Analyst'
+                                            'Select Employee Name',
+                                            'George Merchason',
+                                            'Musche Abdul-Hakim',
+                                            'Yahuza Abdul-Hakim'
                                           ]
                                               .map(
                                                 (e) => DropdownMenuItem(
@@ -143,11 +111,10 @@ class OverTime extends StatelessWidget {
                                       ),
                                     ),
                                     Spacing().verticalSpace(context, 0.015),
-                                    Spacing().verticalSpace(context, 0.03),
                                     Row(
                                       children: [
                                         Text(
-                                          'Promotion Date',
+                                          'Overtime Date',
                                           style:
                                               txtStyle(weight: FontWeight.w400),
                                         ),
@@ -181,6 +148,63 @@ class OverTime extends StatelessWidget {
                                       ),
                                     ),
                                     Spacing().verticalSpace(context, 0.04),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Overtime Type',
+                                          style:
+                                              txtStyle(weight: FontWeight.w400),
+                                        ),
+                                        Text(
+                                          ' *',
+                                          style: txtStyle(color: Colors.red),
+                                        )
+                                      ],
+                                    ),
+                                    Spacing().verticalSpace(context, 0.015),
+                                    TextField(
+                                        decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                    )),
+                                    Spacing().verticalSpace(context, 0.02),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Overtime Hours',
+                                          style:
+                                              txtStyle(weight: FontWeight.w400),
+                                        ),
+                                        Text(
+                                          ' *',
+                                          style: txtStyle(color: Colors.red),
+                                        )
+                                      ],
+                                    ),
+                                    Spacing().verticalSpace(context, 0.015),
+                                    TextField(
+                                        decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                    )),
+                                    Spacing().verticalSpace(context, 0.02),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Description',
+                                          style:
+                                              txtStyle(weight: FontWeight.w400),
+                                        ),
+                                        Text(
+                                          ' *',
+                                          style: txtStyle(color: Colors.red),
+                                        )
+                                      ],
+                                    ),
+                                    Spacing().verticalSpace(context, 0.03),
+                                    TextField(
+                                        maxLines: 3,
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(),
+                                        )),
                                     SizedBox(
                                       width: Sizes()
                                           .ratioWithScrWidth(context, 0.3),
@@ -214,6 +238,15 @@ class OverTime extends StatelessWidget {
                       context: context, title: 'Add Overtime', borderRad: 20))
             ]),
             Spacing().verticalSpace(context, 0.04),
+            bannerItem(
+                title: 'Overtime Employee', count: 12, time: 'this month'),
+            Spacing().verticalSpace(context, 0.02),
+            bannerItem(title: 'Overtime Hours', count: 118, time: 'this month'),
+            Spacing().verticalSpace(context, 0.02),
+            bannerItem(title: 'Pending Request', count: 23, time: ''),
+            Spacing().verticalSpace(context, 0.02),
+            bannerItem(title: 'Rejected', count: 5, time: ''),
+            Spacing().verticalSpace(context, 0.02),
             EntriesLimitWidget(),
             Spacing().verticalSpace(context, 0.03),
             SingleChildScrollView(
@@ -545,6 +578,7 @@ class OverTime extends StatelessWidget {
           ]),
         ),
       );
+
   Widget iconWrap(BuildContext context, VoidCallback onClick,
           List<IconData> icon, Alignment alignment, Color? iconColor) =>
       Container(
@@ -578,4 +612,32 @@ class OverTime extends StatelessWidget {
               ),
             ),
           ));
+  Widget bannerItem(
+          {required String title, required int count, required String time}) =>
+      Container(
+          decoration: BoxDecoration(
+              color: Colors.white, borderRadius: BorderRadius.circular(10)),
+          child: Column(children: [
+            Spacing().verticalSpace(context, 0.02),
+            Text(
+              title,
+              style: txtStyle(size: 17, weight: FontWeight.w400),
+            ),
+            Spacing().verticalSpace(context, 0.015),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  '$count',
+                  style: txtStyle(size: 17, weight: FontWeight.w600),
+                ),
+                Spacing().horizontalSpace(context, 0.02),
+                Text(
+                  time,
+                  style: txtStyle(size: 8, weight: FontWeight.w300),
+                )
+              ],
+            ),
+            Spacing().verticalSpace(context, 0.02),
+          ]));
 }

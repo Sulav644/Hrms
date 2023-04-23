@@ -9,6 +9,7 @@ import 'package:hrms_clone/hrms_clone/accounts/payment.dart';
 import 'package:hrms_clone/hrms_clone/accounts/provident_fund.dart';
 import 'package:hrms_clone/hrms_clone/accounts/tax.dart';
 import 'package:hrms_clone/hrms_clone/admin_dashboard/admin_dashboard.dart';
+import 'package:hrms_clone/hrms_clone/admin_dashboard/components/project_list.dart';
 import 'package:hrms_clone/hrms_clone/assets/assets.dart';
 import 'package:hrms_clone/hrms_clone/employee_dashboard/employee_dashboard.dart';
 import 'package:hrms_clone/hrms_clone/employees_list/components/department.dart';
@@ -22,6 +23,9 @@ import 'package:hrms_clone/hrms_clone/goals/goal_type.dart';
 import 'package:hrms_clone/hrms_clone/holidays/holidays.dart';
 import 'package:hrms_clone/hrms_clone/leads/leads.dart';
 import 'package:hrms_clone/hrms_clone/payroll/employees_salary.dart';
+import 'package:hrms_clone/hrms_clone/payroll/payroll_item.dart';
+import 'package:hrms_clone/hrms_clone/payroll/payslip.dart';
+import 'package:hrms_clone/hrms_clone/profile/client_profile.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/select_timeline_cubit.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/show_priority_cubit.dart';
 import 'package:hrms_clone/hrms_clone/promotion/promotion.dart';
@@ -35,8 +39,10 @@ import 'package:hrms_clone/hrms_clone/termination/termination.dart';
 import 'package:hrms_clone/hrms_clone/training/training_list/training_list.dart';
 import 'package:hrms_clone/hrms_clone/training/training_list/training_type.dart';
 import 'package:hrms_clone/hrms_clone/users/users.dart';
+import 'package:hrms_clone/hrms_clone/view_more_projects/view_more_projects.dart';
 
 import '../home_page.dart';
+import '../hrms_clone/profile/employee_profile.dart';
 import '../hrms_clone/settings/theme_setting.dart';
 import '../hrms_clone/training/training_list/trainings.dart';
 import 'components/popup_menu/popup_menu.dart';
@@ -128,7 +134,10 @@ class AppWidgets {
                   icon: Icons.alarm,
                   title: 'Dashboard',
                   children: [
-                    Text('Admin Dashboard'),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, HomePage()),
+                        child: Text('Admin Dashboard')),
                     GestureDetector(
                         onTap: () => Navigation()
                             .navigateTo(context, EmployeeDashboard()),
@@ -174,11 +183,15 @@ class AppWidgets {
                   leadIcon: Icons.person_add_outlined,
                   title: 'Clients',
                   height: 0.045),
-              itemContent(
-                  context: context,
-                  leadIcon: Icons.rocket_outlined,
-                  title: 'Projects',
-                  height: 0.065),
+              GestureDetector(
+                onTap: () =>
+                    Navigation().navigateTo(context, ViewMoreProjects()),
+                child: itemContent(
+                    context: context,
+                    leadIcon: Icons.rocket_outlined,
+                    title: 'Projects',
+                    height: 0.065),
+              ),
               GestureDetector(
                 onTap: () => Navigation().navigateTo(context, Leads()),
                 child: itemContent(
@@ -222,8 +235,14 @@ class AppWidgets {
                         onTap: () =>
                             Navigation().navigateTo(context, EmployeesSalary()),
                         child: Text('Employee Salary')),
-                    Text('Payslip'),
-                    Text('Payroll Items')
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, PaySlip()),
+                        child: Text('Payslip')),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, PayRollItem()),
+                        child: Text('Payroll Items'))
                   ]),
               expandedList(
                   context: context,
@@ -304,8 +323,14 @@ class AppWidgets {
                   icon: Icons.person_3_outlined,
                   title: 'Profile',
                   children: [
-                    Text('Employee Profile'),
-                    Text('Client Profile'),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, EmployeeProfile()),
+                        child: Text('Employee Profile')),
+                    GestureDetector(
+                        onTap: () =>
+                            Navigation().navigateTo(context, ClientProfile()),
+                        child: Text('Client Profile')),
                   ]),
               GestureDetector(
                 onTap: () => Navigation().navigateTo(context, CompanySetting()),

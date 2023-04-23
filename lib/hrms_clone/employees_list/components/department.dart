@@ -42,7 +42,7 @@ class Department extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'Add Promotion',
+                                    'Add Department',
                                     style: txtStyle(
                                         size: 22, weight: FontWeight.w600),
                                   ),
@@ -55,7 +55,7 @@ class Department extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          'Promotion For',
+                                          'Department Name',
                                           style:
                                               txtStyle(weight: FontWeight.w400),
                                         ),
@@ -71,116 +71,6 @@ class Department extends StatelessWidget {
                                       border: OutlineInputBorder(),
                                     )),
                                     Spacing().verticalSpace(context, 0.02),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Promotion From',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          ' *',
-                                          style: txtStyle(color: Colors.red),
-                                        )
-                                      ],
-                                    ),
-                                    Spacing().verticalSpace(context, 0.015),
-                                    TextField(
-                                        controller: TextEditingController(
-                                            text: 'Web Developer'),
-                                        decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            fillColor: Color.fromARGB(
-                                                255, 184, 180, 180),
-                                            filled: true)),
-                                    Spacing().verticalSpace(context, 0.02),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Promotion To',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          ' *',
-                                          style: txtStyle(color: Colors.red),
-                                        )
-                                      ],
-                                    ),
-                                    Container(
-                                      height: Sizes()
-                                          .ratioWithScrHeight(context, 0.075),
-                                      padding: EdgeInsets.all(8),
-                                      decoration: BoxDecoration(
-                                          border:
-                                              Border.all(color: Colors.black),
-                                          borderRadius:
-                                              BorderRadius.circular(2)),
-                                      child: DropdownButtonHideUnderline(
-                                        child: DropdownButton(
-                                          isExpanded: true,
-                                          value: 'Web Developer',
-                                          items: [
-                                            'Web Developer',
-                                            'Web Designer',
-                                            'SEO Analyst'
-                                          ]
-                                              .map(
-                                                (e) => DropdownMenuItem(
-                                                  child: Text(
-                                                    e,
-                                                    style: txtStyle(
-                                                        color: Colors.black),
-                                                  ),
-                                                  value: e,
-                                                ),
-                                              )
-                                              .toList(),
-                                          onChanged: (value) {
-                                            setState(() {});
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                                    Spacing().verticalSpace(context, 0.015),
-                                    Spacing().verticalSpace(context, 0.03),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Promotion Date',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          ' *',
-                                          style: txtStyle(color: Colors.red),
-                                        )
-                                      ],
-                                    ),
-                                    Spacing().verticalSpace(context, 0.015),
-                                    GestureDetector(
-                                      onTap: () async {
-                                        DateTime? newDate =
-                                            await showDatePicker(
-                                                context: context,
-                                                initialDate: DateTime.now(),
-                                                firstDate: DateTime.now(),
-                                                lastDate: DateTime(2024));
-                                        if (newDate != null) {
-                                          print(DateFormat('yyyy-MM-dd')
-                                              .format(newDate!));
-                                          setState(() {});
-                                        }
-                                      },
-                                      child: TextField(
-                                        enabled: false,
-                                        decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            suffixIcon:
-                                                Icon(Icons.calendar_month)),
-                                      ),
-                                    ),
-                                    Spacing().verticalSpace(context, 0.04),
                                     SizedBox(
                                       width: Sizes()
                                           .ratioWithScrWidth(context, 0.3),

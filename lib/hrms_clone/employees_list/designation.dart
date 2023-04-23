@@ -8,10 +8,18 @@ import '../../core/utils.dart';
 import '../holidays/components/horiz_list_tile.dart';
 import '../view_more_projects/components/entries_limit_widget.dart';
 
-class Designation extends StatelessWidget {
+class Designation extends StatefulWidget {
   Designation({super.key});
+
+  @override
+  State<Designation> createState() => _DesignationState();
+}
+
+class _DesignationState extends State<Designation> {
   bool showMenuStatus = false;
+
   ScrollController scrollController = ScrollController();
+  String? departmentValue;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +50,7 @@ class Designation extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'Add Promotion',
+                                    'Add Designation',
                                     style: txtStyle(
                                         size: 22, weight: FontWeight.w600),
                                   ),
@@ -55,7 +63,7 @@ class Designation extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          'Promotion For',
+                                          'Designation Name',
                                           style:
                                               txtStyle(weight: FontWeight.w400),
                                         ),
@@ -74,30 +82,7 @@ class Designation extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          'Promotion From',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          ' *',
-                                          style: txtStyle(color: Colors.red),
-                                        )
-                                      ],
-                                    ),
-                                    Spacing().verticalSpace(context, 0.015),
-                                    TextField(
-                                        controller: TextEditingController(
-                                            text: 'Web Developer'),
-                                        decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            fillColor: Color.fromARGB(
-                                                255, 184, 180, 180),
-                                            filled: true)),
-                                    Spacing().verticalSpace(context, 0.02),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Promotion To',
+                                          'Department',
                                           style:
                                               txtStyle(weight: FontWeight.w400),
                                         ),
@@ -119,11 +104,13 @@ class Designation extends StatelessWidget {
                                       child: DropdownButtonHideUnderline(
                                         child: DropdownButton(
                                           isExpanded: true,
-                                          value: 'Web Developer',
+                                          value: departmentValue ??
+                                              'Select Department',
                                           items: [
-                                            'Web Developer',
-                                            'Web Designer',
-                                            'SEO Analyst'
+                                            'Select Department',
+                                            'Marketing',
+                                            'IT Department',
+                                            'Web Development'
                                           ]
                                               .map(
                                                 (e) => DropdownMenuItem(
@@ -143,44 +130,6 @@ class Designation extends StatelessWidget {
                                       ),
                                     ),
                                     Spacing().verticalSpace(context, 0.015),
-                                    Spacing().verticalSpace(context, 0.03),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Promotion Date',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          ' *',
-                                          style: txtStyle(color: Colors.red),
-                                        )
-                                      ],
-                                    ),
-                                    Spacing().verticalSpace(context, 0.015),
-                                    GestureDetector(
-                                      onTap: () async {
-                                        DateTime? newDate =
-                                            await showDatePicker(
-                                                context: context,
-                                                initialDate: DateTime.now(),
-                                                firstDate: DateTime.now(),
-                                                lastDate: DateTime(2024));
-                                        if (newDate != null) {
-                                          print(DateFormat('yyyy-MM-dd')
-                                              .format(newDate!));
-                                          setState(() {});
-                                        }
-                                      },
-                                      child: TextField(
-                                        enabled: false,
-                                        decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            suffixIcon:
-                                                Icon(Icons.calendar_month)),
-                                      ),
-                                    ),
-                                    Spacing().verticalSpace(context, 0.04),
                                     SizedBox(
                                       width: Sizes()
                                           .ratioWithScrWidth(context, 0.3),
@@ -484,6 +433,7 @@ class Designation extends StatelessWidget {
           ]),
         ),
       );
+
   Widget iconWrap(BuildContext context, VoidCallback onClick,
           List<IconData> icon, Alignment alignment, Color? iconColor) =>
       Container(
