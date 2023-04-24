@@ -21,7 +21,8 @@ class Components {
             decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(
-                    color: Color.fromARGB(255, 165, 163, 163), width: 0.5),
+                    color: const Color.fromARGB(255, 165, 163, 163),
+                    width: 0.5),
                 borderRadius: BorderRadius.circular(10)),
             child: Column(children: [
               Spacing().verticalSpace(context, 0.05),
@@ -31,7 +32,7 @@ class Components {
                 Container(
                   width: 1,
                   height: Sizes().ratioWithScrHeight(context, 0.06),
-                  color: Color.fromARGB(255, 167, 163, 163),
+                  color: const Color.fromARGB(255, 167, 163, 163),
                 ),
                 Spacing().horizontalSpace(context, 0.07),
                 firstTwoTasks[1]
@@ -56,7 +57,7 @@ class Components {
         Text(
           task,
           style: txtStyle(
-              color: Color.fromARGB(255, 90, 88, 88),
+              color: const Color.fromARGB(255, 90, 88, 88),
               size: 14,
               weight: FontWeight.w700),
         ),

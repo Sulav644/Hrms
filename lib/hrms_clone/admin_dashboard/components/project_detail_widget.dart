@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:hrms_clone/hrms_clone/admin_dashboard/data/detail_banner.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/project_detail_page.dart';
-
 import '../../../core/utils.dart';
 import '../core/components.dart';
 
@@ -14,7 +11,7 @@ class ProjectDetailWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigation().navigateTo(context, ProjectDetailPage()),
+      onTap: () => Navigation().navigateTo(context, const ProjectDetailPage()),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -31,7 +28,8 @@ class ProjectDetailWidget extends StatelessWidget {
                 Text(
                   'open tasks, ',
                   style: txtStyle(
-                      size: 11, color: Color.fromARGB(255, 122, 121, 121)),
+                      size: 11,
+                      color: const Color.fromARGB(255, 122, 121, 121)),
                 ),
                 Text(
                   '${e.completedTask} ',
@@ -41,7 +39,8 @@ class ProjectDetailWidget extends StatelessWidget {
                 Text(
                   'tasks completed',
                   style: txtStyle(
-                      size: 11, color: Color.fromARGB(255, 122, 121, 121)),
+                      size: 11,
+                      color: const Color.fromARGB(255, 122, 121, 121)),
                 ),
               ]),
               statusBar(context: context, children: [
@@ -49,12 +48,12 @@ class ProjectDetailWidget extends StatelessWidget {
                     context: context,
                     width: 0.17,
                     borderRad: [10, 10, 10, 10],
-                    color: Color.fromARGB(255, 223, 220, 220)),
+                    color: const Color.fromARGB(255, 223, 220, 220)),
                 labelBar(
                     context: context,
                     width: e.levelBar!,
                     borderRad: [10, 10, 0, 0],
-                    color: Color.fromARGB(255, 2, 37, 66)),
+                    color: const Color.fromARGB(255, 2, 37, 66)),
               ]),
               popupMenuButton(context: context, children: [
                 popupMenuItem(
@@ -105,7 +104,7 @@ class ProjectDetailWidget extends StatelessWidget {
       );
   Widget titleOpenTaskAndCompletedTask(
           {required BuildContext context, required List<Widget> children}) =>
-      Container(
+      SizedBox(
         width: Sizes().ratioWithScrWidth(context, 0.5),
         height: Sizes().ratioWithScrHeight(context, 0.08),
         child: Column(

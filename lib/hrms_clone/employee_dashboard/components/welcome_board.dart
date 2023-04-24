@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-
 import '../../../core/utils.dart';
 
 class WelcomeBoard extends StatelessWidget {
@@ -11,7 +8,7 @@ class WelcomeBoard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: Sizes().scrWidth(context),
-        decoration: BoxDecoration(color: Colors.white, boxShadow: [
+        decoration: const BoxDecoration(color: Colors.white, boxShadow: [
           BoxShadow(
               color: Color.fromARGB(255, 141, 140, 140), offset: Offset(0, 0.8))
         ]),
@@ -39,7 +36,7 @@ class WelcomeBoard extends StatelessWidget {
                 Text(
                   'Monday, 20 May 2019',
                   style: txtStyle(
-                      color: Color.fromARGB(255, 119, 117, 117),
+                      color: const Color.fromARGB(255, 119, 117, 117),
                       size: 18,
                       weight: FontWeight.w400),
                 )

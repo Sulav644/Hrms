@@ -9,12 +9,12 @@ class Components {
           required double borderRad}) =>
       Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 153, 69),
+            color: const Color.fromARGB(255, 255, 153, 69),
             borderRadius: BorderRadius.circular(borderRad)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
-            Icon(
+            const Icon(
               Icons.add,
               size: 16,
               color: Colors.white,

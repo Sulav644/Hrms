@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:intl/intl.dart';
-
 import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
 import '../holidays/components/horiz_list_tile.dart';
 import '../view_more_projects/components/entries_limit_widget.dart';
 
 class ProvidentFund extends StatefulWidget {
-  ProvidentFund({super.key});
+  const ProvidentFund({super.key});
 
   @override
   State<ProvidentFund> createState() => _ProvidentFundState();
@@ -50,7 +46,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Add Assets',
+                                      'Add Provident Fund',
                                       style: txtStyle(
                                           size: 22, weight: FontWeight.w600),
                                     ),
@@ -63,109 +59,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                       Row(
                                         children: [
                                           Text(
-                                            'Asset Name',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Asset Id',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          enabled: false,
-                                          controller: TextEditingController(
-                                              text: '#AST-736415'),
-                                          decoration: InputDecoration(
-                                            fillColor: Color.fromARGB(
-                                                255, 155, 153, 153),
-                                            filled: true,
-                                            border: OutlineInputBorder(),
-                                          )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Purchase Date',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          enabled: false,
-                                          controller: TextEditingController(
-                                              text: '21/04/2323'),
-                                          decoration: InputDecoration(
-                                            fillColor: Color.fromARGB(
-                                                255, 155, 153, 153),
-                                            filled: true,
-                                            border: OutlineInputBorder(),
-                                          )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Purchase From',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Manufacturer',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Model',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Status',
+                                            'Employee Name',
                                             style: txtStyle(
                                                 weight: FontWeight.w400),
                                           ),
@@ -175,7 +69,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                       Container(
                                         height: Sizes()
                                             .ratioWithScrHeight(context, 0.075),
-                                        padding: EdgeInsets.all(8),
+                                        padding: const EdgeInsets.all(8),
                                         decoration: BoxDecoration(
                                             border:
                                                 Border.all(color: Colors.black),
@@ -184,15 +78,15 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                         child: DropdownButtonHideUnderline(
                                           child: DropdownButton(
                                             isExpanded: true,
-                                            value: status ?? 'Pending',
+                                            value:
+                                                status ?? 'John Doe (FT-0001)',
                                             items: [
-                                              'Pending',
-                                              'Approved',
-                                              'Deployed',
-                                              'Damaged'
+                                              'John Doe (FT-0001)',
+                                              'Richard Miles (FT-0002)',
                                             ]
                                                 .map(
                                                   (e) => DropdownMenuItem(
+                                                    value: e,
                                                     child: Text(
                                                       e,
                                                       style: txtStyle(
@@ -200,13 +94,12 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                                               ? Colors.red
                                                               : Colors.black),
                                                     ),
-                                                    value: e,
                                                   ),
                                                 )
                                                 .toList(),
                                             onChanged: (value) {
                                               setState(() {
-                                                this.status = value;
+                                                status = value;
                                               });
                                             },
                                           ),
@@ -216,106 +109,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                       Row(
                                         children: [
                                           Text(
-                                            'Supplier',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Condition',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Warrenty',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        hintText: 'In Months',
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Value/Price',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        hintText: '1800',
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Resignation Date',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                          Text(
-                                            ' *',
-                                            style: txtStyle(color: Colors.red),
-                                          )
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      GestureDetector(
-                                        onTap: () async {
-                                          DateTime? newDate =
-                                              await showDatePicker(
-                                                  context: context,
-                                                  initialDate: DateTime.now(),
-                                                  firstDate: DateTime.now(),
-                                                  lastDate: DateTime(2024));
-                                          if (newDate != null) {
-                                            print(DateFormat('yyyy-MM-dd')
-                                                .format(newDate!));
-                                            setState(() {});
-                                          }
-                                        },
-                                        child: TextField(
-                                          enabled: false,
-                                          decoration: InputDecoration(
-                                              border: OutlineInputBorder(),
-                                              suffixIcon:
-                                                  Icon(Icons.calendar_month)),
-                                        ),
-                                      ),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Asset User',
+                                            'Provident Fund Type',
                                             style: txtStyle(
                                                 weight: FontWeight.w400),
                                           ),
@@ -325,7 +119,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                       Container(
                                         height: Sizes()
                                             .ratioWithScrHeight(context, 0.075),
-                                        padding: EdgeInsets.all(8),
+                                        padding: const EdgeInsets.all(8),
                                         decoration: BoxDecoration(
                                             border:
                                                 Border.all(color: Colors.black),
@@ -334,13 +128,14 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                         child: DropdownButtonHideUnderline(
                                           child: DropdownButton(
                                             isExpanded: true,
-                                            value: user ?? 'John Doe',
+                                            value: user ?? 'Fixed Amount',
                                             items: [
-                                              'John Doe',
-                                              'Richard Miles',
+                                              'Fixed Amount',
+                                              'Percentage of Basic Salary',
                                             ]
                                                 .map(
                                                   (e) => DropdownMenuItem(
+                                                    value: e,
                                                     child: Text(
                                                       e,
                                                       style: txtStyle(
@@ -348,18 +143,77 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                                               ? Colors.red
                                                               : Colors.black),
                                                     ),
-                                                    value: e,
                                                   ),
                                                 )
                                                 .toList(),
                                             onChanged: (value) {
                                               setState(() {
-                                                this.user = value;
+                                                user = value;
                                               });
                                             },
                                           ),
                                         ),
                                       ),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Employee Share (Amount)',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      const TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Organization Share (Amount)',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      const TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Employee Share (%)',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      const TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Organization Share (%)',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      const TextField(
+                                          decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                      )),
                                       Spacing().verticalSpace(context, 0.02),
                                       Row(
                                         children: [
@@ -375,7 +229,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           maxLines: 3,
                                           decoration: InputDecoration(
                                             border: OutlineInputBorder(),
@@ -403,7 +257,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
 
                                               setState(() {});
                                             },
-                                            child: Text('Submit')),
+                                            child: const Text('Submit')),
                                       )
                                     ]),
                               ),
@@ -419,7 +273,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
                       borderRad: 20))
             ]),
             Spacing().verticalSpace(context, 0.04),
-            EntriesLimitWidget(),
+            const EntriesLimitWidget(),
             Spacing().verticalSpace(context, 0.035),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -429,7 +283,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
                   Container(
                     height: Sizes().ratioWithScrHeight(context, 0.097),
                     alignment: Alignment.topCenter,
-                    color: Color.fromARGB(255, 209, 206, 206),
+                    color: const Color.fromARGB(255, 209, 206, 206),
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -454,7 +308,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.23,
@@ -470,7 +324,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.2,
@@ -486,7 +340,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.26,
@@ -502,7 +356,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.24,
@@ -518,7 +372,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.16,
@@ -534,7 +388,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             )
                           ]),
                         ),
@@ -550,7 +404,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
                           width: 0.45,
                           child: Row(
                             children: [
-                              CircleAvatar(
+                              const CircleAvatar(
                                 backgroundImage: AssetImage(
                                     'assets/images/member_list/download.jpg'),
                                 radius: 16,
@@ -606,15 +460,8 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                   context: context,
                                   onClick: () {},
                                   color: Colors.red,
-                                  child: Text('Pending')),
+                                  child: const Text('Pending')),
                               PopupMenuButton(
-                                child: Container(
-                                  width:
-                                      Sizes().ratioWithScrWidth(context, 0.3),
-                                  height:
-                                      Sizes().ratioWithScrHeight(context, 0.04),
-                                  color: Colors.transparent,
-                                ),
                                 padding: EdgeInsets.zero,
                                 offset: Offset(
                                     Sizes().ratioWithScrWidth(context, 0.01),
@@ -622,6 +469,15 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                 itemBuilder: (context) {
                                   return [
                                     PopupMenuItem(
+                                      padding: EdgeInsets.only(
+                                        top: Sizes()
+                                            .ratioWithScrWidth(context, 0.02),
+                                        left: Sizes()
+                                            .ratioWithScrWidth(context, 0.03),
+                                        bottom: Sizes()
+                                            .ratioWithScrWidth(context, 0.02),
+                                      ),
+                                      height: 0,
                                       child: Row(
                                         children: [
                                           circleInd(context, Colors.red),
@@ -634,6 +490,8 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                           ),
                                         ],
                                       ),
+                                    ),
+                                    PopupMenuItem(
                                       padding: EdgeInsets.only(
                                         top: Sizes()
                                             .ratioWithScrWidth(context, 0.02),
@@ -643,8 +501,6 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                             .ratioWithScrWidth(context, 0.02),
                                       ),
                                       height: 0,
-                                    ),
-                                    PopupMenuItem(
                                       child: Row(
                                         children: [
                                           circleInd(context, Colors.green),
@@ -657,6 +513,8 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                           ),
                                         ],
                                       ),
+                                    ),
+                                    PopupMenuItem(
                                       padding: EdgeInsets.only(
                                         top: Sizes()
                                             .ratioWithScrWidth(context, 0.02),
@@ -666,8 +524,6 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                             .ratioWithScrWidth(context, 0.02),
                                       ),
                                       height: 0,
-                                    ),
-                                    PopupMenuItem(
                                       child: Row(
                                         children: [
                                           circleInd(context, Colors.blue),
@@ -680,18 +536,16 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                           ),
                                         ],
                                       ),
-                                      padding: EdgeInsets.only(
-                                        top: Sizes()
-                                            .ratioWithScrWidth(context, 0.02),
-                                        left: Sizes()
-                                            .ratioWithScrWidth(context, 0.03),
-                                        bottom: Sizes()
-                                            .ratioWithScrWidth(context, 0.02),
-                                      ),
-                                      height: 0,
                                     ),
                                   ];
                                 },
+                                child: Container(
+                                  width:
+                                      Sizes().ratioWithScrWidth(context, 0.3),
+                                  height:
+                                      Sizes().ratioWithScrHeight(context, 0.04),
+                                  color: Colors.transparent,
+                                ),
                               ),
                             ],
                           )),
@@ -710,21 +564,6 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                     'Edit',
                                     'Delete',
                                   ].map((e) => PopupMenuItem(
-                                        child: Row(
-                                          children: [
-                                            e == 'Edit'
-                                                ? Icon(Icons.edit_outlined)
-                                                : Icon(Icons.delete_outline),
-                                            Spacing()
-                                                .horizontalSpace(context, 0.02),
-                                            Text(
-                                              e,
-                                              style: txtStyle(
-                                                  size: 13,
-                                                  weight: FontWeight.w400),
-                                            ),
-                                          ],
-                                        ),
                                         padding: EdgeInsets.only(
                                             top: Sizes().ratioWithScrWidth(
                                                 context, 0.02),
@@ -735,6 +574,23 @@ class _ProvidentFundState extends State<ProvidentFund> {
                                             right: Sizes().ratioWithScrWidth(
                                                 context, 0.1)),
                                         height: 0,
+                                        child: Row(
+                                          children: [
+                                            e == 'Edit'
+                                                ? const Icon(
+                                                    Icons.edit_outlined)
+                                                : const Icon(
+                                                    Icons.delete_outline),
+                                            Spacing()
+                                                .horizontalSpace(context, 0.02),
+                                            Text(
+                                              e,
+                                              style: txtStyle(
+                                                  size: 13,
+                                                  weight: FontWeight.w400),
+                                            ),
+                                          ],
+                                        ),
                                       ))
                                 ];
                               },
@@ -755,7 +611,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
           width: Sizes().ratioWithScrWidth(context, 0.11),
           height: Sizes().ratioWithScrHeight(context, 0.02),
           alignment: alignment,
-          child: Container(
+          child: SizedBox(
             height: 20,
             child: GestureDetector(
               onTap: () => onClick(),
@@ -775,7 +631,7 @@ class _ProvidentFundState extends State<ProvidentFund> {
                     child: Icon(
                       icon[1],
                       size: 16,
-                      color: Color.fromARGB(255, 139, 138, 138),
+                      color: const Color.fromARGB(255, 139, 138, 138),
                     ),
                   ),
                 ],
@@ -796,14 +652,14 @@ class _ProvidentFundState extends State<ProvidentFund> {
             decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(
-                    color: Color.fromARGB(255, 51, 50, 50), width: 0.5),
+                    color: const Color.fromARGB(255, 51, 50, 50), width: 0.5),
                 borderRadius: BorderRadius.circular(20)),
             alignment: Alignment.center,
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               circleInd(context, color),
               Spacing().horizontalSpace(context, 0.018),
               child,
-              Icon(Icons.arrow_drop_down)
+              const Icon(Icons.arrow_drop_down)
             ])),
       );
 
@@ -847,12 +703,12 @@ class _ProvidentFundState extends State<ProvidentFund> {
           required double borderRad}) =>
       Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 153, 69),
+            color: const Color.fromARGB(255, 255, 153, 69),
             borderRadius: BorderRadius.circular(borderRad)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
-            Icon(
+            const Icon(
               Icons.add,
               size: 16,
               color: Colors.white,

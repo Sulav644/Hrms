@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:intl/intl.dart';
-
 import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
-import '../holidays/components/horiz_list_tile.dart';
 import '../project_detail_&_member/core/components.dart';
-import '../view_more_projects/components/entries_limit_widget.dart';
 
 class PaySlip extends StatefulWidget {
-  PaySlip({super.key});
+  const PaySlip({super.key});
 
   @override
   State<PaySlip> createState() => _PaySlipState();
@@ -32,49 +26,59 @@ class _PaySlipState extends State<PaySlip> {
         onClick: () {},
         children: [
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Spacing().verticalSpace(context, 0.02),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              Text('Payslip'),
+              Text(
+                'Payslip',
+                style: txtStyle(size: 18, weight: FontWeight.w600),
+              ),
               Row(children: [
                 Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.only(
+                        border: Border.all(
+                            color: const Color.fromARGB(255, 80, 78, 78)),
+                        borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(6),
                             bottomLeft: Radius.circular(6))),
-                    child: Padding(
-                      padding: const EdgeInsets.all(6.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(6.0),
                       child: Text('CSV'),
                     )),
                 Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                       border: Border(
-                          top: BorderSide(color: Colors.black),
-                          bottom: BorderSide(color: Colors.black)),
+                          top: BorderSide(
+                              color: Color.fromARGB(255, 80, 78, 78)),
+                          bottom: BorderSide(
+                              color: Color.fromARGB(255, 80, 78, 78))),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(6.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(6.0),
                       child: Text('PDF'),
                     )),
                 Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.only(
+                        border: Border.all(
+                            color: const Color.fromARGB(255, 80, 78, 78)),
+                        borderRadius: const BorderRadius.only(
                             topRight: Radius.circular(6),
                             bottomRight: Radius.circular(6))),
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: Row(
                         children: [
-                          Icon(Icons.print),
-                          Text('Print'),
+                          const Icon(Icons.print_outlined),
+                          Spacing().horizontalSpace(context, 0.01),
+                          const Text('Print'),
                         ],
                       ),
                     )),
               ]),
             ]),
+            Spacing().verticalSpace(context, 0.04),
             Components().detailCard(
                 context: context,
                 padWid: 0.07,
@@ -87,16 +91,31 @@ class _PaySlipState extends State<PaySlip> {
                     style: txtStyle(
                         size: 18,
                         height: 1.4,
-                        underLine: TextDecoration.underline),
+                        underLine: TextDecoration.underline,
+                        weight: FontWeight.w600),
                   ),
+                  Spacing().verticalSpace(context, 0.02),
                   Image.asset('assets/images/company_logo.png'),
+                  Spacing().verticalSpace(context, 0.03),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Dreamguy's Technologies"),
-                        Text('3864 Quiet Valley Lane,'),
-                        Text('Sherman Oaks, CA, 91403'),
+                        Text(
+                          "Dreamguy's Technologies",
+                          style: txtStyle(weight: FontWeight.w400),
+                        ),
+                        Spacing().verticalSpace(context, 0.013),
+                        Text(
+                          '3864 Quiet Valley Lane,',
+                          style: txtStyle(weight: FontWeight.w400),
+                        ),
+                        Spacing().verticalSpace(context, 0.013),
+                        Text(
+                          'Sherman Oaks, CA, 91403',
+                          style: txtStyle(weight: FontWeight.w400),
+                        ),
                       ]),
+                  Spacing().verticalSpace(context, 0.04),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -105,25 +124,52 @@ class _PaySlipState extends State<PaySlip> {
                           children: [
                             Text(
                               "PAYSLIP #49029",
-                              style: txtStyle(size: 22.5),
+                              style:
+                                  txtStyle(size: 22.5, weight: FontWeight.w600),
                             ),
-                            Text('Salary Month: March, 2019,'),
+                            Spacing().verticalSpace(context, 0.01),
+                            Text(
+                              'Salary Month: March, 2019',
+                              style: txtStyle(weight: FontWeight.w400),
+                            ),
                           ]),
                     ],
                   ),
+                  Spacing().verticalSpace(context, 0.04),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("John Doe"),
-                        Text('Web Designer'),
-                        Text('Employee ID: FT-009'),
-                        Text('Joining Date: 1 Jan 2013'),
+                        Text(
+                          "John Doe",
+                          style: txtStyle(weight: FontWeight.w600),
+                        ),
+                        Spacing().verticalSpace(context, 0.01),
+                        Text(
+                          'Web Designer',
+                          style: txtStyle(weight: FontWeight.w400),
+                        ),
+                        Spacing().verticalSpace(context, 0.01),
+                        Text(
+                          'Employee ID: FT-009',
+                          style: txtStyle(weight: FontWeight.w400),
+                        ),
+                        Spacing().verticalSpace(context, 0.01),
+                        Text(
+                          'Joining Date: 1 Jan 2013',
+                          style: txtStyle(weight: FontWeight.w400),
+                        ),
                         Spacing().verticalSpace(context, 0.05),
-                        Text('Earnings'),
+                        Text(
+                          'Earnings',
+                          style: txtStyle(size: 18, weight: FontWeight.w600),
+                        ),
+                        Spacing().verticalSpace(context, 0.02),
                         Container(
                           decoration: BoxDecoration(
                               color: Colors.white,
-                              border: Border.all(color: Colors.black),
+                              border: Border.all(
+                                  color:
+                                      const Color.fromARGB(255, 194, 190, 190)),
                               borderRadius: BorderRadius.circular(2)),
                           child: Column(
                             children: [
@@ -137,11 +183,18 @@ class _PaySlipState extends State<PaySlip> {
                             ],
                           ),
                         ),
-                        Text('Deductions'),
+                        Spacing().verticalSpace(context, 0.02),
+                        Text(
+                          'Deductions',
+                          style: txtStyle(size: 18, weight: FontWeight.w600),
+                        ),
+                        Spacing().verticalSpace(context, 0.02),
                         Container(
                           decoration: BoxDecoration(
                               color: Colors.white,
-                              border: Border.all(color: Colors.black),
+                              border: Border.all(
+                                  color:
+                                      const Color.fromARGB(255, 173, 169, 169)),
                               borderRadius: BorderRadius.circular(2)),
                           child: Column(
                             children: [
@@ -156,17 +209,22 @@ class _PaySlipState extends State<PaySlip> {
                             ],
                           ),
                         ),
+                        Spacing().verticalSpace(context, 0.02),
                         Wrap(
                           children: [
                             Text(
                               'Net Salary: \$59698 ',
                               style: txtStyle(
-                                  weight: FontWeight.w600, height: 1.2),
+                                  weight: FontWeight.w600, height: 1.6),
                             ),
                             ...'(Fifty nine thousand six hundred and ninety eight only)'
                                 .split(" ")
                                 .map(
-                                  (e) => Text(e),
+                                  (e) => Text(
+                                    '$e ',
+                                    style: txtStyle(
+                                        weight: FontWeight.w400, height: 1.6),
+                                  ),
                                 )
                                 .toList()
                           ],
@@ -181,16 +239,28 @@ class _PaySlipState extends State<PaySlip> {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(
-                vertical: Sizes().ratioWithScrHeight(context, 0.01),
-                horizontal: Sizes().ratioWithScrWidth(context, 0.02)),
+                vertical: Sizes().ratioWithScrHeight(context, 0.02),
+                horizontal: Sizes().ratioWithScrWidth(context, 0.03)),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text(field), Text('\$${price}')]),
+                children: [
+                  Text(
+                    field,
+                    style: txtStyle(weight: FontWeight.w600),
+                  ),
+                  Text(
+                    '\$$price',
+                    style: txtStyle(
+                        weight: field.contains('Total')
+                            ? FontWeight.w600
+                            : FontWeight.w400),
+                  )
+                ]),
           ),
           Container(
             width: Sizes().scrWidth(context),
             height: 1,
-            color: Colors.black,
+            color: const Color.fromARGB(255, 192, 187, 187),
           )
         ],
       );

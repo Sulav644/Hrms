@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:intl/intl.dart';
-
 import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
 import '../holidays/components/horiz_list_tile.dart';
 import '../view_more_projects/components/entries_limit_widget.dart';
 
 class TimeSheet extends StatefulWidget {
-  TimeSheet({super.key});
+  const TimeSheet({super.key});
 
   @override
   State<TimeSheet> createState() => _TimeSheetState();
@@ -47,13 +44,34 @@ class _TimeSheetState extends State<TimeSheet> {
                           builder: (context, setState) {
                             return SingleChildScrollView(
                               child: AlertDialog(
-                                title: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                title: Column(
                                   children: [
-                                    Text(
-                                      'Add Today Work details',
-                                      style: txtStyle(
-                                          size: 20, weight: FontWeight.w600),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        SizedBox(
+                                          width: 20,
+                                          height: 30,
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: const Icon(Icons.cancel),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Add Today Work details',
+                                          style: txtStyle(
+                                              size: 20,
+                                              weight: FontWeight.w600),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
@@ -78,7 +96,7 @@ class _TimeSheetState extends State<TimeSheet> {
                                       Container(
                                         height: Sizes()
                                             .ratioWithScrHeight(context, 0.075),
-                                        padding: EdgeInsets.all(8),
+                                        padding: const EdgeInsets.all(8),
                                         decoration: BoxDecoration(
                                             border:
                                                 Border.all(color: Colors.black),
@@ -97,6 +115,7 @@ class _TimeSheetState extends State<TimeSheet> {
                                             ]
                                                 .map(
                                                   (e) => DropdownMenuItem(
+                                                    value: e,
                                                     child: Text(
                                                       e,
                                                       style: txtStyle(
@@ -105,13 +124,12 @@ class _TimeSheetState extends State<TimeSheet> {
                                                               ? Colors.red
                                                               : Colors.black),
                                                     ),
-                                                    value: e,
                                                   ),
                                                 )
                                                 .toList(),
                                             onChanged: (value) {
                                               setState(() {
-                                                this.projectValue = value;
+                                                projectValue = value;
                                               });
                                             },
                                           ),
@@ -135,7 +153,7 @@ class _TimeSheetState extends State<TimeSheet> {
                                       TextField(
                                           controller: TextEditingController(
                                               text: '5 May 2019'),
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                               suffixIcon:
                                                   Icon(Icons.calendar_month),
                                               border: OutlineInputBorder(),
@@ -160,7 +178,7 @@ class _TimeSheetState extends State<TimeSheet> {
                                       TextField(
                                           controller: TextEditingController(
                                               text: '100'),
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                               suffixIcon:
                                                   Icon(Icons.calendar_month),
                                               border: OutlineInputBorder(),
@@ -185,7 +203,7 @@ class _TimeSheetState extends State<TimeSheet> {
                                       TextField(
                                           controller:
                                               TextEditingController(text: '60'),
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                               suffixIcon:
                                                   Icon(Icons.calendar_month),
                                               border: OutlineInputBorder(),
@@ -215,8 +233,6 @@ class _TimeSheetState extends State<TimeSheet> {
                                                   firstDate: DateTime.now(),
                                                   lastDate: DateTime(2024));
                                           if (newDate != null) {
-                                            print(DateFormat('yyyy-MM-dd')
-                                                .format(newDate!));
                                             setState(() {});
                                           }
                                         },
@@ -225,7 +241,7 @@ class _TimeSheetState extends State<TimeSheet> {
                                           controller: TextEditingController(
                                               text: DateFormat('yyyy-MM-dd')
                                                   .format(DateTime.now())),
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                               border: OutlineInputBorder(),
                                               suffixIcon:
                                                   Icon(Icons.calendar_month)),
@@ -246,7 +262,7 @@ class _TimeSheetState extends State<TimeSheet> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -265,7 +281,7 @@ class _TimeSheetState extends State<TimeSheet> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           maxLines: 3,
                                           decoration: InputDecoration(
                                             border: OutlineInputBorder(),
@@ -293,7 +309,7 @@ class _TimeSheetState extends State<TimeSheet> {
 
                                               setState(() {});
                                             },
-                                            child: Text('Submit')),
+                                            child: const Text('Submit')),
                                       )
                                     ]),
                               ),
@@ -307,7 +323,7 @@ class _TimeSheetState extends State<TimeSheet> {
                       context: context, title: 'Add Today Work', borderRad: 20))
             ]),
             Spacing().verticalSpace(context, 0.04),
-            EntriesLimitWidget(),
+            const EntriesLimitWidget(),
             Spacing().verticalSpace(context, 0.03),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -317,7 +333,7 @@ class _TimeSheetState extends State<TimeSheet> {
                   Container(
                     height: Sizes().ratioWithScrHeight(context, 0.097),
                     alignment: Alignment.topCenter,
-                    color: Color.fromARGB(255, 209, 206, 206),
+                    color: const Color.fromARGB(255, 209, 206, 206),
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -341,7 +357,7 @@ class _TimeSheetState extends State<TimeSheet> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.12,
@@ -356,7 +372,7 @@ class _TimeSheetState extends State<TimeSheet> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.2,
@@ -371,7 +387,7 @@ class _TimeSheetState extends State<TimeSheet> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.2,
@@ -386,7 +402,7 @@ class _TimeSheetState extends State<TimeSheet> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.12,
@@ -401,7 +417,7 @@ class _TimeSheetState extends State<TimeSheet> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.16,
@@ -416,7 +432,7 @@ class _TimeSheetState extends State<TimeSheet> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             )
                           ]),
                         ),
@@ -434,7 +450,7 @@ class _TimeSheetState extends State<TimeSheet> {
                               width: 0.48,
                               child: Row(
                                 children: [
-                                  CircleAvatar(
+                                  const CircleAvatar(
                                     backgroundImage: AssetImage(
                                         'assets/images/member_list/download.jpg'),
                                   ),
@@ -495,22 +511,6 @@ class _TimeSheetState extends State<TimeSheet> {
                                         'Edit',
                                         'Delete',
                                       ].map((e) => PopupMenuItem(
-                                            child: Row(
-                                              children: [
-                                                e == 'Edit'
-                                                    ? Icon(Icons.edit_outlined)
-                                                    : Icon(
-                                                        Icons.delete_outline),
-                                                Spacing().horizontalSpace(
-                                                    context, 0.02),
-                                                Text(
-                                                  e,
-                                                  style: txtStyle(
-                                                      size: 13,
-                                                      weight: FontWeight.w400),
-                                                ),
-                                              ],
-                                            ),
                                             padding: EdgeInsets.only(
                                                 top: Sizes().ratioWithScrWidth(
                                                     context, 0.02),
@@ -523,6 +523,23 @@ class _TimeSheetState extends State<TimeSheet> {
                                                     .ratioWithScrWidth(
                                                         context, 0.1)),
                                             height: 0,
+                                            child: Row(
+                                              children: [
+                                                e == 'Edit'
+                                                    ? const Icon(
+                                                        Icons.edit_outlined)
+                                                    : const Icon(
+                                                        Icons.delete_outline),
+                                                Spacing().horizontalSpace(
+                                                    context, 0.02),
+                                                Text(
+                                                  e,
+                                                  style: txtStyle(
+                                                      size: 13,
+                                                      weight: FontWeight.w400),
+                                                ),
+                                              ],
+                                            ),
                                           ))
                                     ];
                                   },
@@ -534,7 +551,7 @@ class _TimeSheetState extends State<TimeSheet> {
                       Container(
                         width: Sizes().ratioWithScrWidth(context, 0.2),
                         height: Sizes().ratioWithScrHeight(context, 0.002),
-                        color: Color.fromARGB(255, 199, 195, 195),
+                        color: const Color.fromARGB(255, 199, 195, 195),
                       )
                     ],
                   ),
@@ -556,8 +573,9 @@ class _TimeSheetState extends State<TimeSheet> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                  color: Color.fromARGB(255, 187, 184, 184)),
-                              borderRadius: BorderRadius.only(
+                                  color:
+                                      const Color.fromARGB(255, 187, 184, 184)),
+                              borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(6),
                                   bottomLeft: Radius.circular(6))),
                           child: Padding(
@@ -569,7 +587,7 @@ class _TimeSheetState extends State<TimeSheet> {
                             ),
                           )),
                       Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Colors.orange,
                               border: Border(
                                 top: BorderSide(
@@ -589,9 +607,9 @@ class _TimeSheetState extends State<TimeSheet> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                color: Color.fromARGB(255, 187, 184, 184),
+                                color: const Color.fromARGB(255, 187, 184, 184),
                               ),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                   topRight: Radius.circular(6),
                                   bottomRight: Radius.circular(6))),
                           child: Padding(
@@ -617,12 +635,12 @@ class _TimeSheetState extends State<TimeSheet> {
           required double borderRad}) =>
       Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 153, 69),
+            color: const Color.fromARGB(255, 255, 153, 69),
             borderRadius: BorderRadius.circular(borderRad)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
-            Icon(
+            const Icon(
               Icons.add,
               size: 16,
               color: Colors.white,
@@ -642,7 +660,7 @@ class _TimeSheetState extends State<TimeSheet> {
           width: Sizes().ratioWithScrWidth(context, 0.11),
           height: Sizes().ratioWithScrHeight(context, 0.02),
           alignment: alignment,
-          child: Container(
+          child: SizedBox(
             height: 20,
             child: GestureDetector(
               onTap: () => onClick(),
@@ -662,7 +680,7 @@ class _TimeSheetState extends State<TimeSheet> {
                     child: Icon(
                       icon[1],
                       size: 16,
-                      color: Color.fromARGB(255, 139, 138, 138),
+                      color: const Color.fromARGB(255, 139, 138, 138),
                     ),
                   ),
                 ],

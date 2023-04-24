@@ -4,7 +4,7 @@ import 'package:hrms_clone/hrms_clone/holidays/data/holiday_date.dart';
 class AddHolidayCubit extends Cubit<List<HolidayDate>> {
   AddHolidayCubit()
       : super([
-          HolidayDate(name: 'Christmas', date: '2023-12-25'),
+          const HolidayDate(name: 'Christmas', date: '2023-12-25'),
         ]);
   bool checkParameters(HolidayDate holidayDate) {
     bool validParams = false;

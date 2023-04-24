@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-
 import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
 import '../holidays/components/horiz_list_tile.dart';
 import '../view_more_projects/components/entries_limit_widget.dart';
 import 'data/user_detail.dart';
 
-final path = 'assets/images/member_list';
+const path = 'assets/images/member_list';
 List<UserDetail> usersList = [
-  UserDetail(
-      image: '${path}/download.jpg',
+  const UserDetail(
+      image: '$path/download.jpg',
       name: 'BarryCudo',
       nickName: 'Barry',
       email: 'barrycuda@example.com',
       phone: '9876543210',
       address: 'Los \nAngeles,\nCalifornia',
       date: '2020-09-21\n19:04:47'),
-  UserDetail(
-      image: '${path}/downloadTwo.jpg',
+  const UserDetail(
+      image: '$path/downloadTwo.jpg',
       name: 'YahuzaAbdul-Hakim',
       nickName: 'Vendetta',
       email: 'musheabdulhakim@protonmail.ch',
@@ -29,7 +26,7 @@ List<UserDetail> usersList = [
 ];
 
 class Users extends StatefulWidget {
-  Users({super.key});
+  const Users({super.key});
 
   @override
   State<Users> createState() => _UsersState();
@@ -96,7 +93,7 @@ class _UsersState extends State<Users> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -111,7 +108,7 @@ class _UsersState extends State<Users> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -130,7 +127,7 @@ class _UsersState extends State<Users> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -148,7 +145,7 @@ class _UsersState extends State<Users> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -163,7 +160,7 @@ class _UsersState extends State<Users> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -177,7 +174,7 @@ class _UsersState extends State<Users> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -191,7 +188,7 @@ class _UsersState extends State<Users> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -205,7 +202,7 @@ class _UsersState extends State<Users> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -228,10 +225,10 @@ class _UsersState extends State<Users> {
                                                         Colors.orange),
                                               ),
                                               onPressed: () {},
-                                              child: Text('Choose File')),
+                                              child: const Text('Choose File')),
                                           Spacing()
                                               .horizontalSpace(context, 0.01),
-                                          Text('No file chosen')
+                                          const Text('No file chosen')
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.04),
@@ -257,7 +254,7 @@ class _UsersState extends State<Users> {
 
                                               setState(() {});
                                             },
-                                            child: Text('Submit')),
+                                            child: const Text('Submit')),
                                       )
                                     ]),
                               ),
@@ -271,24 +268,28 @@ class _UsersState extends State<Users> {
                       context: context, title: 'Add Asset', borderRad: 20))
             ]),
             Spacing().verticalSpace(context, 0.04),
-            TextField(
+            const TextField(
                 decoration: InputDecoration(
               hintText: 'Employee Name',
+              fillColor: Colors.white,
+              filled: true,
               border: OutlineInputBorder(),
             )),
+            Spacing().verticalSpace(context, 0.02),
             Row(
               children: [
                 Container(
                   width: Sizes().ratioWithScrWidth(context, 0.94),
                   height: Sizes().ratioWithScrHeight(context, 0.075),
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
+                      color: Colors.white,
                       border: Border.all(color: Colors.black),
                       borderRadius: BorderRadius.circular(2)),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
                       isExpanded: true,
-                      value: companyValue,
+                      value: companyValue ?? 'Select Company',
                       items: [
                         'Select Company',
                         'Global Technologies',
@@ -296,6 +297,7 @@ class _UsersState extends State<Users> {
                       ]
                           .map(
                             (e) => DropdownMenuItem(
+                              value: e,
                               child: Text(
                                 e,
                                 style: txtStyle(
@@ -303,13 +305,12 @@ class _UsersState extends State<Users> {
                                         ? Colors.red
                                         : Colors.black),
                               ),
-                              value: e,
                             ),
                           )
                           .toList(),
                       onChanged: (value) {
                         setState(() {
-                          this.companyValue = value;
+                          companyValue = value;
                         });
                       },
                     ),
@@ -317,19 +318,21 @@ class _UsersState extends State<Users> {
                 ),
               ],
             ),
+            Spacing().verticalSpace(context, 0.02),
             Row(
               children: [
                 Container(
                   width: Sizes().ratioWithScrWidth(context, 0.94),
                   height: Sizes().ratioWithScrHeight(context, 0.075),
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
+                      color: Colors.white,
                       border: Border.all(color: Colors.black),
                       borderRadius: BorderRadius.circular(2)),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
                       isExpanded: true,
-                      value: rollValue,
+                      value: rollValue ?? 'Select Roll',
                       items: [
                         'Select Roll',
                         'Web Developer',
@@ -339,6 +342,7 @@ class _UsersState extends State<Users> {
                       ]
                           .map(
                             (e) => DropdownMenuItem(
+                              value: e,
                               child: Text(
                                 e,
                                 style: txtStyle(
@@ -346,13 +350,12 @@ class _UsersState extends State<Users> {
                                         ? Colors.red
                                         : Colors.black),
                               ),
-                              value: e,
                             ),
                           )
                           .toList(),
                       onChanged: (value) {
                         setState(() {
-                          this.rollValue = value;
+                          rollValue = value;
                         });
                       },
                     ),
@@ -360,6 +363,7 @@ class _UsersState extends State<Users> {
                 ),
               ],
             ),
+            Spacing().verticalSpace(context, 0.02),
             SizedBox(
               width: Sizes().scrWidth(context),
               height: Sizes().ratioWithScrHeight(context, 0.07),
@@ -373,7 +377,7 @@ class _UsersState extends State<Users> {
                   )),
             ),
             Spacing().verticalSpace(context, 0.026),
-            EntriesLimitWidget(),
+            const EntriesLimitWidget(),
             Spacing().verticalSpace(context, 0.03),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -383,7 +387,7 @@ class _UsersState extends State<Users> {
                   Container(
                     height: Sizes().ratioWithScrHeight(context, 0.097),
                     alignment: Alignment.topCenter,
-                    color: Color.fromARGB(255, 209, 206, 206),
+                    color: const Color.fromARGB(255, 209, 206, 206),
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -410,7 +414,7 @@ class _UsersState extends State<Users> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.57,
@@ -428,7 +432,7 @@ class _UsersState extends State<Users> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.24,
@@ -444,7 +448,7 @@ class _UsersState extends State<Users> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.18,
@@ -460,7 +464,7 @@ class _UsersState extends State<Users> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.2,
@@ -476,7 +480,7 @@ class _UsersState extends State<Users> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.19,
@@ -492,7 +496,7 @@ class _UsersState extends State<Users> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             )
                           ]),
                         ),
@@ -595,24 +599,6 @@ class _UsersState extends State<Users> {
                                               'Edit',
                                               'Delete',
                                             ].map((e) => PopupMenuItem(
-                                                  child: Row(
-                                                    children: [
-                                                      e == 'Edit'
-                                                          ? Icon(Icons
-                                                              .edit_outlined)
-                                                          : Icon(Icons
-                                                              .delete_outline),
-                                                      Spacing().horizontalSpace(
-                                                          context, 0.02),
-                                                      Text(
-                                                        e,
-                                                        style: txtStyle(
-                                                            size: 13,
-                                                            weight: FontWeight
-                                                                .w400),
-                                                      ),
-                                                    ],
-                                                  ),
                                                   padding: EdgeInsets.only(
                                                       top: Sizes()
                                                           .ratioWithScrWidth(
@@ -627,6 +613,24 @@ class _UsersState extends State<Users> {
                                                           .ratioWithScrWidth(
                                                               context, 0.1)),
                                                   height: 0,
+                                                  child: Row(
+                                                    children: [
+                                                      e == 'Edit'
+                                                          ? const Icon(Icons
+                                                              .edit_outlined)
+                                                          : const Icon(Icons
+                                                              .delete_outline),
+                                                      Spacing().horizontalSpace(
+                                                          context, 0.02),
+                                                      Text(
+                                                        e,
+                                                        style: txtStyle(
+                                                            size: 13,
+                                                            weight: FontWeight
+                                                                .w400),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ))
                                           ];
                                         },
@@ -647,7 +651,7 @@ class _UsersState extends State<Users> {
                                       0.26),
                               height:
                                   Sizes().ratioWithScrHeight(context, 0.001),
-                              color: Color.fromARGB(255, 155, 152, 152),
+                              color: const Color.fromARGB(255, 155, 152, 152),
                             ),
                             Spacing().verticalSpace(context, 0.02),
                           ],
@@ -667,7 +671,7 @@ class _UsersState extends State<Users> {
           width: Sizes().ratioWithScrWidth(context, 0.11),
           height: Sizes().ratioWithScrHeight(context, 0.02),
           alignment: alignment,
-          child: Container(
+          child: SizedBox(
             height: 20,
             child: GestureDetector(
               onTap: () => onClick(),
@@ -687,7 +691,7 @@ class _UsersState extends State<Users> {
                     child: Icon(
                       icon[1],
                       size: 16,
-                      color: Color.fromARGB(255, 139, 138, 138),
+                      color: const Color.fromARGB(255, 139, 138, 138),
                     ),
                   ),
                 ],
@@ -701,12 +705,12 @@ class _UsersState extends State<Users> {
           required double borderRad}) =>
       Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 153, 69),
+            color: const Color.fromARGB(255, 255, 153, 69),
             borderRadius: BorderRadius.circular(borderRad)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
-            Icon(
+            const Icon(
               Icons.add,
               size: 16,
               color: Colors.white,

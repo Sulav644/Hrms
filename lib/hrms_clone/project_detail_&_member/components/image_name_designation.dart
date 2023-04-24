@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/data/member_list.dart';
-
 import '../../../core/utils.dart';
 
 class ImageNameDesignation extends StatelessWidget {

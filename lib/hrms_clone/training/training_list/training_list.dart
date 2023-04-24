@@ -1,50 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:intl/intl.dart';
-
 import '../../../core/app_widgets.dart';
 import '../../../core/utils.dart';
 import '../../holidays/components/horiz_list_tile.dart';
 import '../../view_more_projects/components/entries_limit_widget.dart';
 import '../data/training_detail.dart';
 
-final path = 'assets/images/member_list';
+const path = 'assets/images/member_list';
 List<TrainingDetail> trainingList = [
-  TrainingDetail(
+  const TrainingDetail(
       type: 'Git Training',
-      image: '${path}/download.jpg',
+      image: '$path/download.jpg',
       name: 'John Doe',
       cost: 400,
       isActive: true),
-  TrainingDetail(
+  const TrainingDetail(
       type: 'Swift Training',
-      image: '${path}/downloadTwo.jpg',
+      image: '$path/downloadTwo.jpg',
       name: 'Richard Miles',
       cost: 800,
       isActive: false),
-  TrainingDetail(
+  const TrainingDetail(
       type: 'Node Training',
-      image: '${path}/downloadThree.jpg',
+      image: '$path/downloadThree.jpg',
       name: 'John Doe',
       cost: 400,
       isActive: true),
-  TrainingDetail(
+  const TrainingDetail(
       type: 'Angular Training',
-      image: '${path}/downloadFour.jpg',
+      image: '$path/downloadFour.jpg',
       name: 'Mike Litorus',
       cost: 400,
       isActive: true),
-  TrainingDetail(
+  const TrainingDetail(
       type: 'Git Training',
-      image: '${path}/downloadFive.jpg',
+      image: '$path/downloadFive.jpg',
       name: 'Wilmer Deluna',
       cost: 400,
       isActive: true),
 ];
 
 class TrainingList extends StatefulWidget {
-  TrainingList({super.key});
+  const TrainingList({super.key});
 
   @override
   State<TrainingList> createState() => _TrainingListState();
@@ -60,7 +56,7 @@ class _TrainingListState extends State<TrainingList> {
 
   @override
   Widget build(BuildContext context) {
-    final path = 'assets/images/member_list';
+    const path = 'assets/images/member_list';
     final headerStyle = txtStyle(weight: FontWeight.w600, height: 1.4);
     final listStyle = txtStyle(weight: FontWeight.w400, height: 1.4);
     return AppWidgets().appScaffold(
@@ -116,7 +112,7 @@ class _TrainingListState extends State<TrainingList> {
                                                 context, 0.455),
                                             height: Sizes().ratioWithScrHeight(
                                                 context, 0.075),
-                                            padding: EdgeInsets.all(8),
+                                            padding: const EdgeInsets.all(8),
                                             decoration: BoxDecoration(
                                                 border: Border.all(
                                                     color: Colors.black),
@@ -133,6 +129,7 @@ class _TrainingListState extends State<TrainingList> {
                                                 ]
                                                     .map(
                                                       (e) => DropdownMenuItem(
+                                                        value: e,
                                                         child: Text(
                                                           e,
                                                           style: txtStyle(
@@ -142,13 +139,12 @@ class _TrainingListState extends State<TrainingList> {
                                                                   : Colors
                                                                       .black),
                                                         ),
-                                                        value: e,
                                                       ),
                                                     )
                                                     .toList(),
                                                 onChanged: (value) {
                                                   setState(() {
-                                                    this.trainingValue = value;
+                                                    trainingValue = value;
                                                   });
                                                 },
                                               ),
@@ -174,7 +170,7 @@ class _TrainingListState extends State<TrainingList> {
                                                 context, 0.455),
                                             height: Sizes().ratioWithScrHeight(
                                                 context, 0.075),
-                                            padding: EdgeInsets.all(8),
+                                            padding: const EdgeInsets.all(8),
                                             decoration: BoxDecoration(
                                                 border: Border.all(
                                                     color: Colors.black),
@@ -191,6 +187,7 @@ class _TrainingListState extends State<TrainingList> {
                                                 ]
                                                     .map(
                                                       (e) => DropdownMenuItem(
+                                                        value: e,
                                                         child: Text(
                                                           e,
                                                           style: txtStyle(
@@ -200,13 +197,12 @@ class _TrainingListState extends State<TrainingList> {
                                                                   : Colors
                                                                       .black),
                                                         ),
-                                                        value: e,
                                                       ),
                                                     )
                                                     .toList(),
                                                 onChanged: (value) {
                                                   setState(() {
-                                                    this.trainerValue = value;
+                                                    trainerValue = value;
                                                   });
                                                 },
                                               ),
@@ -232,7 +228,7 @@ class _TrainingListState extends State<TrainingList> {
                                                 context, 0.455),
                                             height: Sizes().ratioWithScrHeight(
                                                 context, 0.075),
-                                            padding: EdgeInsets.all(8),
+                                            padding: const EdgeInsets.all(8),
                                             decoration: BoxDecoration(
                                                 border: Border.all(
                                                     color: Colors.black),
@@ -249,6 +245,7 @@ class _TrainingListState extends State<TrainingList> {
                                                 ]
                                                     .map(
                                                       (e) => DropdownMenuItem(
+                                                        value: e,
                                                         child: Text(
                                                           e,
                                                           style: txtStyle(
@@ -258,13 +255,12 @@ class _TrainingListState extends State<TrainingList> {
                                                                   : Colors
                                                                       .black),
                                                         ),
-                                                        value: e,
                                                       ),
                                                     )
                                                     .toList(),
                                                 onChanged: (value) {
                                                   setState(() {
-                                                    this.employeesValue = value;
+                                                    employeesValue = value;
                                                   });
                                                 },
                                               ),
@@ -287,7 +283,7 @@ class _TrainingListState extends State<TrainingList> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                         decoration: InputDecoration(
                                             border: OutlineInputBorder(),
                                             suffixIcon:
@@ -317,12 +313,10 @@ class _TrainingListState extends State<TrainingList> {
                                                   firstDate: DateTime.now(),
                                                   lastDate: DateTime(2024));
                                           if (newDate != null) {
-                                            print(DateFormat('yyyy-MM-dd')
-                                                .format(newDate!));
                                             setState(() {});
                                           }
                                         },
-                                        child: TextField(
+                                        child: const TextField(
                                           enabled: false,
                                           decoration: InputDecoration(
                                               border: OutlineInputBorder(),
@@ -354,12 +348,10 @@ class _TrainingListState extends State<TrainingList> {
                                                   firstDate: DateTime.now(),
                                                   lastDate: DateTime(2024));
                                           if (newDate != null) {
-                                            print(DateFormat('yyyy-MM-dd')
-                                                .format(newDate!));
                                             setState(() {});
                                           }
                                         },
-                                        child: TextField(
+                                        child: const TextField(
                                           enabled: false,
                                           decoration: InputDecoration(
                                               border: OutlineInputBorder(),
@@ -382,7 +374,7 @@ class _TrainingListState extends State<TrainingList> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           maxLines: 3,
                                           decoration: InputDecoration(
                                             border: OutlineInputBorder(),
@@ -410,7 +402,7 @@ class _TrainingListState extends State<TrainingList> {
 
                                               setState(() {});
                                             },
-                                            child: Text('Submit')),
+                                            child: const Text('Submit')),
                                       )
                                     ]),
                               ),
@@ -424,7 +416,7 @@ class _TrainingListState extends State<TrainingList> {
                       context: context, title: 'Add New', borderRad: 20))
             ]),
             Spacing().verticalSpace(context, 0.04),
-            EntriesLimitWidget(),
+            const EntriesLimitWidget(),
             Spacing().verticalSpace(context, 0.03),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -434,7 +426,7 @@ class _TrainingListState extends State<TrainingList> {
                   Container(
                     height: Sizes().ratioWithScrHeight(context, 0.097),
                     alignment: Alignment.topCenter,
-                    color: Color.fromARGB(255, 209, 206, 206),
+                    color: const Color.fromARGB(255, 209, 206, 206),
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -458,7 +450,7 @@ class _TrainingListState extends State<TrainingList> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.23,
@@ -473,7 +465,7 @@ class _TrainingListState extends State<TrainingList> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.34,
@@ -488,7 +480,7 @@ class _TrainingListState extends State<TrainingList> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.26,
@@ -503,7 +495,7 @@ class _TrainingListState extends State<TrainingList> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.18,
@@ -518,7 +510,7 @@ class _TrainingListState extends State<TrainingList> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.24,
@@ -533,7 +525,7 @@ class _TrainingListState extends State<TrainingList> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.12,
@@ -548,7 +540,7 @@ class _TrainingListState extends State<TrainingList> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.26,
@@ -563,7 +555,7 @@ class _TrainingListState extends State<TrainingList> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.18,
@@ -578,7 +570,7 @@ class _TrainingListState extends State<TrainingList> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             )
                           ]),
                         ),
@@ -629,8 +621,8 @@ class _TrainingListState extends State<TrainingList> {
                                               MainAxisAlignment.start,
                                           children: [
                                             ...[
-                                              '${path}/downloadTwo.jpg',
-                                              '${path}/downloadThree.jpg',
+                                              '$path/downloadTwo.jpg',
+                                              '$path/downloadThree.jpg',
                                             ]
                                                 .map((e) => Padding(
                                                       padding:
@@ -650,6 +642,7 @@ class _TrainingListState extends State<TrainingList> {
                                                   const EdgeInsets.all(3.0),
                                               child: CircleAvatar(
                                                 backgroundColor: Colors.pink,
+                                                radius: 16,
                                                 child: Text(
                                                   '+15',
                                                   style: txtStyle(
@@ -657,7 +650,6 @@ class _TrainingListState extends State<TrainingList> {
                                                       size: 12,
                                                       weight: FontWeight.w500),
                                                 ),
-                                                radius: 16,
                                               ),
                                             ),
                                           ])),
@@ -687,14 +679,6 @@ class _TrainingListState extends State<TrainingList> {
                                                   ? 'Active'
                                                   : 'Inactive')),
                                           PopupMenuButton(
-                                            child: Container(
-                                              width: Sizes().ratioWithScrWidth(
-                                                  context, 0.3),
-                                              height: Sizes()
-                                                  .ratioWithScrHeight(
-                                                      context, 0.04),
-                                              color: Colors.transparent,
-                                            ),
                                             padding: EdgeInsets.zero,
                                             offset: Offset(
                                                 Sizes().ratioWithScrWidth(
@@ -704,6 +688,18 @@ class _TrainingListState extends State<TrainingList> {
                                             itemBuilder: (context) {
                                               return [
                                                 PopupMenuItem(
+                                                  padding: EdgeInsets.only(
+                                                    top: Sizes()
+                                                        .ratioWithScrWidth(
+                                                            context, 0.02),
+                                                    left: Sizes()
+                                                        .ratioWithScrWidth(
+                                                            context, 0.03),
+                                                    bottom: Sizes()
+                                                        .ratioWithScrWidth(
+                                                            context, 0.02),
+                                                  ),
+                                                  height: 0,
                                                   child: Row(
                                                     children: [
                                                       circleInd(context,
@@ -718,6 +714,8 @@ class _TrainingListState extends State<TrainingList> {
                                                       ),
                                                     ],
                                                   ),
+                                                ),
+                                                PopupMenuItem(
                                                   padding: EdgeInsets.only(
                                                     top: Sizes()
                                                         .ratioWithScrWidth(
@@ -730,8 +728,6 @@ class _TrainingListState extends State<TrainingList> {
                                                             context, 0.02),
                                                   ),
                                                   height: 0,
-                                                ),
-                                                PopupMenuItem(
                                                   child: Row(
                                                     children: [
                                                       circleInd(
@@ -746,21 +742,17 @@ class _TrainingListState extends State<TrainingList> {
                                                       ),
                                                     ],
                                                   ),
-                                                  padding: EdgeInsets.only(
-                                                    top: Sizes()
-                                                        .ratioWithScrWidth(
-                                                            context, 0.02),
-                                                    left: Sizes()
-                                                        .ratioWithScrWidth(
-                                                            context, 0.03),
-                                                    bottom: Sizes()
-                                                        .ratioWithScrWidth(
-                                                            context, 0.02),
-                                                  ),
-                                                  height: 0,
                                                 ),
                                               ];
                                             },
+                                            child: Container(
+                                              width: Sizes().ratioWithScrWidth(
+                                                  context, 0.3),
+                                              height: Sizes()
+                                                  .ratioWithScrHeight(
+                                                      context, 0.04),
+                                              color: Colors.transparent,
+                                            ),
                                           ),
                                         ],
                                       )),
@@ -782,25 +774,6 @@ class _TrainingListState extends State<TrainingList> {
                                                 'Edit',
                                                 'Delete',
                                               ].map((e) => PopupMenuItem(
-                                                    child: Row(
-                                                      children: [
-                                                        e == 'Edit'
-                                                            ? Icon(Icons
-                                                                .edit_outlined)
-                                                            : Icon(Icons
-                                                                .delete_outline),
-                                                        Spacing()
-                                                            .horizontalSpace(
-                                                                context, 0.02),
-                                                        Text(
-                                                          e,
-                                                          style: txtStyle(
-                                                              size: 13,
-                                                              weight: FontWeight
-                                                                  .w400),
-                                                        ),
-                                                      ],
-                                                    ),
                                                     padding: EdgeInsets.only(
                                                         top: Sizes()
                                                             .ratioWithScrWidth(
@@ -815,6 +788,25 @@ class _TrainingListState extends State<TrainingList> {
                                                             .ratioWithScrWidth(
                                                                 context, 0.1)),
                                                     height: 0,
+                                                    child: Row(
+                                                      children: [
+                                                        e == 'Edit'
+                                                            ? const Icon(Icons
+                                                                .edit_outlined)
+                                                            : const Icon(Icons
+                                                                .delete_outline),
+                                                        Spacing()
+                                                            .horizontalSpace(
+                                                                context, 0.02),
+                                                        Text(
+                                                          e,
+                                                          style: txtStyle(
+                                                              size: 13,
+                                                              weight: FontWeight
+                                                                  .w400),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ))
                                             ];
                                           },
@@ -827,7 +819,7 @@ class _TrainingListState extends State<TrainingList> {
                               width: Sizes().ratioWithScrWidth(context, 2.8),
                               height:
                                   Sizes().ratioWithScrHeight(context, 0.004),
-                              color: Color.fromARGB(255, 209, 206, 206),
+                              color: const Color.fromARGB(255, 209, 206, 206),
                             )
                           ],
                         ),
@@ -851,8 +843,9 @@ class _TrainingListState extends State<TrainingList> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                  color: Color.fromARGB(255, 187, 184, 184)),
-                              borderRadius: BorderRadius.only(
+                                  color:
+                                      const Color.fromARGB(255, 187, 184, 184)),
+                              borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(6),
                                   bottomLeft: Radius.circular(6))),
                           child: Padding(
@@ -864,7 +857,7 @@ class _TrainingListState extends State<TrainingList> {
                             ),
                           )),
                       Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Colors.orange,
                               border: Border(
                                 top: BorderSide(
@@ -884,9 +877,9 @@ class _TrainingListState extends State<TrainingList> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                color: Color.fromARGB(255, 187, 184, 184),
+                                color: const Color.fromARGB(255, 187, 184, 184),
                               ),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                   topRight: Radius.circular(6),
                                   bottomRight: Radius.circular(6))),
                           child: Padding(
@@ -912,7 +905,7 @@ class _TrainingListState extends State<TrainingList> {
           width: Sizes().ratioWithScrWidth(context, 0.11),
           height: Sizes().ratioWithScrHeight(context, 0.02),
           alignment: alignment,
-          child: Container(
+          child: SizedBox(
             height: 20,
             child: GestureDetector(
               onTap: () => onClick(),
@@ -932,7 +925,7 @@ class _TrainingListState extends State<TrainingList> {
                     child: Icon(
                       icon[1],
                       size: 16,
-                      color: Color.fromARGB(255, 139, 138, 138),
+                      color: const Color.fromARGB(255, 139, 138, 138),
                     ),
                   ),
                 ],
@@ -953,14 +946,14 @@ class _TrainingListState extends State<TrainingList> {
             decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(
-                    color: Color.fromARGB(255, 51, 50, 50), width: 0.5),
+                    color: const Color.fromARGB(255, 51, 50, 50), width: 0.5),
                 borderRadius: BorderRadius.circular(20)),
             alignment: Alignment.center,
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               circleInd(context, color),
               Spacing().horizontalSpace(context, 0.018),
               child,
-              Icon(Icons.arrow_drop_down)
+              const Icon(Icons.arrow_drop_down)
             ])),
       );
 
@@ -985,12 +978,12 @@ class _TrainingListState extends State<TrainingList> {
           required double borderRad}) =>
       Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 153, 69),
+            color: const Color.fromARGB(255, 255, 153, 69),
             borderRadius: BorderRadius.circular(borderRad)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
-            Icon(
+            const Icon(
               Icons.add,
               size: 16,
               color: Colors.white,

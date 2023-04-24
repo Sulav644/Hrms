@@ -1,12 +1,7 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:hrms_clone/core/app_widgets.dart';
-import 'package:hrms_clone/hrms_clone/admin_dashboard/components/project_list.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/components/administration_detail_card.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/components/heading_title_menu_edit.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/components/project_detail_with_cost.dart';
@@ -14,7 +9,6 @@ import 'package:hrms_clone/hrms_clone/project_detail_&_member/components/team_me
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/components/uploaded_files.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/select_indicator_cubit.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/select_timeline_cubit.dart';
-
 import '../../core/components/popup_menu/domain/show_menu_cubit.dart';
 import '../../core/utils.dart';
 import '../../home_page.dart';
@@ -23,7 +17,7 @@ import 'data/member_list.dart';
 import 'domain/show_priority_cubit.dart';
 
 class ProjectDetailPage extends StatefulWidget {
-  ProjectDetailPage({
+  const ProjectDetailPage({
     super.key,
   });
 
@@ -44,25 +38,14 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
   @override
   Widget build(BuildContext context) {
     final showMenuStatus = context.watch<ShowMenuCubit>().state;
-    final showPriorityMenuStatus = context.watch<ShowPriorityCubit>().state;
-    final position = context.watch<SetPositionCubit>().state;
-    final positionKey = keyState.currentState?.keyContext;
     final indicatorStatus = context.watch<SelectIndicatorCubit>().state;
     final timelinesState = context.watch<EditTimelineCubit>().state;
     final textBoxIndex = context.watch<TextBoxInplaceOfTextCubit>().state;
     final checkedTimelines = context.watch<SelectedTimelinesCubit>().state;
-    final indAll = IndicatorSelect.all();
-    final indPending = IndicatorSelect.pending();
-    final indCompleted = IndicatorSelect.completed();
+    const indAll = IndicatorSelect.all();
+    const indPending = IndicatorSelect.pending();
+    const indCompleted = IndicatorSelect.completed();
 
-    scrollController.addListener(() {
-      print(scrollController.offset);
-      RenderBox box =
-          positionKey?.currentContext?.findRenderObject() as RenderBox;
-      Offset position = box.localToGlobal(Offset.zero);
-      print('${position.dx} ${position.dy}');
-      context.read<SetPositionCubit>().setPosition([position.dx, position.dy]);
-    });
     return Stack(
       children: [
         AppWidgets().appScaffold(
@@ -83,10 +66,10 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
             children: [
               Column(children: [
                 Spacing().verticalSpace(context, 0.025),
-                HeadingTitleMenuEdit(),
+                const HeadingTitleMenuEdit(),
                 Spacing().verticalSpace(context, 0.05),
-                AdministrationDetailCard(),
-                UploadedFilesWidget(),
+                const AdministrationDetailCard(),
+                const UploadedFilesWidget(),
                 Spacing().verticalSpace(context, 0.03),
                 Components().detailCard(
                     context: context,
@@ -106,10 +89,10 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                 width: 0.23,
                                 height: 0.1,
                                 boxColor: indicatorStatus == indAll
-                                    ? Color.fromARGB(255, 219, 216, 216)
+                                    ? const Color.fromARGB(255, 219, 216, 216)
                                     : Colors.white,
                                 indicatorColor: indicatorStatus == indAll
-                                    ? Color.fromARGB(255, 243, 34, 19)
+                                    ? const Color.fromARGB(255, 243, 34, 19)
                                     : Colors.white,
                                 indicOneHeight: 0.05,
                                 indicTwoHeight: 0.08,
@@ -117,7 +100,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                 title: 'All Tasks',
                                 color: indicatorStatus == indAll
                                     ? Colors.black
-                                    : Color.fromARGB(255, 124, 122, 122)),
+                                    : const Color.fromARGB(255, 124, 122, 122)),
                             tabWithRedIndicator(
                                 context: context,
                                 onClick: () => context
@@ -126,7 +109,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                 width: 0.23,
                                 height: 0.14,
                                 boxColor: indicatorStatus == indPending
-                                    ? Color.fromARGB(255, 219, 216, 216)
+                                    ? const Color.fromARGB(255, 219, 216, 216)
                                     : Colors.white,
                                 indicatorColor: indicatorStatus == indPending
                                     ? Colors.red
@@ -137,7 +120,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                 title: 'Pending Tasks',
                                 color: indicatorStatus == indPending
                                     ? Colors.black
-                                    : Color.fromARGB(255, 124, 122, 122)),
+                                    : const Color.fromARGB(255, 124, 122, 122)),
                             tabWithRedIndicator(
                                 context: context,
                                 onClick: () => context
@@ -146,7 +129,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                 width: 0.23,
                                 height: 0.14,
                                 boxColor: indicatorStatus == indCompleted
-                                    ? Color.fromARGB(255, 219, 216, 216)
+                                    ? const Color.fromARGB(255, 219, 216, 216)
                                     : Colors.white,
                                 indicatorColor: indicatorStatus == indCompleted
                                     ? Colors.red
@@ -157,7 +140,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                 title: 'Completed Tasks',
                                 color: indicatorStatus == indCompleted
                                     ? Colors.black
-                                    : Color.fromARGB(255, 124, 122, 122)),
+                                    : const Color.fromARGB(255, 124, 122, 122)),
                           ])
                     ]),
                 Spacing().verticalSpace(context, 0.02),
@@ -175,7 +158,8 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                   Container(
                                     color: checkedTimelines
                                             .contains(timelinesState.indexOf(e))
-                                        ? Color.fromARGB(255, 233, 228, 228)
+                                        ? const Color.fromARGB(
+                                            255, 233, 228, 228)
                                         : Colors.white,
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
@@ -201,12 +185,12 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                                             ? Colors.green
                                                             : Colors.white,
                                                         border: Border.all(
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    138,
-                                                                    135,
-                                                                    135)),
+                                                            color: const Color
+                                                                    .fromARGB(
+                                                                255,
+                                                                138,
+                                                                135,
+                                                                135)),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(100)),
@@ -246,7 +230,8 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                                                           .indexOf(
                                                                               e))
                                                               ? Colors.white
-                                                              : Color.fromARGB(
+                                                              : const Color
+                                                                      .fromARGB(
                                                                   255,
                                                                   138,
                                                                   135,
@@ -293,17 +278,6 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                                               maxLines: 2,
                                                               controller:
                                                                   editingController,
-                                                              onChanged:
-                                                                  (value) {
-                                                                setState(() {
-                                                                  editingController
-                                                                          .text =
-                                                                      value;
-                                                                });
-                                                                print(
-                                                                    editingController
-                                                                        .text);
-                                                              },
                                                               style: txtStyle(
                                                                   size: 14),
                                                               decoration:
@@ -317,12 +291,12 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                                                           bottom: Sizes().ratioWithScrHeight(
                                                                               context,
                                                                               0.012)),
-                                                                      border: OutlineInputBorder(
+                                                                      border: const OutlineInputBorder(
                                                                           borderSide: BorderSide(
                                                                               color: Colors
                                                                                   .orange)),
                                                                       focusedBorder:
-                                                                          OutlineInputBorder(
+                                                                          const OutlineInputBorder(
                                                                         borderSide:
                                                                             BorderSide(color: Colors.orange),
                                                                       )),
@@ -343,7 +317,8 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                                                   color: checkedTimelines.contains(
                                                                           timelinesState.indexOf(
                                                                               e))
-                                                                      ? Color.fromARGB(
+                                                                      ? const Color
+                                                                              .fromARGB(
                                                                           255,
                                                                           138,
                                                                           135,
@@ -359,19 +334,18 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                                 Container(
                                                     decoration: BoxDecoration(
                                                         border: Border.all(
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    138,
-                                                                    135,
-                                                                    135)),
+                                                            color: const Color
+                                                                    .fromARGB(
+                                                                255,
+                                                                138,
+                                                                135,
+                                                                135)),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(100)),
-                                                    child: Padding(
+                                                    child: const Padding(
                                                       padding:
-                                                          const EdgeInsets.all(
-                                                              3.0),
+                                                          EdgeInsets.all(3.0),
                                                       child: Icon(
                                                         Icons.person_add,
                                                         color: Color.fromARGB(
@@ -384,12 +358,12 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                                 Container(
                                                     decoration: BoxDecoration(
                                                         border: Border.all(
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    138,
-                                                                    135,
-                                                                    135)),
+                                                            color: const Color
+                                                                    .fromARGB(
+                                                                255,
+                                                                138,
+                                                                135,
+                                                                135)),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(100)),
@@ -407,10 +381,9 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                                                 index:
                                                                     timelineIndex);
                                                       },
-                                                      child: Padding(
+                                                      child: const Padding(
                                                         padding:
-                                                            const EdgeInsets
-                                                                .all(3.0),
+                                                            EdgeInsets.all(3.0),
                                                         child: Icon(
                                                           Icons.delete,
                                                           color: Color.fromARGB(
@@ -434,7 +407,8 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                                       width: Sizes().scrWidth(context),
                                       height: Sizes()
                                           .ratioWithScrHeight(context, 0.004),
-                                      color: Color.fromARGB(255, 218, 216, 216),
+                                      color: const Color.fromARGB(
+                                          255, 218, 216, 216),
                                     )
                                 ],
                               ),
@@ -453,41 +427,6 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                 Spacing().verticalSpace(context, 0.03),
               ])
             ]),
-        if (showPriorityMenuStatus)
-          Positioned(
-            top: position[1] + 60,
-            left: position[0] - 80,
-            child: Container(
-                width: Sizes().ratioWithScrWidth(context, 0.4),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(4),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Color.fromARGB(255, 114, 113, 113),
-                          offset: Offset(
-                              1, Sizes().ratioWithScrHeight(context, 0.002)))
-                    ]),
-                alignment: Alignment.centerLeft,
-                child: Column(children: [
-                  priorityOption(
-                      context: context,
-                      color: Colors.red,
-                      type: 'Highest Priority'),
-                  priorityOption(
-                      context: context,
-                      color: Colors.blue,
-                      type: 'High Priority'),
-                  priorityOption(
-                      context: context,
-                      color: Colors.orange,
-                      type: 'Normal Priority'),
-                  priorityOption(
-                      context: context,
-                      color: Colors.green,
-                      type: 'Low Priority'),
-                ])),
-          )
       ],
     );
   }
@@ -541,19 +480,22 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
         onTap: () => onClick(),
         child: Stack(
           children: [
-            Container(
+            AnimatedContainer(
+                duration: const Duration(milliseconds: 600),
                 width: Sizes().ratioWithScrWidth(context, width),
                 height: Sizes().ratioWithScrWidth(context, height),
                 color: boxColor,
                 alignment: Alignment.center,
                 child: Text(
                   title,
-                  style: txtStyle(color: color, height: 1.4),
+                  style: txtStyle(
+                      color: color, weight: FontWeight.w600, height: 1.4),
                   textAlign: TextAlign.center,
                 )),
             Transform(
               transform: Matrix4.skewY(40 / 180 * pi),
-              child: Container(
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 600),
                 width: 3,
                 height: Sizes().ratioWithScrWidth(context, indicOneHeight),
                 color: indicatorColor,
@@ -563,7 +505,8 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
               top: Sizes().ratioWithScrWidth(context, indicTwoPos),
               child: Transform(
                 transform: Matrix4.skewY(-40 / 180 * pi),
-                child: Container(
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 600),
                   width: 3,
                   height: Sizes().ratioWithScrWidth(context, indicTwoHeight),
                   color: indicatorColor,

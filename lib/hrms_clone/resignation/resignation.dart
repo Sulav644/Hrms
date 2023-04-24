@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:intl/intl.dart';
-
 import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
 import '../holidays/components/horiz_list_tile.dart';
 import '../view_more_projects/components/entries_limit_widget.dart';
 
 class Resignation extends StatefulWidget {
-  Resignation({super.key});
+  const Resignation({super.key});
 
   @override
   State<Resignation> createState() => _ResignationState();
@@ -79,7 +76,7 @@ class _ResignationState extends State<Resignation> {
                                     Spacing().verticalSpace(context, 0.015),
                                     TextField(
                                         controller: resignController,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           border: OutlineInputBorder(),
                                         )),
                                     Spacing().verticalSpace(context, 0.02),
@@ -106,16 +103,14 @@ class _ResignationState extends State<Resignation> {
                                                 firstDate: DateTime.now(),
                                                 lastDate: DateTime(2024));
                                         if (newDate != null) {
-                                          print(DateFormat('yyyy-MM-dd')
-                                              .format(newDate!));
                                           setState(() {
                                             resignDateController.text =
                                                 DateFormat('yyyy-MM-dd')
-                                                    .format(newDate!);
+                                                    .format(newDate);
                                           });
                                         }
                                       },
-                                      child: TextField(
+                                      child: const TextField(
                                         enabled: false,
                                         decoration: InputDecoration(
                                             border: OutlineInputBorder(),
@@ -147,16 +142,14 @@ class _ResignationState extends State<Resignation> {
                                                 firstDate: DateTime.now(),
                                                 lastDate: DateTime(2024));
                                         if (newDate != null) {
-                                          print(DateFormat('yyyy-MM-dd')
-                                              .format(newDate!));
                                           setState(() {
                                             resignDateController.text =
                                                 DateFormat('yyyy-MM-dd')
-                                                    .format(newDate!);
+                                                    .format(newDate);
                                           });
                                         }
                                       },
-                                      child: TextField(
+                                      child: const TextField(
                                         enabled: false,
                                         decoration: InputDecoration(
                                             border: OutlineInputBorder(),
@@ -182,7 +175,7 @@ class _ResignationState extends State<Resignation> {
                                     TextField(
                                         controller: resignController,
                                         maxLines: 3,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           border: OutlineInputBorder(),
                                         )),
                                     Spacing().verticalSpace(context, 0.04),
@@ -206,7 +199,7 @@ class _ResignationState extends State<Resignation> {
 
                                             setState(() {});
                                           },
-                                          child: Text('Submit')),
+                                          child: const Text('Submit')),
                                     )
                                   ]),
                             );
@@ -221,7 +214,7 @@ class _ResignationState extends State<Resignation> {
                       borderRad: 20))
             ]),
             Spacing().verticalSpace(context, 0.04),
-            EntriesLimitWidget(),
+            const EntriesLimitWidget(),
             Spacing().verticalSpace(context, 0.03),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -231,7 +224,7 @@ class _ResignationState extends State<Resignation> {
                   Container(
                     height: Sizes().ratioWithScrHeight(context, 0.097),
                     alignment: Alignment.topCenter,
-                    color: Color.fromARGB(255, 209, 206, 206),
+                    color: const Color.fromARGB(255, 209, 206, 206),
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -255,7 +248,7 @@ class _ResignationState extends State<Resignation> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.25,
@@ -268,7 +261,7 @@ class _ResignationState extends State<Resignation> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.25,
@@ -280,7 +273,7 @@ class _ResignationState extends State<Resignation> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.24,
@@ -292,7 +285,7 @@ class _ResignationState extends State<Resignation> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.24,
@@ -304,7 +297,7 @@ class _ResignationState extends State<Resignation> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.2,
@@ -317,7 +310,7 @@ class _ResignationState extends State<Resignation> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.16,
@@ -329,7 +322,7 @@ class _ResignationState extends State<Resignation> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             )
                           ]),
                         ),
@@ -352,7 +345,7 @@ class _ResignationState extends State<Resignation> {
                           HorizListTile(
                               width: 0.37,
                               child: Row(children: [
-                                CircleAvatar(
+                                const CircleAvatar(
                                   backgroundImage: AssetImage(
                                       'assets/images/member_list/download.jpg'),
                                   radius: 18,
@@ -396,22 +389,6 @@ class _ResignationState extends State<Resignation> {
                                         'Edit',
                                         'Delete',
                                       ].map((e) => PopupMenuItem(
-                                            child: Row(
-                                              children: [
-                                                e == 'Edit'
-                                                    ? Icon(Icons.edit_outlined)
-                                                    : Icon(
-                                                        Icons.delete_outline),
-                                                Spacing().horizontalSpace(
-                                                    context, 0.02),
-                                                Text(
-                                                  e,
-                                                  style: txtStyle(
-                                                      size: 13,
-                                                      weight: FontWeight.w400),
-                                                ),
-                                              ],
-                                            ),
                                             padding: EdgeInsets.only(
                                                 top: Sizes().ratioWithScrWidth(
                                                     context, 0.02),
@@ -424,6 +401,23 @@ class _ResignationState extends State<Resignation> {
                                                     .ratioWithScrWidth(
                                                         context, 0.1)),
                                             height: 0,
+                                            child: Row(
+                                              children: [
+                                                e == 'Edit'
+                                                    ? const Icon(
+                                                        Icons.edit_outlined)
+                                                    : const Icon(
+                                                        Icons.delete_outline),
+                                                Spacing().horizontalSpace(
+                                                    context, 0.02),
+                                                Text(
+                                                  e,
+                                                  style: txtStyle(
+                                                      size: 13,
+                                                      weight: FontWeight.w400),
+                                                ),
+                                              ],
+                                            ),
                                           ))
                                     ];
                                   },
@@ -436,7 +430,7 @@ class _ResignationState extends State<Resignation> {
                         width: Sizes().ratioWithScrWidth(context,
                             0.17 + 0.37 + 0.36 + 0.35 + 0.35 + 0.29 + 0.26),
                         height: Sizes().ratioWithScrHeight(context, 0.002),
-                        color: Color.fromARGB(255, 199, 195, 195),
+                        color: const Color.fromARGB(255, 199, 195, 195),
                       )
                     ],
                   ),
@@ -458,8 +452,9 @@ class _ResignationState extends State<Resignation> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                  color: Color.fromARGB(255, 187, 184, 184)),
-                              borderRadius: BorderRadius.only(
+                                  color:
+                                      const Color.fromARGB(255, 187, 184, 184)),
+                              borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(6),
                                   bottomLeft: Radius.circular(6))),
                           child: Padding(
@@ -471,7 +466,7 @@ class _ResignationState extends State<Resignation> {
                             ),
                           )),
                       Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Colors.orange,
                               border: Border(
                                 top: BorderSide(
@@ -491,9 +486,9 @@ class _ResignationState extends State<Resignation> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                color: Color.fromARGB(255, 187, 184, 184),
+                                color: const Color.fromARGB(255, 187, 184, 184),
                               ),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                   topRight: Radius.circular(6),
                                   bottomRight: Radius.circular(6))),
                           child: Padding(
@@ -519,7 +514,7 @@ class _ResignationState extends State<Resignation> {
           width: Sizes().ratioWithScrWidth(context, 0.11),
           height: Sizes().ratioWithScrHeight(context, 0.02),
           alignment: alignment,
-          child: Container(
+          child: SizedBox(
             height: 20,
             child: GestureDetector(
               onTap: () => onClick(),
@@ -539,7 +534,7 @@ class _ResignationState extends State<Resignation> {
                     child: Icon(
                       icon[1],
                       size: 16,
-                      color: Color.fromARGB(255, 139, 138, 138),
+                      color: const Color.fromARGB(255, 139, 138, 138),
                     ),
                   ),
                 ],
@@ -552,12 +547,12 @@ class _ResignationState extends State<Resignation> {
           required double borderRad}) =>
       Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 153, 69),
+            color: const Color.fromARGB(255, 255, 153, 69),
             borderRadius: BorderRadius.circular(borderRad)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
-            Icon(
+            const Icon(
               Icons.add,
               size: 16,
               color: Colors.white,

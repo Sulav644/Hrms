@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-
 import '../../../core/utils.dart';
 import '../../admin_dashboard/components/project_list.dart';
 import '../../project_detail_&_member/core/components.dart';
@@ -11,7 +8,7 @@ class MemberDetailVertList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final path = 'assets/images/member_list';
+    const path = 'assets/images/member_list';
     return Column(children: [
       ...projectList
           .map(
@@ -49,8 +46,8 @@ class MemberDetailVertList extends StatelessWidget {
                                   'open tasks, ',
                                   style: txtStyle(
                                       size: 11,
-                                      color:
-                                          Color.fromARGB(255, 122, 121, 121)),
+                                      color: const Color.fromARGB(
+                                          255, 122, 121, 121)),
                                 ),
                                 Text(
                                   '${e.completedTask} ',
@@ -63,8 +60,8 @@ class MemberDetailVertList extends StatelessWidget {
                                   'tasks completed',
                                   style: txtStyle(
                                       size: 11,
-                                      color:
-                                          Color.fromARGB(255, 122, 121, 121)),
+                                      color: const Color.fromARGB(
+                                          255, 122, 121, 121)),
                                 ),
                               ],
                             ),
@@ -82,7 +79,7 @@ class MemberDetailVertList extends StatelessWidget {
                         ])
                       ]),
                   Spacing().verticalSpace(context, 0.018),
-                  Container(
+                  SizedBox(
                     width: Sizes().ratioWithScrWidth(context, 0.78),
                     child: Text(
                       'Lorem Ipsum is simply dummy text of the '
@@ -91,7 +88,7 @@ class MemberDetailVertList extends StatelessWidget {
                       'and scrambled it...',
                       style: txtStyle(
                           size: 13.5,
-                          color: Color.fromARGB(255, 100, 99, 99),
+                          color: const Color.fromARGB(255, 100, 99, 99),
                           height: 1.4),
                     ),
                   ),
@@ -105,7 +102,7 @@ class MemberDetailVertList extends StatelessWidget {
                     '17 Apr 2019',
                     style: txtStyle(
                         size: 13,
-                        color: Color.fromARGB(255, 100, 99, 99),
+                        color: const Color.fromARGB(255, 100, 99, 99),
                         weight: FontWeight.w500),
                   ),
                   Spacing().verticalSpace(context, 0.021),
@@ -114,21 +111,21 @@ class MemberDetailVertList extends StatelessWidget {
                     style: txtStyle(weight: FontWeight.w400),
                   ),
                   Spacing().verticalSpace(context, 0.012),
-                  CircleAvatar(
+                  const CircleAvatar(
                     backgroundImage: AssetImage(
-                      '${path}/download.jpg',
+                      '$path/download.jpg',
                     ),
                     radius: 16,
                   ),
                   Spacing().verticalSpace(context, 0.022),
-                  Text('Team :'),
+                  const Text('Team :'),
                   Spacing().verticalSpace(context, 0.01),
                   Row(children: [
                     ...[
-                      '${path}/downloadTwo.jpg',
-                      '${path}/downloadThree.jpg',
-                      '${path}/downloadFour.jpg',
-                      '${path}/downloadFive.jpg'
+                      '$path/downloadTwo.jpg',
+                      '$path/downloadThree.jpg',
+                      '$path/downloadFour.jpg',
+                      '$path/downloadFive.jpg'
                     ]
                         .map((e) => Padding(
                               padding: const EdgeInsets.all(2.0),
@@ -142,6 +139,7 @@ class MemberDetailVertList extends StatelessWidget {
                         .toList(),
                     CircleAvatar(
                       backgroundColor: Colors.pink,
+                      radius: 16,
                       child: Text(
                         '+15',
                         style: txtStyle(
@@ -149,7 +147,6 @@ class MemberDetailVertList extends StatelessWidget {
                             size: 12,
                             weight: FontWeight.w500),
                       ),
-                      radius: 16,
                     ),
                   ]),
                   Spacing().verticalSpace(context, 0.026),
@@ -163,7 +160,7 @@ class MemberDetailVertList extends StatelessWidget {
                       Text(
                         '40%',
                         style: txtStyle(
-                            color: Color.fromARGB(
+                            color: const Color.fromARGB(
                               255,
                               58,
                               216,
@@ -179,12 +176,12 @@ class MemberDetailVertList extends StatelessWidget {
                       levelBar(
                           context: context,
                           width: Sizes().scrWidth(context),
-                          color: Color.fromARGB(255, 211, 207, 207),
+                          color: const Color.fromARGB(255, 211, 207, 207),
                           borderRad: [10, 10, 10, 10]),
                       levelBar(
                           context: context,
                           width: Sizes().ratioWithScrWidth(context, 0.32),
-                          color: Color.fromARGB(255, 56, 219, 62),
+                          color: const Color.fromARGB(255, 56, 219, 62),
                           borderRad: [10, 10, 0, 0]),
                     ],
                   )

@@ -1,27 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-
 import '../../../core/app_widgets.dart';
 import '../../../core/utils.dart';
 import '../../holidays/components/horiz_list_tile.dart';
 import '../../view_more_projects/components/entries_limit_widget.dart';
 import '../data/training_detail.dart';
 
-final path = 'assets/images/member_list';
+const path = 'assets/images/member_list';
 
 List<TrainingDetail> trainingList = [
-  TrainingDetail(type: 'Node', isActive: false),
-  TrainingDetail(type: 'Git', isActive: true),
-  TrainingDetail(type: 'Swift', isActive: false),
-  TrainingDetail(type: 'Html', isActive: false),
-  TrainingDetail(type: 'Laravel', isActive: false),
+  const TrainingDetail(type: 'Node', isActive: false),
+  const TrainingDetail(type: 'Git', isActive: true),
+  const TrainingDetail(type: 'Swift', isActive: false),
+  const TrainingDetail(type: 'Html', isActive: false),
+  const TrainingDetail(type: 'Laravel', isActive: false),
 ];
 
-class TrainingType extends StatelessWidget {
-  TrainingType({super.key});
+class TrainingType extends StatefulWidget {
+  const TrainingType({super.key});
+
+  @override
+  State<TrainingType> createState() => _TrainingTypeState();
+}
+
+class _TrainingTypeState extends State<TrainingType> {
   bool showMenuStatus = false;
+
   ScrollController scrollController = ScrollController();
+
   String? statusValue;
 
   @override
@@ -77,7 +82,7 @@ class TrainingType extends StatelessWidget {
                                       ],
                                     ),
                                     Spacing().verticalSpace(context, 0.015),
-                                    TextField(
+                                    const TextField(
                                         decoration: InputDecoration(
                                       border: OutlineInputBorder(),
                                     )),
@@ -96,7 +101,7 @@ class TrainingType extends StatelessWidget {
                                       ],
                                     ),
                                     Spacing().verticalSpace(context, 0.015),
-                                    TextField(
+                                    const TextField(
                                         maxLines: 3,
                                         decoration: InputDecoration(
                                           border: OutlineInputBorder(),
@@ -119,7 +124,7 @@ class TrainingType extends StatelessWidget {
                                               context, 0.455),
                                           height: Sizes().ratioWithScrHeight(
                                               context, 0.075),
-                                          padding: EdgeInsets.all(8),
+                                          padding: const EdgeInsets.all(8),
                                           decoration: BoxDecoration(
                                               border: Border.all(
                                                   color: Colors.black),
@@ -135,6 +140,7 @@ class TrainingType extends StatelessWidget {
                                               ]
                                                   .map(
                                                     (e) => DropdownMenuItem(
+                                                      value: e,
                                                       child: Text(
                                                         e,
                                                         style: txtStyle(
@@ -143,13 +149,12 @@ class TrainingType extends StatelessWidget {
                                                                 ? Colors.red
                                                                 : Colors.black),
                                                       ),
-                                                      value: e,
                                                     ),
                                                   )
                                                   .toList(),
                                               onChanged: (value) {
                                                 setState(() {
-                                                  this.statusValue = value;
+                                                  statusValue = value;
                                                 });
                                               },
                                             ),
@@ -178,7 +183,7 @@ class TrainingType extends StatelessWidget {
 
                                             setState(() {});
                                           },
-                                          child: Text('Submit')),
+                                          child: const Text('Submit')),
                                     )
                                   ]),
                             );
@@ -191,7 +196,7 @@ class TrainingType extends StatelessWidget {
                       context: context, title: 'Add New', borderRad: 20))
             ]),
             Spacing().verticalSpace(context, 0.04),
-            EntriesLimitWidget(),
+            const EntriesLimitWidget(),
             Spacing().verticalSpace(context, 0.03),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -201,7 +206,7 @@ class TrainingType extends StatelessWidget {
                   Container(
                     height: Sizes().ratioWithScrHeight(context, 0.097),
                     alignment: Alignment.topCenter,
-                    color: Color.fromARGB(255, 209, 206, 206),
+                    color: const Color.fromARGB(255, 209, 206, 206),
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -225,7 +230,7 @@ class TrainingType extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.14,
@@ -240,7 +245,7 @@ class TrainingType extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.24,
@@ -255,7 +260,7 @@ class TrainingType extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.26,
@@ -270,7 +275,7 @@ class TrainingType extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.17,
@@ -285,7 +290,7 @@ class TrainingType extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             )
                           ]),
                         ),
@@ -335,14 +340,6 @@ class TrainingType extends StatelessWidget {
                                                   ? 'Active'
                                                   : 'Inactive')),
                                           PopupMenuButton(
-                                            child: Container(
-                                              width: Sizes().ratioWithScrWidth(
-                                                  context, 0.3),
-                                              height: Sizes()
-                                                  .ratioWithScrHeight(
-                                                      context, 0.04),
-                                              color: Colors.transparent,
-                                            ),
                                             padding: EdgeInsets.zero,
                                             offset: Offset(
                                                 Sizes().ratioWithScrWidth(
@@ -352,6 +349,18 @@ class TrainingType extends StatelessWidget {
                                             itemBuilder: (context) {
                                               return [
                                                 PopupMenuItem(
+                                                  padding: EdgeInsets.only(
+                                                    top: Sizes()
+                                                        .ratioWithScrWidth(
+                                                            context, 0.02),
+                                                    left: Sizes()
+                                                        .ratioWithScrWidth(
+                                                            context, 0.03),
+                                                    bottom: Sizes()
+                                                        .ratioWithScrWidth(
+                                                            context, 0.02),
+                                                  ),
+                                                  height: 0,
                                                   child: Row(
                                                     children: [
                                                       circleInd(context,
@@ -366,6 +375,8 @@ class TrainingType extends StatelessWidget {
                                                       ),
                                                     ],
                                                   ),
+                                                ),
+                                                PopupMenuItem(
                                                   padding: EdgeInsets.only(
                                                     top: Sizes()
                                                         .ratioWithScrWidth(
@@ -378,8 +389,6 @@ class TrainingType extends StatelessWidget {
                                                             context, 0.02),
                                                   ),
                                                   height: 0,
-                                                ),
-                                                PopupMenuItem(
                                                   child: Row(
                                                     children: [
                                                       circleInd(
@@ -394,21 +403,17 @@ class TrainingType extends StatelessWidget {
                                                       ),
                                                     ],
                                                   ),
-                                                  padding: EdgeInsets.only(
-                                                    top: Sizes()
-                                                        .ratioWithScrWidth(
-                                                            context, 0.02),
-                                                    left: Sizes()
-                                                        .ratioWithScrWidth(
-                                                            context, 0.03),
-                                                    bottom: Sizes()
-                                                        .ratioWithScrWidth(
-                                                            context, 0.02),
-                                                  ),
-                                                  height: 0,
                                                 ),
                                               ];
                                             },
+                                            child: Container(
+                                              width: Sizes().ratioWithScrWidth(
+                                                  context, 0.3),
+                                              height: Sizes()
+                                                  .ratioWithScrHeight(
+                                                      context, 0.04),
+                                              color: Colors.transparent,
+                                            ),
                                           ),
                                         ],
                                       )),
@@ -430,25 +435,6 @@ class TrainingType extends StatelessWidget {
                                                 'Edit',
                                                 'Delete',
                                               ].map((e) => PopupMenuItem(
-                                                    child: Row(
-                                                      children: [
-                                                        e == 'Edit'
-                                                            ? Icon(Icons
-                                                                .edit_outlined)
-                                                            : Icon(Icons
-                                                                .delete_outline),
-                                                        Spacing()
-                                                            .horizontalSpace(
-                                                                context, 0.02),
-                                                        Text(
-                                                          e,
-                                                          style: txtStyle(
-                                                              size: 13,
-                                                              weight: FontWeight
-                                                                  .w400),
-                                                        ),
-                                                      ],
-                                                    ),
                                                     padding: EdgeInsets.only(
                                                         top: Sizes()
                                                             .ratioWithScrWidth(
@@ -463,6 +449,25 @@ class TrainingType extends StatelessWidget {
                                                             .ratioWithScrWidth(
                                                                 context, 0.1)),
                                                     height: 0,
+                                                    child: Row(
+                                                      children: [
+                                                        e == 'Edit'
+                                                            ? const Icon(Icons
+                                                                .edit_outlined)
+                                                            : const Icon(Icons
+                                                                .delete_outline),
+                                                        Spacing()
+                                                            .horizontalSpace(
+                                                                context, 0.02),
+                                                        Text(
+                                                          e,
+                                                          style: txtStyle(
+                                                              size: 13,
+                                                              weight: FontWeight
+                                                                  .w400),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ))
                                             ];
                                           },
@@ -475,7 +480,7 @@ class TrainingType extends StatelessWidget {
                               width: Sizes().ratioWithScrWidth(context, 1.45),
                               height:
                                   Sizes().ratioWithScrHeight(context, 0.004),
-                              color: Color.fromARGB(255, 209, 206, 206),
+                              color: const Color.fromARGB(255, 209, 206, 206),
                             )
                           ],
                         ),
@@ -499,8 +504,9 @@ class TrainingType extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                  color: Color.fromARGB(255, 187, 184, 184)),
-                              borderRadius: BorderRadius.only(
+                                  color:
+                                      const Color.fromARGB(255, 187, 184, 184)),
+                              borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(6),
                                   bottomLeft: Radius.circular(6))),
                           child: Padding(
@@ -512,7 +518,7 @@ class TrainingType extends StatelessWidget {
                             ),
                           )),
                       Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Colors.orange,
                               border: Border(
                                 top: BorderSide(
@@ -532,9 +538,9 @@ class TrainingType extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                color: Color.fromARGB(255, 187, 184, 184),
+                                color: const Color.fromARGB(255, 187, 184, 184),
                               ),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                   topRight: Radius.circular(6),
                                   bottomRight: Radius.circular(6))),
                           child: Padding(
@@ -560,7 +566,7 @@ class TrainingType extends StatelessWidget {
           width: Sizes().ratioWithScrWidth(context, 0.11),
           height: Sizes().ratioWithScrHeight(context, 0.02),
           alignment: alignment,
-          child: Container(
+          child: SizedBox(
             height: 20,
             child: GestureDetector(
               onTap: () => onClick(),
@@ -580,13 +586,14 @@ class TrainingType extends StatelessWidget {
                     child: Icon(
                       icon[1],
                       size: 16,
-                      color: Color.fromARGB(255, 139, 138, 138),
+                      color: const Color.fromARGB(255, 139, 138, 138),
                     ),
                   ),
                 ],
               ),
             ),
           ));
+
   Widget dropDownBox(
           {required BuildContext context,
           required VoidCallback onClick,
@@ -600,14 +607,14 @@ class TrainingType extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(
-                    color: Color.fromARGB(255, 51, 50, 50), width: 0.5),
+                    color: const Color.fromARGB(255, 51, 50, 50), width: 0.5),
                 borderRadius: BorderRadius.circular(20)),
             alignment: Alignment.center,
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               circleInd(context, color),
               Spacing().horizontalSpace(context, 0.018),
               child,
-              Icon(Icons.arrow_drop_down)
+              const Icon(Icons.arrow_drop_down)
             ])),
       );
 
@@ -625,18 +632,19 @@ class TrainingType extends StatelessWidget {
             border: Border.all(color: Colors.white, width: 2),
             borderRadius: BorderRadius.circular(100)),
       ));
+
   Widget addButton(
           {required BuildContext context,
           required String title,
           required double borderRad}) =>
       Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 153, 69),
+            color: const Color.fromARGB(255, 255, 153, 69),
             borderRadius: BorderRadius.circular(borderRad)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
-            Icon(
+            const Icon(
               Icons.add,
               size: 16,
               color: Colors.white,

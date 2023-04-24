@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-
 import '../../../core/utils.dart';
 import '../../project_detail_&_member/core/components.dart';
 import '../../project_detail_&_member/data/member_list.dart';
@@ -30,11 +27,17 @@ class EmployeeDetailTile extends StatelessWidget {
                     'Edit',
                     'Delete',
                   ].map((e) => PopupMenuItem(
+                        padding: EdgeInsets.only(
+                            top: Sizes().ratioWithScrWidth(context, 0.02),
+                            left: Sizes().ratioWithScrWidth(context, 0.05),
+                            bottom: Sizes().ratioWithScrWidth(context, 0.02),
+                            right: Sizes().ratioWithScrWidth(context, 0.1)),
+                        height: 0,
                         child: Row(
                           children: [
                             e == 'Edit'
-                                ? Icon(Icons.edit_outlined)
-                                : Icon(Icons.delete_outline),
+                                ? const Icon(Icons.edit_outlined)
+                                : const Icon(Icons.delete_outline),
                             Spacing().horizontalSpace(context, 0.02),
                             Text(
                               e,
@@ -43,12 +46,6 @@ class EmployeeDetailTile extends StatelessWidget {
                             ),
                           ],
                         ),
-                        padding: EdgeInsets.only(
-                            top: Sizes().ratioWithScrWidth(context, 0.02),
-                            left: Sizes().ratioWithScrWidth(context, 0.05),
-                            bottom: Sizes().ratioWithScrWidth(context, 0.02),
-                            right: Sizes().ratioWithScrWidth(context, 0.1)),
-                        height: 0,
                       ))
                 ];
               },
@@ -70,7 +67,7 @@ class EmployeeDetailTile extends StatelessWidget {
         Text(
           e.designation!,
           style: txtStyle(
-              color: Color.fromARGB(255, 128, 125, 125),
+              color: const Color.fromARGB(255, 128, 125, 125),
               size: 14,
               weight: FontWeight.w400),
         ),

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:hrms_clone/core/app_widgets.dart';
+import '../../core/utils.dart';
 
-class CompanySetting extends StatelessWidget {
-  CompanySetting({super.key});
+class CompanySetting extends StatefulWidget {
+  const CompanySetting({super.key});
+
+  @override
+  State<CompanySetting> createState() => _CompanySettingState();
+}
+
+class _CompanySettingState extends State<CompanySetting> {
   bool showMenuStatus = false;
+
   ScrollController controller = ScrollController();
 
   @override
@@ -19,76 +25,132 @@ class CompanySetting extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Company Settings'),
+            Spacing().verticalSpace(context, 0.02),
+            Text(
+              'Company Settings',
+              style: txtStyle(size: 18, weight: FontWeight.w600),
+            ),
+            Spacing().verticalSpace(context, 0.04),
             Row(
-              children: [
+              children: const [
                 Text('Company Name'),
                 Text('*'),
               ],
             ),
+            Spacing().verticalSpace(context, 0.02),
             TextField(
               controller:
                   TextEditingController(text: "Dreamguy's Technologies"),
-              decoration: InputDecoration(border: OutlineInputBorder()),
+              decoration: const InputDecoration(border: OutlineInputBorder()),
             ),
-            Text('Contact Person'),
+            Spacing().verticalSpace(context, 0.03),
+            const Text('Contact Person'),
+            Spacing().verticalSpace(context, 0.02),
             TextField(
               controller: TextEditingController(text: "Daniel Porter"),
-              decoration: InputDecoration(border: OutlineInputBorder()),
+              decoration: const InputDecoration(border: OutlineInputBorder()),
             ),
-            Text('Address'),
+            Spacing().verticalSpace(context, 0.03),
+            const Text('Address'),
+            Spacing().verticalSpace(context, 0.02),
             TextField(
               controller: TextEditingController(
                   text: "3864 Quiet Valley Lane,Sherman Oaks, CA, 91403"),
-              decoration: InputDecoration(border: OutlineInputBorder()),
+              decoration: const InputDecoration(border: OutlineInputBorder()),
             ),
-            Text('Country'),
+            Spacing().verticalSpace(context, 0.03),
+            const Text('Country'),
+            Spacing().verticalSpace(context, 0.02),
             TextField(
               controller: TextEditingController(text: "USA"),
-              decoration: InputDecoration(border: OutlineInputBorder()),
+              decoration: const InputDecoration(border: OutlineInputBorder()),
             ),
-            Text('City'),
+            Spacing().verticalSpace(context, 0.03),
+            const Text('City'),
+            Spacing().verticalSpace(context, 0.02),
             TextField(
               controller: TextEditingController(text: "Sherman Oaks"),
-              decoration: InputDecoration(border: OutlineInputBorder()),
+              decoration: const InputDecoration(border: OutlineInputBorder()),
             ),
-            Text('State/Province'),
+            Spacing().verticalSpace(context, 0.03),
+            const Text('State/Province'),
+            Spacing().verticalSpace(context, 0.02),
             TextField(
               controller: TextEditingController(text: "California"),
-              decoration: InputDecoration(border: OutlineInputBorder()),
+              decoration: const InputDecoration(border: OutlineInputBorder()),
             ),
-            Text('Postal Code'),
+            Spacing().verticalSpace(context, 0.03),
+            const Text('Postal Code'),
+            Spacing().verticalSpace(context, 0.02),
             TextField(
               controller: TextEditingController(text: "91403"),
-              decoration: InputDecoration(border: OutlineInputBorder()),
+              decoration: const InputDecoration(border: OutlineInputBorder()),
             ),
-            Text('Email'),
+            Spacing().verticalSpace(context, 0.03),
+            const Text('Email'),
+            Spacing().verticalSpace(context, 0.02),
             TextField(
               controller:
                   TextEditingController(text: "danielporter@example.com"),
-              decoration: InputDecoration(border: OutlineInputBorder()),
+              decoration: const InputDecoration(border: OutlineInputBorder()),
             ),
-            Text('Phone Number'),
+            Spacing().verticalSpace(context, 0.03),
+            const Text('Phone Number'),
+            Spacing().verticalSpace(context, 0.02),
             TextField(
               controller: TextEditingController(text: "818-635-5579"),
-              decoration: InputDecoration(border: OutlineInputBorder()),
+              decoration: const InputDecoration(border: OutlineInputBorder()),
             ),
-            Text('Mobile Number'),
+            Spacing().verticalSpace(context, 0.03),
+            const Text('Mobile Number'),
+            Spacing().verticalSpace(context, 0.02),
             TextField(
               controller: TextEditingController(text: "818-635-5579"),
-              decoration: InputDecoration(border: OutlineInputBorder()),
+              decoration: const InputDecoration(border: OutlineInputBorder()),
             ),
-            Text('Fax'),
+            Spacing().verticalSpace(context, 0.03),
+            const Text('Fax'),
+            Spacing().verticalSpace(context, 0.02),
             TextField(
               controller: TextEditingController(text: "818-978-7102"),
-              decoration: InputDecoration(border: OutlineInputBorder()),
+              decoration: const InputDecoration(border: OutlineInputBorder()),
             ),
-            Text('Website Url'),
+            Spacing().verticalSpace(context, 0.03),
+            const Text('Website Url'),
+            Spacing().verticalSpace(context, 0.02),
             TextField(
               controller:
                   TextEditingController(text: "https://www.example.com"),
-              decoration: InputDecoration(border: OutlineInputBorder()),
-            )
+              decoration: const InputDecoration(border: OutlineInputBorder()),
+            ),
+            Spacing().verticalSpace(context, 0.08),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: Sizes().ratioWithScrWidth(context, 0.6),
+                  height: Sizes().ratioWithScrHeight(context, 0.06),
+                  child: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.orange),
+                          shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)))),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        'Save',
+                        style: txtStyle(
+                            size: 20,
+                            color: Colors.white,
+                            weight: FontWeight.w400),
+                      )),
+                ),
+              ],
+            ),
+            Spacing().verticalSpace(context, 0.04),
           ],
         ),
       ],

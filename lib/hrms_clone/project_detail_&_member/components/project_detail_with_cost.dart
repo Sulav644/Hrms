@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/show_priority_cubit.dart';
-
 import '../../../core/utils.dart';
 import '../core/components.dart';
 
@@ -40,11 +37,11 @@ class ProjectDetailWithCostState extends State<ProjectDetailWithCost> {
                   Container(
                       decoration: BoxDecoration(
                         border: Border.all(
-                            color: Color.fromARGB(255, 190, 189, 189)),
+                            color: const Color.fromARGB(255, 190, 189, 189)),
                       ),
                       child: Column(children: [
                         detailTile(
-                            color: Color.fromARGB(255, 235, 231, 231),
+                            color: const Color.fromARGB(255, 235, 231, 231),
                             context: context,
                             field: 'Cost',
                             value: Text(
@@ -60,7 +57,7 @@ class ProjectDetailWithCostState extends State<ProjectDetailWithCost> {
                               style: txtStyle(weight: FontWeight.w300),
                             )),
                         detailTile(
-                            color: Color.fromARGB(255, 235, 231, 231),
+                            color: const Color.fromARGB(255, 235, 231, 231),
                             context: context,
                             field: 'Created',
                             value: Text(
@@ -76,49 +73,90 @@ class ProjectDetailWithCostState extends State<ProjectDetailWithCost> {
                               style: txtStyle(weight: FontWeight.w300),
                             )),
                         detailTile(
-                            color: Color.fromARGB(255, 235, 231, 231),
+                            color: const Color.fromARGB(255, 235, 231, 231),
                             context: context,
                             field: 'Priority',
-                            value: dropDownBox(
-                                context: context,
-                                key: keyContext,
-                                onClick: () {
-                                  RenderBox box = keyContext.currentContext!
-                                      .findRenderObject() as RenderBox;
-                                  Offset position =
-                                      box.localToGlobal(Offset.zero);
-                                  setState(() {
-                                    posX = position.dx;
-                                    posY = position.dy;
-                                  });
-                                  print('px ${position.dx} py ${position.dy}');
-                                  context
-                                      .read<ShowPriorityCubit>()
-                                      .toggleState();
-                                  context
-                                      .read<SetPositionCubit>()
-                                      .setPosition([position.dx, position.dy]);
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 4.0),
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Highest',
-                                          style: txtStyle(
-                                              size: 9,
+                            value: Stack(
+                              children: [
+                                dropDownBox(
+                                    context: context,
+                                    key: keyContext,
+                                    onClick: () {
+                                      RenderBox box = keyContext.currentContext!
+                                          .findRenderObject() as RenderBox;
+                                      Offset position =
+                                          box.localToGlobal(Offset.zero);
+                                      setState(() {
+                                        posX = position.dx;
+                                        posY = position.dy;
+                                      });
+                                      context
+                                          .read<ShowPriorityCubit>()
+                                          .toggleState();
+                                      context
+                                          .read<SetPositionCubit>()
+                                          .setPosition(
+                                              [position.dx, position.dy]);
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 4.0),
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Highest',
+                                              style: txtStyle(
+                                                  size: 9,
+                                                  color: Colors.white,
+                                                  weight: FontWeight.w300),
+                                            ),
+                                            const Icon(
+                                              Icons.arrow_drop_down,
+                                              size: 18,
                                               color: Colors.white,
-                                              weight: FontWeight.w300),
-                                        ),
-                                        Icon(
-                                          Icons.arrow_drop_down,
-                                          size: 18,
-                                          color: Colors.white,
-                                        )
-                                      ]),
-                                ))),
+                                            )
+                                          ]),
+                                    )),
+                                PopupMenuButton(
+                                  child: Container(
+                                    width:
+                                        Sizes().ratioWithScrWidth(context, 0.2),
+                                    height: Sizes()
+                                        .ratioWithScrHeight(context, 0.035),
+                                    color: Colors.transparent,
+                                  ),
+                                  itemBuilder: (context) {
+                                    return [
+                                      PopupMenuItem(
+                                        child: priorityOption(
+                                            context: context,
+                                            color: Colors.red,
+                                            type: 'Highest Priority'),
+                                      ),
+                                      PopupMenuItem(
+                                        child: priorityOption(
+                                            context: context,
+                                            color: Colors.blue,
+                                            type: 'High Priority'),
+                                      ),
+                                      PopupMenuItem(
+                                        child: priorityOption(
+                                            context: context,
+                                            color: Colors.orange,
+                                            type: 'Normal Priority'),
+                                      ),
+                                      PopupMenuItem(
+                                        child: priorityOption(
+                                            context: context,
+                                            color: Colors.green,
+                                            type: 'Low Priority'),
+                                      )
+                                    ];
+                                  },
+                                )
+                              ],
+                            )),
                         detailTile(
                             color: Colors.white,
                             context: context,
@@ -129,7 +167,7 @@ class ProjectDetailWithCostState extends State<ProjectDetailWithCost> {
                                   color: Colors.blue, weight: FontWeight.w300),
                             )),
                         detailTile(
-                            color: Color.fromARGB(255, 235, 231, 231),
+                            color: const Color.fromARGB(255, 235, 231, 231),
                             context: context,
                             field: 'Status',
                             value: Text(
@@ -148,7 +186,7 @@ class ProjectDetailWithCostState extends State<ProjectDetailWithCost> {
                       Text(
                         '40%',
                         style: txtStyle(
-                            color: Color.fromARGB(
+                            color: const Color.fromARGB(
                               255,
                               58,
                               216,
@@ -164,12 +202,12 @@ class ProjectDetailWithCostState extends State<ProjectDetailWithCost> {
                       levelBar(
                           context: context,
                           width: Sizes().scrWidth(context),
-                          color: Color.fromARGB(255, 211, 207, 207),
+                          color: const Color.fromARGB(255, 211, 207, 207),
                           borderRad: [10, 10, 10, 10]),
                       levelBar(
                           context: context,
                           width: Sizes().ratioWithScrWidth(context, 0.32),
-                          color: Color.fromARGB(255, 56, 219, 62),
+                          color: const Color.fromARGB(255, 56, 219, 62),
                           borderRad: [10, 10, 0, 0]),
                     ],
                   )
@@ -207,7 +245,7 @@ class ProjectDetailWithCostState extends State<ProjectDetailWithCost> {
                   ]),
             ),
           ),
-          Divider(
+          const Divider(
             height: 1,
             color: Color.fromARGB(255, 190, 189, 189),
           )
@@ -242,17 +280,49 @@ class ProjectDetailWithCostState extends State<ProjectDetailWithCost> {
           width: Sizes().ratioWithScrWidth(context, 0.19),
           height: Sizes().ratioWithScrHeight(context, 0.036),
           decoration: BoxDecoration(
-              color: Color.fromARGB(255, 240, 150, 143),
+              color: const Color.fromARGB(255, 240, 150, 143),
               borderRadius: BorderRadius.circular(10)),
           alignment: Alignment.center,
           child: Container(
               width: Sizes().ratioWithScrWidth(context, 0.18),
               height: Sizes().ratioWithScrHeight(context, 0.03),
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 241, 21, 6),
+                  color: const Color.fromARGB(255, 241, 21, 6),
                   borderRadius: BorderRadius.circular(10)),
               alignment: Alignment.center,
               child: child),
         ),
+      );
+  Widget priorityOption(
+          {required BuildContext context,
+          required Color color,
+          required String type}) =>
+      Padding(
+        padding: EdgeInsets.symmetric(
+            horizontal: Sizes().ratioWithScrWidth(context, 0.03),
+            vertical: Sizes().ratioWithScrHeight(context, 0.01)),
+        child: Row(children: [
+          Container(
+              width: Sizes().ratioWithScrWidth(context, 0.045),
+              height: Sizes().ratioWithScrWidth(context, 0.045),
+              decoration: BoxDecoration(
+                  border: Border.all(color: color, width: 3),
+                  borderRadius: BorderRadius.circular(100)),
+              child: Container(
+                width: Sizes().ratioWithScrWidth(context, 0.01),
+                height: Sizes().ratioWithScrWidth(context, 0.01),
+                decoration: BoxDecoration(
+                    color: color,
+                    border: Border.all(color: Colors.white, width: 2),
+                    borderRadius: BorderRadius.circular(100)),
+              )),
+          Spacing().horizontalSpace(context, 0.02),
+          Material(
+            child: Text(
+              type,
+              style: txtStyle(size: 12, weight: FontWeight.w300),
+            ),
+          ),
+        ]),
       );
 }

@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../core/utils.dart';
 
 class EntriesLimitWidget extends StatefulWidget {
@@ -30,8 +26,8 @@ class _EntriesLimitWidgetState extends State<EntriesLimitWidget> {
             builder: (context) {
               return StatefulBuilder(
                 builder: (context, setState) => AlertDialog(
-                  title: Text(''),
-                  content: Container(
+                  title: const Text(''),
+                  content: SizedBox(
                     height: Sizes().ratioWithScrHeight(context, 0.3),
                     child: Padding(
                       padding: EdgeInsets.symmetric(
@@ -96,7 +92,7 @@ class _EntriesLimitWidgetState extends State<EntriesLimitWidget> {
             decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(
-                    color: Color.fromARGB(255, 82, 80, 80), width: 0.4),
+                    color: const Color.fromARGB(255, 82, 80, 80), width: 0.4),
                 borderRadius: BorderRadius.circular(6)),
             child: Padding(
               padding: const EdgeInsets.all(8.0),

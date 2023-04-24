@@ -1,74 +1,71 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:hrms_clone/hrms_clone/holidays/components/horiz_list_tile.dart';
-
 import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
 import '../view_more_projects/components/entries_limit_widget.dart';
 import 'data/leads_detail.dart';
 
-final path = 'assets/images/member_list';
+const path = 'assets/images/member_list';
 
 List<LeadsDetail> leadsList = [
-  LeadsDetail(
-      image: '${path}/download.jpg',
+  const LeadsDetail(
+      image: '$path/download.jpg',
       name: 'Wilmer Deluna',
       email: 'wilmerdeluna@example.com',
       project: 'Hospital Administration',
       status: 'Working',
       createdDate: '10 hours ago'),
-  LeadsDetail(
-      image: '${path}/downloadTwo.jpg',
+  const LeadsDetail(
+      image: '$path/downloadTwo.jpg',
       name: 'Lesley Grauer',
       email: 'lesleygrauer@example.com',
       project: 'Video Calling App',
       status: 'Working',
       createdDate: '5 Mar 2019'),
-  LeadsDetail(
-      image: '${path}/downloadThree.jpg',
+  const LeadsDetail(
+      image: '$path/downloadThree.jpg',
       name: 'Jeffery Lalor',
       email: 'jefferylalor@example.com',
       project: 'Office Management',
       status: 'Working',
       createdDate: '27 Feb 2019'),
-  LeadsDetail(
-      image: '${path}/download.jpg',
+  const LeadsDetail(
+      image: '$path/download.jpg',
       name: 'Wilmer Warren',
       email: 'wilmerdeluna@example.com',
       project: 'Hospital Administration',
       status: 'Working',
       createdDate: '10 hours ago'),
-  LeadsDetail(
-      image: '${path}/downloadTwo.jpg',
+  const LeadsDetail(
+      image: '$path/downloadTwo.jpg',
       name: 'Lesley Smith',
       email: 'lesleygrauer@example.com',
       project: 'Video Calling App',
       status: 'Working',
       createdDate: '5 Mar 2019'),
-  LeadsDetail(
-      image: '${path}/downloadThree.jpg',
+  const LeadsDetail(
+      image: '$path/downloadThree.jpg',
       name: 'Jeffery Warren',
       email: 'jefferylalor@example.com',
       project: 'Office Management',
       status: 'Working',
       createdDate: '27 Feb 2019'),
-  LeadsDetail(
-      image: '${path}/download.jpg',
+  const LeadsDetail(
+      image: '$path/download.jpg',
       name: 'Wilmer Watson',
       email: 'wilmerdeluna@example.com',
       project: 'Hospital Administration',
       status: 'Working',
       createdDate: '10 hours ago'),
-  LeadsDetail(
-      image: '${path}/downloadTwo.jpg',
+  const LeadsDetail(
+      image: '$path/downloadTwo.jpg',
       name: 'Lesley Watson',
       email: 'lesleygrauer@example.com',
       project: 'Video Calling App',
       status: 'Working',
       createdDate: '5 Mar 2019'),
-  LeadsDetail(
-      image: '${path}/downloadThree.jpg',
+  const LeadsDetail(
+      image: '$path/downloadThree.jpg',
       name: 'Jeffery Smith',
       email: 'jefferylalor@example.com',
       project: 'Office Management',
@@ -76,14 +73,21 @@ List<LeadsDetail> leadsList = [
       createdDate: '27 Feb 2019'),
 ];
 
-class Leads extends StatelessWidget {
-  Leads({super.key});
+class Leads extends StatefulWidget {
+  const Leads({super.key});
+
+  @override
+  State<Leads> createState() => _LeadsState();
+}
+
+class _LeadsState extends State<Leads> {
   bool showMenuStatus = false;
+
   ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
-    final path = 'assets/images/member_list';
+    const path = 'assets/images/member_list';
     final headerStyle = txtStyle(weight: FontWeight.w600, height: 1.4);
     final listStyle = txtStyle(weight: FontWeight.w400, height: 1.4);
     return AppWidgets().appScaffold(
@@ -101,7 +105,7 @@ class Leads extends StatelessWidget {
               )
             ]),
             Spacing().verticalSpace(context, 0.035),
-            EntriesLimitWidget(),
+            const EntriesLimitWidget(),
             Spacing().verticalSpace(context, 0.03),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -111,7 +115,7 @@ class Leads extends StatelessWidget {
                   Container(
                     height: Sizes().ratioWithScrHeight(context, 0.097),
                     alignment: Alignment.topCenter,
-                    color: Color.fromARGB(255, 209, 206, 206),
+                    color: const Color.fromARGB(255, 209, 206, 206),
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -135,7 +139,7 @@ class Leads extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.34,
@@ -147,7 +151,7 @@ class Leads extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.46,
@@ -159,7 +163,7 @@ class Leads extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.18,
@@ -171,7 +175,7 @@ class Leads extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.36,
@@ -183,7 +187,7 @@ class Leads extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.36,
@@ -196,7 +200,7 @@ class Leads extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.18,
@@ -208,7 +212,7 @@ class Leads extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.18,
@@ -220,7 +224,7 @@ class Leads extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.18,
@@ -232,7 +236,7 @@ class Leads extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             )
                           ]),
                         ),
@@ -289,8 +293,8 @@ class Leads extends StatelessWidget {
                                               MainAxisAlignment.start,
                                           children: [
                                             ...[
-                                              '${path}/downloadTwo.jpg',
-                                              '${path}/downloadThree.jpg',
+                                              '$path/downloadTwo.jpg',
+                                              '$path/downloadThree.jpg',
                                             ]
                                                 .map((e) => Padding(
                                                       padding:
@@ -310,6 +314,7 @@ class Leads extends StatelessWidget {
                                                   const EdgeInsets.all(3.0),
                                               child: CircleAvatar(
                                                 backgroundColor: Colors.pink,
+                                                radius: 16,
                                                 child: Text(
                                                   '+15',
                                                   style: txtStyle(
@@ -317,7 +322,6 @@ class Leads extends StatelessWidget {
                                                       size: 12,
                                                       weight: FontWeight.w500),
                                                 ),
-                                                radius: 16,
                                               ),
                                             ),
                                           ])),
@@ -346,25 +350,6 @@ class Leads extends StatelessWidget {
                                                 'Edit',
                                                 'Delete',
                                               ].map((e) => PopupMenuItem(
-                                                    child: Row(
-                                                      children: [
-                                                        e == 'Edit'
-                                                            ? Icon(Icons
-                                                                .edit_outlined)
-                                                            : Icon(Icons
-                                                                .delete_outline),
-                                                        Spacing()
-                                                            .horizontalSpace(
-                                                                context, 0.02),
-                                                        Text(
-                                                          e,
-                                                          style: txtStyle(
-                                                              size: 13,
-                                                              weight: FontWeight
-                                                                  .w400),
-                                                        ),
-                                                      ],
-                                                    ),
                                                     padding: EdgeInsets.only(
                                                         top: Sizes()
                                                             .ratioWithScrWidth(
@@ -379,6 +364,25 @@ class Leads extends StatelessWidget {
                                                             .ratioWithScrWidth(
                                                                 context, 0.1)),
                                                     height: 0,
+                                                    child: Row(
+                                                      children: [
+                                                        e == 'Edit'
+                                                            ? const Icon(Icons
+                                                                .edit_outlined)
+                                                            : const Icon(Icons
+                                                                .delete_outline),
+                                                        Spacing()
+                                                            .horizontalSpace(
+                                                                context, 0.02),
+                                                        Text(
+                                                          e,
+                                                          style: txtStyle(
+                                                              size: 13,
+                                                              weight: FontWeight
+                                                                  .w400),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ))
                                             ];
                                           },
@@ -391,7 +395,7 @@ class Leads extends StatelessWidget {
                               width: Sizes().ratioWithScrWidth(context, 3.26),
                               height:
                                   Sizes().ratioWithScrHeight(context, 0.002),
-                              color: Color.fromARGB(255, 199, 195, 195),
+                              color: const Color.fromARGB(255, 199, 195, 195),
                             )
                           ],
                         ),
@@ -410,7 +414,7 @@ class Leads extends StatelessWidget {
           width: Sizes().ratioWithScrWidth(context, 0.11),
           height: Sizes().ratioWithScrHeight(context, 0.02),
           alignment: alignment,
-          child: Container(
+          child: SizedBox(
             height: 20,
             child: GestureDetector(
               onTap: () => onClick(),
@@ -430,7 +434,7 @@ class Leads extends StatelessWidget {
                     child: Icon(
                       icon[1],
                       size: 16,
-                      color: Color.fromARGB(255, 139, 138, 138),
+                      color: const Color.fromARGB(255, 139, 138, 138),
                     ),
                   ),
                 ],

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:hrms_clone/core/utils.dart';
 import 'package:hrms_clone/hrms_clone/employee_dashboard/components/apply_leave.dart';
 import 'package:hrms_clone/hrms_clone/employee_dashboard/components/apply_time_off.dart';
@@ -9,25 +7,24 @@ import 'package:hrms_clone/hrms_clone/employee_dashboard/components/upcoming_hol
 import 'package:hrms_clone/hrms_clone/employee_dashboard/components/welcome_board.dart';
 import 'package:hrms_clone/hrms_clone/employee_dashboard/components/working_status_detail.dart';
 import 'package:hrms_clone/hrms_clone/employee_dashboard/data/working_status_detail.dart';
-
 import '../../core/app_widgets.dart';
 
 List<WorkingStatusDetail> todayWorkingStatus = [
-  WorkingStatusDetail(
+  const WorkingStatusDetail(
       icon: Icons.time_to_leave,
       workStatus: 'Richard Miles is off sick today',
       person: AssetImage('assets/images/member_list/downloadTwo.jpg')),
-  WorkingStatusDetail(
+  const WorkingStatusDetail(
       icon: Icons.business,
       workStatus: 'You are away today',
       person: AssetImage('assets/images/member_list/downloadThree.jpg')),
-  WorkingStatusDetail(
+  const WorkingStatusDetail(
       icon: Icons.task,
       workStatus: 'You are working from home today',
       person: AssetImage('assets/images/member_list/downloadFour.jpg'))
 ];
 List<WorkingStatusDetail> tomorrowWorkingStatus = [
-  WorkingStatusDetail(
+  const WorkingStatusDetail(
       icon: Icons.time_to_leave,
       workStatus: '2 people will be away tomorrow',
       persons: [
@@ -36,27 +33,34 @@ List<WorkingStatusDetail> tomorrowWorkingStatus = [
       ]),
 ];
 List<WorkingStatusDetail> nextWeekWorkingStatus = [
-  WorkingStatusDetail(
+  const WorkingStatusDetail(
       icon: Icons.time_to_leave,
       workStatus: '2 people are going to be away',
       persons: [
         AssetImage('assets/images/member_list/downloadFour.jpg'),
         AssetImage('assets/images/member_list/downloadFive.jpg')
       ]),
-  WorkingStatusDetail(
+  const WorkingStatusDetail(
     icon: Icons.person_add,
     workStatus: 'Your first day is going to be on Thursday',
     person: AssetImage('assets/images/member_list/download.jpg'),
   ),
-  WorkingStatusDetail(
+  const WorkingStatusDetail(
       icon: Icons.calendar_month,
       workStatus: "It's Spring Bank Holiday on Monday",
       showPerson: false),
 ];
 
-class EmployeeDashboard extends StatelessWidget {
-  EmployeeDashboard({super.key});
+class EmployeeDashboard extends StatefulWidget {
+  const EmployeeDashboard({super.key});
+
+  @override
+  State<EmployeeDashboard> createState() => _EmployeeDashboardState();
+}
+
+class _EmployeeDashboardState extends State<EmployeeDashboard> {
   bool showMenuStatus = false;
+
   ScrollController scrollController = ScrollController();
 
   @override
@@ -68,7 +72,7 @@ class EmployeeDashboard extends StatelessWidget {
         onClick: () {},
         allowPadding: false,
         children: [
-          WelcomeBoard(),
+          const WelcomeBoard(),
           Spacing().verticalSpace(context, 0.055),
           Padding(
             padding: EdgeInsets.symmetric(
@@ -119,10 +123,10 @@ class EmployeeDashboard extends StatelessWidget {
                       (e) => WorkingStatusDetailWidget(e: e),
                     )
                     .toList(),
-                TotalPendingTasks(),
-                ApplyLeave(),
-                ApplyTimeOff(),
-                UpcomingHoliday(),
+                const TotalPendingTasks(),
+                const ApplyLeave(),
+                const ApplyTimeOff(),
+                const UpcomingHoliday(),
               ],
             ),
           ),

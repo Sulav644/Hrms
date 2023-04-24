@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:hrms_clone/hrms_clone/employee_dashboard/data/working_status_detail.dart';
-
 import '../../../core/utils.dart';
-import '../../admin_dashboard/core/components.dart';
 
 class WorkingStatusDetailWidget extends StatelessWidget {
   final WorkingStatusDetail e;
@@ -20,7 +16,7 @@ class WorkingStatusDetailWidget extends StatelessWidget {
           decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(
-                  color: Color.fromARGB(255, 165, 163, 163), width: 0.5),
+                  color: const Color.fromARGB(255, 165, 163, 163), width: 0.5),
               borderRadius: BorderRadius.circular(10)),
           child: Column(
             children: [
@@ -29,17 +25,17 @@ class WorkingStatusDetailWidget extends StatelessWidget {
                 Spacing().horizontalSpace(context, 0.035),
                 Icon(
                   e.icon,
-                  color: Color.fromARGB(255, 29, 28, 28),
+                  color: const Color.fromARGB(255, 29, 28, 28),
                   size: 40,
                 ),
                 Spacing().horizontalSpace(context, 0.055),
-                Container(
+                SizedBox(
                     width: Sizes().ratioWithScrWidth(
                         context, e.showPerson == null ? 0.434 : 0.6),
                     child: Text(
                       '${e.workStatus}',
                       style: txtStyle(
-                          color: Color.fromARGB(255, 29, 28, 28),
+                          color: const Color.fromARGB(255, 29, 28, 28),
                           size: 22,
                           height: 1.6),
                     )),
@@ -52,7 +48,7 @@ class WorkingStatusDetailWidget extends StatelessWidget {
                       height: Sizes().ratioWithScrWidth(context, 0.12),
                       decoration: BoxDecoration(
                           border: Border.all(
-                              color: Color.fromARGB(255, 202, 199, 199),
+                              color: const Color.fromARGB(255, 202, 199, 199),
                               width: 2.5),
                           borderRadius: BorderRadius.circular(100),
                           image: DecorationImage(
@@ -60,7 +56,7 @@ class WorkingStatusDetailWidget extends StatelessWidget {
                     ),
                 if (e.showPerson == null)
                   if (e.person == null)
-                    Container(
+                    SizedBox(
                       width: Sizes().ratioWithScrWidth(context, 0.22),
                       child: Stack(children: [
                         Container(
@@ -68,7 +64,8 @@ class WorkingStatusDetailWidget extends StatelessWidget {
                           height: Sizes().ratioWithScrWidth(context, 0.12),
                           decoration: BoxDecoration(
                               border: Border.all(
-                                  color: Color.fromARGB(255, 202, 199, 199),
+                                  color:
+                                      const Color.fromARGB(255, 202, 199, 199),
                                   width: 2.5),
                               borderRadius: BorderRadius.circular(100),
                               image: DecorationImage(
@@ -81,7 +78,8 @@ class WorkingStatusDetailWidget extends StatelessWidget {
                             height: Sizes().ratioWithScrWidth(context, 0.12),
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                    color: Color.fromARGB(255, 202, 199, 199),
+                                    color: const Color.fromARGB(
+                                        255, 202, 199, 199),
                                     width: 2.5),
                                 borderRadius: BorderRadius.circular(100),
                                 image: DecorationImage(

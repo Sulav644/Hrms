@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:intl/intl.dart';
-
 import '../../../core/utils.dart';
 import '../core/components.dart';
 import '../data/detail_banner.dart';
@@ -37,11 +34,11 @@ class StatusChangeBannerWidget extends StatelessWidget {
           style: txtStyle(size: 15),
         ),
         Text(
-          e.valueChanged == RateChanged.decreased()
+          e.valueChanged == const RateChanged.decreased()
               ? '-${e.rateChange}%'
               : '+${e.rateChange}%',
           style: txtStyle(
-              color: e.valueChanged == RateChanged.decreased()
+              color: e.valueChanged == const RateChanged.decreased()
                   ? Colors.red
                   : Colors.green,
               size: 15),
@@ -59,13 +56,13 @@ class StatusChangeBannerWidget extends StatelessWidget {
             width: Sizes().scrWidth(context),
             height: Sizes().ratioWithScrHeight(context, 0.0085),
             decoration: BoxDecoration(
-                color: Color.fromARGB(255, 223, 220, 220),
+                color: const Color.fromARGB(255, 223, 220, 220),
                 borderRadius: BorderRadius.circular(10)),
           ),
           Container(
             width: Sizes().ratioWithScrWidth(context, 0.6),
             height: Sizes().ratioWithScrHeight(context, 0.0085),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Color.fromARGB(255, 255, 153, 69),
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(10),
@@ -83,8 +80,8 @@ class StatusChangeBannerWidget extends StatelessWidget {
             e.isPriceCount
                 ? '\$${formatter.format(e.totalCount)}'
                 : '${e.totalCount}',
-            style:
-                txtStyle(size: 15, color: Color.fromARGB(255, 161, 159, 159)),
+            style: txtStyle(
+                size: 15, color: const Color.fromARGB(255, 161, 159, 159)),
           ),
         ],
       );

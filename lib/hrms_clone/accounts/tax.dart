@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:intl/intl.dart';
-
 import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
 import '../holidays/components/horiz_list_tile.dart';
-import '../view_more_projects/components/entries_limit_widget.dart';
 
 class Tax extends StatefulWidget {
-  Tax({super.key});
+  const Tax({super.key});
 
   @override
   State<Tax> createState() => _TaxState();
@@ -34,7 +29,7 @@ class _TaxState extends State<Tax> {
             Spacing().verticalSpace(context, 0.02),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Text(
-                'Provident Fund',
+                'Taxes',
                 style: txtStyle(size: 18, weight: FontWeight.w600),
               ),
               GestureDetector(
@@ -44,369 +39,123 @@ class _TaxState extends State<Tax> {
                       builder: (context) {
                         return StatefulBuilder(
                           builder: (context, setState) {
-                            return SingleChildScrollView(
-                              child: AlertDialog(
-                                title: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Add Assets',
-                                      style: txtStyle(
-                                          size: 22, weight: FontWeight.w600),
-                                    ),
-                                  ],
-                                ),
-                                content: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Asset Name',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Asset Id',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          enabled: false,
-                                          controller: TextEditingController(
-                                              text: '#AST-736415'),
-                                          decoration: InputDecoration(
-                                            fillColor: Color.fromARGB(
-                                                255, 155, 153, 153),
-                                            filled: true,
-                                            border: OutlineInputBorder(),
-                                          )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Purchase Date',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          enabled: false,
-                                          controller: TextEditingController(
-                                              text: '21/04/2323'),
-                                          decoration: InputDecoration(
-                                            fillColor: Color.fromARGB(
-                                                255, 155, 153, 153),
-                                            filled: true,
-                                            border: OutlineInputBorder(),
-                                          )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Purchase From',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Manufacturer',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Model',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Status',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      Container(
-                                        height: Sizes()
-                                            .ratioWithScrHeight(context, 0.075),
-                                        padding: EdgeInsets.all(8),
-                                        decoration: BoxDecoration(
-                                            border:
-                                                Border.all(color: Colors.black),
-                                            borderRadius:
-                                                BorderRadius.circular(2)),
-                                        child: DropdownButtonHideUnderline(
-                                          child: DropdownButton(
-                                            isExpanded: true,
-                                            value: status ?? 'Pending',
-                                            items: [
-                                              'Pending',
-                                              'Approved',
-                                              'Deployed',
-                                              'Damaged'
-                                            ]
-                                                .map(
-                                                  (e) => DropdownMenuItem(
-                                                    child: Text(
-                                                      e,
-                                                      style: txtStyle(
-                                                          color: e == status
-                                                              ? Colors.red
-                                                              : Colors.black),
-                                                    ),
-                                                    value: e,
-                                                  ),
-                                                )
-                                                .toList(),
-                                            onChanged: (value) {
-                                              setState(() {
-                                                this.status = value;
-                                              });
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Supplier',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Condition',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Warrenty',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        hintText: 'In Months',
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Value/Price',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        hintText: '1800',
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Resignation Date',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                          Text(
-                                            ' *',
-                                            style: txtStyle(color: Colors.red),
-                                          )
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      GestureDetector(
-                                        onTap: () async {
-                                          DateTime? newDate =
-                                              await showDatePicker(
-                                                  context: context,
-                                                  initialDate: DateTime.now(),
-                                                  firstDate: DateTime.now(),
-                                                  lastDate: DateTime(2024));
-                                          if (newDate != null) {
-                                            print(DateFormat('yyyy-MM-dd')
-                                                .format(newDate!));
-                                            setState(() {});
-                                          }
-                                        },
-                                        child: TextField(
-                                          enabled: false,
-                                          decoration: InputDecoration(
-                                              border: OutlineInputBorder(),
-                                              suffixIcon:
-                                                  Icon(Icons.calendar_month)),
-                                        ),
-                                      ),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Asset User',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      Container(
-                                        height: Sizes()
-                                            .ratioWithScrHeight(context, 0.075),
-                                        padding: EdgeInsets.all(8),
-                                        decoration: BoxDecoration(
-                                            border:
-                                                Border.all(color: Colors.black),
-                                            borderRadius:
-                                                BorderRadius.circular(2)),
-                                        child: DropdownButtonHideUnderline(
-                                          child: DropdownButton(
-                                            isExpanded: true,
-                                            value: user ?? 'John Doe',
-                                            items: [
-                                              'John Doe',
-                                              'Richard Miles',
-                                            ]
-                                                .map(
-                                                  (e) => DropdownMenuItem(
-                                                    child: Text(
-                                                      e,
-                                                      style: txtStyle(
-                                                          color: e == user
-                                                              ? Colors.red
-                                                              : Colors.black),
-                                                    ),
-                                                    value: e,
-                                                  ),
-                                                )
-                                                .toList(),
-                                            onChanged: (value) {
-                                              setState(() {
-                                                this.user = value;
-                                              });
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Description',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                          Text(
-                                            ' *',
-                                            style: txtStyle(color: Colors.red),
-                                          )
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          maxLines: 3,
-                                          decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                          )),
-                                      Spacing().verticalSpace(context, 0.04),
-                                      SizedBox(
-                                        width: Sizes()
-                                            .ratioWithScrWidth(context, 0.3),
-                                        height: Sizes()
-                                            .ratioWithScrHeight(context, 0.06),
-                                        child: ElevatedButton(
-                                            style: ButtonStyle(
-                                                backgroundColor:
-                                                    MaterialStateProperty.all(
-                                                        Colors.orange),
-                                                shape:
-                                                    MaterialStateProperty.all(
-                                                        RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20)))),
-                                            onPressed: () {
-                                              Navigator.pop(context);
-
-                                              setState(() {});
-                                            },
-                                            child: Text('Submit')),
-                                      )
-                                    ]),
+                            return AlertDialog(
+                              title: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Add Tax',
+                                    style: txtStyle(
+                                        size: 22, weight: FontWeight.w600),
+                                  ),
+                                ],
                               ),
+                              content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Spacing().verticalSpace(context, 0.02),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Tax Name',
+                                          style:
+                                              txtStyle(weight: FontWeight.w400),
+                                        ),
+                                      ],
+                                    ),
+                                    Spacing().verticalSpace(context, 0.015),
+                                    const TextField(
+                                        decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                    )),
+                                    Spacing().verticalSpace(context, 0.02),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Tax Percentage (%)',
+                                          style:
+                                              txtStyle(weight: FontWeight.w400),
+                                        ),
+                                      ],
+                                    ),
+                                    Spacing().verticalSpace(context, 0.015),
+                                    const TextField(
+                                        decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                    )),
+                                    Spacing().verticalSpace(context, 0.02),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Status',
+                                          style:
+                                              txtStyle(weight: FontWeight.w400),
+                                        ),
+                                      ],
+                                    ),
+                                    Spacing().verticalSpace(context, 0.015),
+                                    Container(
+                                      height: Sizes()
+                                          .ratioWithScrHeight(context, 0.075),
+                                      padding: const EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                          border:
+                                              Border.all(color: Colors.black),
+                                          borderRadius:
+                                              BorderRadius.circular(2)),
+                                      child: DropdownButtonHideUnderline(
+                                        child: DropdownButton(
+                                          isExpanded: true,
+                                          value: status ?? 'Pending',
+                                          items: [
+                                            'Pending',
+                                            'Approved',
+                                          ]
+                                              .map(
+                                                (e) => DropdownMenuItem(
+                                                  value: e,
+                                                  child: Text(
+                                                    e,
+                                                    style: txtStyle(
+                                                        color: e == status
+                                                            ? Colors.red
+                                                            : Colors.black),
+                                                  ),
+                                                ),
+                                              )
+                                              .toList(),
+                                          onChanged: (value) {
+                                            setState(() {
+                                              status = value;
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    Spacing().verticalSpace(context, 0.02),
+                                    SizedBox(
+                                      width: Sizes()
+                                          .ratioWithScrWidth(context, 0.3),
+                                      height: Sizes()
+                                          .ratioWithScrHeight(context, 0.06),
+                                      child: ElevatedButton(
+                                          style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                      Colors.orange),
+                                              shape: MaterialStateProperty.all(
+                                                  RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20)))),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+
+                                            setState(() {});
+                                          },
+                                          child: const Text('Submit')),
+                                    )
+                                  ]),
                             );
                           },
                         );
@@ -414,9 +163,7 @@ class _TaxState extends State<Tax> {
                     );
                   },
                   child: addButton(
-                      context: context,
-                      title: 'Add Provident Fund',
-                      borderRad: 20))
+                      context: context, title: 'Add Tax', borderRad: 20))
             ]),
             Spacing().verticalSpace(context, 0.04),
             SingleChildScrollView(
@@ -427,7 +174,7 @@ class _TaxState extends State<Tax> {
                   Container(
                     height: Sizes().ratioWithScrHeight(context, 0.097),
                     alignment: Alignment.topCenter,
-                    color: Color.fromARGB(255, 209, 206, 206),
+                    color: const Color.fromARGB(255, 209, 206, 206),
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -512,15 +259,8 @@ class _TaxState extends State<Tax> {
                                   context: context,
                                   onClick: () {},
                                   color: Colors.red,
-                                  child: Text('Pending')),
+                                  child: const Text('Pending')),
                               PopupMenuButton(
-                                child: Container(
-                                  width:
-                                      Sizes().ratioWithScrWidth(context, 0.3),
-                                  height:
-                                      Sizes().ratioWithScrHeight(context, 0.04),
-                                  color: Colors.transparent,
-                                ),
                                 padding: EdgeInsets.zero,
                                 offset: Offset(
                                     Sizes().ratioWithScrWidth(context, 0.01),
@@ -528,6 +268,15 @@ class _TaxState extends State<Tax> {
                                 itemBuilder: (context) {
                                   return [
                                     PopupMenuItem(
+                                      padding: EdgeInsets.only(
+                                        top: Sizes()
+                                            .ratioWithScrWidth(context, 0.02),
+                                        left: Sizes()
+                                            .ratioWithScrWidth(context, 0.03),
+                                        bottom: Sizes()
+                                            .ratioWithScrWidth(context, 0.02),
+                                      ),
+                                      height: 0,
                                       child: Row(
                                         children: [
                                           circleInd(context, Colors.red),
@@ -540,6 +289,8 @@ class _TaxState extends State<Tax> {
                                           ),
                                         ],
                                       ),
+                                    ),
+                                    PopupMenuItem(
                                       padding: EdgeInsets.only(
                                         top: Sizes()
                                             .ratioWithScrWidth(context, 0.02),
@@ -549,8 +300,6 @@ class _TaxState extends State<Tax> {
                                             .ratioWithScrWidth(context, 0.02),
                                       ),
                                       height: 0,
-                                    ),
-                                    PopupMenuItem(
                                       child: Row(
                                         children: [
                                           circleInd(context, Colors.green),
@@ -563,6 +312,8 @@ class _TaxState extends State<Tax> {
                                           ),
                                         ],
                                       ),
+                                    ),
+                                    PopupMenuItem(
                                       padding: EdgeInsets.only(
                                         top: Sizes()
                                             .ratioWithScrWidth(context, 0.02),
@@ -572,8 +323,6 @@ class _TaxState extends State<Tax> {
                                             .ratioWithScrWidth(context, 0.02),
                                       ),
                                       height: 0,
-                                    ),
-                                    PopupMenuItem(
                                       child: Row(
                                         children: [
                                           circleInd(context, Colors.blue),
@@ -586,18 +335,16 @@ class _TaxState extends State<Tax> {
                                           ),
                                         ],
                                       ),
-                                      padding: EdgeInsets.only(
-                                        top: Sizes()
-                                            .ratioWithScrWidth(context, 0.02),
-                                        left: Sizes()
-                                            .ratioWithScrWidth(context, 0.03),
-                                        bottom: Sizes()
-                                            .ratioWithScrWidth(context, 0.02),
-                                      ),
-                                      height: 0,
                                     ),
                                   ];
                                 },
+                                child: Container(
+                                  width:
+                                      Sizes().ratioWithScrWidth(context, 0.3),
+                                  height:
+                                      Sizes().ratioWithScrHeight(context, 0.04),
+                                  color: Colors.transparent,
+                                ),
                               ),
                             ],
                           )),
@@ -616,21 +363,6 @@ class _TaxState extends State<Tax> {
                                     'Edit',
                                     'Delete',
                                   ].map((e) => PopupMenuItem(
-                                        child: Row(
-                                          children: [
-                                            e == 'Edit'
-                                                ? Icon(Icons.edit_outlined)
-                                                : Icon(Icons.delete_outline),
-                                            Spacing()
-                                                .horizontalSpace(context, 0.02),
-                                            Text(
-                                              e,
-                                              style: txtStyle(
-                                                  size: 13,
-                                                  weight: FontWeight.w400),
-                                            ),
-                                          ],
-                                        ),
                                         padding: EdgeInsets.only(
                                             top: Sizes().ratioWithScrWidth(
                                                 context, 0.02),
@@ -641,6 +373,23 @@ class _TaxState extends State<Tax> {
                                             right: Sizes().ratioWithScrWidth(
                                                 context, 0.1)),
                                         height: 0,
+                                        child: Row(
+                                          children: [
+                                            e == 'Edit'
+                                                ? const Icon(
+                                                    Icons.edit_outlined)
+                                                : const Icon(
+                                                    Icons.delete_outline),
+                                            Spacing()
+                                                .horizontalSpace(context, 0.02),
+                                            Text(
+                                              e,
+                                              style: txtStyle(
+                                                  size: 13,
+                                                  weight: FontWeight.w400),
+                                            ),
+                                          ],
+                                        ),
                                       ))
                                 ];
                               },
@@ -661,7 +410,7 @@ class _TaxState extends State<Tax> {
           width: Sizes().ratioWithScrWidth(context, 0.11),
           height: Sizes().ratioWithScrHeight(context, 0.02),
           alignment: alignment,
-          child: Container(
+          child: SizedBox(
             height: 20,
             child: GestureDetector(
               onTap: () => onClick(),
@@ -681,7 +430,7 @@ class _TaxState extends State<Tax> {
                     child: Icon(
                       icon[1],
                       size: 16,
-                      color: Color.fromARGB(255, 139, 138, 138),
+                      color: const Color.fromARGB(255, 139, 138, 138),
                     ),
                   ),
                 ],
@@ -702,14 +451,14 @@ class _TaxState extends State<Tax> {
             decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(
-                    color: Color.fromARGB(255, 51, 50, 50), width: 0.5),
+                    color: const Color.fromARGB(255, 51, 50, 50), width: 0.5),
                 borderRadius: BorderRadius.circular(20)),
             alignment: Alignment.center,
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               circleInd(context, color),
               Spacing().horizontalSpace(context, 0.018),
               child,
-              Icon(Icons.arrow_drop_down)
+              const Icon(Icons.arrow_drop_down)
             ])),
       );
 
@@ -753,12 +502,12 @@ class _TaxState extends State<Tax> {
           required double borderRad}) =>
       Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 153, 69),
+            color: const Color.fromARGB(255, 255, 153, 69),
             borderRadius: BorderRadius.circular(borderRad)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
-            Icon(
+            const Icon(
               Icons.add,
               size: 16,
               color: Colors.white,

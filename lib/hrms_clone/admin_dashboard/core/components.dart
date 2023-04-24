@@ -24,6 +24,6 @@ class Components {
   Widget separator(BuildContext context) => Container(
         width: Sizes().ratioWithScrWidth(context, 0.5 + 0.25 + 0.23),
         height: 3,
-        color: Color.fromARGB(255, 218, 216, 216),
+        color: const Color.fromARGB(255, 218, 216, 216),
       );
 }

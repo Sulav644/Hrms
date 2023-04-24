@@ -1,16 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:intl/intl.dart';
+import 'dart:math';
 
+import 'package:flutter/material.dart';
+import 'package:hrms_clone/hrms_clone/view_more_projects/components/member_detail_vert_list.dart';
 import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
-import '../holidays/components/horiz_list_tile.dart';
 import '../project_detail_&_member/core/components.dart';
-import '../view_more_projects/components/entries_limit_widget.dart';
 
 class ClientProfile extends StatefulWidget {
-  ClientProfile({super.key});
+  const ClientProfile({super.key});
 
   @override
   State<ClientProfile> createState() => _ClientProfileState();
@@ -22,6 +19,7 @@ class _ClientProfileState extends State<ClientProfile> {
   ScrollController scrollController = ScrollController();
 
   String? status;
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +29,14 @@ class _ClientProfileState extends State<ClientProfile> {
         controller: scrollController,
         onClick: () {},
         children: [
+          Spacing().verticalSpace(context, 0.02),
           Row(children: [
-            Text('Profile'),
+            Text(
+              'Profile',
+              style: txtStyle(size: 18, weight: FontWeight.w600),
+            ),
           ]),
+          Spacing().verticalSpace(context, 0.04),
           Components().detailCard(
               context: context,
               padWid: 0.05,
@@ -41,33 +44,39 @@ class _ClientProfileState extends State<ClientProfile> {
               alignment: CrossAxisAlignment.center,
               children: [
                 Spacing().horizontalSpace(context, 1),
-                CircleAvatar(
+                const CircleAvatar(
                   backgroundImage:
                       AssetImage('assets/images/member_list/download.jpg'),
                   radius: 50,
                 ),
+                Spacing().verticalSpace(context, 0.02),
                 Text(
                   'Global Technologies',
                   style: txtStyle(size: 22, weight: FontWeight.w600),
                 ),
+                Spacing().verticalSpace(context, 0.018),
                 Text(
                   'Barry Cuda',
-                  style: txtStyle(size: 18, weight: FontWeight.w500),
+                  style: txtStyle(size: 14, weight: FontWeight.w500),
                 ),
+                Spacing().verticalSpace(context, 0.01),
                 Text(
                   'CEO',
-                  style: txtStyle(size: 16, weight: FontWeight.w200),
+                  style: txtStyle(size: 14, weight: FontWeight.w200),
                 ),
+                Spacing().verticalSpace(context, 0.02),
                 Text(
                   'Employee ID: CLT-0001',
-                  style: txtStyle(size: 18, weight: FontWeight.w500),
+                  style: txtStyle(size: 16, weight: FontWeight.w500),
                 ),
+                Spacing().verticalSpace(context, 0.04),
                 ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(Colors.orange)),
+                            MaterialStateProperty.all(Colors.pink)),
                     onPressed: () {},
-                    child: Text('Send Message')),
+                    child: const Text('Send Message')),
+                Spacing().verticalSpace(context, 0.02),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   ...List.generate(
                     35,
@@ -76,31 +85,128 @@ class _ClientProfileState extends State<ClientProfile> {
                       child: Container(
                         width: 6,
                         height: 2,
-                        color: Color.fromARGB(255, 122, 120, 120),
+                        color: const Color.fromARGB(255, 122, 120, 120),
                       ),
                     ),
                   ).toList()
                 ]),
-                bioItem(field: 'Phone', child: Text('9876543210')),
-                bioItem(field: 'Email', child: Text('barrycuda@example.com')),
-                bioItem(field: 'Birthday', child: Text('2nd August')),
+                Spacing().verticalSpace(context, 0.02),
+                bioItem(
+                    field: 'Phone',
+                    child: Text(
+                      '9876543210',
+                      style: txtStyle(color: Colors.blue),
+                    )),
+                bioItem(
+                    field: 'Email',
+                    child: Text(
+                      'barrycuda@example.com',
+                      style: txtStyle(color: Colors.blue),
+                    )),
+                bioItem(field: 'Birthday', child: const Text('2nd August')),
                 bioItem(
                     field: 'Address',
-                    child: Text('5754 Airport Rd, Coosada, AL, 36020')),
-                bioItem(field: 'Phone', child: Text('9876543210')),
-              ])
+                    child: const Text('5754 Airport Rd, Coosada, AL, 36020')),
+                bioItem(field: 'Phone', child: const Text('9876543210')),
+              ]),
+          Components().detailCard(
+              context: context,
+              padWid: 0.07,
+              padHeight: 0.04,
+              alignment: CrossAxisAlignment.start,
+              children: [
+                Row(children: [
+                  GestureDetector(
+                    onTap: () => setState(() {
+                      index = 0;
+                    }),
+                    child: optionItem(
+                        title: 'Additions',
+                        boxColor: index == 0
+                            ? const Color.fromARGB(255, 214, 211, 211)
+                            : Colors.white,
+                        indColor: index == 0 ? Colors.orange : Colors.white),
+                  ),
+                  GestureDetector(
+                    onTap: () => setState(() {
+                      index = 1;
+                    }),
+                    child: optionItem(
+                        title: 'Overtime',
+                        boxColor: index == 1
+                            ? const Color.fromARGB(255, 214, 211, 211)
+                            : Colors.white,
+                        indColor: index == 1 ? Colors.orange : Colors.white),
+                  )
+                ]),
+                Row(children: [
+                  GestureDetector(
+                    onTap: () => setState(() {
+                      index = 2;
+                    }),
+                    child: optionItem(
+                        title: 'Deductions',
+                        boxColor: index == 2
+                            ? const Color.fromARGB(255, 214, 211, 211)
+                            : Colors.white,
+                        indColor: index == 2 ? Colors.orange : Colors.white),
+                  ),
+                ]),
+              ]),
+          const MemberDetailVertList()
         ]);
   }
 
   Widget bioItem({required String field, required Widget child}) => Padding(
         padding: EdgeInsets.symmetric(
-            vertical: Sizes().ratioWithScrHeight(context, 0.01)),
+            vertical: Sizes().ratioWithScrHeight(context, 0.01),
+            horizontal: Sizes().ratioWithScrWidth(context, 0.02)),
         child: Row(children: [
-          Container(
-              width: Sizes().ratioWithScrWidth(context, 0.2),
+          SizedBox(
+              width: Sizes().ratioWithScrWidth(context, 0.25),
               child: Text('$field:')),
-          Container(
-              width: Sizes().ratioWithScrWidth(context, 0.6), child: child),
+          SizedBox(
+              width: Sizes().ratioWithScrWidth(context, 0.5), child: child),
         ]),
+      );
+  Widget optionItem({
+    required String title,
+    required Color boxColor,
+    required Color indColor,
+  }) =>
+      Stack(
+        children: [
+          AnimatedContainer(
+              duration: const Duration(milliseconds: 600),
+              color: boxColor,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    vertical: Sizes().ratioWithScrHeight(context, 0.015),
+                    horizontal: Sizes().ratioWithScrWidth(context, 0.06)),
+                child: Text(title,
+                    style: txtStyle(weight: FontWeight.w600, height: 1.4)),
+              )),
+          Transform(
+            transform: Matrix4.skewY(40 / 180 * pi),
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 600),
+              width: 4,
+              height: Sizes().ratioWithScrHeight(context, 0.03),
+              color: indColor,
+            ),
+          ),
+          Positioned(
+            top: Sizes().ratioWithScrHeight(context, 0.02),
+            child: Transform(
+              transform: Matrix4.skewY(-40 / 180 * pi),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 600),
+                width: 4,
+                height: Sizes().ratioWithScrHeight(context, 0.03),
+                color: indColor,
+              ),
+            ),
+          )
+        ],
       );
 }

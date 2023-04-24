@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-
 import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
 import '../holidays/components/horiz_list_tile.dart';
@@ -9,18 +6,26 @@ import '../view_more_projects/components/entries_limit_widget.dart';
 import 'data/goal_detail.dart';
 
 List<GoalDetail> goalList = [
-  GoalDetail(
+  const GoalDetail(
       type: 'Invoice\nGoal',
       description: 'This is invoice \ngoal and\nit is first goal'),
-  GoalDetail(
+  const GoalDetail(
       type: 'Another\nGoal',
       description: 'This is another \ngoal and\nit is second goal'),
 ];
 
-class GoalType extends StatelessWidget {
-  GoalType({super.key});
+class GoalType extends StatefulWidget {
+  const GoalType({super.key});
+
+  @override
+  State<GoalType> createState() => _GoalTypeState();
+}
+
+class _GoalTypeState extends State<GoalType> {
   bool showMenuStatus = false;
+
   ScrollController scrollController = ScrollController();
+
   String? goalType;
 
   @override
@@ -75,7 +80,7 @@ class GoalType extends StatelessWidget {
                                     Container(
                                       height: Sizes()
                                           .ratioWithScrHeight(context, 0.075),
-                                      padding: EdgeInsets.all(8),
+                                      padding: const EdgeInsets.all(8),
                                       decoration: BoxDecoration(
                                           border:
                                               Border.all(color: Colors.black),
@@ -92,6 +97,7 @@ class GoalType extends StatelessWidget {
                                           ]
                                               .map(
                                                 (e) => DropdownMenuItem(
+                                                  value: e,
                                                   child: Text(
                                                     e,
                                                     style: txtStyle(
@@ -99,13 +105,12 @@ class GoalType extends StatelessWidget {
                                                             ? Colors.red
                                                             : Colors.black),
                                                   ),
-                                                  value: e,
                                                 ),
                                               )
                                               .toList(),
                                           onChanged: (value) {
                                             setState(() {
-                                              this.goalType = value;
+                                              goalType = value;
                                             });
                                           },
                                         ),
@@ -126,7 +131,7 @@ class GoalType extends StatelessWidget {
                                       ],
                                     ),
                                     Spacing().verticalSpace(context, 0.015),
-                                    TextField(
+                                    const TextField(
                                         maxLines: 3,
                                         decoration: InputDecoration(
                                           border: OutlineInputBorder(),
@@ -145,7 +150,7 @@ class GoalType extends StatelessWidget {
                                     Container(
                                       height: Sizes()
                                           .ratioWithScrHeight(context, 0.075),
-                                      padding: EdgeInsets.all(8),
+                                      padding: const EdgeInsets.all(8),
                                       decoration: BoxDecoration(
                                           border:
                                               Border.all(color: Colors.black),
@@ -161,6 +166,7 @@ class GoalType extends StatelessWidget {
                                           ]
                                               .map(
                                                 (e) => DropdownMenuItem(
+                                                  value: e,
                                                   child: Text(
                                                     e,
                                                     style: txtStyle(
@@ -168,13 +174,12 @@ class GoalType extends StatelessWidget {
                                                             ? Colors.red
                                                             : Colors.black),
                                                   ),
-                                                  value: e,
                                                 ),
                                               )
                                               .toList(),
                                           onChanged: (value) {
                                             setState(() {
-                                              this.goalType = value;
+                                              goalType = value;
                                             });
                                           },
                                         ),
@@ -220,7 +225,7 @@ class GoalType extends StatelessWidget {
                       context: context, title: 'Add New', borderRad: 20))
             ]),
             Spacing().verticalSpace(context, 0.04),
-            EntriesLimitWidget(),
+            const EntriesLimitWidget(),
             Spacing().verticalSpace(context, 0.03),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -230,7 +235,7 @@ class GoalType extends StatelessWidget {
                   Container(
                     height: Sizes().ratioWithScrHeight(context, 0.097),
                     alignment: Alignment.topCenter,
-                    color: Color.fromARGB(255, 209, 206, 206),
+                    color: const Color.fromARGB(255, 209, 206, 206),
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -254,7 +259,7 @@ class GoalType extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.12,
@@ -266,7 +271,7 @@ class GoalType extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.22,
@@ -278,7 +283,7 @@ class GoalType extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.26,
@@ -290,7 +295,7 @@ class GoalType extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.18,
@@ -302,7 +307,7 @@ class GoalType extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             )
                           ]),
                         ),
@@ -327,7 +332,7 @@ class GoalType extends StatelessWidget {
                                   HorizListTile(
                                       width: 0.17,
                                       child:
-                                          Text('${goalList!.indexOf(e) + 1}')),
+                                          Text('${goalList.indexOf(e) + 1}')),
                                   HorizListTile(
                                       width: 0.23, child: Text('${e.type}')),
                                   HorizListTile(
@@ -341,16 +346,8 @@ class GoalType extends StatelessWidget {
                                               context: context,
                                               onClick: () {},
                                               color: Colors.green,
-                                              child: Text('Active')),
+                                              child: const Text('Active')),
                                           PopupMenuButton(
-                                            child: Container(
-                                              width: Sizes().ratioWithScrWidth(
-                                                  context, 0.3),
-                                              height: Sizes()
-                                                  .ratioWithScrHeight(
-                                                      context, 0.04),
-                                              color: Colors.transparent,
-                                            ),
                                             padding: EdgeInsets.zero,
                                             offset: Offset(
                                                 Sizes().ratioWithScrWidth(
@@ -360,6 +357,18 @@ class GoalType extends StatelessWidget {
                                             itemBuilder: (context) {
                                               return [
                                                 PopupMenuItem(
+                                                  padding: EdgeInsets.only(
+                                                    top: Sizes()
+                                                        .ratioWithScrWidth(
+                                                            context, 0.02),
+                                                    left: Sizes()
+                                                        .ratioWithScrWidth(
+                                                            context, 0.03),
+                                                    bottom: Sizes()
+                                                        .ratioWithScrWidth(
+                                                            context, 0.02),
+                                                  ),
+                                                  height: 0,
                                                   child: Row(
                                                     children: [
                                                       circleInd(context,
@@ -374,6 +383,8 @@ class GoalType extends StatelessWidget {
                                                       ),
                                                     ],
                                                   ),
+                                                ),
+                                                PopupMenuItem(
                                                   padding: EdgeInsets.only(
                                                     top: Sizes()
                                                         .ratioWithScrWidth(
@@ -386,8 +397,6 @@ class GoalType extends StatelessWidget {
                                                             context, 0.02),
                                                   ),
                                                   height: 0,
-                                                ),
-                                                PopupMenuItem(
                                                   child: Row(
                                                     children: [
                                                       circleInd(
@@ -402,21 +411,17 @@ class GoalType extends StatelessWidget {
                                                       ),
                                                     ],
                                                   ),
-                                                  padding: EdgeInsets.only(
-                                                    top: Sizes()
-                                                        .ratioWithScrWidth(
-                                                            context, 0.02),
-                                                    left: Sizes()
-                                                        .ratioWithScrWidth(
-                                                            context, 0.03),
-                                                    bottom: Sizes()
-                                                        .ratioWithScrWidth(
-                                                            context, 0.02),
-                                                  ),
-                                                  height: 0,
                                                 ),
                                               ];
                                             },
+                                            child: Container(
+                                              width: Sizes().ratioWithScrWidth(
+                                                  context, 0.3),
+                                              height: Sizes()
+                                                  .ratioWithScrHeight(
+                                                      context, 0.04),
+                                              color: Colors.transparent,
+                                            ),
                                           ),
                                         ],
                                       )),
@@ -438,25 +443,6 @@ class GoalType extends StatelessWidget {
                                                 'Edit',
                                                 'Delete',
                                               ].map((e) => PopupMenuItem(
-                                                    child: Row(
-                                                      children: [
-                                                        e == 'Edit'
-                                                            ? Icon(Icons
-                                                                .edit_outlined)
-                                                            : Icon(Icons
-                                                                .delete_outline),
-                                                        Spacing()
-                                                            .horizontalSpace(
-                                                                context, 0.02),
-                                                        Text(
-                                                          e,
-                                                          style: txtStyle(
-                                                              size: 13,
-                                                              weight: FontWeight
-                                                                  .w400),
-                                                        ),
-                                                      ],
-                                                    ),
                                                     padding: EdgeInsets.only(
                                                         top: Sizes()
                                                             .ratioWithScrWidth(
@@ -471,6 +457,25 @@ class GoalType extends StatelessWidget {
                                                             .ratioWithScrWidth(
                                                                 context, 0.1)),
                                                     height: 0,
+                                                    child: Row(
+                                                      children: [
+                                                        e == 'Edit'
+                                                            ? const Icon(Icons
+                                                                .edit_outlined)
+                                                            : const Icon(Icons
+                                                                .delete_outline),
+                                                        Spacing()
+                                                            .horizontalSpace(
+                                                                context, 0.02),
+                                                        Text(
+                                                          e,
+                                                          style: txtStyle(
+                                                              size: 13,
+                                                              weight: FontWeight
+                                                                  .w400),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ))
                                             ];
                                           },
@@ -483,7 +488,7 @@ class GoalType extends StatelessWidget {
                               width: Sizes().ratioWithScrWidth(context, 1.4),
                               height:
                                   Sizes().ratioWithScrHeight(context, 0.002),
-                              color: Color.fromARGB(255, 199, 195, 195),
+                              color: const Color.fromARGB(255, 199, 195, 195),
                             )
                           ],
                         ),
@@ -507,8 +512,9 @@ class GoalType extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                  color: Color.fromARGB(255, 187, 184, 184)),
-                              borderRadius: BorderRadius.only(
+                                  color:
+                                      const Color.fromARGB(255, 187, 184, 184)),
+                              borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(6),
                                   bottomLeft: Radius.circular(6))),
                           child: Padding(
@@ -520,7 +526,7 @@ class GoalType extends StatelessWidget {
                             ),
                           )),
                       Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Colors.orange,
                               border: Border(
                                 top: BorderSide(
@@ -540,9 +546,9 @@ class GoalType extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                color: Color.fromARGB(255, 187, 184, 184),
+                                color: const Color.fromARGB(255, 187, 184, 184),
                               ),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                   topRight: Radius.circular(6),
                                   bottomRight: Radius.circular(6))),
                           child: Padding(
@@ -568,7 +574,7 @@ class GoalType extends StatelessWidget {
           width: Sizes().ratioWithScrWidth(context, 0.11),
           height: Sizes().ratioWithScrHeight(context, 0.02),
           alignment: alignment,
-          child: Container(
+          child: SizedBox(
             height: 20,
             child: GestureDetector(
               onTap: () => onClick(),
@@ -588,13 +594,14 @@ class GoalType extends StatelessWidget {
                     child: Icon(
                       icon[1],
                       size: 16,
-                      color: Color.fromARGB(255, 139, 138, 138),
+                      color: const Color.fromARGB(255, 139, 138, 138),
                     ),
                   ),
                 ],
               ),
             ),
           ));
+
   Widget dropDownBox(
           {required BuildContext context,
           required VoidCallback onClick,
@@ -608,14 +615,14 @@ class GoalType extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(
-                    color: Color.fromARGB(255, 51, 50, 50), width: 0.5),
+                    color: const Color.fromARGB(255, 51, 50, 50), width: 0.5),
                 borderRadius: BorderRadius.circular(20)),
             alignment: Alignment.center,
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               circleInd(context, color),
               Spacing().horizontalSpace(context, 0.018),
               child,
-              Icon(Icons.arrow_drop_down)
+              const Icon(Icons.arrow_drop_down)
             ])),
       );
 
@@ -633,18 +640,19 @@ class GoalType extends StatelessWidget {
             border: Border.all(color: Colors.white, width: 2),
             borderRadius: BorderRadius.circular(100)),
       ));
+
   Widget addButton(
           {required BuildContext context,
           required String title,
           required double borderRad}) =>
       Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 153, 69),
+            color: const Color.fromARGB(255, 255, 153, 69),
             borderRadius: BorderRadius.circular(borderRad)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
-            Icon(
+            const Icon(
               Icons.add,
               size: 16,
               color: Colors.white,
@@ -657,6 +665,7 @@ class GoalType extends StatelessWidget {
           ]),
         ),
       );
+
   Widget labelBar(
           {required BuildContext context,
           required double width,

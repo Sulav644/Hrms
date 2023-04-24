@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:intl/intl.dart';
-
 import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
 import '../holidays/components/horiz_list_tile.dart';
 import '../view_more_projects/components/entries_limit_widget.dart';
 
 class Expenses extends StatefulWidget {
-  Expenses({super.key});
+  const Expenses({super.key});
 
   @override
   State<Expenses> createState() => _ExpensesState();
@@ -21,6 +18,11 @@ class _ExpensesState extends State<Expenses> {
   ScrollController scrollController = ScrollController();
   String? status;
   String? user;
+  String? purchase;
+  String? paid;
+  String? purchasedBy;
+  String? paidBy;
+  TextEditingController fromDateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +52,7 @@ class _ExpensesState extends State<Expenses> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Add Assets',
+                                      'Add Expenses',
                                       style: txtStyle(
                                           size: 22, weight: FontWeight.w600),
                                     ),
@@ -63,59 +65,17 @@ class _ExpensesState extends State<Expenses> {
                                       Row(
                                         children: [
                                           Text(
-                                            'Asset Name',
+                                            'Item Name',
                                             style: txtStyle(
                                                 weight: FontWeight.w400),
                                           ),
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Asset Id',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          enabled: false,
-                                          controller: TextEditingController(
-                                              text: '#AST-736415'),
-                                          decoration: InputDecoration(
-                                            fillColor: Color.fromARGB(
-                                                255, 155, 153, 153),
-                                            filled: true,
-                                            border: OutlineInputBorder(),
-                                          )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Purchase Date',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          enabled: false,
-                                          controller: TextEditingController(
-                                              text: '21/04/2323'),
-                                          decoration: InputDecoration(
-                                            fillColor: Color.fromARGB(
-                                                255, 155, 153, 153),
-                                            filled: true,
-                                            border: OutlineInputBorder(),
-                                          )),
                                       Spacing().verticalSpace(context, 0.02),
                                       Row(
                                         children: [
@@ -127,7 +87,7 @@ class _ExpensesState extends State<Expenses> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -135,150 +95,7 @@ class _ExpensesState extends State<Expenses> {
                                       Row(
                                         children: [
                                           Text(
-                                            'Manufacturer',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Model',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Status',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      Container(
-                                        height: Sizes()
-                                            .ratioWithScrHeight(context, 0.075),
-                                        padding: EdgeInsets.all(8),
-                                        decoration: BoxDecoration(
-                                            border:
-                                                Border.all(color: Colors.black),
-                                            borderRadius:
-                                                BorderRadius.circular(2)),
-                                        child: DropdownButtonHideUnderline(
-                                          child: DropdownButton(
-                                            isExpanded: true,
-                                            value: status ?? 'Pending',
-                                            items: [
-                                              'Pending',
-                                              'Approved',
-                                              'Deployed',
-                                              'Damaged'
-                                            ]
-                                                .map(
-                                                  (e) => DropdownMenuItem(
-                                                    child: Text(
-                                                      e,
-                                                      style: txtStyle(
-                                                          color: e == status
-                                                              ? Colors.red
-                                                              : Colors.black),
-                                                    ),
-                                                    value: e,
-                                                  ),
-                                                )
-                                                .toList(),
-                                            onChanged: (value) {
-                                              setState(() {
-                                                this.status = value;
-                                              });
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Supplier',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Condition',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Warrenty',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        hintText: 'In Months',
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Value/Price',
-                                            style: txtStyle(
-                                                weight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        hintText: '1800',
-                                        border: OutlineInputBorder(),
-                                      )),
-                                      Spacing().verticalSpace(context, 0.02),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Resignation Date',
+                                            'Purchase Date',
                                             style: txtStyle(
                                                 weight: FontWeight.w400),
                                           ),
@@ -298,12 +115,10 @@ class _ExpensesState extends State<Expenses> {
                                                   firstDate: DateTime.now(),
                                                   lastDate: DateTime(2024));
                                           if (newDate != null) {
-                                            print(DateFormat('yyyy-MM-dd')
-                                                .format(newDate!));
                                             setState(() {});
                                           }
                                         },
-                                        child: TextField(
+                                        child: const TextField(
                                           enabled: false,
                                           decoration: InputDecoration(
                                               border: OutlineInputBorder(),
@@ -315,7 +130,7 @@ class _ExpensesState extends State<Expenses> {
                                       Row(
                                         children: [
                                           Text(
-                                            'Asset User',
+                                            'Purchased By',
                                             style: txtStyle(
                                                 weight: FontWeight.w400),
                                           ),
@@ -325,7 +140,7 @@ class _ExpensesState extends State<Expenses> {
                                       Container(
                                         height: Sizes()
                                             .ratioWithScrHeight(context, 0.075),
-                                        padding: EdgeInsets.all(8),
+                                        padding: const EdgeInsets.all(8),
                                         decoration: BoxDecoration(
                                             border:
                                                 Border.all(color: Colors.black),
@@ -334,27 +149,29 @@ class _ExpensesState extends State<Expenses> {
                                         child: DropdownButtonHideUnderline(
                                           child: DropdownButton(
                                             isExpanded: true,
-                                            value: user ?? 'John Doe',
+                                            value:
+                                                purchasedBy ?? 'Daniel Porter',
                                             items: [
-                                              'John Doe',
-                                              'Richard Miles',
+                                              'Daniel Porter',
+                                              'Roger Dixon',
                                             ]
                                                 .map(
                                                   (e) => DropdownMenuItem(
+                                                    value: e,
                                                     child: Text(
                                                       e,
                                                       style: txtStyle(
-                                                          color: e == user
+                                                          color: e ==
+                                                                  purchasedBy
                                                               ? Colors.red
                                                               : Colors.black),
                                                     ),
-                                                    value: e,
                                                   ),
                                                 )
                                                 .toList(),
                                             onChanged: (value) {
                                               setState(() {
-                                                this.user = value;
+                                                purchasedBy = value;
                                               });
                                             },
                                           ),
@@ -364,23 +181,117 @@ class _ExpensesState extends State<Expenses> {
                                       Row(
                                         children: [
                                           Text(
-                                            'Description',
+                                            'Amount',
                                             style: txtStyle(
                                                 weight: FontWeight.w400),
                                           ),
-                                          Text(
-                                            ' *',
-                                            style: txtStyle(color: Colors.red),
-                                          )
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
-                                          maxLines: 3,
+                                      const TextField(
                                           decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                          )),
-                                      Spacing().verticalSpace(context, 0.04),
+                                        hintText: '\$50',
+                                        border: OutlineInputBorder(),
+                                      )),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Paid By',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      Container(
+                                        height: Sizes()
+                                            .ratioWithScrHeight(context, 0.075),
+                                        padding: const EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                            border:
+                                                Border.all(color: Colors.black),
+                                            borderRadius:
+                                                BorderRadius.circular(2)),
+                                        child: DropdownButtonHideUnderline(
+                                          child: DropdownButton(
+                                            isExpanded: true,
+                                            value: paidBy ?? 'Cash',
+                                            items: [
+                                              'Cash',
+                                              'Cheque',
+                                            ]
+                                                .map(
+                                                  (e) => DropdownMenuItem(
+                                                    value: e,
+                                                    child: Text(
+                                                      e,
+                                                      style: txtStyle(
+                                                          color: e == paidBy
+                                                              ? Colors.red
+                                                              : Colors.black),
+                                                    ),
+                                                  ),
+                                                )
+                                                .toList(),
+                                            onChanged: (value) {
+                                              setState(() {
+                                                paidBy = value;
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Status',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.015),
+                                      Container(
+                                        height: Sizes()
+                                            .ratioWithScrHeight(context, 0.075),
+                                        padding: const EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                            border:
+                                                Border.all(color: Colors.black),
+                                            borderRadius:
+                                                BorderRadius.circular(2)),
+                                        child: DropdownButtonHideUnderline(
+                                          child: DropdownButton(
+                                            isExpanded: true,
+                                            value: status ?? 'Pending',
+                                            items: [
+                                              'Pending',
+                                              'Approved',
+                                            ]
+                                                .map(
+                                                  (e) => DropdownMenuItem(
+                                                    value: e,
+                                                    child: Text(
+                                                      e,
+                                                      style: txtStyle(
+                                                          color: e == status
+                                                              ? Colors.red
+                                                              : Colors.black),
+                                                    ),
+                                                  ),
+                                                )
+                                                .toList(),
+                                            onChanged: (value) {
+                                              setState(() {
+                                                status = value;
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                      Spacing().verticalSpace(context, 0.02),
                                       SizedBox(
                                         width: Sizes()
                                             .ratioWithScrWidth(context, 0.3),
@@ -403,7 +314,7 @@ class _ExpensesState extends State<Expenses> {
 
                                               setState(() {});
                                             },
-                                            child: Text('Submit')),
+                                            child: const Text('Submit')),
                                       )
                                     ]),
                               ),
@@ -417,51 +328,95 @@ class _ExpensesState extends State<Expenses> {
                       context: context, title: 'Add Expenses', borderRad: 20))
             ]),
             Spacing().verticalSpace(context, 0.04),
-            TextField(
+            const TextField(
                 decoration: InputDecoration(
-              hintText: 'Employee Name',
+              hintText: 'Item Name',
               border: OutlineInputBorder(),
             )),
-            Row(
+            Spacing().verticalSpace(context, 0.02),
+            Stack(
               children: [
                 Container(
-                  width: Sizes().ratioWithScrWidth(context, 0.94),
                   height: Sizes().ratioWithScrHeight(context, 0.075),
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black),
                       borderRadius: BorderRadius.circular(2)),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
                       isExpanded: true,
-                      value: user,
+                      value: purchase ?? '--Select--',
                       items: [
                         '--Select--',
-                        'John Doe',
-                        'Richard Miles',
+                        'Loren Gatlin',
+                        'Tarah Shropshire',
                       ]
                           .map(
                             (e) => DropdownMenuItem(
+                              value: e,
                               child: Text(
                                 e,
                                 style: txtStyle(
-                                    color:
-                                        e == user ? Colors.red : Colors.black),
+                                    color: e == purchase
+                                        ? Colors.red
+                                        : Colors.black),
                               ),
-                              value: e,
                             ),
                           )
                           .toList(),
                       onChanged: (value) {
                         setState(() {
-                          this.user = value;
+                          purchase = value;
                         });
                       },
                     ),
                   ),
                 ),
+                Positioned(
+                    top: 6,
+                    left: 10,
+                    child: Text(
+                      'Purchased By',
+                      style: txtStyle(size: 10),
+                    ))
               ],
             ),
+            Spacing().verticalSpace(context, 0.02),
+            Container(
+              height: Sizes().ratioWithScrHeight(context, 0.075),
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(2)),
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton(
+                  isExpanded: true,
+                  value: paid ?? '--Select--',
+                  items: [
+                    '--Select--',
+                    'Cash',
+                    'Cheque',
+                  ]
+                      .map(
+                        (e) => DropdownMenuItem(
+                          value: e,
+                          child: Text(
+                            e,
+                            style: txtStyle(
+                                color: e == user ? Colors.red : Colors.black),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      user = value;
+                    });
+                  },
+                ),
+              ),
+            ),
+            Spacing().verticalSpace(context, 0.02),
             GestureDetector(
               onTap: () async {
                 DateTime? newDate = await showDatePicker(
@@ -470,18 +425,24 @@ class _ExpensesState extends State<Expenses> {
                     firstDate: DateTime.now(),
                     lastDate: DateTime(2024));
                 if (newDate != null) {
-                  print(DateFormat('yyyy-MM-dd').format(newDate!));
-                  setState(() {});
+                  print(DateFormat('dd-MM-yyyy').format(newDate));
+                  setState(() {
+                    final date =
+                        DateFormat('dd-MM-yyyy').format(newDate).toString();
+                    fromDateController.text = date.replaceAll('-', '/');
+                  });
                 }
               },
               child: TextField(
                 enabled: false,
+                controller: fromDateController,
                 decoration: InputDecoration(
-                    hintText: 'From',
+                    labelText: 'From',
                     border: OutlineInputBorder(),
                     suffixIcon: Icon(Icons.calendar_month)),
               ),
             ),
+            Spacing().verticalSpace(context, 0.02),
             GestureDetector(
               onTap: () async {
                 DateTime? newDate = await showDatePicker(
@@ -490,11 +451,10 @@ class _ExpensesState extends State<Expenses> {
                     firstDate: DateTime.now(),
                     lastDate: DateTime(2024));
                 if (newDate != null) {
-                  print(DateFormat('yyyy-MM-dd').format(newDate!));
                   setState(() {});
                 }
               },
-              child: TextField(
+              child: const TextField(
                 enabled: false,
                 decoration: InputDecoration(
                     hintText: 'To',
@@ -502,6 +462,7 @@ class _ExpensesState extends State<Expenses> {
                     suffixIcon: Icon(Icons.calendar_month)),
               ),
             ),
+            Spacing().verticalSpace(context, 0.04),
             SizedBox(
               width: Sizes().scrWidth(context),
               height: Sizes().ratioWithScrHeight(context, 0.07),
@@ -515,7 +476,7 @@ class _ExpensesState extends State<Expenses> {
                   )),
             ),
             Spacing().verticalSpace(context, 0.026),
-            EntriesLimitWidget(),
+            const EntriesLimitWidget(),
             Spacing().verticalSpace(context, 0.035),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -525,7 +486,7 @@ class _ExpensesState extends State<Expenses> {
                   Container(
                     height: Sizes().ratioWithScrHeight(context, 0.097),
                     alignment: Alignment.topCenter,
-                    color: Color.fromARGB(255, 209, 206, 206),
+                    color: const Color.fromARGB(255, 209, 206, 206),
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -550,7 +511,7 @@ class _ExpensesState extends State<Expenses> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.2,
@@ -566,7 +527,7 @@ class _ExpensesState extends State<Expenses> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.2,
@@ -582,7 +543,7 @@ class _ExpensesState extends State<Expenses> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.34,
@@ -598,7 +559,7 @@ class _ExpensesState extends State<Expenses> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.18,
@@ -614,7 +575,7 @@ class _ExpensesState extends State<Expenses> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.12,
@@ -630,7 +591,7 @@ class _ExpensesState extends State<Expenses> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.24,
@@ -646,7 +607,7 @@ class _ExpensesState extends State<Expenses> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.16,
@@ -662,7 +623,7 @@ class _ExpensesState extends State<Expenses> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             )
                           ]),
                         ),
@@ -699,7 +660,7 @@ class _ExpensesState extends State<Expenses> {
                           width: 0.45,
                           child: Row(
                             children: [
-                              CircleAvatar(
+                              const CircleAvatar(
                                 backgroundImage: AssetImage(
                                     'assets/images/member_list/download.jpg'),
                                 radius: 16,
@@ -736,15 +697,8 @@ class _ExpensesState extends State<Expenses> {
                                   context: context,
                                   onClick: () {},
                                   color: Colors.red,
-                                  child: Text('Pending')),
+                                  child: const Text('Pending')),
                               PopupMenuButton(
-                                child: Container(
-                                  width:
-                                      Sizes().ratioWithScrWidth(context, 0.3),
-                                  height:
-                                      Sizes().ratioWithScrHeight(context, 0.04),
-                                  color: Colors.transparent,
-                                ),
                                 padding: EdgeInsets.zero,
                                 offset: Offset(
                                     Sizes().ratioWithScrWidth(context, 0.01),
@@ -752,6 +706,15 @@ class _ExpensesState extends State<Expenses> {
                                 itemBuilder: (context) {
                                   return [
                                     PopupMenuItem(
+                                      padding: EdgeInsets.only(
+                                        top: Sizes()
+                                            .ratioWithScrWidth(context, 0.02),
+                                        left: Sizes()
+                                            .ratioWithScrWidth(context, 0.03),
+                                        bottom: Sizes()
+                                            .ratioWithScrWidth(context, 0.02),
+                                      ),
+                                      height: 0,
                                       child: Row(
                                         children: [
                                           circleInd(context, Colors.red),
@@ -764,6 +727,8 @@ class _ExpensesState extends State<Expenses> {
                                           ),
                                         ],
                                       ),
+                                    ),
+                                    PopupMenuItem(
                                       padding: EdgeInsets.only(
                                         top: Sizes()
                                             .ratioWithScrWidth(context, 0.02),
@@ -773,8 +738,6 @@ class _ExpensesState extends State<Expenses> {
                                             .ratioWithScrWidth(context, 0.02),
                                       ),
                                       height: 0,
-                                    ),
-                                    PopupMenuItem(
                                       child: Row(
                                         children: [
                                           circleInd(context, Colors.green),
@@ -787,6 +750,8 @@ class _ExpensesState extends State<Expenses> {
                                           ),
                                         ],
                                       ),
+                                    ),
+                                    PopupMenuItem(
                                       padding: EdgeInsets.only(
                                         top: Sizes()
                                             .ratioWithScrWidth(context, 0.02),
@@ -796,8 +761,6 @@ class _ExpensesState extends State<Expenses> {
                                             .ratioWithScrWidth(context, 0.02),
                                       ),
                                       height: 0,
-                                    ),
-                                    PopupMenuItem(
                                       child: Row(
                                         children: [
                                           circleInd(context, Colors.blue),
@@ -810,18 +773,16 @@ class _ExpensesState extends State<Expenses> {
                                           ),
                                         ],
                                       ),
-                                      padding: EdgeInsets.only(
-                                        top: Sizes()
-                                            .ratioWithScrWidth(context, 0.02),
-                                        left: Sizes()
-                                            .ratioWithScrWidth(context, 0.03),
-                                        bottom: Sizes()
-                                            .ratioWithScrWidth(context, 0.02),
-                                      ),
-                                      height: 0,
                                     ),
                                   ];
                                 },
+                                child: Container(
+                                  width:
+                                      Sizes().ratioWithScrWidth(context, 0.3),
+                                  height:
+                                      Sizes().ratioWithScrHeight(context, 0.04),
+                                  color: Colors.transparent,
+                                ),
                               ),
                             ],
                           )),
@@ -840,21 +801,6 @@ class _ExpensesState extends State<Expenses> {
                                     'Edit',
                                     'Delete',
                                   ].map((e) => PopupMenuItem(
-                                        child: Row(
-                                          children: [
-                                            e == 'Edit'
-                                                ? Icon(Icons.edit_outlined)
-                                                : Icon(Icons.delete_outline),
-                                            Spacing()
-                                                .horizontalSpace(context, 0.02),
-                                            Text(
-                                              e,
-                                              style: txtStyle(
-                                                  size: 13,
-                                                  weight: FontWeight.w400),
-                                            ),
-                                          ],
-                                        ),
                                         padding: EdgeInsets.only(
                                             top: Sizes().ratioWithScrWidth(
                                                 context, 0.02),
@@ -865,6 +811,23 @@ class _ExpensesState extends State<Expenses> {
                                             right: Sizes().ratioWithScrWidth(
                                                 context, 0.1)),
                                         height: 0,
+                                        child: Row(
+                                          children: [
+                                            e == 'Edit'
+                                                ? const Icon(
+                                                    Icons.edit_outlined)
+                                                : const Icon(
+                                                    Icons.delete_outline),
+                                            Spacing()
+                                                .horizontalSpace(context, 0.02),
+                                            Text(
+                                              e,
+                                              style: txtStyle(
+                                                  size: 13,
+                                                  weight: FontWeight.w400),
+                                            ),
+                                          ],
+                                        ),
                                       ))
                                 ];
                               },
@@ -885,7 +848,7 @@ class _ExpensesState extends State<Expenses> {
           width: Sizes().ratioWithScrWidth(context, 0.11),
           height: Sizes().ratioWithScrHeight(context, 0.02),
           alignment: alignment,
-          child: Container(
+          child: SizedBox(
             height: 20,
             child: GestureDetector(
               onTap: () => onClick(),
@@ -905,7 +868,7 @@ class _ExpensesState extends State<Expenses> {
                     child: Icon(
                       icon[1],
                       size: 16,
-                      color: Color.fromARGB(255, 139, 138, 138),
+                      color: const Color.fromARGB(255, 139, 138, 138),
                     ),
                   ),
                 ],
@@ -926,14 +889,14 @@ class _ExpensesState extends State<Expenses> {
             decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(
-                    color: Color.fromARGB(255, 51, 50, 50), width: 0.5),
+                    color: const Color.fromARGB(255, 51, 50, 50), width: 0.5),
                 borderRadius: BorderRadius.circular(20)),
             alignment: Alignment.center,
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               circleInd(context, color),
               Spacing().horizontalSpace(context, 0.018),
               child,
-              Icon(Icons.arrow_drop_down)
+              const Icon(Icons.arrow_drop_down)
             ])),
       );
 
@@ -977,12 +940,12 @@ class _ExpensesState extends State<Expenses> {
           required double borderRad}) =>
       Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 153, 69),
+            color: const Color.fromARGB(255, 255, 153, 69),
             borderRadius: BorderRadius.circular(borderRad)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
-            Icon(
+            const Icon(
               Icons.add,
               size: 16,
               color: Colors.white,

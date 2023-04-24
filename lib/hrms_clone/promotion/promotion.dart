@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:intl/intl.dart';
-
 import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
 import '../holidays/components/horiz_list_tile.dart';
@@ -79,7 +76,7 @@ class _PromotionState extends State<Promotion> {
                                     Spacing().verticalSpace(context, 0.015),
                                     TextField(
                                         controller: titleController,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           border: OutlineInputBorder(),
                                         )),
                                     Spacing().verticalSpace(context, 0.02),
@@ -100,7 +97,7 @@ class _PromotionState extends State<Promotion> {
                                     TextField(
                                         controller: TextEditingController(
                                             text: 'Web Developer'),
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                             border: OutlineInputBorder(),
                                             fillColor: Color.fromARGB(
                                                 255, 184, 180, 180),
@@ -122,7 +119,7 @@ class _PromotionState extends State<Promotion> {
                                     Container(
                                       height: Sizes()
                                           .ratioWithScrHeight(context, 0.075),
-                                      padding: EdgeInsets.all(8),
+                                      padding: const EdgeInsets.all(8),
                                       decoration: BoxDecoration(
                                           border:
                                               Border.all(color: Colors.black),
@@ -139,6 +136,7 @@ class _PromotionState extends State<Promotion> {
                                           ]
                                               .map(
                                                 (e) => DropdownMenuItem(
+                                                  value: e,
                                                   child: Text(
                                                     e,
                                                     style: txtStyle(
@@ -146,7 +144,6 @@ class _PromotionState extends State<Promotion> {
                                                             ? Colors.red
                                                             : Colors.black),
                                                   ),
-                                                  value: e,
                                                 ),
                                               )
                                               .toList(),
@@ -184,19 +181,17 @@ class _PromotionState extends State<Promotion> {
                                                 firstDate: DateTime.now(),
                                                 lastDate: DateTime(2024));
                                         if (newDate != null) {
-                                          print(DateFormat('yyyy-MM-dd')
-                                              .format(newDate!));
                                           setState(() {
                                             dateController.text =
                                                 DateFormat('yyyy-MM-dd')
-                                                    .format(newDate!);
+                                                    .format(newDate);
                                           });
                                         }
                                       },
                                       child: TextField(
                                         enabled: false,
                                         controller: dateController,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                             border: OutlineInputBorder(),
                                             suffixIcon:
                                                 Icon(Icons.calendar_month)),
@@ -226,7 +221,7 @@ class _PromotionState extends State<Promotion> {
                                               dateController.text = '';
                                             });
                                           },
-                                          child: Text('Submit')),
+                                          child: const Text('Submit')),
                                     )
                                   ]),
                             );
@@ -239,7 +234,7 @@ class _PromotionState extends State<Promotion> {
                       context: context, title: 'Add Promotion', borderRad: 20))
             ]),
             Spacing().verticalSpace(context, 0.04),
-            EntriesLimitWidget(),
+            const EntriesLimitWidget(),
             Spacing().verticalSpace(context, 0.03),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -249,7 +244,7 @@ class _PromotionState extends State<Promotion> {
                   Container(
                     height: Sizes().ratioWithScrHeight(context, 0.097),
                     alignment: Alignment.topCenter,
-                    color: Color.fromARGB(255, 209, 206, 206),
+                    color: const Color.fromARGB(255, 209, 206, 206),
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -273,7 +268,7 @@ class _PromotionState extends State<Promotion> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.25,
@@ -288,7 +283,7 @@ class _PromotionState extends State<Promotion> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.25,
@@ -303,7 +298,7 @@ class _PromotionState extends State<Promotion> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.24,
@@ -318,7 +313,7 @@ class _PromotionState extends State<Promotion> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.24,
@@ -333,7 +328,7 @@ class _PromotionState extends State<Promotion> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.2,
@@ -348,7 +343,7 @@ class _PromotionState extends State<Promotion> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.16,
@@ -363,7 +358,7 @@ class _PromotionState extends State<Promotion> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             )
                           ]),
                         ),
@@ -386,7 +381,7 @@ class _PromotionState extends State<Promotion> {
                           HorizListTile(
                               width: 0.37,
                               child: Row(children: [
-                                CircleAvatar(
+                                const CircleAvatar(
                                   backgroundImage: AssetImage(
                                       'assets/images/member_list/download.jpg'),
                                   radius: 18,
@@ -440,22 +435,6 @@ class _PromotionState extends State<Promotion> {
                                         'Edit',
                                         'Delete',
                                       ].map((e) => PopupMenuItem(
-                                            child: Row(
-                                              children: [
-                                                e == 'Edit'
-                                                    ? Icon(Icons.edit_outlined)
-                                                    : Icon(
-                                                        Icons.delete_outline),
-                                                Spacing().horizontalSpace(
-                                                    context, 0.02),
-                                                Text(
-                                                  e,
-                                                  style: txtStyle(
-                                                      size: 13,
-                                                      weight: FontWeight.w400),
-                                                ),
-                                              ],
-                                            ),
                                             padding: EdgeInsets.only(
                                                 top: Sizes().ratioWithScrWidth(
                                                     context, 0.02),
@@ -468,6 +447,23 @@ class _PromotionState extends State<Promotion> {
                                                     .ratioWithScrWidth(
                                                         context, 0.1)),
                                             height: 0,
+                                            child: Row(
+                                              children: [
+                                                e == 'Edit'
+                                                    ? const Icon(
+                                                        Icons.edit_outlined)
+                                                    : const Icon(
+                                                        Icons.delete_outline),
+                                                Spacing().horizontalSpace(
+                                                    context, 0.02),
+                                                Text(
+                                                  e,
+                                                  style: txtStyle(
+                                                      size: 13,
+                                                      weight: FontWeight.w400),
+                                                ),
+                                              ],
+                                            ),
                                           ))
                                     ];
                                   },
@@ -488,7 +484,7 @@ class _PromotionState extends State<Promotion> {
                                 0.29 +
                                 0.28),
                         height: Sizes().ratioWithScrHeight(context, 0.002),
-                        color: Color.fromARGB(255, 199, 195, 195),
+                        color: const Color.fromARGB(255, 199, 195, 195),
                       )
                     ],
                   ),
@@ -510,8 +506,9 @@ class _PromotionState extends State<Promotion> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                  color: Color.fromARGB(255, 187, 184, 184)),
-                              borderRadius: BorderRadius.only(
+                                  color:
+                                      const Color.fromARGB(255, 187, 184, 184)),
+                              borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(6),
                                   bottomLeft: Radius.circular(6))),
                           child: Padding(
@@ -523,7 +520,7 @@ class _PromotionState extends State<Promotion> {
                             ),
                           )),
                       Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Colors.orange,
                               border: Border(
                                 top: BorderSide(
@@ -543,9 +540,9 @@ class _PromotionState extends State<Promotion> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                color: Color.fromARGB(255, 187, 184, 184),
+                                color: const Color.fromARGB(255, 187, 184, 184),
                               ),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                   topRight: Radius.circular(6),
                                   bottomRight: Radius.circular(6))),
                           child: Padding(
@@ -571,7 +568,7 @@ class _PromotionState extends State<Promotion> {
           width: Sizes().ratioWithScrWidth(context, 0.11),
           height: Sizes().ratioWithScrHeight(context, 0.02),
           alignment: alignment,
-          child: Container(
+          child: SizedBox(
             height: 20,
             child: GestureDetector(
               onTap: () => onClick(),
@@ -591,7 +588,7 @@ class _PromotionState extends State<Promotion> {
                     child: Icon(
                       icon[1],
                       size: 16,
-                      color: Color.fromARGB(255, 139, 138, 138),
+                      color: const Color.fromARGB(255, 139, 138, 138),
                     ),
                   ),
                 ],
@@ -604,12 +601,12 @@ class _PromotionState extends State<Promotion> {
           required double borderRad}) =>
       Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 153, 69),
+            color: const Color.fromARGB(255, 255, 153, 69),
             borderRadius: BorderRadius.circular(borderRad)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
-            Icon(
+            const Icon(
               Icons.add,
               size: 16,
               color: Colors.white,

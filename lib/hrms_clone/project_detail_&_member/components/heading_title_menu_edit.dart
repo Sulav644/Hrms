@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-
 import '../../../core/utils.dart';
 import '../core/components.dart';
 
@@ -29,12 +26,12 @@ class HeadingTitleMenuEdit extends StatelessWidget {
   Widget menuIcon(BuildContext context) => Container(
       decoration: BoxDecoration(
           color: Colors.white,
-          border:
-              Border.all(color: Color.fromARGB(255, 151, 150, 150), width: 1.5),
+          border: Border.all(
+              color: const Color.fromARGB(255, 151, 150, 150), width: 1.5),
           borderRadius: BorderRadius.circular(6)),
       child: Padding(
         padding: EdgeInsets.all(Sizes().ratioWithScrWidth(context, 0.02)),
-        child: Icon(
+        child: const Icon(
           Icons.menu,
           size: 25,
         ),

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hrms_clone/hrms_clone/holidays/components/horiz_list_tile.dart';
 import 'package:hrms_clone/hrms_clone/holidays/data/holiday_date.dart';
 import 'package:hrms_clone/hrms_clone/holidays/domain/add_holiday_cubit.dart';
 import 'package:intl/intl.dart';
-
 import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
 
@@ -81,7 +78,7 @@ class _HolidaysState extends State<Holidays> {
                                   Spacing().verticalSpace(context, 0.015),
                                   TextField(
                                       controller: controller,
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
                                   Spacing().verticalSpace(context, 0.03),
@@ -106,8 +103,6 @@ class _HolidaysState extends State<Holidays> {
                                           initialDate: DateTime.now(),
                                           firstDate: DateTime.now(),
                                           lastDate: DateTime(2024));
-                                      print(DateFormat('yyyy-MM-dd')
-                                          .format(newDate!));
                                       setState(() {
                                         date = DateFormat('yyyy-MM-dd')
                                             .format(newDate!);
@@ -117,7 +112,7 @@ class _HolidaysState extends State<Holidays> {
                                     child: TextField(
                                       enabled: false,
                                       controller: controllerTwo,
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                           border: OutlineInputBorder(),
                                           suffixIcon:
                                               Icon(Icons.arrow_drop_down)),
@@ -158,12 +153,8 @@ class _HolidaysState extends State<Holidays> {
                                             controller.text = '';
                                             date = '';
                                           });
-
-                                          print(controller.text);
-                                          print(date);
-                                          print(status);
                                         },
-                                        child: Text('Submit')),
+                                        child: const Text('Submit')),
                                   )
                                 ]),
                           );
@@ -177,7 +168,7 @@ class _HolidaysState extends State<Holidays> {
               Container(
                 height: Sizes().ratioWithScrHeight(context, 0.097),
                 alignment: Alignment.topCenter,
-                color: Color.fromARGB(255, 209, 206, 206),
+                color: const Color.fromARGB(255, 209, 206, 206),
                 child: Padding(
                   padding: EdgeInsets.only(
                       top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -289,22 +280,6 @@ class _HolidaysState extends State<Holidays> {
                                         'Edit',
                                         'Delete',
                                       ].map((e) => PopupMenuItem(
-                                            child: Row(
-                                              children: [
-                                                e == 'Edit'
-                                                    ? Icon(Icons.edit_outlined)
-                                                    : Icon(
-                                                        Icons.delete_outline),
-                                                Spacing().horizontalSpace(
-                                                    context, 0.02),
-                                                Text(
-                                                  e,
-                                                  style: txtStyle(
-                                                      size: 13,
-                                                      weight: FontWeight.w400),
-                                                ),
-                                              ],
-                                            ),
                                             padding: EdgeInsets.only(
                                                 top: Sizes().ratioWithScrWidth(
                                                     context, 0.02),
@@ -317,6 +292,23 @@ class _HolidaysState extends State<Holidays> {
                                                     .ratioWithScrWidth(
                                                         context, 0.1)),
                                             height: 0,
+                                            child: Row(
+                                              children: [
+                                                e == 'Edit'
+                                                    ? const Icon(
+                                                        Icons.edit_outlined)
+                                                    : const Icon(
+                                                        Icons.delete_outline),
+                                                Spacing().horizontalSpace(
+                                                    context, 0.02),
+                                                Text(
+                                                  e,
+                                                  style: txtStyle(
+                                                      size: 13,
+                                                      weight: FontWeight.w400),
+                                                ),
+                                              ],
+                                            ),
                                           ))
                                     ];
                                   },
@@ -338,12 +330,12 @@ class _HolidaysState extends State<Holidays> {
           required double borderRad}) =>
       Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 153, 69),
+            color: const Color.fromARGB(255, 255, 153, 69),
             borderRadius: BorderRadius.circular(borderRad)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
-            Icon(
+            const Icon(
               Icons.add,
               size: 16,
               color: Colors.white,

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-
 import '../../utils.dart';
 
 class PopupMenu extends StatelessWidget {
@@ -24,7 +21,7 @@ class PopupMenu extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(4),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                           color: Color.fromARGB(255, 77, 75, 75),
                           offset: Offset(1, 1)),

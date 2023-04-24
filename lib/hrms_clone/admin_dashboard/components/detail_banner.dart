@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:hrms_clone/hrms_clone/admin_dashboard/data/detail_banner.dart';
-
 import '../../../core/utils.dart';
 import '../core/components.dart';
 
@@ -31,7 +28,7 @@ class DetailBannerWidget extends StatelessWidget {
   }
 
   Widget iconWidget() => CircleAvatar(
-        backgroundColor: Color.fromARGB(255, 247, 211, 157),
+        backgroundColor: const Color.fromARGB(255, 247, 211, 157),
         radius: 35,
         child: Icon(
           e.icon,

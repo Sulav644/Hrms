@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:intl/intl.dart';
-
 import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
 import '../holidays/components/horiz_list_tile.dart';
 import '../view_more_projects/components/entries_limit_widget.dart';
 
 class EmployeeLeave extends StatefulWidget {
-  EmployeeLeave({super.key});
+  const EmployeeLeave({super.key});
 
   @override
   State<EmployeeLeave> createState() => _EmployeeLeaveState();
@@ -47,13 +43,34 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                           builder: (context, setState) {
                             return SingleChildScrollView(
                               child: AlertDialog(
-                                title: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                title: Column(
                                   children: [
-                                    Text(
-                                      'Add Leave',
-                                      style: txtStyle(
-                                          size: 22, weight: FontWeight.w600),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        SizedBox(
+                                          width: 20,
+                                          height: 30,
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: const Icon(Icons.cancel),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Add Leave',
+                                          style: txtStyle(
+                                              size: 22,
+                                              weight: FontWeight.w600),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
@@ -74,10 +91,11 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                                           )
                                         ],
                                       ),
+                                      Spacing().verticalSpace(context, 0.02),
                                       Container(
                                         height: Sizes()
                                             .ratioWithScrHeight(context, 0.075),
-                                        padding: EdgeInsets.all(8),
+                                        padding: const EdgeInsets.all(8),
                                         decoration: BoxDecoration(
                                             border:
                                                 Border.all(color: Colors.black),
@@ -96,18 +114,18 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                                             ]
                                                 .map(
                                                   (e) => DropdownMenuItem(
+                                                    value: e,
                                                     child: Text(
                                                       e,
                                                       style: txtStyle(
                                                           color: Colors.black),
                                                     ),
-                                                    value: e,
                                                   ),
                                                 )
                                                 .toList(),
                                             onChanged: (value) {
                                               setState(() {
-                                                this.leaveValue = value;
+                                                leaveValue = value;
                                               });
                                             },
                                           ),
@@ -137,12 +155,10 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                                                   firstDate: DateTime.now(),
                                                   lastDate: DateTime(2024));
                                           if (newDate != null) {
-                                            print(DateFormat('yyyy-MM-dd')
-                                                .format(newDate!));
                                             setState(() {});
                                           }
                                         },
-                                        child: TextField(
+                                        child: const TextField(
                                           enabled: false,
                                           decoration: InputDecoration(
                                               border: OutlineInputBorder(),
@@ -174,12 +190,10 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                                                   firstDate: DateTime.now(),
                                                   lastDate: DateTime(2024));
                                           if (newDate != null) {
-                                            print(DateFormat('yyyy-MM-dd')
-                                                .format(newDate!));
                                             setState(() {});
                                           }
                                         },
-                                        child: TextField(
+                                        child: const TextField(
                                           enabled: false,
                                           decoration: InputDecoration(
                                               border: OutlineInputBorder(),
@@ -202,7 +216,7 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -221,7 +235,7 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           maxLines: 3,
                                           decoration: InputDecoration(
                                             border: OutlineInputBorder(),
@@ -249,7 +263,7 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
 
                                               setState(() {});
                                             },
-                                            child: Text('Submit')),
+                                            child: const Text('Submit')),
                                       )
                                     ]),
                               ),
@@ -263,7 +277,7 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                       context: context, title: 'Add Leaves', borderRad: 20))
             ]),
             Spacing().verticalSpace(context, 0.04),
-            EntriesLimitWidget(),
+            const EntriesLimitWidget(),
             Spacing().verticalSpace(context, 0.03),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -273,7 +287,7 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                   Container(
                     height: Sizes().ratioWithScrHeight(context, 0.097),
                     alignment: Alignment.topCenter,
-                    color: Color.fromARGB(255, 209, 206, 206),
+                    color: const Color.fromARGB(255, 209, 206, 206),
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -297,7 +311,7 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.12,
@@ -312,7 +326,7 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.075,
@@ -327,7 +341,7 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.12,
@@ -342,7 +356,7 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.2,
@@ -357,7 +371,7 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.16,
@@ -372,7 +386,7 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             )
                           ]),
                         ),
@@ -413,7 +427,7 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                           HorizListTile(
                               width: 0.29,
                               child: Text(
-                                'This is a\ntest to leaving\system',
+                                'This is a\ntest to leaving\nsystem',
                                 style: listStyle,
                               )),
                           HorizListTile(
@@ -433,22 +447,6 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                                         'Edit',
                                         'Delete',
                                       ].map((e) => PopupMenuItem(
-                                            child: Row(
-                                              children: [
-                                                e == 'Edit'
-                                                    ? Icon(Icons.edit_outlined)
-                                                    : Icon(
-                                                        Icons.delete_outline),
-                                                Spacing().horizontalSpace(
-                                                    context, 0.02),
-                                                Text(
-                                                  e,
-                                                  style: txtStyle(
-                                                      size: 13,
-                                                      weight: FontWeight.w400),
-                                                ),
-                                              ],
-                                            ),
                                             padding: EdgeInsets.only(
                                                 top: Sizes().ratioWithScrWidth(
                                                     context, 0.02),
@@ -461,6 +459,23 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                                                     .ratioWithScrWidth(
                                                         context, 0.1)),
                                             height: 0,
+                                            child: Row(
+                                              children: [
+                                                e == 'Edit'
+                                                    ? const Icon(
+                                                        Icons.edit_outlined)
+                                                    : const Icon(
+                                                        Icons.delete_outline),
+                                                Spacing().horizontalSpace(
+                                                    context, 0.02),
+                                                Text(
+                                                  e,
+                                                  style: txtStyle(
+                                                      size: 13,
+                                                      weight: FontWeight.w400),
+                                                ),
+                                              ],
+                                            ),
                                           ))
                                     ];
                                   },
@@ -472,7 +487,7 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                       Container(
                         width: Sizes().ratioWithScrWidth(context, 1.62),
                         height: Sizes().ratioWithScrHeight(context, 0.002),
-                        color: Color.fromARGB(255, 199, 195, 195),
+                        color: const Color.fromARGB(255, 199, 195, 195),
                       )
                     ],
                   ),
@@ -494,8 +509,9 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                  color: Color.fromARGB(255, 187, 184, 184)),
-                              borderRadius: BorderRadius.only(
+                                  color:
+                                      const Color.fromARGB(255, 187, 184, 184)),
+                              borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(6),
                                   bottomLeft: Radius.circular(6))),
                           child: Padding(
@@ -507,7 +523,7 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                             ),
                           )),
                       Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Colors.orange,
                               border: Border(
                                 top: BorderSide(
@@ -527,9 +543,9 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                color: Color.fromARGB(255, 187, 184, 184),
+                                color: const Color.fromARGB(255, 187, 184, 184),
                               ),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                   topRight: Radius.circular(6),
                                   bottomRight: Radius.circular(6))),
                           child: Padding(
@@ -555,12 +571,12 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
           required double borderRad}) =>
       Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 153, 69),
+            color: const Color.fromARGB(255, 255, 153, 69),
             borderRadius: BorderRadius.circular(borderRad)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
-            Icon(
+            const Icon(
               Icons.add,
               size: 16,
               color: Colors.white,
@@ -580,7 +596,7 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
           width: Sizes().ratioWithScrWidth(context, 0.11),
           height: Sizes().ratioWithScrHeight(context, 0.02),
           alignment: alignment,
-          child: Container(
+          child: SizedBox(
             height: 20,
             child: GestureDetector(
               onTap: () => onClick(),
@@ -600,7 +616,7 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                     child: Icon(
                       icon[1],
                       size: 16,
-                      color: Color.fromARGB(255, 139, 138, 138),
+                      color: const Color.fromARGB(255, 139, 138, 138),
                     ),
                   ),
                 ],

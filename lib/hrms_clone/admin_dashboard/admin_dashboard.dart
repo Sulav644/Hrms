@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:hrms_clone/hrms_clone/admin_dashboard/components/project_list.dart';
 import 'package:hrms_clone/hrms_clone/admin_dashboard/components/status_change_banner.dart';
-
 import '../../core/utils.dart';
 import '../../home_page.dart';
 import 'components/detail_banner.dart';
@@ -31,7 +28,7 @@ class AdminDashboard extends StatelessWidget {
             (e) => StatusChangeBannerWidget(e: e),
           )
           .toList(),
-      ProjectList(),
+      const ProjectList(),
       Spacing().verticalSpace(context, 0.1),
     ]);
   }

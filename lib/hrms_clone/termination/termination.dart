@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:intl/intl.dart';
-
 import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
 import '../holidays/components/horiz_list_tile.dart';
@@ -74,7 +70,7 @@ class _TerminationState extends State<Termination> {
                                       ],
                                     ),
                                     Spacing().verticalSpace(context, 0.015),
-                                    TextField(
+                                    const TextField(
                                         decoration: InputDecoration(
                                       border: OutlineInputBorder(),
                                     )),
@@ -100,7 +96,7 @@ class _TerminationState extends State<Termination> {
                                               context, 0.455),
                                           height: Sizes().ratioWithScrHeight(
                                               context, 0.075),
-                                          padding: EdgeInsets.all(8),
+                                          padding: const EdgeInsets.all(8),
                                           decoration: BoxDecoration(
                                               border: Border.all(
                                                   color: Colors.black),
@@ -116,6 +112,7 @@ class _TerminationState extends State<Termination> {
                                               ]
                                                   .map(
                                                     (e) => DropdownMenuItem(
+                                                      value: e,
                                                       child: Text(
                                                         e,
                                                         style: txtStyle(
@@ -123,7 +120,6 @@ class _TerminationState extends State<Termination> {
                                                                 ? Colors.red
                                                                 : Colors.black),
                                                       ),
-                                                      value: e,
                                                     ),
                                                   )
                                                   .toList(),
@@ -146,7 +142,7 @@ class _TerminationState extends State<Termination> {
                                               padding: EdgeInsets.all(Sizes()
                                                   .ratioWithScrWidth(
                                                       context, 0.028)),
-                                              child: Icon(
+                                              child: const Icon(
                                                 Icons.add,
                                                 color: Colors.white,
                                                 size: 40,
@@ -178,12 +174,10 @@ class _TerminationState extends State<Termination> {
                                                 firstDate: DateTime.now(),
                                                 lastDate: DateTime(2024));
                                         if (newDate != null) {
-                                          print(DateFormat('yyyy-MM-dd')
-                                              .format(newDate!));
                                           setState(() {});
                                         }
                                       },
-                                      child: TextField(
+                                      child: const TextField(
                                         enabled: false,
                                         decoration: InputDecoration(
                                             border: OutlineInputBorder(),
@@ -206,7 +200,7 @@ class _TerminationState extends State<Termination> {
                                       ],
                                     ),
                                     Spacing().verticalSpace(context, 0.015),
-                                    TextField(
+                                    const TextField(
                                         maxLines: 3,
                                         decoration: InputDecoration(
                                           border: OutlineInputBorder(),
@@ -232,7 +226,7 @@ class _TerminationState extends State<Termination> {
 
                                             setState(() {});
                                           },
-                                          child: Text('Submit')),
+                                          child: const Text('Submit')),
                                     )
                                   ]),
                             );
@@ -247,7 +241,7 @@ class _TerminationState extends State<Termination> {
                       borderRad: 20))
             ]),
             Spacing().verticalSpace(context, 0.04),
-            EntriesLimitWidget(),
+            const EntriesLimitWidget(),
             Spacing().verticalSpace(context, 0.03),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -257,7 +251,7 @@ class _TerminationState extends State<Termination> {
                   Container(
                     height: Sizes().ratioWithScrHeight(context, 0.097),
                     alignment: Alignment.topCenter,
-                    color: Color.fromARGB(255, 209, 206, 206),
+                    color: const Color.fromARGB(255, 209, 206, 206),
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -281,7 +275,7 @@ class _TerminationState extends State<Termination> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.34,
@@ -294,7 +288,7 @@ class _TerminationState extends State<Termination> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.25,
@@ -306,7 +300,7 @@ class _TerminationState extends State<Termination> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.24,
@@ -319,7 +313,7 @@ class _TerminationState extends State<Termination> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.24,
@@ -332,7 +326,7 @@ class _TerminationState extends State<Termination> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.2,
@@ -344,7 +338,7 @@ class _TerminationState extends State<Termination> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.2,
@@ -356,7 +350,7 @@ class _TerminationState extends State<Termination> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.16,
@@ -368,7 +362,7 @@ class _TerminationState extends State<Termination> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             )
                           ]),
                         ),
@@ -393,7 +387,7 @@ class _TerminationState extends State<Termination> {
                             HorizListTile(
                                 width: 0.45,
                                 child: Row(children: [
-                                  CircleAvatar(
+                                  const CircleAvatar(
                                     backgroundImage: AssetImage(
                                         'assets/images/member_list/download.jpg'),
                                     radius: 18,
@@ -436,24 +430,6 @@ class _TerminationState extends State<Termination> {
                                           'Edit',
                                           'Delete',
                                         ].map((e) => PopupMenuItem(
-                                              child: Row(
-                                                children: [
-                                                  e == 'Edit'
-                                                      ? Icon(
-                                                          Icons.edit_outlined)
-                                                      : Icon(
-                                                          Icons.delete_outline),
-                                                  Spacing().horizontalSpace(
-                                                      context, 0.02),
-                                                  Text(
-                                                    e,
-                                                    style: txtStyle(
-                                                        size: 13,
-                                                        weight:
-                                                            FontWeight.w400),
-                                                  ),
-                                                ],
-                                              ),
                                               padding: EdgeInsets.only(
                                                   top: Sizes()
                                                       .ratioWithScrWidth(
@@ -468,6 +444,24 @@ class _TerminationState extends State<Termination> {
                                                       .ratioWithScrWidth(
                                                           context, 0.1)),
                                               height: 0,
+                                              child: Row(
+                                                children: [
+                                                  e == 'Edit'
+                                                      ? const Icon(
+                                                          Icons.edit_outlined)
+                                                      : const Icon(
+                                                          Icons.delete_outline),
+                                                  Spacing().horizontalSpace(
+                                                      context, 0.02),
+                                                  Text(
+                                                    e,
+                                                    style: txtStyle(
+                                                        size: 13,
+                                                        weight:
+                                                            FontWeight.w400),
+                                                  ),
+                                                ],
+                                              ),
                                             ))
                                       ];
                                     },
@@ -481,7 +475,7 @@ class _TerminationState extends State<Termination> {
                   Container(
                     width: Sizes().ratioWithScrWidth(context, 2.61),
                     height: Sizes().ratioWithScrHeight(context, 0.002),
-                    color: Color.fromARGB(255, 199, 195, 195),
+                    color: const Color.fromARGB(255, 199, 195, 195),
                   ),
                   Spacing().verticalSpace(context, 0.03),
                   Row(
@@ -501,8 +495,9 @@ class _TerminationState extends State<Termination> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                  color: Color.fromARGB(255, 187, 184, 184)),
-                              borderRadius: BorderRadius.only(
+                                  color:
+                                      const Color.fromARGB(255, 187, 184, 184)),
+                              borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(6),
                                   bottomLeft: Radius.circular(6))),
                           child: Padding(
@@ -514,7 +509,7 @@ class _TerminationState extends State<Termination> {
                             ),
                           )),
                       Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Colors.orange,
                               border: Border(
                                 top: BorderSide(
@@ -534,9 +529,9 @@ class _TerminationState extends State<Termination> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                color: Color.fromARGB(255, 187, 184, 184),
+                                color: const Color.fromARGB(255, 187, 184, 184),
                               ),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                   topRight: Radius.circular(6),
                                   bottomRight: Radius.circular(6))),
                           child: Padding(
@@ -562,7 +557,7 @@ class _TerminationState extends State<Termination> {
           width: Sizes().ratioWithScrWidth(context, 0.11),
           height: Sizes().ratioWithScrHeight(context, 0.02),
           alignment: alignment,
-          child: Container(
+          child: SizedBox(
             height: 20,
             child: GestureDetector(
               onTap: () => onClick(),
@@ -582,7 +577,7 @@ class _TerminationState extends State<Termination> {
                     child: Icon(
                       icon[1],
                       size: 16,
-                      color: Color.fromARGB(255, 139, 138, 138),
+                      color: const Color.fromARGB(255, 139, 138, 138),
                     ),
                   ),
                 ],
@@ -596,12 +591,12 @@ class _TerminationState extends State<Termination> {
           required double borderRad}) =>
       Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 153, 69),
+            color: const Color.fromARGB(255, 255, 153, 69),
             borderRadius: BorderRadius.circular(borderRad)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
-            Icon(
+            const Icon(
               Icons.add,
               size: 16,
               color: Colors.white,

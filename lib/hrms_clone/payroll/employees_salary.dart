@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:intl/intl.dart';
-
 import '../../core/app_widgets.dart';
 import '../../core/utils.dart';
 import '../holidays/components/horiz_list_tile.dart';
 import '../view_more_projects/components/entries_limit_widget.dart';
 
 class EmployeesSalary extends StatefulWidget {
-  EmployeesSalary({super.key});
+  const EmployeesSalary({super.key});
 
   @override
   State<EmployeesSalary> createState() => _EmployeesSalaryState();
@@ -73,7 +69,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                       Container(
                                         height: Sizes()
                                             .ratioWithScrHeight(context, 0.075),
-                                        padding: EdgeInsets.all(8),
+                                        padding: const EdgeInsets.all(8),
                                         decoration: BoxDecoration(
                                             border:
                                                 Border.all(color: Colors.black),
@@ -89,6 +85,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                             ]
                                                 .map(
                                                   (e) => DropdownMenuItem(
+                                                    value: e,
                                                     child: Text(
                                                       e,
                                                       style: txtStyle(
@@ -96,13 +93,12 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                                               ? Colors.red
                                                               : Colors.black),
                                                     ),
-                                                    value: e,
                                                   ),
                                                 )
                                                 .toList(),
                                             onChanged: (value) {
                                               setState(() {
-                                                this.status = value;
+                                                status = value;
                                               });
                                             },
                                           ),
@@ -119,7 +115,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -130,6 +126,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                           style: txtStyle(color: Colors.orange),
                                         ),
                                       ]),
+                                      Spacing().verticalSpace(context, 0.01),
                                       Row(
                                         children: [
                                           Text(
@@ -140,7 +137,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -155,7 +152,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -170,7 +167,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -185,7 +182,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -200,7 +197,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -215,7 +212,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -230,26 +227,34 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      Row(children: [
-                                        CircleAvatar(
-                                          backgroundColor: Colors.orange,
-                                          child: Icon(Icons.add),
-                                        ),
-                                        Text(
-                                          'Add',
-                                          style: txtStyle(color: Colors.orange),
-                                        ),
-                                      ]),
+                                      Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            const CircleAvatar(
+                                              backgroundColor: Colors.orange,
+                                              radius: 12,
+                                              child: Icon(
+                                                Icons.add,
+                                                color: Colors.white,
+                                                size: 15,
+                                              ),
+                                            ),
+                                            Spacing()
+                                                .horizontalSpace(context, 0.01),
+                                            Text(
+                                              'Add',
+                                              style: txtStyle(
+                                                  color: Colors.orange),
+                                            ),
+                                          ]),
+                                      Spacing().verticalSpace(context, 0.01),
                                       Row(children: [
                                         Text(
                                           'Deductions',
                                           style: txtStyle(color: Colors.orange),
                                         ),
                                       ]),
-                                      TextField(
-                                          decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                      )),
                                       Spacing().verticalSpace(context, 0.02),
                                       Row(
                                         children: [
@@ -261,7 +266,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -276,7 +281,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -291,7 +296,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -306,7 +311,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -321,7 +326,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -336,7 +341,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
@@ -351,21 +356,33 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                         ],
                                       ),
                                       Spacing().verticalSpace(context, 0.015),
-                                      TextField(
+                                      const TextField(
                                           decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                       )),
                                       Spacing().verticalSpace(context, 0.02),
-                                      Row(children: [
-                                        CircleAvatar(
-                                          backgroundColor: Colors.orange,
-                                          child: Icon(Icons.add),
-                                        ),
-                                        Text(
-                                          'Add',
-                                          style: txtStyle(color: Colors.orange),
-                                        ),
-                                      ]),
+                                      Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            const CircleAvatar(
+                                              backgroundColor: Colors.orange,
+                                              radius: 12,
+                                              child: Icon(
+                                                Icons.add,
+                                                color: Colors.white,
+                                                size: 15,
+                                              ),
+                                            ),
+                                            Spacing()
+                                                .horizontalSpace(context, 0.01),
+                                            Text(
+                                              'Add',
+                                              style: txtStyle(
+                                                  color: Colors.orange),
+                                            ),
+                                          ]),
+                                      Spacing().verticalSpace(context, 0.01),
                                       SizedBox(
                                         width: Sizes()
                                             .ratioWithScrWidth(context, 0.3),
@@ -388,7 +405,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
 
                                               setState(() {});
                                             },
-                                            child: Text('Submit')),
+                                            child: const Text('Submit')),
                                       )
                                     ]),
                               ),
@@ -402,7 +419,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                       context: context, title: 'Add Asset', borderRad: 20))
             ]),
             Spacing().verticalSpace(context, 0.04),
-            TextField(
+            const TextField(
                 decoration: InputDecoration(
               hintText: 'Employee Name',
               border: OutlineInputBorder(),
@@ -412,7 +429,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                 Container(
                   width: Sizes().ratioWithScrWidth(context, 0.94),
                   height: Sizes().ratioWithScrHeight(context, 0.075),
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black),
                       borderRadius: BorderRadius.circular(2)),
@@ -427,11 +444,11 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                       ]
                           .map(
                             (e) => DropdownMenuItem(
+                              value: e,
                               child: Text(
                                 e,
                                 style: txtStyle(color: Colors.black),
                               ),
-                              value: e,
                             ),
                           )
                           .toList(),
@@ -450,11 +467,9 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                     initialDate: DateTime.now(),
                     firstDate: DateTime.now(),
                     lastDate: DateTime(2024));
-                if (newDate != null) {
-                  print(DateFormat('yyyy-MM-dd').format(newDate!));
-                }
+                if (newDate != null) {}
               },
-              child: TextField(
+              child: const TextField(
                 enabled: false,
                 decoration: InputDecoration(
                     hintText: 'From',
@@ -469,11 +484,9 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                     initialDate: DateTime.now(),
                     firstDate: DateTime.now(),
                     lastDate: DateTime(2024));
-                if (newDate != null) {
-                  print(DateFormat('yyyy-MM-dd').format(newDate!));
-                }
+                if (newDate != null) {}
               },
-              child: TextField(
+              child: const TextField(
                 enabled: false,
                 decoration: InputDecoration(
                     hintText: 'To',
@@ -494,7 +507,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                   )),
             ),
             Spacing().verticalSpace(context, 0.026),
-            EntriesLimitWidget(),
+            const EntriesLimitWidget(),
             Spacing().verticalSpace(context, 0.035),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -504,7 +517,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                   Container(
                     height: Sizes().ratioWithScrHeight(context, 0.097),
                     alignment: Alignment.topCenter,
-                    color: Color.fromARGB(255, 209, 206, 206),
+                    color: const Color.fromARGB(255, 209, 206, 206),
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -529,7 +542,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.2,
@@ -545,7 +558,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.58,
@@ -561,7 +574,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.13,
@@ -577,7 +590,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.24,
@@ -593,7 +606,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.14,
@@ -609,7 +622,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.2,
@@ -625,7 +638,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.16,
@@ -641,7 +654,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             )
                           ]),
                         ),
@@ -657,7 +670,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                           width: 0.52,
                           child: Row(
                             children: [
-                              CircleAvatar(
+                              const CircleAvatar(
                                 backgroundImage: AssetImage(
                                     'assets/images/member_list/download.jpg'),
                               ),
@@ -710,15 +723,8 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                   context: context,
                                   onClick: () {},
                                   color: Colors.red,
-                                  child: Text('Pending')),
+                                  child: const Text('Pending')),
                               PopupMenuButton(
-                                child: Container(
-                                  width:
-                                      Sizes().ratioWithScrWidth(context, 0.3),
-                                  height:
-                                      Sizes().ratioWithScrHeight(context, 0.04),
-                                  color: Colors.transparent,
-                                ),
                                 padding: EdgeInsets.zero,
                                 offset: Offset(
                                     Sizes().ratioWithScrWidth(context, 0.01),
@@ -726,6 +732,15 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                 itemBuilder: (context) {
                                   return [
                                     PopupMenuItem(
+                                      padding: EdgeInsets.only(
+                                        top: Sizes()
+                                            .ratioWithScrWidth(context, 0.02),
+                                        left: Sizes()
+                                            .ratioWithScrWidth(context, 0.03),
+                                        bottom: Sizes()
+                                            .ratioWithScrWidth(context, 0.02),
+                                      ),
+                                      height: 0,
                                       child: Row(
                                         children: [
                                           circleInd(context, Colors.red),
@@ -738,6 +753,8 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                           ),
                                         ],
                                       ),
+                                    ),
+                                    PopupMenuItem(
                                       padding: EdgeInsets.only(
                                         top: Sizes()
                                             .ratioWithScrWidth(context, 0.02),
@@ -747,8 +764,6 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                             .ratioWithScrWidth(context, 0.02),
                                       ),
                                       height: 0,
-                                    ),
-                                    PopupMenuItem(
                                       child: Row(
                                         children: [
                                           circleInd(context, Colors.green),
@@ -761,6 +776,8 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                           ),
                                         ],
                                       ),
+                                    ),
+                                    PopupMenuItem(
                                       padding: EdgeInsets.only(
                                         top: Sizes()
                                             .ratioWithScrWidth(context, 0.02),
@@ -770,8 +787,6 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                             .ratioWithScrWidth(context, 0.02),
                                       ),
                                       height: 0,
-                                    ),
-                                    PopupMenuItem(
                                       child: Row(
                                         children: [
                                           circleInd(context, Colors.blue),
@@ -784,18 +799,16 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                           ),
                                         ],
                                       ),
-                                      padding: EdgeInsets.only(
-                                        top: Sizes()
-                                            .ratioWithScrWidth(context, 0.02),
-                                        left: Sizes()
-                                            .ratioWithScrWidth(context, 0.03),
-                                        bottom: Sizes()
-                                            .ratioWithScrWidth(context, 0.02),
-                                      ),
-                                      height: 0,
                                     ),
                                   ];
                                 },
+                                child: Container(
+                                  width:
+                                      Sizes().ratioWithScrWidth(context, 0.3),
+                                  height:
+                                      Sizes().ratioWithScrHeight(context, 0.04),
+                                  color: Colors.transparent,
+                                ),
                               ),
                             ],
                           )),
@@ -839,21 +852,6 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                     'Edit',
                                     'Delete',
                                   ].map((e) => PopupMenuItem(
-                                        child: Row(
-                                          children: [
-                                            e == 'Edit'
-                                                ? Icon(Icons.edit_outlined)
-                                                : Icon(Icons.delete_outline),
-                                            Spacing()
-                                                .horizontalSpace(context, 0.02),
-                                            Text(
-                                              e,
-                                              style: txtStyle(
-                                                  size: 13,
-                                                  weight: FontWeight.w400),
-                                            ),
-                                          ],
-                                        ),
                                         padding: EdgeInsets.only(
                                             top: Sizes().ratioWithScrWidth(
                                                 context, 0.02),
@@ -864,6 +862,23 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                                             right: Sizes().ratioWithScrWidth(
                                                 context, 0.1)),
                                         height: 0,
+                                        child: Row(
+                                          children: [
+                                            e == 'Edit'
+                                                ? const Icon(
+                                                    Icons.edit_outlined)
+                                                : const Icon(
+                                                    Icons.delete_outline),
+                                            Spacing()
+                                                .horizontalSpace(context, 0.02),
+                                            Text(
+                                              e,
+                                              style: txtStyle(
+                                                  size: 13,
+                                                  weight: FontWeight.w400),
+                                            ),
+                                          ],
+                                        ),
                                       ))
                                 ];
                               },
@@ -884,7 +899,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
           width: Sizes().ratioWithScrWidth(context, 0.11),
           height: Sizes().ratioWithScrHeight(context, 0.02),
           alignment: alignment,
-          child: Container(
+          child: SizedBox(
             height: 20,
             child: GestureDetector(
               onTap: () => onClick(),
@@ -904,7 +919,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                     child: Icon(
                       icon[1],
                       size: 16,
-                      color: Color.fromARGB(255, 139, 138, 138),
+                      color: const Color.fromARGB(255, 139, 138, 138),
                     ),
                   ),
                 ],
@@ -925,13 +940,13 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
             decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(
-                    color: Color.fromARGB(255, 51, 50, 50), width: 0.5),
+                    color: const Color.fromARGB(255, 51, 50, 50), width: 0.5),
                 borderRadius: BorderRadius.circular(20)),
             alignment: Alignment.center,
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Spacing().horizontalSpace(context, 0.018),
               child,
-              Icon(Icons.arrow_drop_down)
+              const Icon(Icons.arrow_drop_down)
             ])),
       );
 
@@ -975,12 +990,12 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
           required double borderRad}) =>
       Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 153, 69),
+            color: const Color.fromARGB(255, 255, 153, 69),
             borderRadius: BorderRadius.circular(borderRad)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
-            Icon(
+            const Icon(
               Icons.add,
               size: 16,
               color: Colors.white,

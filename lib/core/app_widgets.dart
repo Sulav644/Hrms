@@ -8,10 +8,9 @@ import 'package:hrms_clone/hrms_clone/accounts/invoice.dart';
 import 'package:hrms_clone/hrms_clone/accounts/payment.dart';
 import 'package:hrms_clone/hrms_clone/accounts/provident_fund.dart';
 import 'package:hrms_clone/hrms_clone/accounts/tax.dart';
-import 'package:hrms_clone/hrms_clone/admin_dashboard/admin_dashboard.dart';
-import 'package:hrms_clone/hrms_clone/admin_dashboard/components/project_list.dart';
 import 'package:hrms_clone/hrms_clone/assets/assets.dart';
 import 'package:hrms_clone/hrms_clone/employee_dashboard/employee_dashboard.dart';
+import 'package:hrms_clone/hrms_clone/employees_list/client.dart';
 import 'package:hrms_clone/hrms_clone/employees_list/components/department.dart';
 import 'package:hrms_clone/hrms_clone/employees_list/designation.dart';
 import 'package:hrms_clone/hrms_clone/employees_list/employee_leave.dart';
@@ -26,14 +25,12 @@ import 'package:hrms_clone/hrms_clone/payroll/employees_salary.dart';
 import 'package:hrms_clone/hrms_clone/payroll/payroll_item.dart';
 import 'package:hrms_clone/hrms_clone/payroll/payslip.dart';
 import 'package:hrms_clone/hrms_clone/profile/client_profile.dart';
-import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/select_timeline_cubit.dart';
-import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/show_priority_cubit.dart';
 import 'package:hrms_clone/hrms_clone/promotion/promotion.dart';
 import 'package:hrms_clone/hrms_clone/resignation/resignation.dart';
 import 'package:hrms_clone/hrms_clone/settings/change_password.dart';
 import 'package:hrms_clone/hrms_clone/settings/company_setting.dart';
 import 'package:hrms_clone/hrms_clone/settings/invoice_setting.dart';
-import 'package:hrms_clone/hrms_clone/settings/roles_&_permission.dart';
+import 'package:hrms_clone/hrms_clone/settings/roles_and_permission.dart';
 import 'package:hrms_clone/hrms_clone/settings/salary_setting.dart';
 import 'package:hrms_clone/hrms_clone/termination/termination.dart';
 import 'package:hrms_clone/hrms_clone/training/training_list/training_list.dart';
@@ -50,9 +47,10 @@ import 'components/popup_menu/popup_menu.dart';
 class AppWidgets {
   AppBar appBar(BuildContext context) => AppBar(
         elevation: 0,
-        systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.orange),
+        systemOverlayStyle:
+            const SystemUiOverlayStyle(statusBarColor: Colors.orange),
         flexibleSpace: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 gradient: LinearGradient(
           colors: [
             Color.fromARGB(255, 255, 153, 69),
@@ -78,12 +76,12 @@ class AppWidgets {
               () => context.read<ShowMenuCubit>().toggleState())
         ],
       );
-  Widget appDrawer(BuildContext context, List<Widget> children) => Container(
+  Widget appDrawer(BuildContext context, List<Widget> children) => SizedBox(
       width: Sizes().ratioWithScrWidth(context, 0.65),
       child: Drawer(
-        backgroundColor: Color.fromARGB(255, 2, 27, 48),
+        backgroundColor: const Color.fromARGB(255, 2, 27, 48),
         child: DefaultTextStyle(
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
             child: Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: Sizes().ratioWithScrWidth(context, 0.04)),
@@ -107,7 +105,7 @@ class AppWidgets {
         onTap: () => onClick(),
         child: Scaffold(
           appBar: AppWidgets().appBar(context),
-          backgroundColor: Color.fromARGB(255, 240, 238, 238),
+          backgroundColor: const Color.fromARGB(255, 240, 238, 238),
           body: Stack(
             children: [
               SingleChildScrollView(
@@ -126,7 +124,7 @@ class AppWidgets {
           ),
           drawer: Scrollbar(
             thickness: 8,
-            radius: Radius.circular(10),
+            radius: const Radius.circular(10),
             child: AppWidgets().appDrawer(context, [
               itemHeader(context, 'Main'),
               expandedList(
@@ -136,12 +134,12 @@ class AppWidgets {
                   children: [
                     GestureDetector(
                         onTap: () =>
-                            Navigation().navigateTo(context, HomePage()),
-                        child: Text('Admin Dashboard')),
+                            Navigation().navigateTo(context, const HomePage()),
+                        child: const Text('Admin Dashboard')),
                     GestureDetector(
                         onTap: () => Navigation()
-                            .navigateTo(context, EmployeeDashboard()),
-                        child: Text('Employee Dashboard'))
+                            .navigateTo(context, const EmployeeDashboard()),
+                        child: const Text('Employee Dashboard'))
                   ]),
               itemHeader(context, 'Employees'),
               expandedList(
@@ -150,42 +148,46 @@ class AppWidgets {
                   title: 'Employees',
                   children: [
                     GestureDetector(
-                        onTap: () =>
-                            Navigation().navigateTo(context, EmployeesList()),
-                        child: Text('All Employees')),
+                        onTap: () => Navigation()
+                            .navigateTo(context, const EmployeesList()),
+                        child: const Text('All Employees')),
                     GestureDetector(
                         onTap: () =>
-                            Navigation().navigateTo(context, Holidays()),
-                        child: Text('Holidays')),
+                            Navigation().navigateTo(context, const Holidays()),
+                        child: const Text('Holidays')),
+                    GestureDetector(
+                        onTap: () => Navigation()
+                            .navigateTo(context, const EmployeeLeave()),
+                        child: const Text('Employee Leave')),
+                    GestureDetector(
+                        onTap: () => Navigation()
+                            .navigateTo(context, const Department()),
+                        child: const Text('Departments')),
+                    GestureDetector(
+                        onTap: () => Navigation()
+                            .navigateTo(context, const Designation()),
+                        child: const Text('Designations')),
                     GestureDetector(
                         onTap: () =>
-                            Navigation().navigateTo(context, EmployeeLeave()),
-                        child: Text('Employee Leave')),
+                            Navigation().navigateTo(context, const TimeSheet()),
+                        child: const Text('Timesheet')),
                     GestureDetector(
                         onTap: () =>
-                            Navigation().navigateTo(context, Department()),
-                        child: Text('Departments')),
-                    GestureDetector(
-                        onTap: () =>
-                            Navigation().navigateTo(context, Designation()),
-                        child: Text('Designations')),
-                    GestureDetector(
-                        onTap: () =>
-                            Navigation().navigateTo(context, TimeSheet()),
-                        child: Text('Timesheet')),
-                    GestureDetector(
-                        onTap: () =>
-                            Navigation().navigateTo(context, OverTime()),
-                        child: Text('Overtime'))
+                            Navigation().navigateTo(context, const OverTime()),
+                        child: const Text('Overtime'))
                   ]),
-              itemContent(
-                  context: context,
-                  leadIcon: Icons.person_add_outlined,
-                  title: 'Clients',
-                  height: 0.045),
               GestureDetector(
                 onTap: () =>
-                    Navigation().navigateTo(context, ViewMoreProjects()),
+                    Navigation().navigateTo(context, const ClientList()),
+                child: itemContent(
+                    context: context,
+                    leadIcon: Icons.person_add_outlined,
+                    title: 'Clients',
+                    height: 0.045),
+              ),
+              GestureDetector(
+                onTap: () =>
+                    Navigation().navigateTo(context, const ViewMoreProjects()),
                 child: itemContent(
                     context: context,
                     leadIcon: Icons.rocket_outlined,
@@ -193,7 +195,7 @@ class AppWidgets {
                     height: 0.065),
               ),
               GestureDetector(
-                onTap: () => Navigation().navigateTo(context, Leads()),
+                onTap: () => Navigation().navigateTo(context, const Leads()),
                 child: itemContent(
                     context: context,
                     leadIcon: Icons.add_box,
@@ -208,23 +210,24 @@ class AppWidgets {
                   children: [
                     GestureDetector(
                         onTap: () =>
-                            Navigation().navigateTo(context, Invoice()),
-                        child: Text('Invoices')),
+                            Navigation().navigateTo(context, const Invoice()),
+                        child: const Text('Invoices')),
                     GestureDetector(
                         onTap: () =>
-                            Navigation().navigateTo(context, Payment()),
-                        child: Text('Payments')),
+                            Navigation().navigateTo(context, const Payment()),
+                        child: const Text('Payments')),
                     GestureDetector(
                         onTap: () =>
-                            Navigation().navigateTo(context, Expenses()),
-                        child: Text('Expenses')),
+                            Navigation().navigateTo(context, const Expenses()),
+                        child: const Text('Expenses')),
+                    GestureDetector(
+                        onTap: () => Navigation()
+                            .navigateTo(context, const ProvidentFund()),
+                        child: const Text('Provident Fund')),
                     GestureDetector(
                         onTap: () =>
-                            Navigation().navigateTo(context, ProvidentFund()),
-                        child: Text('Provident Fund')),
-                    GestureDetector(
-                        onTap: () => Navigation().navigateTo(context, Tax()),
-                        child: Text('Taxes'))
+                            Navigation().navigateTo(context, const Tax()),
+                        child: const Text('Taxes'))
                   ]),
               expandedList(
                   context: context,
@@ -232,17 +235,17 @@ class AppWidgets {
                   title: 'Payroll',
                   children: [
                     GestureDetector(
-                        onTap: () =>
-                            Navigation().navigateTo(context, EmployeesSalary()),
-                        child: Text('Employee Salary')),
+                        onTap: () => Navigation()
+                            .navigateTo(context, const EmployeesSalary()),
+                        child: const Text('Employee Salary')),
                     GestureDetector(
                         onTap: () =>
-                            Navigation().navigateTo(context, PaySlip()),
-                        child: Text('Payslip')),
+                            Navigation().navigateTo(context, const PaySlip()),
+                        child: const Text('Payslip')),
                     GestureDetector(
-                        onTap: () =>
-                            Navigation().navigateTo(context, PayRollItem()),
-                        child: Text('Payroll Items'))
+                        onTap: () => Navigation()
+                            .navigateTo(context, const PayRollItem()),
+                        child: const Text('Payroll Items'))
                   ]),
               expandedList(
                   context: context,
@@ -251,12 +254,12 @@ class AppWidgets {
                   children: [
                     GestureDetector(
                         onTap: () =>
-                            Navigation().navigateTo(context, GoalList()),
-                        child: Text('Goal List')),
+                            Navigation().navigateTo(context, const GoalList()),
+                        child: const Text('Goal List')),
                     GestureDetector(
                         onTap: () =>
-                            Navigation().navigateTo(context, GoalType()),
-                        child: Text('Goal Type')),
+                            Navigation().navigateTo(context, const GoalType()),
+                        child: const Text('Goal Type')),
                   ]),
               expandedList(
                   context: context,
@@ -264,20 +267,21 @@ class AppWidgets {
                   title: 'Training',
                   children: [
                     GestureDetector(
-                        onTap: () =>
-                            Navigation().navigateTo(context, TrainingList()),
-                        child: Text('Training List')),
+                        onTap: () => Navigation()
+                            .navigateTo(context, const TrainingList()),
+                        child: const Text('Training List')),
                     GestureDetector(
                         onTap: () =>
-                            Navigation().navigateTo(context, Trainings()),
-                        child: Text('Trainers')),
+                            Navigation().navigateTo(context, const Trainings()),
+                        child: const Text('Trainers')),
                     GestureDetector(
-                        onTap: () =>
-                            Navigation().navigateTo(context, TrainingType()),
-                        child: Text('Training Type'))
+                        onTap: () => Navigation()
+                            .navigateTo(context, const TrainingType()),
+                        child: const Text('Training Type'))
                   ]),
               GestureDetector(
-                onTap: () => Navigation().navigateTo(context, Promotion()),
+                onTap: () =>
+                    Navigation().navigateTo(context, const Promotion()),
                 child: itemContent(
                     context: context,
                     leadIcon: Icons.mic,
@@ -285,7 +289,8 @@ class AppWidgets {
                     height: 0.045),
               ),
               GestureDetector(
-                onTap: () => Navigation().navigateTo(context, Resignation()),
+                onTap: () =>
+                    Navigation().navigateTo(context, const Resignation()),
                 child: itemContent(
                     context: context,
                     leadIcon: Icons.exit_to_app_outlined,
@@ -293,7 +298,8 @@ class AppWidgets {
                     height: 0.065),
               ),
               GestureDetector(
-                onTap: () => Navigation().navigateTo(context, Termination()),
+                onTap: () =>
+                    Navigation().navigateTo(context, const Termination()),
                 child: itemContent(
                     context: context,
                     leadIcon: Icons.close_rounded,
@@ -302,7 +308,7 @@ class AppWidgets {
               ),
               itemHeader(context, 'Administration'),
               GestureDetector(
-                onTap: () => Navigation().navigateTo(context, Assets()),
+                onTap: () => Navigation().navigateTo(context, const Assets()),
                 child: itemContent(
                     context: context,
                     leadIcon: Icons.home,
@@ -310,7 +316,7 @@ class AppWidgets {
                     height: 0.065),
               ),
               GestureDetector(
-                onTap: () => Navigation().navigateTo(context, Users()),
+                onTap: () => Navigation().navigateTo(context, const Users()),
                 child: itemContent(
                     context: context,
                     leadIcon: Icons.person_add_outlined,
@@ -324,16 +330,17 @@ class AppWidgets {
                   title: 'Profile',
                   children: [
                     GestureDetector(
-                        onTap: () =>
-                            Navigation().navigateTo(context, EmployeeProfile()),
-                        child: Text('Employee Profile')),
+                        onTap: () => Navigation()
+                            .navigateTo(context, const EmployeeProfile()),
+                        child: const Text('Employee Profile')),
                     GestureDetector(
-                        onTap: () =>
-                            Navigation().navigateTo(context, ClientProfile()),
-                        child: Text('Client Profile')),
+                        onTap: () => Navigation()
+                            .navigateTo(context, const ClientProfile()),
+                        child: const Text('Client Profile')),
                   ]),
               GestureDetector(
-                onTap: () => Navigation().navigateTo(context, CompanySetting()),
+                onTap: () =>
+                    Navigation().navigateTo(context, const CompanySetting()),
                 child: itemContent(
                     context: context,
                     leadIcon: Icons.settings_outlined,
@@ -360,7 +367,7 @@ class AppWidgets {
         onTap: () => onClick(),
         child: Scaffold(
           appBar: AppWidgets().appBar(context),
-          backgroundColor: Color.fromARGB(255, 240, 238, 238),
+          backgroundColor: const Color.fromARGB(255, 240, 238, 238),
           body: Stack(
             children: [
               SingleChildScrollView(
@@ -379,10 +386,10 @@ class AppWidgets {
           ),
           drawer: Scrollbar(
             thickness: 8,
-            radius: Radius.circular(10),
+            radius: const Radius.circular(10),
             child: AppWidgets().appDrawer(context, [
               GestureDetector(
-                onTap: () => Navigation().navigateTo(context, HomePage()),
+                onTap: () => Navigation().navigateTo(context, const HomePage()),
                 child: itemContent(
                     context: context,
                     leadIcon: Icons.person_add_outlined,
@@ -391,7 +398,8 @@ class AppWidgets {
               ),
               itemHeader(context, 'Settings'),
               GestureDetector(
-                onTap: () => Navigation().navigateTo(context, CompanySetting()),
+                onTap: () =>
+                    Navigation().navigateTo(context, const CompanySetting()),
                 child: itemContent(
                     context: context,
                     leadIcon: Icons.rocket_outlined,
@@ -399,7 +407,8 @@ class AppWidgets {
                     height: 0.065),
               ),
               GestureDetector(
-                onTap: () => Navigation().navigateTo(context, ThemeSetting()),
+                onTap: () =>
+                    Navigation().navigateTo(context, const ThemeSetting()),
                 child: itemContent(
                     context: context,
                     leadIcon: Icons.rocket_outlined,
@@ -407,8 +416,8 @@ class AppWidgets {
                     height: 0.065),
               ),
               GestureDetector(
-                onTap: () =>
-                    Navigation().navigateTo(context, RolesAndPermission()),
+                onTap: () => Navigation()
+                    .navigateTo(context, const RolesAndPermission()),
                 child: itemContent(
                     context: context,
                     leadIcon: Icons.rocket_outlined,
@@ -416,7 +425,8 @@ class AppWidgets {
                     height: 0.065),
               ),
               GestureDetector(
-                onTap: () => Navigation().navigateTo(context, InvoiceSetting()),
+                onTap: () =>
+                    Navigation().navigateTo(context, const InvoiceSetting()),
                 child: itemContent(
                     context: context,
                     leadIcon: Icons.rocket_outlined,
@@ -437,7 +447,8 @@ class AppWidgets {
                     height: 0.065),
               ),
               GestureDetector(
-                onTap: () => Navigation().navigateTo(context, ChangePassword()),
+                onTap: () =>
+                    Navigation().navigateTo(context, const ChangePassword()),
                 child: itemContent(
                     context: context,
                     leadIcon: Icons.rocket_outlined,
@@ -463,17 +474,15 @@ class AppWidgets {
       Container(
         height: Sizes().ratioWithScrHeight(context, height),
         alignment: Alignment.bottomCenter,
-        child: Container(
-          child: Row(
-            children: [
-              Icon(
-                leadIcon,
-                color: Colors.white,
-              ),
-              Spacing().horizontalSpace(context, 0.025),
-              Text(title),
-            ],
-          ),
+        child: Row(
+          children: [
+            Icon(
+              leadIcon,
+              color: Colors.white,
+            ),
+            Spacing().horizontalSpace(context, 0.025),
+            Text(title),
+          ],
         ),
       );
   Widget expandedList(

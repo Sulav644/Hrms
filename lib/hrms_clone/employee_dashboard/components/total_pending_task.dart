@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:hrms_clone/core/utils.dart';
-
 import '../core/components.dart';
 
 class TotalPendingTasks extends StatelessWidget {

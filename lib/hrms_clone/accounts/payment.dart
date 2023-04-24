@@ -6,14 +6,20 @@ import '../holidays/components/horiz_list_tile.dart';
 import '../leads/leads.dart';
 import '../view_more_projects/components/entries_limit_widget.dart';
 
-class Payment extends StatelessWidget {
-  Payment({super.key});
+class Payment extends StatefulWidget {
+  const Payment({super.key});
+
+  @override
+  State<Payment> createState() => _PaymentState();
+}
+
+class _PaymentState extends State<Payment> {
   bool showMenuStatus = false;
+
   ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
-    final path = 'assets/images/member_list';
     final headerStyle = txtStyle(weight: FontWeight.w600, height: 1.4);
     final listStyle = txtStyle(weight: FontWeight.w400, height: 1.4);
     return AppWidgets().appScaffold(
@@ -31,7 +37,7 @@ class Payment extends StatelessWidget {
               )
             ]),
             Spacing().verticalSpace(context, 0.035),
-            EntriesLimitWidget(),
+            const EntriesLimitWidget(),
             Spacing().verticalSpace(context, 0.03),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -41,7 +47,7 @@ class Payment extends StatelessWidget {
                   Container(
                     height: Sizes().ratioWithScrHeight(context, 0.097),
                     alignment: Alignment.topCenter,
-                    color: Color.fromARGB(255, 209, 206, 206),
+                    color: const Color.fromARGB(255, 209, 206, 206),
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -62,7 +68,7 @@ class Payment extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.18,
@@ -74,7 +80,7 @@ class Payment extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.18,
@@ -87,7 +93,7 @@ class Payment extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.12,
@@ -99,7 +105,7 @@ class Payment extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.18,
@@ -112,7 +118,7 @@ class Payment extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.18,
@@ -124,7 +130,7 @@ class Payment extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.18,
@@ -136,7 +142,7 @@ class Payment extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             ),
                             HorizListTile(
                                 width: 0.18,
@@ -148,7 +154,7 @@ class Payment extends StatelessWidget {
                                   () {},
                                   [Icons.arrow_upward, Icons.arrow_downward],
                                   Alignment.bottomCenter,
-                                  Color.fromARGB(255, 139, 138, 138)),
+                                  const Color.fromARGB(255, 139, 138, 138)),
                             )
                           ]),
                         ),
@@ -193,7 +199,7 @@ class Payment extends StatelessWidget {
                               width: Sizes().ratioWithScrWidth(context, 0.1),
                               height:
                                   Sizes().ratioWithScrHeight(context, 0.002),
-                              color: Color.fromARGB(255, 199, 195, 195),
+                              color: const Color.fromARGB(255, 199, 195, 195),
                             )
                           ],
                         ),
@@ -212,7 +218,7 @@ class Payment extends StatelessWidget {
           width: Sizes().ratioWithScrWidth(context, 0.11),
           height: Sizes().ratioWithScrHeight(context, 0.02),
           alignment: alignment,
-          child: Container(
+          child: SizedBox(
             height: 20,
             child: GestureDetector(
               onTap: () => onClick(),
@@ -232,7 +238,7 @@ class Payment extends StatelessWidget {
                     child: Icon(
                       icon[1],
                       size: 16,
-                      color: Color.fromARGB(255, 139, 138, 138),
+                      color: const Color.fromARGB(255, 139, 138, 138),
                     ),
                   ),
                 ],

@@ -6,6 +6,7 @@ import 'package:hrms_clone/hrms_clone/holidays/domain/add_holiday_cubit.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/select_indicator_cubit.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/select_timeline_cubit.dart';
 import 'package:hrms_clone/hrms_clone/project_detail_&_member/domain/show_priority_cubit.dart';
+import 'package:hrms_clone/hrms_clone/settings/domain/check_box_cubit.dart';
 import 'package:hrms_clone/hrms_clone/view_more_projects/domain/member_sortlist_cubit.dart';
 
 void main() {
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => SelectedTimelinesCubit()),
           BlocProvider(create: (context) => MembersSortListCubit()),
           BlocProvider(create: (context) => AddHolidayCubit()),
+          BlocProvider(create: (context) => CheckBoxCubit()),
+          BlocProvider(create: (context) => ToggleButtonCubit()),
+          BlocProvider(create: (context) => AdminSelectCubit()),
         ],
         child: MaterialApp(
           title: 'Flutter Demo',

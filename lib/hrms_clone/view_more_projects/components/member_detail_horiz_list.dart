@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hrms_clone/hrms_clone/view_more_projects/components/entries_limit_widget.dart';
-import 'package:hrms_clone/hrms_clone/holidays/components/horiz_list_tile.dart';
 import 'package:hrms_clone/hrms_clone/view_more_projects/domain/member_sortlist_cubit.dart';
 import 'package:intl/intl.dart';
-
 import '../../../core/utils.dart';
 
 class MemberDetailHorizList extends StatefulWidget {
-  MemberDetailHorizList({super.key});
+  const MemberDetailHorizList({super.key});
 
   @override
   State<MemberDetailHorizList> createState() => _MemberDetailHorizListState();
@@ -29,14 +25,13 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
 
   @override
   Widget build(BuildContext context) {
-    final center = Alignment.center;
-    final bottom = Alignment.bottomCenter;
-    final path = 'assets/images/member_list';
+    const bottom = Alignment.bottomCenter;
+    const path = 'assets/images/member_list';
     final membersSorts = context.watch<MembersSortListCubit>().state;
-    NumberFormat formatter = new NumberFormat("0000");
+    NumberFormat formatter = NumberFormat("0000");
 
     return Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-      EntriesLimitWidget(),
+      const EntriesLimitWidget(),
       Spacing().verticalSpace(context, 0.03),
       SingleChildScrollView(
         scrollDirection: Axis.horizontal,
@@ -44,7 +39,7 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
           Container(
             height: Sizes().ratioWithScrHeight(context, 0.097),
             alignment: Alignment.topCenter,
-            color: Color.fromARGB(255, 209, 206, 206),
+            color: const Color.fromARGB(255, 209, 206, 206),
             child: Padding(
               padding: EdgeInsets.only(
                   top: Sizes().ratioWithScrHeight(context, 0.002)),
@@ -53,7 +48,7 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                 color: Colors.white,
                 child: Row(children: [
                   Spacing().horizontalSpace(context, 0.04),
-                  Container(
+                  SizedBox(
                     width: Sizes().ratioWithScrWidth(context, 0.3),
                     child: Row(children: [
                       textWrap(context, 'Project'),
@@ -66,7 +61,7 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                           bottom,
                           membersSorts[0].id != 1
                               ? Colors.black
-                              : Color.fromARGB(255, 139, 138, 138)),
+                              : const Color.fromARGB(255, 139, 138, 138)),
                     ]),
                   ),
                   Container(
@@ -81,10 +76,10 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                           bottom,
                           membersSorts[0].id == 1
                               ? Colors.black
-                              : Color.fromARGB(255, 139, 138, 138)),
+                              : const Color.fromARGB(255, 139, 138, 138)),
                     ]),
                   ),
-                  Container(
+                  SizedBox(
                     width: Sizes().ratioWithScrWidth(context, 0.28),
                     child: Row(children: [
                       textWrap(context, 'Leader'),
@@ -93,10 +88,10 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                           () {},
                           [Icons.arrow_upward, Icons.arrow_downward],
                           bottom,
-                          Color.fromARGB(255, 139, 138, 138)),
+                          const Color.fromARGB(255, 139, 138, 138)),
                     ]),
                   ),
-                  Container(
+                  SizedBox(
                     width: Sizes().ratioWithScrWidth(context, 0.54),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -107,7 +102,7 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                               () {},
                               [Icons.arrow_upward, Icons.arrow_downward],
                               bottom,
-                              Color.fromARGB(255, 139, 138, 138)),
+                              const Color.fromARGB(255, 139, 138, 138)),
                         ]),
                   ),
                   Container(
@@ -122,10 +117,10 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                               () {},
                               [Icons.arrow_upward, Icons.arrow_downward],
                               bottom,
-                              Color.fromARGB(255, 139, 138, 138)),
+                              const Color.fromARGB(255, 139, 138, 138)),
                         ]),
                   ),
-                  Container(
+                  SizedBox(
                     width: Sizes().ratioWithScrWidth(context, 0.35),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -136,10 +131,10 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                               () {},
                               [Icons.arrow_upward, Icons.arrow_downward],
                               bottom,
-                              Color.fromARGB(255, 139, 138, 138)),
+                              const Color.fromARGB(255, 139, 138, 138)),
                         ]),
                   ),
-                  Container(
+                  SizedBox(
                     width: Sizes().ratioWithScrWidth(context, 0.35),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -150,10 +145,10 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                               () {},
                               [Icons.arrow_upward, Icons.arrow_downward],
                               bottom,
-                              Color.fromARGB(255, 139, 138, 138)),
+                              const Color.fromARGB(255, 139, 138, 138)),
                         ]),
                   ),
-                  Container(
+                  SizedBox(
                     width: Sizes().ratioWithScrWidth(context, 0.28),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -164,7 +159,7 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                               () {},
                               [Icons.arrow_upward, Icons.arrow_downward],
                               bottom,
-                              Color.fromARGB(255, 139, 138, 138))
+                              const Color.fromARGB(255, 139, 138, 138))
                         ]),
                   ),
                 ]),
@@ -181,18 +176,19 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                       child: Container(
                         height: Sizes().ratioWithScrHeight(context, 0.09),
                         color: membersSorts.indexOf(e).isEven
-                            ? Color.fromARGB(255, 240, 238, 238)
+                            ? const Color.fromARGB(255, 240, 238, 238)
                             : Colors.white,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Spacing().horizontalSpace(context, 0.04),
-                            Container(
+                            SizedBox(
                                 width: Sizes().ratioWithScrWidth(context, 0.3),
                                 child: Text(
                                   e.title,
                                   style: txtStyle(
-                                      color: Color.fromARGB(255, 10, 104, 182),
+                                      color: const Color.fromARGB(
+                                          255, 10, 104, 182),
                                       weight: FontWeight.w400,
                                       height: 1.5),
                                 )),
@@ -206,23 +202,23 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                             Container(
                               width: Sizes().ratioWithScrWidth(context, 0.28),
                               alignment: Alignment.centerLeft,
-                              child: CircleAvatar(
+                              child: const CircleAvatar(
                                 backgroundImage: AssetImage(
-                                  '${path}/download.jpg',
+                                  '$path/download.jpg',
                                 ),
                                 radius: 16,
                               ),
                             ),
-                            Container(
+                            SizedBox(
                               width: Sizes().ratioWithScrWidth(context, 0.54),
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     ...[
-                                      '${path}/downloadTwo.jpg',
-                                      '${path}/downloadThree.jpg',
-                                      '${path}/downloadFour.jpg',
-                                      '${path}/downloadFive.jpg'
+                                      '$path/downloadTwo.jpg',
+                                      '$path/downloadThree.jpg',
+                                      '$path/downloadFour.jpg',
+                                      '$path/downloadFive.jpg'
                                     ]
                                         .map((e) => Padding(
                                               padding:
@@ -239,6 +235,7 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                                       padding: const EdgeInsets.all(3.0),
                                       child: CircleAvatar(
                                         backgroundColor: Colors.pink,
+                                        radius: 16,
                                         child: Text(
                                           '+15',
                                           style: txtStyle(
@@ -246,7 +243,6 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                                               size: 12,
                                               weight: FontWeight.w500),
                                         ),
-                                        radius: 16,
                                       ),
                                     ),
                                   ]),
@@ -273,15 +269,8 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                                         });
                                       },
                                       color: Colors.red,
-                                      child: Text('High')),
+                                      child: const Text('High')),
                                   PopupMenuButton(
-                                    child: Container(
-                                      width: Sizes()
-                                          .ratioWithScrWidth(context, 0.3),
-                                      height: Sizes()
-                                          .ratioWithScrHeight(context, 0.04),
-                                      color: Colors.transparent,
-                                    ),
                                     padding: EdgeInsets.zero,
                                     offset: Offset(
                                         Sizes()
@@ -291,6 +280,15 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                                     itemBuilder: (context) {
                                       return [
                                         PopupMenuItem(
+                                          padding: EdgeInsets.only(
+                                            top: Sizes().ratioWithScrWidth(
+                                                context, 0.02),
+                                            left: Sizes().ratioWithScrWidth(
+                                                context, 0.03),
+                                            bottom: Sizes().ratioWithScrWidth(
+                                                context, 0.02),
+                                          ),
+                                          height: 0,
                                           child: Row(
                                             children: [
                                               circleInd(context, Colors.red),
@@ -303,6 +301,8 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                                               ),
                                             ],
                                           ),
+                                        ),
+                                        PopupMenuItem(
                                           padding: EdgeInsets.only(
                                             top: Sizes().ratioWithScrWidth(
                                                 context, 0.02),
@@ -312,8 +312,6 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                                                 context, 0.02),
                                           ),
                                           height: 0,
-                                        ),
-                                        PopupMenuItem(
                                           child: Row(
                                             children: [
                                               circleInd(context, Colors.orange),
@@ -326,6 +324,8 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                                               ),
                                             ],
                                           ),
+                                        ),
+                                        PopupMenuItem(
                                           padding: EdgeInsets.only(
                                             top: Sizes().ratioWithScrWidth(
                                                 context, 0.02),
@@ -335,8 +335,6 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                                                 context, 0.02),
                                           ),
                                           height: 0,
-                                        ),
-                                        PopupMenuItem(
                                           child: Row(
                                             children: [
                                               circleInd(context, Colors.green),
@@ -349,18 +347,16 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                                               ),
                                             ],
                                           ),
-                                          padding: EdgeInsets.only(
-                                            top: Sizes().ratioWithScrWidth(
-                                                context, 0.02),
-                                            left: Sizes().ratioWithScrWidth(
-                                                context, 0.03),
-                                            bottom: Sizes().ratioWithScrWidth(
-                                                context, 0.02),
-                                          ),
-                                          height: 0,
                                         ),
                                       ];
                                     },
+                                    child: Container(
+                                      width: Sizes()
+                                          .ratioWithScrWidth(context, 0.3),
+                                      height: Sizes()
+                                          .ratioWithScrHeight(context, 0.04),
+                                      color: Colors.transparent,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -375,15 +371,8 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                                       key: priorityKey,
                                       onClick: () {},
                                       color: Colors.green,
-                                      child: Text('Active')),
+                                      child: const Text('Active')),
                                   PopupMenuButton(
-                                    child: Container(
-                                      width: Sizes()
-                                          .ratioWithScrWidth(context, 0.3),
-                                      height: Sizes()
-                                          .ratioWithScrHeight(context, 0.04),
-                                      color: Colors.transparent,
-                                    ),
                                     padding: EdgeInsets.zero,
                                     offset: Offset(
                                         Sizes()
@@ -393,6 +382,15 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                                     itemBuilder: (context) {
                                       return [
                                         PopupMenuItem(
+                                          padding: EdgeInsets.only(
+                                            top: Sizes().ratioWithScrWidth(
+                                                context, 0.02),
+                                            left: Sizes().ratioWithScrWidth(
+                                                context, 0.03),
+                                            bottom: Sizes().ratioWithScrWidth(
+                                                context, 0.02),
+                                          ),
+                                          height: 0,
                                           child: Row(
                                             children: [
                                               circleInd(context, Colors.green),
@@ -405,6 +403,8 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                                               ),
                                             ],
                                           ),
+                                        ),
+                                        PopupMenuItem(
                                           padding: EdgeInsets.only(
                                             top: Sizes().ratioWithScrWidth(
                                                 context, 0.02),
@@ -414,8 +414,6 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                                                 context, 0.02),
                                           ),
                                           height: 0,
-                                        ),
-                                        PopupMenuItem(
                                           child: Row(
                                             children: [
                                               circleInd(context, Colors.red),
@@ -428,18 +426,16 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                                               ),
                                             ],
                                           ),
-                                          padding: EdgeInsets.only(
-                                            top: Sizes().ratioWithScrWidth(
-                                                context, 0.02),
-                                            left: Sizes().ratioWithScrWidth(
-                                                context, 0.03),
-                                            bottom: Sizes().ratioWithScrWidth(
-                                                context, 0.02),
-                                          ),
-                                          height: 0,
                                         ),
                                       ];
                                     },
+                                    child: Container(
+                                      width: Sizes()
+                                          .ratioWithScrWidth(context, 0.3),
+                                      height: Sizes()
+                                          .ratioWithScrHeight(context, 0.04),
+                                      color: Colors.transparent,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -457,21 +453,6 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                                       'Edit',
                                       'Delete',
                                     ].map((e) => PopupMenuItem(
-                                          child: Row(
-                                            children: [
-                                              e == 'Edit'
-                                                  ? Icon(Icons.edit_outlined)
-                                                  : Icon(Icons.delete_outline),
-                                              Spacing().horizontalSpace(
-                                                  context, 0.02),
-                                              Text(
-                                                e,
-                                                style: txtStyle(
-                                                    size: 13,
-                                                    weight: FontWeight.w400),
-                                              ),
-                                            ],
-                                          ),
                                           padding: EdgeInsets.only(
                                               top: Sizes().ratioWithScrWidth(
                                                   context, 0.02),
@@ -482,6 +463,23 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                                               right: Sizes().ratioWithScrWidth(
                                                   context, 0.1)),
                                           height: 0,
+                                          child: Row(
+                                            children: [
+                                              e == 'Edit'
+                                                  ? const Icon(
+                                                      Icons.edit_outlined)
+                                                  : const Icon(
+                                                      Icons.delete_outline),
+                                              Spacing().horizontalSpace(
+                                                  context, 0.02),
+                                              Text(
+                                                e,
+                                                style: txtStyle(
+                                                    size: 13,
+                                                    weight: FontWeight.w400),
+                                              ),
+                                            ],
+                                          ),
                                         ))
                                   ];
                                 },
@@ -504,7 +502,7 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                               0.3 +
                               0.32),
                       height: Sizes().ratioWithScrHeight(context, 0.002),
-                      color: Color.fromARGB(255, 209, 206, 206),
+                      color: const Color.fromARGB(255, 209, 206, 206),
                     )
                   ],
                 ),
@@ -530,7 +528,7 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
           width: Sizes().ratioWithScrWidth(context, 0.11),
           height: Sizes().ratioWithScrHeight(context, 0.07),
           alignment: alignment,
-          child: Container(
+          child: SizedBox(
             height: 20,
             child: GestureDetector(
               onTap: () => onClick(),
@@ -549,7 +547,7 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
                     child: Icon(
                       icon[1],
                       size: 16,
-                      color: Color.fromARGB(255, 139, 138, 138),
+                      color: const Color.fromARGB(255, 139, 138, 138),
                     ),
                   ),
                 ],
@@ -571,14 +569,14 @@ class _MemberDetailHorizListState extends State<MemberDetailHorizList> {
             decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(
-                    color: Color.fromARGB(255, 51, 50, 50), width: 0.5),
+                    color: const Color.fromARGB(255, 51, 50, 50), width: 0.5),
                 borderRadius: BorderRadius.circular(20)),
             alignment: Alignment.center,
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               circleInd(context, color),
               Spacing().horizontalSpace(context, 0.018),
               child,
-              Icon(Icons.arrow_drop_down)
+              const Icon(Icons.arrow_drop_down)
             ])),
       );
 

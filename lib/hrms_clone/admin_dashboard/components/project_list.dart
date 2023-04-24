@@ -1,32 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:hrms_clone/hrms_clone/admin_dashboard/components/project_detail_widget.dart';
 import 'package:hrms_clone/hrms_clone/view_more_projects/view_more_projects.dart';
-
 import '../../../core/utils.dart';
 import '../core/components.dart';
 import '../data/detail_banner.dart';
 
 List<ProjectDetail> projectList = [
-  ProjectDetail(
+  const ProjectDetail(
       title: 'Office Management',
       openTask: 1,
       completedTask: 9,
       levelBar: 0.12),
-  ProjectDetail(
+  const ProjectDetail(
       title: 'Project Management',
       openTask: 2,
       completedTask: 5,
       levelBar: 0.05),
-  ProjectDetail(
+  const ProjectDetail(
       title: 'Video Calling App', openTask: 3, completedTask: 3, levelBar: 0.1),
-  ProjectDetail(
+  const ProjectDetail(
       title: 'Hospital Administration',
       openTask: 12,
       completedTask: 4,
       levelBar: 0.14),
-  ProjectDetail(
+  const ProjectDetail(
       title: 'Digital Marketplace',
       openTask: 7,
       completedTask: 14,
@@ -98,9 +95,9 @@ class ProjectList extends StatelessWidget {
                 padding: EdgeInsets.symmetric(
                     vertical: Sizes().ratioWithScrHeight(context, 0.02)),
                 child: GestureDetector(
-                    onTap: () =>
-                        Navigation().navigateTo(context, ViewMoreProjects()),
-                    child: Text('View all projects')),
+                    onTap: () => Navigation()
+                        .navigateTo(context, const ViewMoreProjects()),
+                    child: const Text('View all projects')),
               ),
             ],
           )
